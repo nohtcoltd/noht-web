@@ -1,0 +1,13 @@
+%blocking {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: #000;
+  @include opacity(0.9);
+}

@@ -1,0 +1,144 @@
+/* --------------------
+ * for shape
+ * -------------------- */
+@mixin rounded-rect($height) {
+  @include border-radius($height);
+  height:       $height;
+  line-height:  $height;
+}
+
+/* --------------------
+ * for list(ul ol)
+ * -------------------- */
+@mixin separation-holizontal($direction, $val){
+  > li {
+    border-#{$direction}: $val;
+    &:first-child{
+      border-left: $val;
+      border-left-color: transparent;
+    }
+    &:last-child{
+      border-right: $val;
+      border-right-color: transparent;
+    }
+  }
+}
+
+@mixin separation-vertical($direction, $val){
+  > li {
+    border-#{$direction}: $val;
+    &:first-child{
+      border-top: $val;
+      border-top-color: transparent;
+    }
+    &:last-child{
+      border-bottom: $val;
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+@mixin horizontal-list(){
+  @include clearfix;
+  > li {
+    display: block;
+    float: left;
+  }
+}
+
+/* --------------------
+ * for title
+ * -------------------- */
+@mixin sp-default-title($color: #777777) {
+  border: none;
+  border-left: 10px solid $color;
+  border-bottom: 2px solid $color;
+  padding: 3px 0px 3px 15px;
+}
+
+
+/* --------------------
+ * for positioning
+ * -------------------- */
+
+//要width指定
+@mixin centering-margin {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin centering-table {
+  vertical-align: middle;
+  @include table-cell;
+}
+
+/* --------------------
+ * for css sprite
+ * -------------------- */
+@mixin image-replace {
+  white-space: nowrap;
+  text-indent: 100%;
+  overflow: hidden;
+  //IE7対応
+  *text-indent: 0%;
+  *font-size: 0px;
+}
+
+//hoverで画像を切り替える際には画像ファイル名の末尾を_on,_offで終わらせる
+//hoverのところに数値(0以上1以下)を入れるとopacity
+@mixin css-sprite($map, $image, $hover: false, $replace: false){
+
+  background: $map;
+
+  @if $hover == "hover" or $hover == "true" {
+
+    $off: $image+_off;
+    $on: $image+_on;
+    background-position: sprite-position($map, $off);
+    @include sprite-dimensions($map, $off);
+    &:hover {
+      background-position: sprite-position($map, $on);
+    }
+
+  } @else {
+
+    background-position: sprite-position($map, $image);
+    @include sprite-dimensions($map, $image);
+
+    @if type-of($hover) == "number" {
+      &:hover {
+        @include opacity($hover);
+      }
+    }@else {
+      &:hover {
+        @include opacity(1.0);
+      }
+    }
+  }
+
+  @if $replace == "replace" or $replace == "true" {
+    @include image-replace;
+  }
+}
+
+/* --------------------
+ * for button
+ * -------------------- */
+@mixin button-template($val...) {
+  @include inline-block;
+  padding: $val;
+  line-height: 1.0;
+  &:hover {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+}

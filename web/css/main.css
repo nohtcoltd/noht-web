@@ -1,0 +1,430 @@
+@charset "UTF-8";
+/* ---------------
+ * temp hacks
+ * --------------- */
+/* ---------------
+ * fonts
+ * --------------- */
+/* ---------------
+ * display (css3)
+ * --------------- */
+/* ---------------
+ * property (css3)
+ * --------------- */
+/* --------------------
+ * for shape
+ * -------------------- */
+/* --------------------
+ * for list(ul ol)
+ * -------------------- */
+/* --------------------
+ * for title
+ * -------------------- */
+/* --------------------
+ * for positioning
+ * -------------------- */
+/* --------------------
+ * for css sprite
+ * -------------------- */
+/* --------------------
+ * for button
+ * -------------------- */
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+/* line 10, ../scss/library/base-class/_reset.scss */
+html {
+  /* change colours to suit your needs */
+  /* change colours to suit your needs */
+  /* change border colour to suit your needs */
+}
+/* line 24, ../scss/library/base-class/_reset.scss */
+html body, html div, html span, html object, html iframe,
+html h1, html h2, html h3, html h4, html h5, html h6, html p, html blockquote, html pre,
+html abbr, html address, html cite, html code,
+html del, html dfn, html em, html img, html ins, html kbd, html q, html samp,
+html small, html strong, html sub, html sup, html var,
+html b, html i,
+html dl, html dt, html dd, html ol, html ul, html li,
+html fieldset, html form, html label, html legend,
+html input, html textarea,
+html table, html caption, html tbody, html tfoot, html thead, html tr, html th, html td,
+html article, html aside, html canvas, html details, html figcaption, html figure,
+html footer, html header, html hgroup, html menu, html nav, html section, html summary,
+html time, html mark, html audio, html video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+/* line 34, ../scss/library/base-class/_reset.scss */
+html body {
+  line-height: 1;
+}
+/* line 39, ../scss/library/base-class/_reset.scss */
+html article, html aside, html details, html figcaption, html figure,
+html footer, html header, html hgroup, html menu, html nav, html section {
+  display: block;
+}
+/* line 43, ../scss/library/base-class/_reset.scss */
+html h1, html h2, html h3, html h4, html h5, html h6 {
+  font-weight: normal;
+  display: inline;
+}
+/* line 48, ../scss/library/base-class/_reset.scss */
+html ul, html ol {
+  list-style: none;
+}
+/* line 52, ../scss/library/base-class/_reset.scss */
+html blockquote, html q {
+  quotes: none;
+}
+/* line 57, ../scss/library/base-class/_reset.scss */
+html blockquote:before, html blockquote:after,
+html q:before, html q:after {
+  content: '';
+  content: none;
+}
+/* line 62, ../scss/library/base-class/_reset.scss */
+html a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+/* line 71, ../scss/library/base-class/_reset.scss */
+html ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+/* line 78, ../scss/library/base-class/_reset.scss */
+html mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+/* line 85, ../scss/library/base-class/_reset.scss */
+html del {
+  text-decoration: line-through;
+}
+/* line 89, ../scss/library/base-class/_reset.scss */
+html abbr[title], html dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+/* line 94, ../scss/library/base-class/_reset.scss */
+html table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* line 100, ../scss/library/base-class/_reset.scss */
+html hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+/* line 109, ../scss/library/base-class/_reset.scss */
+html .hidden {
+  display: none;
+}
+
+/* line 2, ../scss/site/base-class/_reset.scss */
+html {
+  letter-spacing: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  font-size: 13px;
+  height: 100%;
+  width: 100%;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+/* line 12, ../scss/site/base-class/_reset.scss */
+.windows html {
+  font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+/* line 15, ../scss/site/base-class/_reset.scss */
+.mac html {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", sans-serif;
+}
+/* line 18, ../scss/site/base-class/_reset.scss */
+html body {
+  line-height: 1.5;
+  color: #303030;
+}
+/* line 22, ../scss/site/base-class/_reset.scss */
+html .hidden {
+  visibility: hidden;
+}
+
+/* line 6, ../scss/site/layout/_generalLayout.scss */
+.generalLayout {
+  height: 100%;
+}
+/* line 18, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #header {
+  box-sizing: border-box;
+  padding: 10px 30px;
+  position: fixed;
+}
+/* line 24, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0px 20px;
+}
+/* line 28, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .article {
+  position: relative;
+  height: 385px;
+  margin: 20px 0px;
+}
+/* line 32, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .article:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  background: url("../images/index/loadinggear.gif") center no-repeat;
+  -webkit-transition: opacity 1500ms 200ms;
+  -moz-transition: opacity 1500ms 200ms;
+  -o-transition: opacity 1500ms 200ms;
+  transition: opacity 1500ms 200ms;
+}
+/* line 44, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .visible .content {
+  filter: alpha(opacity=100);
+  -ms-filter: "alpha(opacity=($val * 100))";
+  -moz-opacity: 1;
+  opacity: 1;
+}
+/* line 47, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .visible:before {
+  filter: alpha(opacity=0);
+  -ms-filter: "alpha(opacity=($val * 100))";
+  -moz-opacity: 0;
+  opacity: 0;
+}
+/* line 51, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .content {
+  filter: alpha(opacity=0);
+  -ms-filter: "alpha(opacity=($val * 100))";
+  -moz-opacity: 0;
+  opacity: 0;
+  -webkit-transition: opacity 1500ms 200ms;
+  -moz-transition: opacity 1500ms 200ms;
+  -o-transition: opacity 1500ms 200ms;
+  transition: opacity 1500ms 200ms;
+  -webkit-perspective-origin: 50% 50%;
+  -webkit-perspective: 800;
+}
+/* line 57, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .panel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+/* line 63, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .banner {
+  -webkit-transform: rotateX(0deg) translate3d(0px, 0px, 0px);
+  -webkit-transition: -webkit-transform 800ms, z-index 400ms;
+  z-index: 20;
+}
+/* line 67, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .banner img {
+  display: inline-block;
+  position: absolute;
+}
+/* line 72, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .description {
+  background: url("../images/index/background_information.png");
+  -webkit-transform: rotateX(90deg) translate3d(0px, -192.5px, 192.5px);
+  -webkit-transition: -webkit-transform 800ms, z-index 400ms;
+  z-index: 10;
+  display: table;
+  text-align: center;
+}
+/* line 79, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .description .image {
+  vertical-align: middle;
+  display: table-cell;
+  *display: inline;
+  *zoom: 1;
+  text-align: right;
+  padding-right: 50px;
+}
+/* line 84, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .description .text {
+  vertical-align: middle;
+  display: table-cell;
+  *display: inline;
+  *zoom: 1;
+  text-align: left;
+  color: #f0f0f0;
+  font-size: 15px;
+  line-height: 2.0;
+}
+/* line 90, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .description .text > p {
+  margin-bottom: 20px;
+}
+/* line 93, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .description .text > a {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+/* line 97, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .description .text .cooperator {
+  font-size: 10px;
+  margin-bottom: 0px;
+}
+/* line 104, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .animated .banner {
+  -webkit-transform: rotateX(-90deg) translate3d(0px, 192.5px, 192.5px);
+  z-index: 10;
+}
+/* line 108, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .animated .description {
+  -webkit-transform: rotateX(0deg) translate3d(0px, 0px, 0px);
+  z-index: 20;
+}
+/* line 114, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .secondpress .panel {
+  background-color: #f0f0f0;
+}
+/* line 118, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .secondpress .banner img {
+  width: 60%;
+  right: 5%;
+}
+/* line 125, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .holda .panel {
+  background-color: #bf1920;
+}
+/* line 129, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .holda .banner img {
+  right: 5%;
+  top: 50%;
+  margin-top: -55px;
+}
+/* line 138, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .aips_converter .panel {
+  background-color: #07a3d3;
+}
+/* line 142, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .aips_converter .banner img {
+  width: 55%;
+  left: 5%;
+  bottom: 5%;
+}
+/* line 150, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .ai_loupe .panel {
+  background-color: #d16f0f;
+}
+/* line 154, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .ai_loupe .banner img {
+  right: 27%;
+  bottom: 0%;
+}
+/* line 161, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .button2_5d .panel {
+  background-color: #73ba22;
+}
+/* line 165, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .button2_5d .banner img {
+  height: 100%;
+  right: 5%;
+}
+/* line 172, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .sound_canceler .panel {
+  background-color: #ba2b48;
+}
+/* line 176, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .sound_canceler .banner img {
+  height: 27%;
+  top: 37%;
+  right: 15%;
+}
+/* line 184, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .n_comp .panel {
+  background-color: #76732b;
+}
+/* line 188, ../scss/site/layout/_generalLayout.scss */
+.generalLayout #main .n_comp .banner img {
+  height: 100%;
+  right: 5%;
+}
+@media screen and (max-width: 640px) {
+  /* line 200, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #header {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 640px) {
+  /* line 212, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #header {
+    float: left;
+    width: 260px;
+    margin-top: 425px;
+  }
+  /* line 217, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #gmenu {
+    padding-top: 60px;
+  }
+  /* line 219, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #gmenu > li {
+    line-height: 30px;
+    font-weight: bold;
+  }
+  /* line 224, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #main {
+    margin-left: 260px;
+  }
+  /* line 226, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #main .content {
+    height: 385px;
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  /* line 239, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #header {
+    float: left;
+    width: 260px;
+    margin-top: 425px;
+  }
+  /* line 244, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #gmenu {
+    padding-top: 60px;
+  }
+  /* line 246, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #gmenu > li {
+    line-height: 30px;
+    font-weight: bold;
+  }
+  /* line 251, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #main {
+    margin-left: 260px;
+  }
+  /* line 253, ../scss/site/layout/_generalLayout.scss */
+  .generalLayout #main .content {
+    height: 385px;
+    font-size: 13px;
+  }
+}

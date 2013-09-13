@@ -1,0 +1,26 @@
+//<html>tagにextendするとよい
+%site-reset {
+  letter-spacing: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  font-size: 13px;
+  height: 100%;
+  width: 100%;
+  @include font-family(default);
+
+  .windows & {
+    @include font-family(windows);
+  }
+  .mac & {
+    @include font-family(mac);
+  }
+  body {
+    line-height: 1.5;
+    color: #303030;
+  }
+  .hidden {
+    visibility: hidden;
+  }
+}
+
