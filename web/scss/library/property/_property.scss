@@ -3,102 +3,116 @@
  * --------------- */
 
 @mixin clearfix {
-  &:before, &:after {
-    content: "";
-    display: block;
-    overflow: hidden;
-  }
-  &:after {
-    clear:both;
-  }
-  *zoom: 1;
+    &:before, &:after {
+        content: "";
+        display: block;
+        overflow: hidden;
+    }
+    &:after {
+        clear:both;
+    }
+    *zoom: 1;
 }
 
 /* ---------------
  * fonts
  * --------------- */
 @mixin font-family($type: default, $important: false) {
-  @if $important == 'important' or $important == true {
-    $important: ' !important';
-  } @else {
-    $important: '';
-  }
-  @if $type == default {
-    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    @if $important == 'important' or $important == true {
+        $important: ' !important';
+    } @else {
+        $important: '';
+    }
+    @if $type == default {
+        font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 
-  } @else if $type == windows {
-    font-family:  "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;//default for windows
+    } @else if $type == windows {
+        font-family:  "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;//default for windows
 
-  } @else if $type == mac {
-    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", sans-serif;//default for mac
+    } @else if $type == mac {
+        font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", sans-serif;//default for mac
 
-  } @else if $type == sans-serif {
-    font-family: sans-serif#{$important};
+    } @else if $type == sans-serif {
+        font-family: sans-serif#{$important};
 
-  } @else if $type == serif {
-    font-family: serif#{$important};
+    } @else if $type == serif {
+        font-family: serif#{$important};
 
-  } @else if $type == monospace {
-    font-family: monospace#{$important};
+    } @else if $type == monospace {
+        font-family: monospace#{$important};
 
-  } @else if $type == verdana {
-    font-family: Verdana, Arial, Helvetica, sans-serif#{$important};
+    } @else if $type == verdana {
+        font-family: Verdana, Arial, Helvetica, sans-serif#{$important};
 
-  } @else if $type == tahoma {
-    font-family: Tahoma, Arial, Helvetica, sans-serif#{$important};
-  }
+    } @else if $type == tahoma {
+        font-family: Tahoma, Arial, Helvetica, sans-serif#{$important};
+    }
 }
 
 @mixin base-font-size($px) {
-  font-size: $px + px;
+    font-size: $px + px;
 }
 
 @mixin font-size($size) {
-  font-size: $size + px;
+    font-size: $size + px;
 }
 
 /* ---------------
  * display (css3)
  * --------------- */
 @mixin inline-block {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
 }
 
 @mixin table-cell {
-  display: table-cell;
-  *display: inline;
-  *zoom: 1;
+    display: table-cell;
+    *display: inline;
+    *zoom: 1;
 }
 
 @mixin border-box {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 /* ---------------
  * property (css3)
  * --------------- */
-
 // property duration timing delayの順で指定
 @mixin transition($val...) {
-  -webkit-transition: $val;
-  -moz-transition: $val;
-  -o-transition: $val;
-  transition: $val;
+    -webkit-transition: $val;
+    transition: $val;
+}
+
+@mixin transform($val...) {
+    -webkit-transform: $val;
+    transform: $val;
+}
+
+@mixin perspective($val, $origin...) {
+    -webkit-perspective-origin: $origin;
+    perspective-origin: $origin;
+    -webkit-perspective: $val;
+    perspective: $val;
+}
+
+@mixin backface-visibility($val...) {
+    -webkit-backface-visibility: $val;
+    backface-visibility: $val;
 }
 
 // inset x y blur width colorの順で指定
 @mixin box-shadow($val...) {
-  -webkit-box-shadow: $val;
-  -moz-box-shadow: $val;
-  box-shadow: $val;
+    -webkit-box-shadow: $val;
+    -moz-box-shadow: $val;
+    box-shadow: $val;
 }
 
 @mixin text-shadow($val...) {
-  text-shadow: $val;
+    text-shadow: $val;
 }
 
 
@@ -106,34 +120,34 @@
 // 必要そうならhttp://myakura.hatenablog.com/entry/2013/03/04/001147
 // $stopcolorを好きなだけ指定して良い
 @mixin linear-gradient($startcolor, $stopcolor...) {
-  background: $startcolor;
-  background: -webkit-linear-gradient(top, $startcolor, $stopcolor);
-  background: -moz-linear-gradient(top, $startcolor, $stopcolor);
-  background: -o-linear-gradient(top, $startcolor, $stopcolor);
-  background: linear-gradient(to bottom, $startcolor, $stopcolor);
+    background: $startcolor;
+    background: -webkit-linear-gradient(top, $startcolor, $stopcolor);
+    background: -moz-linear-gradient(top, $startcolor, $stopcolor);
+    background: -o-linear-gradient(top, $startcolor, $stopcolor);
+    background: linear-gradient(to bottom, $startcolor, $stopcolor);
 }
 
 
 //colorは16進数
 @mixin rgba($color, $alpha) {
-  $rgba: rgba($color, $alpha);
-  $ie-hex-str: ie-hex-str($rgba);
-  background: $color;
-  background: $rgba;
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
-  zoom: 1;
+    $rgba: rgba($color, $alpha);
+    $ie-hex-str: ie-hex-str($rgba);
+    background: $color;
+    background: $rgba;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+    zoom: 1;
 }
 
 @mixin opacity($val) {
-  filter: alpha(opacity=($val * 100));//for IE6&7
-  -ms-filter: "alpha(opacity=($val * 100))";//for IE8
-  -moz-opacity: $val;
-  opacity: $val;
+    filter: alpha(opacity=($val * 100));//for IE6&7
+    -ms-filter: "alpha(opacity=($val * 100))";//for IE8
+    -moz-opacity: $val;
+    opacity: $val;
 }
 
 @mixin border-radius($val) {
-  //for old-IE
-  border-radius: $val;
-  -webkit-border-radius: $val;
-  -moz-border-radius: $val;
+    //for old-IE
+    border-radius: $val;
+    -webkit-border-radius: $val;
+    -moz-border-radius: $val;
 }

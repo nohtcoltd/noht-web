@@ -1,260 +1,159 @@
 html {
-  @extend %reset;
-  @extend %site-reset;
+    @extend %reset;
+    @extend %site-reset;
 }
 
-.generalLayout{
+//========================================
+// animation
+//========================================
+#general-layout {
+    //wrapperのanimationに必要な部分
+    @include perspective(5000, 50% 50%);
+    #wrapper1, #wrapper2 {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background: #ffffff;
 
-  $tablet_width: 1024px;
-  $smart_phone_width: 640px;
-  $content_height: 385px;
-  $content_frame: 20px;
-  $animate_time: 800ms;
+        @include backface-visibility(hidden);
+        @include perspective(2000, 50% 50%);
+    }
+    &.wrapper1 #wrapper1{
+        @include transform(rotateY(0deg) translate3d(0px,0px, 0px));
+        z-index: 10;
+    }
+    &.wrapper2 #wrapper2{
+        @include transform(rotateY(0deg) translate3d(0px,0px, 0px));
+        z-index: 10;
+    }
 
-  height: 100%;
-  //----------------------------------------
-  // 共通部分はここ
-  //----------------------------------------
-  #header {
-    box-sizing: border-box;
-    padding: 10px 30px;
-    position: fixed;
-  }
+    .main {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        position: fixed;
+        padding-left: 260px;
+    }
+    .site-contents {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
 
-  #main {
-    box-sizing: border-box;
-    height: 100%;
-    padding: 0px $content_frame;
-    .article {
-      position: relative;
-      height: $content_height;
-      margin: $content_frame 0px;
-      &:before {
-        content: "";
+    //site-contentsのanimationに必要な部分
+    .site-content {
         display: block;
         position: absolute;
         width: 100%;
         height: 100%;
-        visibility: visible;
-        background: url("../images/index/loadinggear.gif") center no-repeat;
-        @include transition(opacity 1500ms 200ms);
-      }
-    }
-    .visible {
-      .content {
-        @include opacity(1.0);
-      }
-      &:before {
-        @include opacity(0);
-      }
-    }
-    .content {
-      @include opacity(0);
-      @include transition(opacity 1500ms 200ms);
-      -webkit-perspective-origin: 50% 50%;
-      -webkit-perspective: 800;
-    }
-    .panel {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      overflow: hidden;
-    }
-    .banner {
-      -webkit-transform: rotateX(0deg) translate3d(0px,0px, 0px);
-      -webkit-transition: -webkit-transform $animate_time, z-index $animate_time/2;
-      z-index: 20;
-      img {
-        display: inline-block;
-        position: absolute;
-      }
-    }
-    .description {
-      background: url("../images/index/background_information.png");
-      -webkit-transform: rotateX(90deg) translate3d(0px, -$content_height/2, $content_height/2);
-      -webkit-transition: -webkit-transform $animate_time, z-index $animate_time/2;
-      z-index: 10;
-      display: table;
-      text-align: center;
-      .image {
-        @include centering-table();
-        text-align: right;
-        padding-right: 50px;
-      }
-      .text {
-        @include centering-table();
-        text-align: left;
-        color: #f0f0f0;
-        font-size: 15px;
-        line-height: 2.0;
-        > p {
-          margin-bottom: 20px;
-        }
-        > a {
-          display: inline-block;
-          margin-bottom: 20px;
-        }
-        .cooperator {
-          font-size: 10px;
-          margin-bottom: 0px;
-        }
-      }
-    }
-    .animated {
-      .banner {
-        -webkit-transform: rotateX(-90deg) translate3d(0px, $content_height/2, $content_height/2);
+        top: 0;
+        left: 0;
+        opacity: 1.0;
+
+        box-sizing: border-box;
+        background-clip: content-box;
+
+        @include transform(rotateY(0deg) translate3d(0px,0px, 0px));
         z-index: 10;
-      }
-      .description {
-        -webkit-transform: rotateX(0deg) translate3d(0px,0px, 0px);
-        z-index: 20;
-      }
     }
-    .secondpress {
-      .panel {
-        background-color: #f0f0f0;
-      }
-      .banner {
-        img {
-          width: 60%;
-          right: 5%;
+    #index {
+        opacity: 0;
+    }
+    .index {
+        #index {
+            opacity: 1.0;
         }
-      }
-    }
-    .holda {
-      .panel {
-        background-color: #bf1920;
-      }
-      .banner {
-        img {
-          $height: 110px;
-          right: 5%;
-          top: 50%;
-          margin-top: -$height/2;
+        .site-content {
+            opacity: 0;
         }
-      }
     }
-    .aips_converter {
-      .panel {
-        background-color: #07a3d3;
-      }
-      .banner {
-        img {
-          width: 55%;
-          left: 5%;
-          bottom: 5%;
+    .about {
+        #products {
+            z-index: 0;
+            visibility: hidden;
         }
-      }
     }
-    .ai_loupe {
-      .panel {
-        background-color: #d16f0f;
-      }
-      .banner {
-        img {
-          right: 27%;
-          bottom: 0%;
+    .products {
+        #about {
+            z-index: 0;
+            visibility: hidden;
         }
-      }
     }
-    .button2_5d {
-      .panel {
-        background-color: #73ba22;
-      }
-      .banner {
-        img {
-          height: 100%;
-          right: 5%;
-        }
-      }
+    #about {
+        background-color: #e82010;
     }
-    .sound_canceler {
-      .panel {
-        background-color: #ba2b48;
-      }
-      .banner {
-        img {
-          height: 27%;
-          top: 37%;
-          right: 15%;
-        }
-      }
+    #index {
+        background-color: #ffffff;
     }
-    .n_comp {
-      .panel {
-        background-color: #76732b;
-      }
-      .banner {
-        img {
-          height: 100%;
-          right: 5%;
-        }
-      }
+    #recruit {
+        background-color: #ced808;
     }
-  }
+}
 
-  //----------------------------------------
-  // smart phone版はここ
-  //----------------------------------------
-  @media screen and (max-width: $smart_phone_width) {
+#general-layout {
+    $tablet_width: 1024px;
+    $smart_phone_width: 520px;
+    $animate_time: 800ms;
+
     #header {
-      width: 100%;
+        z-index: 1000;
+        box-sizing: border-box;
+        padding: 10px 30px;
+        position: fixed;
     }
-    #main {
+    //----------------------------------------
+    // smart phone版はここ
+    //----------------------------------------
+    @media screen and (max-width: $smart_phone_width) {
+        #header {
+            width: 100%;
+        }
+        #products {
+            .content {
+                font-size: 13px;
+            }
+        }
     }
-  }
 
-  //----------------------------------------
-  // tablet版はここ
-  //----------------------------------------
-  @media screen and (min-width: $smart_phone_width) {
-    $side-width: 260px;
-    #header {
-      float: left;
-      width: $side-width;
-      margin-top: $content_height + $content_frame*2;
+    //----------------------------------------
+    // tablet版はここ
+    //----------------------------------------
+    @media screen and (min-width: $smart_phone_width) and (max-width: $tablet_width) {
+        #header {
+            width: 100%;
+        }
+        #products {
+            .content {
+                font-size: 13px;
+            }
+        }
     }
-    #gmenu {
-      padding-top: 60px;
-      > li {
-        line-height: 30px;
-        font-weight: bold;
-      }
-    }
-    #main {
-      margin-left: $side-width;
-      .content {
-        height: $content_height;
-        font-size: 13px;
-      }
-    }
-  }
 
-  //----------------------------------------
-  // PC版はここ
-  //----------------------------------------
-  @media screen and (min-width: $tablet_width) {
-
-    $side-width: 260px;
-    #header {
-      float: left;
-      width: $side-width;
-      margin-top: $content_height + $content_frame*2;
+    //----------------------------------------
+    // PC版はここ
+    //----------------------------------------
+    @media screen and (min-width: $tablet_width) {
+        $side-width: 260px;
+        #header {
+            width: $side-width;
+            margin-top: 10%;
+            float: left;
+        }
+        #gmenu {
+            padding-top: 60px;
+            > li {
+                line-height: 30px;
+                font-weight: bold;
+            }
+        }
+        .site-content {
+            .content {
+                font-size: 13px;
+            }
+        }
     }
-    #gmenu {
-      padding-top: 60px;
-      > li {
-        line-height: 30px;
-        font-weight: bold;
-      }
-    }
-    #main {
-      margin-left: $side-width;
-      .content {
-        height: $content_height;
-        font-size: 13px;
-      }
-    }
-  }
-
 }
