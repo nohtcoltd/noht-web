@@ -1,0 +1,325 @@
+/* line 1, ../scss/test.scss */
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 5, ../scss/test.scss */
+#test {
+  cursor: default;
+}
+/* line 13, ../scss/test.scss */
+#test .menu {
+  position: relative;
+  display: inline-block;
+  z-index: 1000;
+  font-size: 13px;
+  margin-left: 40px;
+  margin-top: 450px;
+}
+/* line 20, ../scss/test.scss */
+#test .menu li {
+  margin-bottom: 10px;
+}
+/* line 22, ../scss/test.scss */
+#test .menu li:first-child {
+  margin-bottom: 30px;
+}
+/* line 27, ../scss/test.scss */
+#test .lope {
+  -webkit-transition: 100ms ease-in;
+  -moz-transition: 100ms ease-in;
+  -o-transition: 100ms ease-in;
+  transition: 100ms ease-in;
+  background: url("../images/image_lope.png") no-repeat;
+  width: 3px;
+  height: 950px;
+}
+/* line 32, ../scss/test.scss */
+#test .lope > * {
+  top: 0;
+  opacity: 1;
+}
+/* line 36, ../scss/test.scss */
+#test .lope .drop {
+  -webkit-transition: 700ms ease-in-out 10ms;
+  -moz-transition: 700ms ease-in-out 10ms;
+  -o-transition: 700ms ease-in-out 10ms;
+  transition: 700ms ease-in-out 10ms;
+  top: 2000px;
+  opacity: 0;
+}
+/* line 40, ../scss/test.scss */
+#test .lope .drop > * {
+  opacity: 0;
+}
+/* line 46, ../scss/test.scss */
+#test .adhensive {
+  background: url("../images/image_adhensive.png") center top no-repeat;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+/* line 52, ../scss/test.scss */
+#test .adhensive-sub {
+  background: url("../images/image_adhensive_sub.png") center top no-repeat;
+  width: 85px;
+  height: 20px;
+  cursor: pointer;
+}
+/* line 62, ../scss/test.scss */
+#test .sun {
+  background-image: url("../images/image_sun.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+/* line 68, ../scss/test.scss */
+#test .sun.face {
+  background-image: url("../images/image_sun_face.png");
+}
+/* line 62, ../scss/test.scss */
+#test .moon {
+  background-image: url("../images/image_moon.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+/* line 68, ../scss/test.scss */
+#test .moon.face {
+  background-image: url("../images/image_moon_face.png");
+}
+/* line 62, ../scss/test.scss */
+#test .cloud {
+  background-image: url("../images/image_cloud.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+/* line 68, ../scss/test.scss */
+#test .cloud.face {
+  background-image: url("../images/image_cloud_face.png");
+}
+/* line 74, ../scss/test.scss */
+#test .symbol {
+  width: 118px;
+  height: 118px;
+}
+/* line 79, ../scss/test.scss */
+#test .cloud {
+  width: 137px;
+  height: 68px;
+}
+/* line 82, ../scss/test.scss */
+#test .cloud.click {
+  width: 200px;
+}
+/* line 88, ../scss/test.scss */
+#test .cloud.mater-hand {
+  background-image: url("../images/image_cloud_hand.png");
+}
+/* line 90, ../scss/test.scss */
+#test .cloud.mater-hand .mater {
+  -webkit-transition: 300ms ease-in-out 0ms;
+  -moz-transition: 300ms ease-in-out 0ms;
+  -o-transition: 300ms ease-in-out 0ms;
+  transition: 300ms ease-in-out 0ms;
+  background-image: url("../images/image_mater_hum.png");
+  top: 0;
+  opacity: 0;
+  width: 53px;
+  height: 317px;
+  background-repeat: no-repeat;
+}
+/* line 98, ../scss/test.scss */
+#test .cloud.mater-hand .mater.show {
+  top: 0;
+  opacity: 1;
+}
+/* line 104, ../scss/test.scss */
+#test .cloud.sunny.face {
+  background-image: url("../images/image_cloud_face_light.png");
+}
+/* line 107, ../scss/test.scss */
+#test .cloud.rain .fall-obj {
+  background-image: url("../images/image_rain_3.png");
+}
+/* line 109, ../scss/test.scss */
+#test .cloud.rain .fall-obj:before {
+  background-image: url("../images/image_rain_1.png");
+}
+/* line 112, ../scss/test.scss */
+#test .cloud.rain .fall-obj:after {
+  background-image: url("../images/image_rain_2.png");
+}
+/* line 116, ../scss/test.scss */
+#test .cloud.snow .fall-obj {
+  background-image: url("../images/image_snow_1.png");
+}
+/* line 118, ../scss/test.scss */
+#test .cloud.snow .fall-obj:before {
+  background-image: url("../images/image_snow_3.png");
+}
+/* line 121, ../scss/test.scss */
+#test .cloud.snow .fall-obj:after {
+  background-image: url("../images/image_snow_2.png");
+}
+/* line 127, ../scss/test.scss */
+#test .sun-core {
+  background-image: url("../images/image_sun_core.png");
+  top: 0;
+  opacity: 1;
+  width: 79px;
+  height: 79px;
+  background-repeat: no-repeat;
+}
+/* line 135, ../scss/test.scss */
+#test .sun-core.click {
+  top: 2px;
+}
+/* line 138, ../scss/test.scss */
+#test .sun-core.break-1 {
+  background-image: url("../images/image_sun_core_break_1.png");
+}
+/* line 141, ../scss/test.scss */
+#test .sun-core.break-2 {
+  background-image: url("../images/image_sun_core_break_2.png");
+}
+/* line 144, ../scss/test.scss */
+#test .sun-core.break-3 {
+  background-image: url("../images/image_sun_core_parts_1.png");
+  cursor: default;
+}
+/* line 147, ../scss/test.scss */
+#test .sun-core.break-3:before, #test .sun-core.break-3:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+/* line 154, ../scss/test.scss */
+#test .sun-core.break-3:before {
+  background-image: url("../images/image_sun_core_parts_2.png");
+}
+/* line 157, ../scss/test.scss */
+#test .sun-core.break-3:after {
+  background-image: url("../images/image_sun_core_parts_3.png");
+}
+/* line 161, ../scss/test.scss */
+#test .sun-core.break-3.drop {
+  -webkit-transition: 700ms ease-in-out 50ms;
+  -moz-transition: 700ms ease-in-out 50ms;
+  -o-transition: 700ms ease-in-out 50ms;
+  transition: 700ms ease-in-out 50ms;
+}
+/* line 163, ../scss/test.scss */
+#test .sun-core.break-3.drop:before, #test .sun-core.break-3.drop:after {
+  top: 2000px;
+}
+/* line 166, ../scss/test.scss */
+#test .sun-core.break-3.drop:before {
+  -webkit-transition: 700ms ease-in-out 0ms;
+  -moz-transition: 700ms ease-in-out 0ms;
+  -o-transition: 700ms ease-in-out 0ms;
+  transition: 700ms ease-in-out 0ms;
+}
+/* line 169, ../scss/test.scss */
+#test .sun-core.break-3.drop:after {
+  -webkit-transition: 700ms ease-in-out 25ms;
+  -moz-transition: 700ms ease-in-out 25ms;
+  -o-transition: 700ms ease-in-out 25ms;
+  transition: 700ms ease-in-out 25ms;
+}
+/* line 175, ../scss/test.scss */
+#test .clock {
+  position: relative;
+  width: 79px;
+  height: 79px;
+}
+/* line 179, ../scss/test.scss */
+#test .clock .hour, #test .clock .min, #test .clock .sec {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+/* line 188, ../scss/test.scss */
+#test .fall-obj {
+  position: relative;
+  width: 81px;
+  height: 200px;
+  top: 0;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+/* line 195, ../scss/test.scss */
+#test .fall-obj:before, #test .fall-obj:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+}
+/* line 204, ../scss/test.scss */
+#test .fall-obj.drop {
+  -webkit-transition: 700ms ease-in-out 100ms;
+  -moz-transition: 700ms ease-in-out 100ms;
+  -o-transition: 700ms ease-in-out 100ms;
+  transition: 700ms ease-in-out 100ms;
+  top: 2000px;
+}
+/* line 207, ../scss/test.scss */
+#test .fall-obj.drop:before, #test .fall-obj.drop:after {
+  top: 2000px;
+}
+/* line 210, ../scss/test.scss */
+#test .fall-obj.drop:before {
+  -webkit-transition: 700ms ease-in-out 0ms;
+  -moz-transition: 700ms ease-in-out 0ms;
+  -o-transition: 700ms ease-in-out 0ms;
+  transition: 700ms ease-in-out 0ms;
+}
+/* line 213, ../scss/test.scss */
+#test .fall-obj.drop:after {
+  -webkit-transition: 700ms ease-in-out 50ms;
+  -moz-transition: 700ms ease-in-out 50ms;
+  -o-transition: 700ms ease-in-out 50ms;
+  transition: 700ms ease-in-out 50ms;
+}
+/* line 221, ../scss/test.scss */
+#test .control-box .front {
+  display: none;
+  background: rgba(255, 0, 0, 0.55);
+}
+/* line 225, ../scss/test.scss */
+#test .control-box .left {
+  display: none;
+  background: rgba(0, 0, 255, 0.55);
+}
+/* line 229, ../scss/test.scss */
+#test .control-box .right {
+  display: none;
+  background: rgba(255, 255, 0, 0.55);
+}
+/* line 233, ../scss/test.scss */
+#test .control-box .bottom {
+  display: none;
+  background: rgba(255, 0, 255, 0.55);
+}
+/* line 237, ../scss/test.scss */
+#test .control-box .top {
+  display: none;
+  background: rgba(0, 255, 255, 0.55);
+}
+/* line 241, ../scss/test.scss */
+#test .control-box .back {
+  display: none;
+  background: rgba(255, 255, 255, 0.55);
+}
