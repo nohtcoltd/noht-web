@@ -1,2 +1,8 @@
 web/.sass-cache/*
 *.scssc
+
+
+# For OSX
+*.DS_store
+*._.DS_store
+*._*
