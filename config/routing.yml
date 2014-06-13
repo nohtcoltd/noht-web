@@ -29,6 +29,11 @@ about:
   xhr:
     GET: partials/about/index.php
 
+contact:
+  GET: template/template.php
+  xhr:
+    GET: partials/contact/index.php
+
 alcCalc:
   GET: partials/alcCalc/index.php
 
