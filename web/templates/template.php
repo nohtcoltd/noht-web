@@ -88,6 +88,6 @@ function check_include($expect)
     <script type="text/javascript" src="/js/vendor/jQueryRotate.js"></script>
     <script type="text/javascript" src="/js/plugins.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
+    <?php include("templates/ga.php"); ?>
   </body>
-  <?php include_once("../../library/ga.php"); ?>
 </html>

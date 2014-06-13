@@ -85,6 +85,7 @@ $(function()
         page_animate = true;
         window.history.pushState(null, "", url);
         page_animation();
+        ga_send();
       }
       setTimeout(function()
       {
@@ -97,10 +98,18 @@ $(function()
     $(window).on('popstate', function(e)
     {
       page_animation();
+      ga_send();
       return false;
     });
   }
 
+  function ga_send()
+  {
+     var location = window.location.pathname + window.location.search;
+     if(ga) {
+        ga('send', 'pageview', location);
+     }
+  }
   //-------------------------------------------------
   // ページ切り替えアニメーション関連
   //-------------------------------------------------
