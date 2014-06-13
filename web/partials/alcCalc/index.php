@@ -26,7 +26,7 @@
     <div class="display-video">
       <div class="video-container">
         <div class="video-wrap">
-          <iframe width="1280" height="720" src="http://www.youtube-nocookie.com/embed/5RueEpZMwrE?hd=1&rel=0&showinfo=0&autohide=1&modestbranding=1&fs=0&cc_load_policy=0&iv_load_policy=1&title=0&byline=0&portrait=0" frameborder="0"></iframe>
+          <iframe width="1280" height="720" src="http://www.youtube-nocookie.com/embed/5RueEpZMwrE?vq=highrez&rel=0&showinfo=0&autohide=1&modestbranding=1&fs=0&cc_load_policy=0&iv_load_policy=1&title=0&byline=0&portrait=0" frameborder="0"></iframe>
         </div>
       </div>
     </div>
@@ -85,11 +85,11 @@
         </div>
       </section>
       <section class="number-display countdown">
-        <span class="number hour"></span>
-        <span class="number min1"></span>
-        <span class="number min2"></span>
-        <span class="number sec1"></span>
-        <span class="number sec2"></span>
+        <span class="number hour num-0"></span>
+        <span class="number min1 num-0"></span>
+        <span class="number min2 num-0"></span>
+        <span class="number sec1 num-0"></span>
+        <span class="number sec2 num-0"></span>
       </section>
       <section class="progress-bar">
         <div></div>

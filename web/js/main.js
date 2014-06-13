@@ -59,7 +59,6 @@ $(function()
         }
         url = url + "/xhr";
 
-        console.log(url);
         $.ajax(
         {
           type: 'GET',
@@ -167,15 +166,15 @@ $(function()
     if (target_path == 'products') {
       init_products_function();
     }
-    if (target_path == 'products') {
-      $.getScript("/js/contact.js", function(){});
+    if (target_path == 'contact') {
+      $.getScript("/js/contact.js")
     }
 
     current_content = target_path;
     $("#gmenu li").removeClass("selected");
     $("#gmenu ." + target_path).addClass("selected");
 
-    if(current_path == target_path)
+    if(current_path == target_path && current_wrapper == target_wrapper)
     {
       $("#" + current_path).addClass("show");
       return false;
@@ -267,29 +266,47 @@ $(function()
 
     var
     css_template = '<style id="%style_id%">\
+    .about #about, .about #products, .products #about, .products #products {\
+      -webkit-transform-origin: %perspective%px 50%;\
+      -moz-transform-origin: %perspective%px 50%;\
+      -ms-transform-origin: %perspective%px 50%;\
+      -o-transform-origin: %perspective%px 50%;\
+    }\
     .about #products {\
       -webkit-transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
       -moz-transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
+      -ms-transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
+      -o-transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
     }\
     .products #about {\
       -webkit-transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
       -moz-transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
+      -ms-transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
+      -o-transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
     }\
     .about #index, .products #index {\
       -webkit-transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
       -moz-transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
+      -ms-transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
+      -o-transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
     }\
     .index #about, .index #products {\
       -webkit-transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
       -moz-transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
+      -ms-transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
+      -o-transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
     }\
     #wrapper1 {\
       -webkit-transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
       -moz-transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
+      -ms-transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
+      -o-transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
     }\
     #wrapper2 {\
       -webkit-transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
       -moz-transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
+      -ms-transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
+      -o-transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
     }\
     </style>';
 
@@ -1034,11 +1051,15 @@ $(function()
       #products .panel {\
           -webkit-transform-origin: 50% %origin%px 0px;\
           -moz-transform-origin: 50% %origin%px 0px;\
+          -ms-transform-origin: 50% %origin%px 0px;\
+          -o-transform-origin: 50% %origin%px 0px;\
       }\
       #products .description {\
           height: %description_height%px;\
           -webkit-transform: rotateX(90deg) translate3d(0px, -%description_y%px, %description_z%px);\
           -moz-transform: rotateX(90deg) translate3d(0px, -%description_y%px, %description_z%px);\
+          -ms-transform: rotateX(90deg) translate3d(0px, -%description_y%px, %description_z%px);\
+          -o-transform: rotateX(90deg) translate3d(0px, -%description_y%px, %description_z%px);\
       }\
       #products .animated {\
           height: %description_height%px;\
@@ -1047,6 +1068,8 @@ $(function()
           height: %box_height%px;\
           -webkit-transform: rotateX(-90deg) translate3d(0px, %description_z%px, %description_y%px);\
           -moz-transform: rotateX(-90deg) translate3d(0px, %description_z%px, %description_y%px);\
+          -ms-transform: rotateX(-90deg) translate3d(0px, %description_z%px, %description_y%px);\
+          -o-transform: rotateX(-90deg) translate3d(0px, %description_z%px, %description_y%px);\
       }\
       </style>';
 

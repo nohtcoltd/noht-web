@@ -29,8 +29,8 @@ function check_include($expect)
     <link rel="shortcut icon" href="/favicon.ico" />
     <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
-  <body id='general-layout' class="<?php echo ($parsed_path[0] === "recruit") ? "wrapper2" : "wrapper1"?>">
-    <div id="wrapper1" class="<?php echo ($parsed_path[0] !== "" || $parsed_path[0] === "recruit") ? $parsed_path[0] : "products"?>">
+  <body id='general-layout' class="<?php echo ($parsed_path[0] === "contact") ? "wrapper2" : "wrapper1"?>">
+    <div id="wrapper1" class="<?php echo ($parsed_path[0] !== "" || $parsed_path[0] === "contact") ? $parsed_path[0] : "products"?>">
       <header id="header">
         <div class="h-contents">
           <h1 class="logo">

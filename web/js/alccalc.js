@@ -213,7 +213,7 @@ $(function()
           setTimeout(function()
           {
             stop();
-          }, 2000);
+          }, 1000);
         });
 
         reserve_left();
@@ -221,7 +221,7 @@ $(function()
         setTimeout(function()
         {
           $(".number-display.end-time").addClass("scroll");
-        }, 3000);
+        }, 1500);
         $(window).off("scroll");
         }
       });
@@ -326,7 +326,7 @@ $(function()
     {
       $(".progress-bar div").removeClass("loading");
       $(".progress-bar div").addClass("active");
-    }, 3000);
+    }, 1500);
     render_progress_bar();
   }
 

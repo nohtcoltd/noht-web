@@ -85,30 +85,48 @@
 @mixin transition($val...) {
     -webkit-transition: $val;
     -moz-transition: $val;
-    -o-transition: $val;
     -ms-transition: $val;
+    -o-transition: $val;
     transition: $val;
 }
 
 @mixin transform($val...) {
     -webkit-transform: $val;
     -moz-transform: $val;
+    -ms-transform: $val;
+    -o-transform: $val;
     transform: $val;
 }
 
-@mixin perspective($val, $origin...) {
-    -webkit-perspective-origin: $origin;
-    -moz-perspective-origin: $origin;
-    perspective-origin: $origin;
+@mixin transform-origin($val...) {
+    -webkit-transform-origin: $val;
+    -moz-transform-origin: $val;
+    -ms-transform-origin: $val;
+    -o-transform-origin: $val;
+    transform-origin: $val;
+}
+
+@mixin perspective($val...) {
     -webkit-perspective: $val;
     -moz-perspective: $val;
+    -ms-perspective: $val;
+    -o-perspective: $val;
     perspective: $val;
+}
+
+@mixin perspective-origin($origin...) {
+    -webkit-perspective-origin: $origin;
+    -moz-perspective-origin: $origin;
+    -ms-perspective-origin: $origin;
+    -o-perspective-origin: $origin;
+    perspective-origin: $origin;
 }
 
 @mixin backface-visibility($val...) {
     -webkit-backface-visibility: $val;
     -moz-backface-visibility: $val;
     -ms-backface-visibility: $val;
+    -o-backface-visibility: $val;
     backface-visibility: $val;
 }
 

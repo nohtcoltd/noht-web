@@ -1,8 +1,5 @@
 //公開時用
 #alccalc {
-    .display-video-wrap{
-        //display: none !important;
-    }
     .applestore {
         display: none !important;
     }
@@ -80,6 +77,7 @@
     a {
         text-decoration: none;
     }
+    width: 100%;
     .applestore {
         padding-top: 55px;
         a {
@@ -146,7 +144,7 @@
                 background-size: 52px;
             }
             .logo img {
-                width: 50%;
+                width: 294px;
             }
         }
     }
@@ -319,7 +317,7 @@
                         width: 0%;
                     }
                     &.loading {
-                        @include transition(2s linear);
+                        @include transition(1s linear);
                         width: 0%;
                     }
                 }
@@ -401,7 +399,7 @@
             color: #4f4f4f;
         }
     }
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 900px) {
         header {
             .content {
                 width: auto;
@@ -409,14 +407,30 @@
                 background-size: 300px;
                 background-position: center 400px;
                 .title {
+                    width: 100%;
                     margin-top: 200px;
-                    float: none;
                 }
                 .image {
                     width: auto;
                     margin-top: 50px;
                 }
             }
+        }
+        .main .using {
+            margin-top: 840px;
+            ul {
+                padding: 30px 0px;
+            }
+            li {
+                width: 250px;
+                height: 120px;
+                font-size: 16px;
+            }
+        }
+    }
+    @media screen and (max-width: 700px) {
+        header .title .logo img {
+            width: 200px;
         }
         .display-video-wrap .display-video {
             width: 100%;

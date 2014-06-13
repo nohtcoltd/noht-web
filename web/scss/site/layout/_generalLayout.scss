@@ -7,12 +7,18 @@ html {
 // animation
 //========================================
 #general-layout {
-    $logo-width: 120px;
-    $logo-height: 40px;
+    $logo-width: 100px;
+    $logo-height: 25px;
     $header-padding: 30px;
     $header-width: $logo-width + ($header-padding * 2);
-    @include perspective(5000px, 50% 50%);
+    @include perspective(3000px);
+    @include perspective-origin(50% 50%);
+    width: 100%;
+    height: 100%;
+    position: relative;
     overflow: hidden;
+    -webkit-transform-style: flat;
+    transform-style: flat;
     #header {
         display: table;
         position: fixed;
@@ -33,9 +39,9 @@ html {
         .logo {
             .pjax-link {
                 display: block;
-                width: 100%;
+                width: $logo-width;
                 height: $logo-height;
-                background: url("../images/share/logo_noht.png") no-repeat;
+                background: url("../images/share/logo_noht_gray.png") no-repeat;
                 -webkit-background-size: contain;
                 background-size: contain;
             }
@@ -52,7 +58,7 @@ html {
                     height: 100%;
                     top: -1px;
                     left: -13px;
-                    background: url("../images/share/icon_list_marker.png") center no-repeat; 
+                    background: url("../images/share/icon_list_marker.png") center no-repeat;
                     -webkit-background-size: 40%;
                     background-size: 40%;
                 }
@@ -67,6 +73,7 @@ html {
         z-index: 10;
     }
     #wrapper1, #wrapper2 {
+        @include transform-origin(500px);
         @include backface-visibility(hidden);
         display: block;
         width: 100%;
@@ -76,6 +83,9 @@ html {
         left: 0;
         z-index: 0;
         background-color: #fff;
+    }
+    #wrapper2 {
+
     }
     #wrapper1 {
         .site-content {
@@ -90,30 +100,26 @@ html {
         position: fixed;
     }
     .site-contents {
-        @include perspective(2000px, 50% 50%);
+        @include perspective(2000px);
+        @include perspective-origin(50% 50%);
         position: relative;
         width: 100%;
         height: 100%;
         &.pers-left {
-            -webkit-perspective-origin: $header-width 50%;
-            -moz-perspective-origin: $header-width 50%;
+            @include perspective-origin($header-width 50%);
         }
         &.pers-right {
-            -webkit-perspective-origin: 100% 50%;
-            -moz-perspective-origin: 100% 50%;
+            @include perspective-origin(100% 50%);
         }
         &.pers-top {
-            -webkit-perspective-origin: 50% 0%;
-            -moz-perspective-origin: 50% 0%;
+            @include perspective-origin(50% 0%);
         }
         &.pers-bottom {
-            -webkit-perspective-origin: 50% 100%;
-            -moz-perspective-origin: 50% 100%;
+            @include perspective-origin(50% 100%);
         }
     }
     .site-content {
         @include backface-visibility(hidden);
-        @include transform(rotateX(0deg) rotateY(0deg) translate3d(0px, 0px, 0px));
         position: absolute;
         width: 100%;
         height: 100%;
@@ -131,16 +137,15 @@ html {
         @include transition(800ms cubic-bezier(0.215, 0.61, 0.355, 1));
     }
 
-    .content-transition {
+    #contact, .content-transition {
         @include transition(800ms cubic-bezier(0.215, 0.61, 0.355, 1));
     }
     .index #about, .index #products, #about .index, #products .index {
-        -webkit-transform-origin: 50% 50%;
-        -moz-transform-origin: 50% 50%;
+        @include transform-origin(50%);
     }
-    .about #about, .about #products, .products #about, .products #products {
-        -webkit-transform-origin: calc((( 100% - #{$header-width} ) / 2) + #{$header-width}) 50%;
-        -moz-transform-origin: calc((( 100% - #{$header-width} ) / 2) + #{$header-width}) 50%;
+
+    .about #about, .products #products, .contact #contact {
+        @include transform(rotateX(0deg) rotateY(0deg) translate3d(0px, 0px, 0px));
     }
 
     .index {
@@ -165,8 +170,11 @@ html {
         }
     }
 
-    #recruit {
-        background-color: #ced808;
+    &.wrapper1 #contact {
+        background-color: #fff;
+    }
+    &.wrapper2 #contact {
+        background-color: #eaeaea;
     }
 }
 
@@ -199,12 +207,7 @@ html {
             }
         }
         .site-contents.pers-left {
-            -webkit-perspective-origin: $header-width 50%;
-            -moz-perspective-origin: $header-width 50%;
-        }
-        .about #about, .about #products, .products #about, .products #products {
-            -webkit-transform-origin: calc((( 100% - #{$header-width} ) / 2) + #{$header-width}) 50%;
-            -moz-transform-origin: calc((( 100% - #{$header-width} ) / 2) + #{$header-width}) 50%;
+            @include perspective-origin($header-width 50%);
         }
     }
     //----------------------------------------
@@ -248,7 +251,7 @@ html {
                         -webkit-background-size: $logo-width auto;
                         background-size: $logo-width auto;
                     }
-                } 
+                }
                 #gmenu {
                     position: relative;
                     display: table-cell;
@@ -259,10 +262,38 @@ html {
                     opacity: 0;
                     z-index: 0;
                     > li {
-                        text-align: left;
+                        width: 120px;
+                        height: 120px;
+                        font-size: 0;
+                        margin-bottom: 8px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
                         &.selected:before {
+                            display: none;
                             top: -2px;
                         }
+                        .pjax-link {
+                            @include transition(100ms ease-in-out);
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.08);
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            -webkit-background-size: 45%;
+                            background-size: 45%;
+                        }
+                        &.products .pjax-link {
+                            background-image: url("../images/share/icon_products.png");
+                        }
+                        &.about .pjax-link {
+                            background-image: url("../images/share/icon_about.png");
+                        }
+                        &.contact .pjax-link {
+                            background-image: url("../images/share/icon_contact.png");
+                        }
+
                     }
                 }
                 .language {
@@ -307,20 +338,14 @@ html {
                 padding-top:  $padding-top;
             }
             .site-contents.pers-left {
-                -webkit-perspective-origin: $header-width 50%;
-                -moz-perspective-origin: $header-width 50%;
+                @include perspective-origin($header-width 50%);
             }
             .site-content {
                 padding-left: 0;
-                &.pers-left {
-                    -webkit-perspective-origin: 0% 50%;
-                    -moz-perspective-origin: 0% 50%;
-                }
             }
         }
         .about #about, .about #products, .products #about, .products #products {
-            -webkit-transform-origin: 50% 50%;
-            -moz-transform-origin: 50% 50%;
+            @include transform-origin(50%);
         }
     }
 }

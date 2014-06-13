@@ -80,13 +80,11 @@
         }
       }
       .left {
-        -webkit-transform-origin: 100% 100%;  
-        -moz-transform-origin: 100% 100%;  
+        @include transform-origin(100% 100%);
         margin-left: -$image-size;
       }
       .right {
-        -webkit-transform-origin: 0% 100%;  
-        -moz-transform-origin: 0% 100%;  
+        @include transform-origin(0% 100%);
       }
       &:hover {
         opacity: 0.7;
@@ -105,9 +103,9 @@
   }
 }
 #about {
-    $pc_short: 1100px;
-    $tablet_width: 900px;
-    $smart_phone_width: 700px;
+  $pc_short: 1100px;
+  $tablet_width: 900px;
+  $smart_phone_width: 700px;
   //----------------------------------------
   // pcのウィンドウ幅縮小時
   //----------------------------------------
