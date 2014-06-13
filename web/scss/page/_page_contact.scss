@@ -1,0 +1,143 @@
+#contact {
+    $button-width: 200px;
+    $button-height: 70px;
+    $error-color: #e73738;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #eaeaea;
+    .form-wrapper, .thanks {
+        display: table;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        > * {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
+    input, textarea {
+        padding: 7px 5px;
+        border: 1px solid transparent;
+        &:focus {
+            border-color: #1794f3;
+        }
+        &.empty-box {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    }
+    input {
+        background-color: white;
+    }
+    textarea {
+        width: 100%;
+        height: 200px;
+        resize: none;
+        background-color: white;
+        box-sizing: border-box;
+    }
+    label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    button {
+        display: none;
+        background-color: transparent;
+        &:focus {
+            outline: none;
+        }
+    }
+    .form-wrapper {
+        z-index: 10;
+    }
+    .form-contents {
+        display: inline-block;
+        font-size: 15px;
+    }
+    .customer-info {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .message-wrapper {
+        width: 780px;
+    }
+    .validate-error {
+        text-align: left;
+        font-size: 12px;
+        color: $error-color;
+        opacity: 0;
+    }
+    .action {
+        @include perspective(800px, 50% 0%);
+        display: inline-block;
+        position: relative;
+        width: $button-width;
+        height: $button-height;
+        > * {
+            @include backface-visibility(hidden);
+            @include transition(300ms);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+    }
+    .button-content {
+        display: table;
+        width: 100%;
+        height: 100%;
+        > * {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .confirm {
+        @include transform(rotateX(0deg) translate3d(0px, 0px, 0px));
+        background-color: #636363;
+        z-index: 10;
+    }
+    .ok {
+        @include transform(rotateX(90deg) translate3d(0px, -$button-height / 2, $button-height / 2));
+        background-color: #d80355;
+        z-index: 0;
+    }
+    .check {
+        input, textarea {
+            @include transition(300ms);
+            background-color: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .action {
+            @include perspective(800px, 50% 100%);
+        }
+        .confirm {
+            @include transform(rotateX(-90deg) translate3d(0px, $button-height / 2, $button-height / 2));
+            z-index: 0;
+        }
+        .ok {
+            @include transform(rotateX(0deg) translate3d(0px, 0px, 0px));
+            z-index: 10;
+        }
+    }
+    .has-error {
+        input, textarea {
+            background-color: lighten($error-color, 40%);
+            border-color: $error-color;
+            &:focus {
+                border-color: #1794f3;
+                background-color: #fff;
+            }
+        }
+        .validate-error {
+            opacity: 1;
+        }
+    }
+    .thanks {
+        opacity: 0;
+        z-index: 0;
+    }
+}

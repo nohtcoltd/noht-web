@@ -1,163 +1,514 @@
 #products {
-    .product_content {
+    $content_height: 385px;
+    $animate_time: 600ms;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    .promotion-wrap {
+        @include transition($animate_time);
         position: relative;
-        height: $content_height;
-        &:first-child {
-            padding-top: 0px;
+        margin: 1.5% 1%;
+        z-index: 10;
+        &:hover {
+            z-index: 20; 
         }
-        &:before {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            visibility: visible;
-            background: url("../images/index/loadinggear.gif") center no-repeat;
+        &.resize {
+            @include transition(none);
         }
     }
-    .loaded {
-        .content {
-            @include opacity(1.0);
-        }
-        &:before {
-            @include opacity(0);
-        }
-    }
-    .content {
-        @include opacity(0);
-        @include perspective(800, 50% 50%);
+    .promotion {
+        @include perspective(800px, 50% 50%);
+        height: 100%;
     }
     .panel {
+        @include backface-visibility(hidden);
+        @include transition($animate_time);
         width: 100%;
         height: 100%;
         position: absolute;
         overflow: hidden;
+        .title {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            font-weight: 300;
+            font-size: 19px;
+            color: rgba(255, 255, 255, 0.85);
+            &:first-line {
+                font-size: 13px;
+            }
+        }
     }
     .banner {
-        @include transform(rotateY(0deg) translate3d(0px,0px, 0px));
-        @include transition(-webkit-transform $animate_time, transform $animate_time, z-index $animate_time/2);
+        @include transform(rotateX(0deg) translate3d(0px, 0px, 0px));
         z-index: 20;
-        img {
-            display: inline-block;
+        cursor: pointer;
+        color: #fff;
+        .background {
+            @include transition(100ms);
             position: absolute;
+            width: 100%;
+            background-repeat: no-repeat;
+            -webkit-background-size: contain;
+            background-size: contain;
         }
     }
     .description {
-        background: url("../images/index/background_information.png");
-        @include transform(rotateY(0deg) translate3d(0px,0px, 0px));
-        @include transition(-webkit-transform $animate_time, transform $animate_time, z-index $animate_time/2);
+        @include transform(rotateX(90deg) translate3d(0px, 0px, 0px));
+        background: url("../images/products/background_information.png");
         z-index: 10;
-        display: table;
         text-align: center;
         overflow: hidden;
-        .image {
-            @include centering-table();
-            text-align: right;
-            padding-right: 50px;
+        .content-wrap {
+            width: 100%;
+            height: 100%;
+        }
+        .content {
+            display: table;
+            height: 100%;
+            font-size: 0;
+            padding: 0px 20px;
+            > * {
+                @include centering-table();
+            }
+        }
+        .thumbnail img {
+            width: 200px;
         }
         .text {
-            @include centering-table();
+            width: 100%;
             text-align: left;
-            color: #f0f0f0;
-            font-size: 15px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0;
             line-height: 2.0;
-            > p {
-                margin-bottom: 20px;
+            padding-left: 20px;
+            p {
+                font-size: 14px;
+                &:first-child {
+                    margin-bottom: 20px;
+                }
             }
-            > a {
+            .link-button {
+                margin: 15px 0px;
+                font-size: 0;
+                vertical-align: middle;
+            }
+            .able {
+                $label-size: 13px;
+                $icon-size: 0px;
+                $label-color: #ffffff;
+                $popup-dist: 3px;
+                $margin-height: 10px;
+                $margin-width: 20px;
+                $radius: 5px;
+                $speed: 50ms;
+                $button-color: #000000;
+                @include general-button($label-size, $icon-size, $label-color, $popup-dist, $margin-height, $margin-width, $radius, $speed, $button-color);
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.6);
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.55);
+                    box-shadow: 0px $popup-dist 0px 0px rgba(0, 0, 0, 0.75);
+                }
+                &:active {
+                    background-color: rgba(0, 0, 0, 0.65);
+                    box-shadow: 0px ($popup-dist / 5 + 2) 0px 0px rgba(0, 0, 0, 0.3) inset;
+                }
+            }
+            .disable {
                 display: inline-block;
-                margin-bottom: 20px;
+                .content {
+                    display: table;
+                    width: 100%;
+                    height: 100%;
+                    color: #fff;
+                    font-size: 0px;
+                    > * {
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+                }
+                .icon {
+                    padding-right: 10px;
+                    padding-bottom: 3px;
+                }
+                .disable-text {
+                    font-size: 13px;
+                }
+            }
+            .button-image, .disable .icon {
+                width: 30px;
+                img {
+                    width: 100%;
+                }
+            }
+            .twitter {
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+                margin-left: 20px;
+                font-size: 15px;
+                >* {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                img {
+                    width: 60%;
+                    padding-top: 8px;
+                }
+                .count {
+                    padding-left: 3px;
+                }
             }
             .cooperator {
-                font-size: 10px;
-                margin-bottom: 0px;
+                font-size: 12px;
             }
+        }
+        .title {
+            vertical-align: bottom;
+            text-align: right;
+            right: 20px;
         }
     }
     .animated {
         .banner {
-            @include transform(rotateY(0deg) translate3d(0px,0px, 0px));
             z-index: 10;
         }
         .description {
-            @include transform(rotateY(0deg) translate3d(0px,0px, 0px));
+            @include transform(rotateX(0deg) translate3d(0px, 0px, 0px));
             z-index: 20;
         }
     }
+
     .secondpress {
+        $height: 150%;
+        $hover-height: $height + $height /15;
         .panel {
             background-color: #f0f0f0;
+            &:hover .background {
+                height: $hover-height;
+            }
         }
-        .banner img {
-            width: 60%;
-            right: 5%;
+        .background {
+            height: $height;
+            top: -75%;
+            right: 0;
+            background-image: url("../images/products/img_secondpress.png");
+            background-position: right 10% center;
         }
-
+        .banner .title {
+            color: #686868;
+        }
     }
-    .holda {
+    .alccalc {
+        $height: 150%;
+        $hover-height: $height + $height /15;
         .panel {
-            background-color: #bf1920;
+            background-color: #e4002b;
+            &:hover .background {
+                height: $hover-height;
+            }
         }
-        .banner img {
-            $height: 110px;
-            right: 5%;
-            top: 50%;
-            margin-top: -$height/2;
+        .background {
+            height: $height;
+            top: -20%;
+            background-image: url("../images/products/img_alccalc.png");
+            background-position: right 10% center;
         }
-
     }
     .aips_converter {
+        $height: 60%;
+        $hover-height: $height + $height /15;
         .panel {
             background-color: #07a3d3;
+            &:hover .background {
+                height: $hover-height;
+            }
         }
-        .banner img {
-            width: 55%;
-            left: 5%;
-            bottom: 5%;
+        .background {
+            height: $height;
+            top: 30%;
+            background-image: url("../images/products/img_aips.png");
+            background-position: right 8% center;
         }
-
+    }
+    .holda {
+        $height: 120%;
+        $hover-height: $height + $height /15;
+        .panel {
+            background-color: #bf1920;
+            &:hover .background {
+                height: $hover-height;
+            }
+        }
+        .background {
+            height: $height;
+            top: -10%;
+            background-image: url("../images/products/img_holda.png");
+            background-position: right 10% center;
+        }
     }
     .ai_loupe {
+        $height: 35%;
+        $hover-height: $height + $height /15;
         .panel {
             background-color: #d16f0f;
+            &:hover .background {
+                height: $hover-height;
+            }
         }
-        .banner img {
-            right: 50%;
-            bottom: 0%;
-            margin-right: -450px;
+        .background {
+            height: $height;
+            top: 33%;
+            background-image: url("../images/products/img_ailoupe.png");
+            background-position: center center;
         }
-
     }
     .button2_5d {
+        $height: 50%;
+        $hover-height: $height + $height /15;
         .panel {
             background-color: #73ba22;
+            &:hover .background {
+                height: $hover-height;
+            }
         }
-        .banner img {
-            height: 100%;
-            right: 5%;
+        .background {
+            height: $height;
+            top: 26%;
+            background-image: url("../images/products/img_25dbutton.png");
+            background-position: center center;
         }
-
     }
     .sound_canceler {
+        $height: 25%;
+        $hover-height: $height + $height /15;
         .panel {
             background-color: #ba2b48;
+            &:hover .background {
+                height: $hover-height;
+            }
         }
-        .banner img {
-            height: 27%;
-            top: 37%;
-            left: 50%;
-            margin-left: -330px
+        .background {
+            height: $height;
+            top: 38%;
+            background-image: url("../images/products/img_soundcancel.png");
+            background-position: center center;
         }
-
     }
     .n_comp {
+        $height: 8%;
+        $hover-height: $height + $height /15;
         .panel {
             background-color: #76732b;
+            &:hover .background {
+                height: $hover-height;
+            }
         }
-        .banner img {
-            height: 100%;
-            right: 5%;
+        .background {
+            height:$height;
+            top: 45%;
+            background-image: url("../images/products/img_n_comp.png");
+            background-position: center center;
         }
-
     }
+}
+
+#products {
+    $pc_short: 1100px;
+    $tablet_width: 900px;
+    $smart_phone_width: 700px;
+    //----------------------------------------
+    // pcのウィンドウ幅縮小時
+    //----------------------------------------
+    @media screen and (max-width:$pc_short) {
+        .description .content {
+            .thumbnail img {
+                width: 170px;
+            }
+            .text {
+                line-height: 1.5;
+                font-size: 13px;
+                p {
+                    &:first-child {
+
+                    }
+                }
+                .cooperator {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    //----------------------------------------
+    // tablet版はここ
+    //----------------------------------------
+    @media screen and (max-width: $tablet_width) {
+        .promotion {
+            @include perspective(800px, 50% 0%);
+            .banner .title, .description .content .title {
+                font-size: 25px;
+                &:first-line {
+                    font-size: 15px;
+                }
+            }
+        }
+        .description {
+            height: 100px;
+            .content-wrap {
+                display: table;
+            }
+            .content {
+                @include centering-table();
+                padding: 0;
+                > * {
+                    display: inline-block;
+                    text-align: center;
+                }
+                .thumbnail img {
+                    width: 150px;
+                }
+                .title {
+                    padding-top: 20px;
+                    width: 100%;
+                    position: static;
+                    line-height: 1.3;
+                }
+                .text {
+                    width: 50%;
+                    padding: 0;
+                    line-height: 1.5;
+                    padding: 0;
+                    padding-top: 20px;  
+                    p {
+                        text-align: left;
+                        font-size: 13px;
+                        &:first-child {
+                        }
+                    }
+                    .disable .icon img {
+                        padding-right: 10px;
+                    }
+                    .cooperator {
+                        display: inline-block;
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+        .animated .promotion {
+            @include perspective(800px, 50% 100%);
+        }
+    }
+    //----------------------------------------
+    // smart phone版はここ
+    //----------------------------------------
+    @media screen and (max-width: $smart_phone_width) {
+        .promotion {
+            .banner .title {
+                height: 50%;
+            }
+            .banner .title, .description .content .title {
+                font-size: 15px;
+                &:first-line {
+                    font-size: 10px;
+                }
+            }
+        }
+        .description .content {
+            .thumbnail {                
+                display: none;
+            }
+            .title {
+                padding: 0;
+            }
+            .text {
+                width: 90%;
+                padding-top: 10px;
+                p {
+                    font-size: 11px;
+                }
+                .link-button {
+                    margin: 10px 0px;
+                    padding: 6px 10px;
+                    .button-content {
+                        .button-image {
+                            border-right: 10px solid rgba(0, 0, 0, 0);
+                            padding-top: 3px;
+                            width: 20px;
+                        }
+                        .button-text {
+                            font-size: 12px;
+                        }
+                    }
+                }
+                .able {
+                    &:hover {
+                        top: 0px;
+                        background-color: rgba(0, 0, 0, 0.6);
+                        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+                    }
+                    &:active {
+                        top: 0px;
+                        background-color: rgba(0, 0, 0, 0.65);
+                        box-shadow: 0px 2.6px 0px 0px rgba(0, 0, 0, 0.3) inset;
+                    }
+                }
+                .disable {
+                    padding: 10px 0px;
+                    margin: 5px 0px;
+                    .icon {
+                        width: 20px;
+                    }
+                }
+                .twitter {
+                    font-size: 12px;
+                    margin-bottom: 0;
+                    img {
+                        width: 90%;
+                        padding-top: 0px;
+                    }
+                    .count {
+                        padding-bottom: 3px;
+                    }
+                }
+                .cooperator {
+                    line-height: 1.4;
+                    font-size: 10px;
+                }
+            }
+        }
+        .secondpress .panel:hover .background {
+            $height: 150%;
+            height: $height;
+        }
+        .alccalc .panel:hover .background {
+            $height: 150%;
+            height: $height;
+        }
+        .aips_converter .panel:hover .background {
+            $height: 60%;
+            height: $height;
+        }
+        .holda .panel:hover .background {
+            $height: 120%;
+            height: $height;
+        }
+        .ai_loupe .panel:hover .background {
+            $height: 35%;
+            height: $height;
+        }
+        .button2_5d .panel:hover .background {
+            $height: 50%;
+            height: $height;
+        }
+        .sound_canceler .panel:hover .background {
+            $height: 25%;
+            height: $height;
+        }
+        .n_comp .panel:hover .background {
+            $height: 8%;
+            height: $height;
+        }
+    }   
 }

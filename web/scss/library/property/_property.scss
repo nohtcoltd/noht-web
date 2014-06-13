@@ -84,23 +84,31 @@
 // property duration timing delayの順で指定
 @mixin transition($val...) {
     -webkit-transition: $val;
+    -moz-transition: $val;
+    -o-transition: $val;
+    -ms-transition: $val;
     transition: $val;
 }
 
 @mixin transform($val...) {
     -webkit-transform: $val;
+    -moz-transform: $val;
     transform: $val;
 }
 
 @mixin perspective($val, $origin...) {
     -webkit-perspective-origin: $origin;
+    -moz-perspective-origin: $origin;
     perspective-origin: $origin;
     -webkit-perspective: $val;
+    -moz-perspective: $val;
     perspective: $val;
 }
 
 @mixin backface-visibility($val...) {
     -webkit-backface-visibility: $val;
+    -moz-backface-visibility: $val;
+    -ms-backface-visibility: $val;
     backface-visibility: $val;
 }
 
@@ -115,6 +123,12 @@
     text-shadow: $val;
 }
 
+@mixin user-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 // 面倒なので方向は無視
 // 必要そうならhttp://myakura.hatenablog.com/entry/2013/03/04/001147
@@ -150,4 +164,89 @@
     border-radius: $val;
     -webkit-border-radius: $val;
     -moz-border-radius: $val;
+}
+
+@mixin general-button($label-size, $icon-size, $label-color, $popup-dist, $margin-height, $margin-width, $radius, $speed, $button-color) {
+
+    $transition-instant: all 0ms;
+    $transition-hover: all $speed;
+
+    @include inline-block;
+    @include user-select;
+    @include transition($transition-instant);
+    @include border-radius($radius);
+    position: relative;
+    top: 0px;
+    background-color: rgba($button-color, 1 );
+    text-decoration: none !important;
+    padding: $margin-height $margin-width;
+    line-height: if($label-size < $icon-size, $icon-size, $label-size);
+
+    .button-content {
+        @include transition($transition-instant);
+        @include border-radius(0 0 $radius $radius);
+        display: table;
+        *display: block;
+        box-shadow: 0px 0px 0px 0px rgba(darken($button-color, 15%), 0);
+        .button-text {
+            display: table-cell;
+            vertical-align: middle;
+            text-decoration: none;
+            white-space: nowrap;
+            font-size: $label-size;
+            color: $label-color;
+        }
+        .button-image {
+            display: table-cell;
+            vertical-align: middle;
+            border-right: $margin-width solid transparent;
+            img {
+                vertical-align: middle;
+            }
+        }
+        .icon-font {
+            font-size: $icon-size;
+        }
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: $radius;
+        border-bottom: 0px solid rgba(darken($button-color, 10%), 0);
+        background-color: rgba($button-color, 0);
+    }
+    &:hover {
+        text-decoration: none;
+        @include transition($transition-hover);
+        background-color: rgba(lighten($button-color, 3% ), 1);
+        top: -$popup-dist;
+        box-shadow: 0px $popup-dist 0px 0px rgba(darken($button-color, 15%), 1);
+        .button-content {
+            @include transition($transition-hover);
+        }
+        &:before {
+            @include transition($transition-hover);
+            border-bottom: $popup-dist solid rgba(darken($button-color, 10%), 0);
+        }
+    }
+    &:active {
+        @include transition($transition-instant);
+        top: 0px;
+        background-color: rgba(darken($button-color, 5%), 1);
+        box-shadow: 0px ($popup-dist / 5 + 2) 0px 0px rgba(darken($button-color, 15%), 1) inset;
+        .button-content {
+            @include transition($transition-instant);
+            box-shadow: 0px 0px 0px 0px rgba(darken($button-color, 15% ), 0);
+        }
+        &:before {
+            @include transition($transition-instant);
+            top: -$popup-dist;
+            border-bottom: 0px solid rgba(darken($button-color, 10%), 0);
+            padding-bottom: $popup-dist;
+        }
+    }
 }
