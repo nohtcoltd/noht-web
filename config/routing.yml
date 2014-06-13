@@ -1,29 +1,33 @@
 #param1:
 #  GET: file1
 #  POST: file2
-#  XHR: file3
 #  param2:
 #    GET: file4
 #    POST: file5
-#    XHR: file6
+#    XHR:
+#       GET: file6
 #
-#method "POST", "GET", "PUT", "DELETE", "XHR(XmlHttpRequest"
+#method "POST", "GET", "PUT", "DELETE""
 
 
 GET: templates/template.php
-XHR: partials/products/index.php
+xhr:
+  GET: partials/products/index.php
 
 products:
   GET: templates/template.php
-  XHR: partials/products/index.php
+  xhr:
+    GET: partials/products/index.php
 
 recruit:
   GET: templates/template.php
-  XHR: partials/recruit/index.php
+  xhr:
+    GET: partials/recruit/index.php
 
 about:
   GET: templates/template.php
-  XHR: partials/about/index.php
+  xhr:
+    GET: partials/about/index.php
 
 alcCalc:
   GET: partials/alcCalc/index.php

@@ -13,7 +13,7 @@
     <span class="address">
       本社所在地<br/>
       <span class="number">〒604-8435</span><span class="access">京都府京都市中京区西ノ京三条坊町2-13</span><br/>
-      <span class="phone">TEL 075-200-5072（代表）</span><span class="fax">FAX 075-200-5073</span>
+      <span class="phone">TEL 075-205-5190（代表）</span><span class="fax">FAX 075-205-5191</span>
     </span>
   </section>
   <section class="location">
@@ -38,6 +38,6 @@
   </section>
   <section class="us-office">
     <img src="/images/about/logo_noht_gray_us.png" alt="">
-    所在地　113 Barksdale Professional Center　Newark, DE 19711-3258 USA
+    所在地　113 Barksdale Professional Center Newark, DE 19711-3258 USA
   </section>
 </article>

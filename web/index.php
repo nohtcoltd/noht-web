@@ -39,7 +39,7 @@ function get_parsed_path()
 
 function get_method()
 {
-  return is_ajax() ? "XHR" : $_SERVER["REQUEST_METHOD"];
+  return $_SERVER["REQUEST_METHOD"];
 }
 
 function is_ajax()

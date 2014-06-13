@@ -5,12 +5,14 @@ function h($str) {
 
 function check_include($expect)
 {
-  global $parsed_path, $routing_data;
+  global $parsed_path, $routing_data, $method;
   $path = $parsed_path[0] === "" ? "products" : $parsed_path[0];
   if($path == $expect) {
-    include_action_file($routing_data, $parsed_path, "XHR");
+    $parsed_path[] = "xhr";
+    include_action_file($routing_data, $parsed_path, "GET");
   }
 }
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -20,7 +22,7 @@ function check_include($expect)
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>NOHT CO.,LTD.</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/main.css">

@@ -198,7 +198,7 @@
   <div class="promotion">
     <header class="panel banner">
       <p class="title">
-        NOVELTY SUPPLY</br>
+        NOVELTY SUPPLY<br/ >
         SECONDPRESS.US
       </p>
     </header>
@@ -207,7 +207,7 @@
         <div class="content">
           <div class="thumbnail"><img src="/images/products/img_sample_aips.png"/></div>
           <h2 class="title">
-            PRINT SREVICE<br/>
+            NOVELTY SUPPLY<br/ >
             SECONDPRESS.US
           </h2>
           <div class="text">
@@ -217,7 +217,7 @@
             <p>
               年間1500万個以上の製作実績を誇り、国内シェア最大級。
             </p>
-            <a class="link-button able">
+            <a href="http://www.secondpress.us" class="link-button able">
               <span class="button-content">
                 <span class="button-image">
                   <img src="/images/share/icon_view.png"/>
