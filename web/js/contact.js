@@ -1,5 +1,6 @@
 $(function()
 {
+  var is_submit = false;
   $(document).ready(function()
   {
     confirm_action();
@@ -113,6 +114,11 @@ $(function()
 
   function submit()
   {
+    if (is_submit) {
+      return;
+    }
+    is_submit = true;
+
     var data
     = {"name": $("#name").val(),
       "company": $("#company").val(),
@@ -137,6 +143,8 @@ $(function()
       } else if(data.status == "success") {
         close_animation();
       }
+
+      is_submit = false;
     });
   }
 

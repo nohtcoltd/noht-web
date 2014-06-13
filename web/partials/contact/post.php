@@ -97,13 +97,15 @@ function send_mail_to_customer($post_data)
   mb_send_mail($mail,$subject,$text,$mailfrom);
 }
 
-function send_mail_to_noht()
+function send_mail_to_noht($post_data)
 {
   mb_language("Ja") ;
   mb_internal_encoding("UTF8") ;
 
+  $to = "info@noht.co.jp";
+
   $name = h($post_data["name"]);
-  $mail = h($post_data["mail"]);
+  $from = h($post_data["mail"]);
   $company = h($post_data["company"]);
   $message = h($post_data["message"]);
 
@@ -117,7 +119,7 @@ function send_mail_to_noht()
     $company
 
     メールアドレス
-    $mail
+    $from
 
     問い合わせ内容
     $message
@@ -126,7 +128,7 @@ function send_mail_to_noht()
   $subject="問い合わせがありました";
   $mailfrom="From:<info@noht.co.jp>";
 
-  mb_send_mail($mail,$subject,$text,$mailfrom);
+  mb_send_mail($to,$subject,$text,$mailfrom);
 }
 
 function h($str) {
