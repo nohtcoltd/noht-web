@@ -7,8 +7,8 @@ html {
 // animation
 //========================================
 #general-layout {
-    $logo-width: 100px;
-    $logo-height: 25px;
+    $logo-width: 120px;
+    $logo-height: 40px;
     $header-padding: 30px;
     $header-width: $logo-width + ($header-padding * 2);
     @include perspective(3000px);
@@ -39,9 +39,9 @@ html {
         .logo {
             .pjax-link {
                 display: block;
-                width: $logo-width;
+                width: 100%;
                 height: $logo-height;
-                background: url("../images/share/logo_noht_gray.png") no-repeat;
+                background: url("../images/share/logo_noht.png") no-repeat;
                 -webkit-background-size: contain;
                 background-size: contain;
             }
