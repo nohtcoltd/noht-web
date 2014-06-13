@@ -30,7 +30,8 @@ about:
     GET: partials/about/index.php
 
 contact:
-  GET: template/template.php
+  GET: templates/template.php
+  POST: partials/contact/post.php
   xhr:
     GET: partials/contact/index.php
 

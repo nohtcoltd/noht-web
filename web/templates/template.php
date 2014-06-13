@@ -6,8 +6,8 @@ function h($str) {
 function check_include($expect)
 {
   global $parsed_path, $routing_data, $method;
-  $path = $parsed_path[0] === "" ? "products" : $parsed_path[0];
-  if($path == $expect) {
+  $parsed_path[0] = $parsed_path[0] === "" ? "products" : $parsed_path[0];
+  if($parsed_path[0] == $expect) {
     $parsed_path[] = "xhr";
     include_action_file($routing_data, $parsed_path, "GET");
   }
@@ -42,9 +42,7 @@ function check_include($expect)
             -->
             <li class="products"><a class="pjax-link" href="/">PRODUCTS</a></li>
             <li class="about"><a class="pjax-link" href="/about/">ABOUT</a></li>
-            <!--
-            <li class="recruit"><a class="pjax-link" href="/recruit/">RECRUIT</a></li>
-            -->
+            <li class="contact"><a class="pjax-link" href="/contact/">CONTACT</a></li>
             <!--
             <li class="language">
               <span class="jp">JP</span>/<span class="en">EN</span>
@@ -56,9 +54,9 @@ function check_include($expect)
       </header>
       <div class="main">
         <ul class="site-contents">
-          <li id="index" class="site-content ajax-content" data-ajax="/">
+          <!--<li id="index" class="site-content ajax-content" data-ajax="/">
             <?php check_include("index") ?>
-          </li>
+          </li>-->
           <li id="products" class="site-content ajax-content" data-ajax="/products">
             <?php check_include("products") ?>
           </li>
@@ -68,28 +66,11 @@ function check_include($expect)
         </ul>
       </div>
     </div>
-    <div id="wrapper2" class="recruit">
-      <header id="header">
-        <div class="h-contents">
-          <h1 class="logo">
-            <a class="pjax-link" href="/"></a>
-          </h1>
-          <ul id="gmenu">
-            <li><a class="pjax-link" href="/products/">PRODUCTS</a></li>
-            <li><a class="pjax-link" href="/about/">ABOUT</a></li>
-            <li><a class="pjax-link" href="/recruit/">RECRUIT</a></li>
-          </ul>
-          <div class="language">
-            <span class="jp">JP</span>
-            /
-            <span class="en">EN</span>
-          </div>
-        </div>
-      </header>
+    <div id="wrapper2" class="contact">
       <div class="main">
         <div class="site-contents">
-          <div id="recruit" class="site-content ajax-content" data-ajax="/recruit">
-            <?php check_include("recruit") ?>
+          <div id="contact" class="site-content ajax-content" data-ajax="/contact">
+            <?php check_include("contact") ?>
           </div>
         </div>
       </div>
@@ -108,4 +89,5 @@ function check_include($expect)
     <script type="text/javascript" src="/js/plugins.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
   </body>
+  <?php include_once("../../library/ga.php"); ?>
 </html>

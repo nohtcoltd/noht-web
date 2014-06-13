@@ -1,5 +1,6 @@
 web/.sass-cache/*
 *.scssc
+web/css/*
 
 
 # For OSX

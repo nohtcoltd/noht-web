@@ -77,6 +77,12 @@ html {
         z-index: 0;
         background-color: #fff;
     }
+    #wrapper1 {
+        .site-content {
+            background-color: #fff;
+            padding-left: $header-width;
+        }
+    }
     .main {
         width: 100%;
         height: 100%;
@@ -117,8 +123,6 @@ html {
         box-sizing: border-box;
         background-clip: content-box;
         z-index: 10;
-        padding-left: $header-width;
-        background-color: #fff;
         &.show {
             opacity: 1;
         }
@@ -178,6 +182,9 @@ html {
         $logo-width: 100px;
         $header-padding: 25px;
         $header-width: $logo-width + ($header-padding * 2);
+        #wrapper1 .site-content {
+            padding-left: $header-width;
+        }
         #header {
             .h-contents {
                 width: $logo-width;
@@ -194,9 +201,6 @@ html {
         .site-contents.pers-left {
             -webkit-perspective-origin: $header-width 50%;
             -moz-perspective-origin: $header-width 50%;
-        }
-        .site-content {
-            padding-left: $header-width;
         }
         .about #about, .about #products, .products #about, .products #products {
             -webkit-transform-origin: calc((( 100% - #{$header-width} ) / 2) + #{$header-width}) 50%;
