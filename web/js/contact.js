@@ -128,7 +128,7 @@ $(function()
     };
 
     $.ajax({
-      url: "/partials/contact/post.php",
+      url: "/contact",
       type: "POST",
       data: data
     }).done(function(data){

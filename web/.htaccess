@@ -7,7 +7,6 @@ RedirectMatch 403 /\.
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  RewriteCond %{REQUEST_METHOD} GET
   RewriteCond %{REQUEST_URI} !\.jpg
   RewriteCond %{REQUEST_URI} !\.ico
   RewriteCond %{REQUEST_URI} !\.gif

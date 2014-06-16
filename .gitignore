@@ -1,6 +1,7 @@
 web/.sass-cache/*
 *.scssc
 web/css/*
+web/robots.txt
 
 
 # For OSX
