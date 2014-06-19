@@ -6,74 +6,23 @@ html {
 //========================================
 // animation
 //========================================
+
 #general-layout {
     $logo-width: 120px;
     $logo-height: 40px;
-    $header-padding: 30px;
-    $header-width: $logo-width + ($header-padding * 2);
-    @include perspective(3000px);
-    @include perspective-origin(50% 50%);
+    $header-width: 180px;
+    @include perspective(2000px);
+    @include perspective-origin(50% 50% 50%);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
+    top: 0;
+    left: 0;
     overflow: hidden;
-    -webkit-transform-style: flat;
-    transform-style: flat;
-    #header {
-        display: table;
-        position: fixed;
-        z-index: 1000;
-        box-sizing: border-box;
-        height: 100%;
-        float: left;
-        a, a:visited {
-            text-decoration: none;
-            color: #000;
-        }
-        .h-contents {
-            display: table-cell;
-            width: $logo-width;
-            padding: 0px $header-padding;
-            vertical-align: middle;
-        }
-        .logo {
-            .pjax-link {
-                display: block;
-                width: 100%;
-                height: $logo-height;
-                background: url("../images/share/logo_noht.png") no-repeat;
-                -webkit-background-size: contain;
-                background-size: contain;
-            }
-        }
-        #gmenu {
-            padding-top: 60px;
-            > li {
-                position: relative;
-                line-height: 30px;
-                &.selected:before {
-                    content: '';
-                    position: absolute;
-                    width: 10px;
-                    height: 100%;
-                    top: -1px;
-                    left: -13px;
-                    background: url("../images/share/icon_list_marker.png") center no-repeat;
-                    -webkit-background-size: 40%;
-                    background-size: 40%;
-                }
-            }
-        }
-        .language {
-            margin-top: 50px;
-        }
-    }
-    &.wrapper1 #wrapper1, &.wrapper2 #wrapper2 {
-        @include transform(rotateX(0deg) translate3d(0px, 0px, 0px));
-        z-index: 10;
-    }
     #wrapper1, #wrapper2 {
-        @include transform-origin(500px);
+        @include transform-origin(center center 0px);
         @include backface-visibility(hidden);
         display: block;
         width: 100%;
@@ -83,14 +32,97 @@ html {
         left: 0;
         z-index: 0;
         background-color: #fff;
+        opacity: 1;
     }
-    #wrapper2 {
-
+    &.wrapper1 #wrapper1, &.wrapper2 #wrapper2 {
+        @include transform(rotateX(0deg) translate3d(0px, 0px, 0px));
+        z-index: 10;
     }
     #wrapper1 {
         .site-content {
             background-color: #fff;
             padding-left: $header-width;
+        }
+    }
+    #header {
+        display: table;
+        position: fixed;
+        z-index: 1000;
+        box-sizing: border-box;
+        height: 100%;
+        float: left;
+        z-index: 10;
+        a, a:visited {
+            text-decoration: none;
+            color: #000;
+        }
+        .h-contents {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .logo .pjax-link {
+            display: inline-block;
+            width: 100%;
+            height: $logo-height;
+            background: url("../images/share/logo_noht.png") no-repeat;
+            -webkit-background-size: 120px auto;
+            background-size: $logo-width auto;
+            background-position: 20px center;
+        }
+        #gmenu {
+            padding-top: 60px;
+            .pjax-link {
+                @include perspective(800px);
+                @include perspective-origin(50% 50%);
+                position: relative;
+                display: block;
+                width: $header-width;
+                height: 50px;
+                line-height: 4;
+                > span {
+                    @include backface-visibility(hidden);
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+                p {
+                    padding-left: 20px;
+                }
+                .bg-color {
+                    @include transform(rotateY(90deg) translate3d(90px, 0px, 90px));
+                    z-index: 0;
+                    color: #fff;
+                    background-color: #111;
+                }
+                .bg-none {
+                    @include transform(rotateY(0deg) translate3d(0px, 0px, 0px));
+                    background-color: red;
+                    z-index: 10;
+                    background-color: #fff;
+                }
+            }
+            .selected .pjax-link {
+                .bg-color {
+                    @include transform(rotateY(0deg) translate3d(0px, 0px, 0px));
+                    background-color: #222;
+                    z-index: 10;
+                }
+                .bg-none {
+                    @include transform(rotateY(-90deg) translate3d(-90px, 0px, 90px));
+                    background-color: red;
+                    z-index: 0;
+                    background-color: #ccc;
+                }
+            }
+            .bg-none:hover, .contact .pjax-link:hover {
+                background-color: #efefef;
+            }
+        }
+        .language {
+            margin-top: 50px;
         }
     }
     .main {
@@ -189,21 +221,28 @@ html {
     @media screen and (max-width: $pc_short) {
         $logo-width: 100px;
         $header-padding: 25px;
-        $header-width: $logo-width + ($header-padding * 2);
+        $header-width: 140px;
         #wrapper1 .site-content {
             padding-left: $header-width;
         }
         #header {
-            .h-contents {
-                width: $logo-width;
-                padding: 0px $header-padding;
-            }
             .logo .pjax-link {
                 -webkit-background-size: $logo-width auto;
                 background-size: $logo-width auto;
             }
             #gmenu {
                 padding-top: 40px;
+                .pjax-link {
+                    width: $header-width;
+                    .bg-color {
+                        @include transform(rotateY(90deg) translate3d(70px, 0px, 70px));
+                    }
+                }
+                .selected .pjax-link {
+                    .bg-none {
+                        @include transform(rotateY(-90deg) translate3d(-70px, 0px, 70px));
+                    }
+                }
             }
         }
         .site-contents.pers-left {
@@ -216,8 +255,6 @@ html {
     @media screen and (max-width: $smart_phone_width) {
         $padding-top: 45px;
         $logo_width: 80px;
-        $header-padding: 20px;
-        $header-width: $logo-width + ($header-padding * 2);
         #wrapper1 {
             #header {
                 position: fixed;
@@ -262,8 +299,6 @@ html {
                     opacity: 0;
                     z-index: 0;
                     > li {
-                        width: 120px;
-                        height: 120px;
                         font-size: 0;
                         margin-bottom: 8px;
                         &:last-child {
@@ -276,13 +311,19 @@ html {
                         .pjax-link {
                             @include transition(100ms ease-in-out);
                             display: block;
-                            width: 100%;
-                            height: 100%;
-                            background-color: rgba(0, 0, 0, 0.08);
+                            width: 120px;
+                            height: 120px;
+                            background-color: #eee;
                             background-repeat: no-repeat;
                             background-position: center;
-                            -webkit-background-size: 45%;
-                            background-size: 45%;
+                            -webkit-background-size: 50%;
+                            background-size: 50%;
+                            > span {
+                                display: none;
+                            }
+                        }
+                        &.selected .pjax-link {
+                            background-color: #ccc;
                         }
                         &.products .pjax-link {
                             background-image: url("../images/share/icon_products.png");
@@ -293,7 +334,6 @@ html {
                         &.contact .pjax-link {
                             background-image: url("../images/share/icon_contact.png");
                         }
-
                     }
                 }
                 .language {
@@ -304,7 +344,7 @@ html {
                 .menu-button {
                     $icon_size: 22px;
                     position: absolute;
-                    top: $header-padding;
+                    top: 20px;
                     margin-top: -$icon_size / 2;
                     right: 20px;
                     width: $icon_size + 5px;
@@ -338,7 +378,7 @@ html {
                 padding-top:  $padding-top;
             }
             .site-contents.pers-left {
-                @include perspective-origin($header-width 50%);
+                @include perspective-origin(0% 50%);
             }
             .site-content {
                 padding-left: 0;

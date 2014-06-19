@@ -8,6 +8,14 @@ Twitter: @rich_clark
 
 //<html>にincludeすること
 %reset {
+  @include base-font-size(12);
+  @include font-family(default);
+  &.windows {
+    @include font-family(windows);
+  }
+  &.mac {
+    @include font-family(mac);
+  }
 
   body, div, span, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,

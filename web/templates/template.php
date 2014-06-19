@@ -24,7 +24,7 @@ function check_include($expect)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>NOHT CO.,LTD.</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="shortcut icon" href="/favicon.ico" />
     <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -40,9 +40,15 @@ function check_include($expect)
             <!--
             <li class="products"><a class="pjax-link" href="/products/">PRODUCTS</a></li>
             -->
-            <li class="products"><a class="pjax-link" href="/">PRODUCTS</a></li>
-            <li class="about"><a class="pjax-link" href="/about/">ABOUT</a></li>
-            <li class="contact"><a class="pjax-link" href="/contact/">CONTACT</a></li>
+            <li class="products"><a class="pjax-link" href="/">
+              <span class="bg-color"><p>PRODUCTS</p></span><span class="bg-none"><p>PRODUCTS</p></span>
+            </a></li>
+            <li class="about"><a class="pjax-link" href="/about/">
+              <span class="bg-color"><p>ABOUT</p></span><span class="bg-none"><p>ABOUT</p></span>
+            </a></li>
+            <li class="contact"><a class="pjax-link" href="/contact/">
+              <p>CONTACT</p>
+            </a></li>
             <!--
             <li class="language">
               <span class="jp">JP</span>/<span class="en">EN</span>

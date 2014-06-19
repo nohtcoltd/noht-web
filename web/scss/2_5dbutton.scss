@@ -17,17 +17,40 @@
   }
 
   @mixin transition($sec, $easing: linear) {
+    transition: all $sec $easing;
     -moz-transition: all $sec $easing;
     -webkit-transition: all $sec $easing;
     -o-transition: all $sec $easing;
-    transition: all $sec $easing;
   }
 
   @mixin user-select($select: none) {
+    user-select: $select;
     -moz-user-select: $select;
     -webkit-user-select: $select;
     -ms-user-select: $select;    
-    user-select: $select;
+  }
+
+  @mixin bubble-talk($color, $width, $height, $direction, $position: 50%) {
+    $list: bottom, left, right, top, $height, $width;
+    @if top == $direction {
+      $list: top, left, right, bottom, $height, $width;
+    } @else if left == $direction {
+      $list: left, top, bottom, right, $width, $height;
+    } @else if right == $direction {
+      $list: right, top, bottom, left, $width, $height;
+    };
+    &:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      #{ nth( $list, 1)}: -#{ nth( $list, 5)};
+      #{ nth( $list, 2)}: $position;
+      margin-#{ nth( $list, 2)}: -#{ nth( $list, 6)/2};
+      border-#{ nth( $list, 2)}: #{ nth( $list, 6)/2} solid transparent;
+      border-#{ nth( $list, 3)}: #{ nth( $list, 6)/2} solid transparent;
+      border-#{ nth( $list, 4)}: #{ nth( $list, 5)} solid $color;
+    }
   }
 
   @mixin general-button-inset($label-size, $icon-size, $label-color, $popup-dist, $horizontal-padding, $vertical-padding, $radius, $speed, $button-color, $side-darkness, $darken: darken($button-color, $side-darkness)) {
@@ -93,11 +116,11 @@
     &:active {
       @include transition(0ms);
       top: 0px;
-      background-color: rgba(darken($button-color, 5%), 1);
-      box-shadow: 0px($popup-dist / 5) + 1 0px 0px rgba($darken, 1) inset; 
+      background-color: rgba(darken($button-color, 15%), 1);
+      box-shadow: 0px($popup-dist / 5) + 2 0px 0px rgba($darken, 1) inset; 
       .button-content-inset {
         @include transition(0ms);
-        box-shadow: 0px 0px 0px 0px rgba(darken($button-color, $side-darkness + 5%), 0);
+        box-shadow: 0px 0px 0px 0px rgba(darken($button-color, $side-darkness + 20%), 0);
       }
       &:before {
         @include transition(0ms);
@@ -108,16 +131,18 @@
     }
   }
 
-  @mixin preset-button( $bg-color, $preset-w: 150px, $preset-h: 30px, $move-length: 3px, $preset-radius: 3px, $speed: 50ms) { 
+  @mixin preset-button( $bg-color, $preset-w: 150px, $preset-h: 30px, $move-length: 3px, $preset-radius: 3px, $speed: 100ms) { 
     @include user-select;
     @include transition(0ms);
     position: relative;
+    overflow: hidden;
     width: $preset-w;
     height: $preset-h;
     top: 0px;
+    cursor: pointer;
     border-radius: $preset-radius;
     background-color: rgba($bg-color, 1);
-    box-shadow: 0px($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 0) inset, 0px $move-length 0px 0px rgba(darken($bg-color, 15%), 0); 
+    box-shadow: 0px ($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 0) inset, 0px 0px 0px 0px rgba(darken($bg-color, 15%), 0); 
     &:before {
       content: "";
       position: absolute;
@@ -133,7 +158,7 @@
       @include transition($speed, ease-in-out);
       background-color: rgba(lighten($bg-color, 5%), 1);
       top: -$move-length;
-      box-shadow: 0px($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 0) inset, 0px $move-length 0px 0px rgba(darken($bg-color, 15%), 1); 
+      box-shadow: 0px ($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 0) inset, 0px $move-length 0px 0px rgba(darken($bg-color, 15%), 1); 
       &:before {
         @include transition($speed, ease-in-out);
         border-bottom: $move-length solid rgba(darken($bg-color, 10%), 0); 
@@ -143,7 +168,7 @@
       @include transition(0ms);
       background-color: rgba(darken($bg-color, 5%), 1);
       top: 0px;
-      box-shadow: 0px($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 1) inset, 0px $move-length 0px 0px rgba(darken($bg-color, 15%), 0); 
+      box-shadow: 0px ($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 1) inset, 0px 0px 0px 0px rgba(darken($bg-color, 15%), 0); 
       &:before {
         @include transition(0ms);
         top: -$move-length;
@@ -185,6 +210,26 @@
     -o-font-feature-settings: "liga" 1, "dlig" 1;
     font-feature-settings: "liga" 1, "dlig" 1;
   }
+  .noht-logo {
+      @include transition(100ms);
+      width: 45px;
+      height: 16px;
+      background: url("../images/share/logo_noht_gray.png") no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-left: 20px;
+      opacity: 0.5;
+      a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+      }
+      &:hover {
+        opacity: 0.4;
+      }
+  }
   .wrap {
     font-family: "ヒラギノ角ゴ Pro W3", 
     "Hiragino Kaku Gothic Pro", 
@@ -192,64 +237,48 @@
     "ＭＳ Ｐゴシック", 
     "MS PGothic", 
     sans-serif;
-    width: 1000px;
+    min-width: 1000px;
     text-decoration: none;
     text-align: center;
-    margin: 0 auto;
-    padding: 0px 150px;
     color: #686868;
     font-size: 0px;
-    header {
-      padding-top: 100px;
-      .title {
-        display: block;
-        font-size: 18px;
-        color: #3d3d3d;
-        line-height: 1.2;
-        &:first-line {
-          font-size: 73px;
-        }
-      }
-    }
+    padding-top: 150px;
     .generator-content {
       .presets {
+        position: relative;
         @include user-select;
-        @include inline-block;
-        height: 190px;
-        width: 85%;
-        margin: 100px 0px 0px;
+        display: table;
+        height: 300px;
+        width: 600px;
+        margin: 60px auto 0px;
         .presets-navigation {
-          position: relative;
-          display: table;
-          width: 10%;
-          height: 100%;
+          position: absolute;
+          top: 50%;
+          margin-top: -30px;
+          display: table-cell;
+          vertical-align: middle;
           .arrow-sign {
-            @include transition(200ms, ease-in-out);
-            display: table-cell;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            width: 30px;
+            height: 60px;
             background-repeat: no-repeat;
             background-position: center center;
-            opacity: 0.8;
+            opacity: 0.7;
             cursor: pointer;
             &:hover {
-              opacity: 0.4;
-            } 
+              opacity: 0.5;
+            }
           }
         }
         .left {
-          float: left;
+          left: 0;
           .arrow-sign {
-            background-image: url("../images/button_sample_slide_l.png");
+            background-image: url("../images/2_5dbutton/button_sample_slide_l.png");
           }
         }
         .right {
-          float: right;
+          right: 0;
           .arrow-sign {
-            background-image: url("../images/button_sample_slide_r.png");
+            background-image: url("../images/2_5dbutton/button_sample_slide_r.png");
           }
         }
         .presets-content {
@@ -274,14 +303,28 @@
             } 
             .preset-button {
               margin: 15px;
-              &:first-child {
-                margin-top: 0;
-              }
-              &:last-child {
-                margin-bottom: 0;
-              }
             }      
           }
+        }
+      }
+      .button-control {
+        $triangle-w-half: 30px;
+        $triangle-h: 50px;
+        margin-top: $triangle-h;
+        position: relative;
+        background-color: #eaeaea;
+        padding: 50px 0px 0px;
+        &:before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          top: -$triangle-h;
+          left: 50%;
+          margin-left: -$triangle-w-half;
+          border-left: $triangle-w-half solid transparent;
+          border-right: $triangle-w-half solid transparent;
+          border-bottom: $triangle-h solid #b5b5b5;
         }
       }
       .selector {
@@ -359,7 +402,7 @@
                   width: 100%;
                   vertical-align: middle;
                   text-align: center;
-                  cursor: pointer;
+                  cursor: default;
                 }
                 .popup-sign {
                   @include triangle-bottom(50%, 90%);
@@ -380,25 +423,19 @@
             position: relative;
             width: 100%;
             height: 100%;
-            cursor: pointer;
             .popup-sign {
               @include triangle-bottom(50%, 90%);
             }
           }
         }
       }
-      .downloads {
-        @include inline-block;
-        > a {
-          margin: 40px 5px;
-          @include general-button-inset(15px, 34px, #555555, 2px, 2px, 15px, 0px, 50ms, #e8e8e8, 30%);
-        }
-      }
       .code {
+        margin-top: 50px;
         .code-box {
           @include inline-block;
+          position: relative;
           width: 40%;
-          padding: 0px 0px 40px;
+          padding: 0px 0px 30px;
           background-color: #fafafa;
           .title {
             padding: 15px 0px;
@@ -432,8 +469,31 @@
         }
       }
     }
+    .downloads {
+      @include inline-block;
+      padding: 60px 0px;
+      > a {
+        margin: 0px 5px;
+      }
+      .download-button {
+        @include general-button-inset(15px, 34px, #787878, 2px, 2px, 20px, 18px, 50ms, #fafafa, 25%);
+      }
+      .link-button {
+        @include general-button-inset(15px, 34px, #555555, 2px, 2px, 15px, 5px, 50ms, #fafafa, 25%);
+      }
+      a, a:visited {
+        color: #686868;
+      }
+      p {
+        padding-left: 25px;
+        margin-top: 15px;
+        text-align: left;
+        font-size: 12px;
+      }
+    }
     footer {
-      padding: 30px 0px;
+      background-color: #eaeaea;
+      padding: 30px 0px 30px;
     }
   }
 
@@ -445,7 +505,6 @@
     border: none;
     border-radius: 0px;
     background-color: #8c8c8c;
-    cursor: pointer;
     &:hover {
       .ui-state-default { 
         top: -5px;
@@ -465,7 +524,6 @@
       width: 10px;
       height: 10px;
       border: solid 0px transparent;
-      cursor: pointer;
       border-radius: 5px;
       &:focus {
         top: -5px;

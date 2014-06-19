@@ -4,18 +4,66 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>alcCalc</title>
+  <title>alcCalc - Alcohol Analysis Calculator/Drinking App</title>
   <link rel="stylesheet" type="text/css" media="screen" href="/css/alccalc.css">
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
 </head>
 <body id="alccalc">
+  <div class="global-header">
+    <div class="gheader-content">
+      <span class="noht-logo">
+        <a href="/">
+        </a>
+      </span>
+      <span class="language">
+        <a class="en selected" href="/en/alcCalc/">EN</a><a class="jp" href="/alcCalc/">JP</a>
+      </span>
+    </div>
+  </div>
   <header>
     <div class="content">
-      <span class="language">
-        <a class="en" href="/en/alcCalc/">EN</a>/<a class="jp selected" href="/alcCalc/">JP</a>
-      </span>
       <div class="title">
         <div class="logo"><img src="/images/alcCalc/logo_alccalc.png" alt="alccalc"></div>
+        <div class="sns-buttons">
+          <!-- google+1 -->
+          <span class="sns-button google">
+            <div class="g-plusone" data-size="medium" data-annotation="none"></div>
+            <script type="text/javascript">
+              (function()
+              {
+                var po = document.createElement('script');
+                po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/platform.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+          </span>
+
+          <!-- Hatena -->
+          <span class="sns-button hatena">
+            <a href="http://b.hatena.ne.jp/entry/http://www.noht.co.jp/en/alcCalc/" class="hatena-bookmark-button" data-hatena-bookmark-title="alcCalc" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+              <img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+            </a>
+            <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          </span>
+
+          <!-- Twitter-->
+          <span class="sns-button twitter">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.noht.co.jp/alcCalc/" data-lang="en">tweet</a>
+            <script>
+              !function(d,s,id)
+              {
+                var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            </script>
+          </span>
+
+          <!-- Facebook-->
+          <span class="sns-button facebook">
+            <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.noht.co.jp%2Fen%2FalcCalc%2F&amp;width=130&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:130px; height:21px;" allowTransparency="true"></iframe>
+          </span>
+        </div>
         <div class="applestore">
           <a href=""><img src="/images/alcCalc/banner_applestore.png" alt="apple store"></a>
         </div>
@@ -135,7 +183,7 @@
   </section>
   <footer>
     <p class="copyright">
-      © NOHT CO.,LTD.
+      <a href="/">© NOHT CO.,LTD.</a>
     </p>
     <p class="staff">
       Director / Designer : KEIICHIRO HIRAI <a href="http://twitter.com/hirausan">@hirausan</a><br/>

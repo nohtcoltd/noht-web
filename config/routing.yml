@@ -1,11 +1,11 @@
-#param1:
-#  GET: file1
-#  POST: file2
-#  param2:
-#    GET: file4
-#    POST: file5
-#    XHR:
-#       GET: file6
+# param1:
+#   GET: file1
+#   POST: file2
+#   param2:
+#     GET: file4
+#     POST: file5
+#     param3:
+#        GET: file6
 #
 #method "POST", "GET", "PUT", "DELETE""
 
@@ -31,12 +31,17 @@ about:
 
 contact:
   GET: templates/template.php
-  POST: partials/contact/post.php
+  POST: action/contact/post.php
   xhr:
     GET: partials/contact/index.php
 
 alcCalc:
   GET: partials/alcCalc/index.php
+
+#2_5dbutton:
+#  GET: partials/2_5dbutton/index.php
+#  create:
+#    POST: action/2_5dbutton/create_button.php
 
 en:
   alcCalc:

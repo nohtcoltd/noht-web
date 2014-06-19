@@ -162,17 +162,22 @@ $(function()
     }
     if (target_path == 'about') {
       init_about_function();
+      document.title = "ABOUT - NOHT.,CO.LTD.";
     }
     if (target_path == 'products') {
       init_products_function();
+      document.title = "NOHT.,CO.LTD.";
     }
     if (target_path == 'contact') {
-      $.getScript("/js/contact.js")
+      $.getScript("/js/contact.js");
+      document.title = "CONTACT - NOHT.,CO.LTD.";
     }
 
     current_content = target_path;
-    $("#gmenu li").removeClass("selected");
-    $("#gmenu ." + target_path).addClass("selected");
+    if(target_wrapper == "wrapper1") {
+      $("#gmenu li").removeClass("selected");
+      $("#gmenu ." + target_path).addClass("selected");
+    }
 
     if(current_path == target_path && current_wrapper == target_wrapper)
     {
@@ -192,7 +197,7 @@ $(function()
     $("#" + target_path).addClass("show");
     if(current_path != 'contact' && target_path != 'contact') {
 
-      $("#" + current_path + ", #" + target_path).addClass("content-transition");
+      $("#" + current_path + ", #" + target_path + ", .pjax-link > span").addClass("content-transition");
 
       if (current_path == 'index') {
         if (target_path == 'about' || target_path == 'products') {
@@ -215,7 +220,7 @@ $(function()
     setTimeout(function()
     {
       $(".site-contents").removeClass("pers-left pers-right pers-top pers-bottom");
-      $(".site-content").removeClass("content-transition");
+      $(".site-content, .pjax-link > span").removeClass("content-transition");
       $("#" + current_path).removeClass("show");
     }, 800);
   }
@@ -271,42 +276,59 @@ $(function()
       -moz-transform-origin: %perspective%px 50%;\
       -ms-transform-origin: %perspective%px 50%;\
       -o-transform-origin: %perspective%px 50%;\
+      transform-origin: %perspective%px 50%;\
     }\
     .about #products {\
       -webkit-transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
       -moz-transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
       -ms-transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
       -o-transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
+      transform: rotateX(0deg) rotateY(-90deg) translate3d(-%content_half_width%px, 0px, %content_half_width%px);\
     }\
     .products #about {\
       -webkit-transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
       -moz-transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
       -ms-transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
       -o-transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
+      transform: rotateX(0deg) rotateY(90deg) translate3d(%content_half_width%px, 0px, %content_half_width%px);\
     }\
     .about #index, .products #index {\
       -webkit-transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
       -moz-transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
       -ms-transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
       -o-transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
+      transform: rotateX(90deg) rotateY(0deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
     }\
     .index #about, .index #products {\
       -webkit-transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
       -moz-transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
       -ms-transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
       -o-transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
+      transform: rotateX(-90deg) rotateY(0deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
     }\
-    #wrapper1 {\
+    .wrapper2 #wrapper1 {\
       -webkit-transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
       -moz-transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
       -ms-transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
       -o-transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
+      transform: rotateX(90deg) translate3d(0px, -%wrapper_half_height%px, %wrapper_half_height%px);\
     }\
-    #wrapper2 {\
+    .wrapper1 #wrapper2 {\
       -webkit-transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
       -moz-transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
       -ms-transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
       -o-transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
+      transform: rotateX(-90deg) translate3d(0px, %wrapper_half_height%px, %wrapper_half_height%px);\
+    }\
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\
+      #general-layout.wrapper2 #wrapper1, #general-layout.wrapper1 #wrapper2 {\
+        -webkit-transform: none;\
+        -moz-transform: none;\
+        -ms-transform: none;\
+        -o-transform: none;\
+        transform: none;\
+        opacity: 0;\
+      }\
     }\
     </style>';
 
@@ -1144,17 +1166,59 @@ $(function()
 
       function mouse_up(target)
       {
+        var timer = false;
         target.on('mouseup', function(e)
         {
           if(box_animate) {
+            $("#wrapper1 .main").css("z-index", "20");
             target.toggleClass("animated");
+            
+            if (timer !== false) {
+                clearTimeout(timer);
+            }
+
+            timer = setTimeout(function()
+            {
+              $("#wrapper1 .main").css("z-index", "0");
+            }, 600);
             box_animate = false;
           }
         });
       }
     }
+    //プロダクトページ コンテンツ順次ロード用関数
+    function content_lazy_load()
+    {
+      var
+      count = 0,
+      duration = 350;
+
+      $targets.each(function()
+      {
+        var $self = $(this);
+        $self.on('inview', function()
+        {
+          if($self.hasClass('loaded')) {
+            return false;
+          }
+
+          setTimeout(function()
+          {
+            $self.addClass("loaded");
+          }, count * duration);
+
+          count++;
+
+          setTimeout(function()
+          {
+            count--;
+          }, count * duration);
+        });
+      });
+    }
 
     prepend_banner_background();
+    content_lazy_load();
     window_resize();
     change_box_height();
     banner_animation();

@@ -10,6 +10,10 @@
   <link rel="stylesheet" type="text/css" media="screen" href="/css/2_5dbutton.css" />
 </head>
 <body class="button-generator">
+  <div class="noht-logo">
+    <a href="/">
+    </a>
+  </div>
   <div class="icon-popup">
     <div class="bg-overlay"></div>
     <div class="overlay">
@@ -294,7 +298,7 @@
   </div>
   <article class="wrap">
     <header>
-      <h2 class="title">2.5dBUTTON<br/>FLAT UI ELEMENTS</h2>
+      <img src="/images/2_5dbutton/logo_2_5dbutton.png" alt="logo">
     </header>
     <section class="generator-content">
       <section class="presets">
@@ -317,134 +321,141 @@
       </section>
       <section class="demo-display">
       </section>
-      <section class="selector">
-        <ul class="selector-content">
-          <li class="button-label">
-            <div class="region-title">BUTTON LABEL</div>
-            <div class="region-content">
-              <input class="text-box" type="text" value="">
-            </div>
-          </li>
-          <li class="label-size">
-            <div class="region-title">LABEL SIZE</div>
-            <div class="region-content">
-              <span class="slider"></span>
-              <span class="count-display"></span>
-            </div>
-          </li>
-          <li class="icon">
-            <div class="region-title">ICON</div>
-            <div class="region-content">
-              <div class="popup-selector">
-                <a class="icon-font-inset"></a>
-                <div class="popup-sign"></div>
+      <div class="button-control">
+        <section class="selector">
+          <ul class="selector-content">
+            <li class="button-label">
+              <div class="region-title">BUTTON LABEL</div>
+              <div class="region-content">
+                <input class="text-box" type="text" value="">
               </div>
-            </div>
-          </li>
-          <li class="icon-size">
-            <div class="region-title">ICON SIZE</div>
-            <div class="region-content">
-              <span class="slider"></span>
-              <span class="count-display"></span>
-            </div>
-          </li>
-          <li class="label-color">
-            <div class="region-title">LABEL COLOR</div>
-            <div class="region-content">
-              <div class="color-picker">
-                <div class="popup-sign"></div>
+            </li>
+            <li class="label-size">
+              <div class="region-title">LABEL SIZE</div>
+              <div class="region-content">
+                <span class="slider"></span>
+                <span class="count-display"></span>
               </div>
-            </div>
-          </li>
-          <li class="popup-dist">
-            <div class="region-title">POPUP DIST.</div>
-            <div class="region-content">
-              <span class="slider"></span>
-              <span class="count-display"></span>
-            </div>
-          </li>
-        </ul>
-        <ul class="selector-content">
-          <li class="horizontal-padding">
-            <div class="region-title">HORIZONTAL PADDING</div>
-            <div class="region-content">
-              <span class="slider"></span>
-              <span class="count-display"></span>
-            </div>
-          </li>
-          <li class="vertical-padding">
-            <div class="region-title">VERTICAL PADDING</div>
-            <div class="region-content">
-              <span class="slider"></span>
-              <span class="count-display"></span>
-            </div>
-          </li>
-          <li class="radius">
-            <div class="region-title">RADIUS</div>
-            <div class="region-content">
-              <span class="slider"></span>
-              <span class="count-display"></span>
-            </div>
-          </li>
-          <li class="speed">
-            <div class="region-title">SPEED</div>
-            <div class="region-content">
-              <span class="slider"></span>
-              <span class="count-display"></span>
-            </div>
-          </li>
-          <li class="button-color">
-            <div class="region-title">BUTTON COLOR</div>
-            <div class="region-content">
-              <div class="color-picker">
-                <div class="popup-sign"></div>
+            </li>
+            <li class="icon">
+              <div class="region-title">ICON</div>
+              <div class="region-content">
+                <div class="popup-selector">
+                  <a class="icon-font-inset"></a>
+                  <div class="popup-sign"></div>
+                </div>
               </div>
+            </li>
+            <li class="icon-size">
+              <div class="region-title">ICON SIZE</div>
+              <div class="region-content">
+                <span class="slider"></span>
+                <span class="count-display"></span>
+              </div>
+            </li>
+            <li class="label-color">
+              <div class="region-title">LABEL COLOR</div>
+              <div class="region-content">
+                <div class="color-picker">
+                  <div class="popup-sign"></div>
+                </div>
+              </div>
+            </li>
+            <li class="popup-dist">
+              <div class="region-title">POPUP DIST.</div>
+              <div class="region-content">
+                <span class="slider"></span>
+                <span class="count-display"></span>
+              </div>
+            </li>
+          </ul>
+          <ul class="selector-content">
+            <li class="horizontal-padding">
+              <div class="region-title">HORIZONTAL PADDING</div>
+              <div class="region-content">
+                <span class="slider"></span>
+                <span class="count-display"></span>
+              </div>
+            </li>
+            <li class="vertical-padding">
+              <div class="region-title">VERTICAL PADDING</div>
+              <div class="region-content">
+                <span class="slider"></span>
+                <span class="count-display"></span>
+              </div>
+            </li>
+            <li class="radius">
+              <div class="region-title">RADIUS</div>
+              <div class="region-content">
+                <span class="slider"></span>
+                <span class="count-display"></span>
+              </div>
+            </li>
+            <li class="speed">
+              <div class="region-title">SPEED</div>
+              <div class="region-content">
+                <span class="slider"></span>
+                <span class="count-display"></span>
+              </div>
+            </li>
+            <li class="button-color">
+              <div class="region-title">BUTTON COLOR</div>
+              <div class="region-content">
+                <div class="color-picker">
+                  <div class="popup-sign"></div>
+                </div>
+              </div>
+            </li>
+            <li class="side-darkness">
+              <div class="region-title">SIDE DARKNESS</div>
+              <div class="region-content">
+                <span class="slider"></span>
+                <span class="count-display"></span>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="code">
+          <div class="html code-box">
+            <h2 class="title">HTML</h2>
+            <textarea class="code-convert" readonly></textarea>
+            <a class="copy-button">COPY</a>
+          </div>
+          <div class="css code-box">
+            <h2 class="title">CSS</h2>
+            <textarea class="code-convert" readonly></textarea>
+            <a class="copy-button">COPY</a>
+          </div>
+        </section>
+        <section class="downloads">
+          <a class="ligature-symbols download-button" href="LigatureSymbols.zip">
+            <div class="button-content-inset">
+              <span class="icon-font-inset">download</span>
+              <span class="button-text-inset">Download Ligature Symbols</span>
             </div>
-          </li>
-          <li class="side-darkness">
-            <div class="region-title">SIDE DARKNESS</div>
-            <div class="region-content">
-              <span class="slider"></span>
-              <span class="count-display"></span>
+          </a>
+          <a class="created-button download-button">
+            <div class="button-content-inset">
+              <span class="icon-font-inset">present</span>
+              <span class="button-text-inset">Download Created Button ZIP</span>
             </div>
-          </li>
-        </ul>
-      </section>
-      <section class="downloads">
-        <a class="ligature-symbols download-button" href="https://github.com/kudakurage/LigatureSymbols/archive/master.zip">
-          <div class="button-content-inset">
-            <span class="icon-font-inset">download</span>
-            <span class="button-text-inset">DL Ligature Symbols</span>
-          </div>
-        </a>
-        <a class="created-button download-button">
-          <div class="button-content-inset">
-            <span class="icon-font-inset">present</span>
-            <span class="button-text-inset">DL Created Button</span>
-          </div>
-        </a>
-        <a class="github link-button">
-          <div class="button-content-inset">
-            <span class="icon-font-inset">github</span>
-            <span class="button-text-inset">GitHub Project</span>
-          </div>
-        </a>
-      </section>
-      <section class="code">
-        <div class="html code-box">
-          <h2 class="title">HTML</h2>
-          <textarea class="code-convert" readonly></textarea>
-          <a class="copy-button">COPY</a>
-        </div>
-        <div class="css code-box">
-          <h2 class="title">CSS</h2>
-          <textarea class="code-convert" readonly></textarea>
-          <a class="copy-button">COPY</a>
-        </div>
-      </section>
+          </a>
+          <a class="github link-button">
+            <div class="button-content-inset">
+              <span class="icon-font-inset">github</span>
+              <span class="button-text-inset">GitHub</span>
+            </div>
+          </a>
+          <p>
+            <a href="http://kudakurage.com/ligature_symbols/">Ligature Symbols</a> by Kazuyuki Motoyama
+          </p>
+        </section>
+      </div>
     </section>
     <footer>
-      <img src="/images/2_5dbutton/rogo_noht.png">
+      <a href="/">
+        <img src="/images/2_5dbutton/rogo_noht.png">
+      </a>
     </footer>
   </article>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -453,5 +464,5 @@
   <script type="text/javascript" src="/js/vendor/spectrum.js"></script>
   <script type="text/javascript" src="/js/vendor/jquery.zclip.js"></script>
   <script type="text/javascript" src="/js/2_5dbutton.js"></script>
-  </body>
+</body>
 </html>

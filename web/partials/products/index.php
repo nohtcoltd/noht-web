@@ -37,7 +37,7 @@
             -->
             <br/>
             <p class="cooperator">
-              Director,Artwork KeiichiroHirai<br/>
+              Director,Design KeiichiroHirai<br/>
               Engineer TakumaFurutani<br/>
               Assistant AtsushiTomofuji
             </p>
@@ -47,6 +47,52 @@
     </section>
   </div>
 </article>
+<!--
+<article class="promotion-wrap button2_5d" >
+  <div class="promotion">
+    <header class="panel banner">
+      <p class="title">
+        FLAT UI ELEMENTS<br/>
+        2.5dBUTTON
+      </p>
+    </header>
+    <section class="panel description">
+      <div class="content-wrap">
+        <div class="content">
+          <div class="thumbnail"><img src="/images/products/thumb_25dbutton.png"/></div>
+          <h2 class="title">
+            FLAT UI ELEMENTS<br/>
+            2.5dBUTTON
+          </h2>
+          <div class="text">
+            <p>
+              hoverででっぱりon_clickでへっこむフラットなボタン。<br/>
+              ジェネレータで自由なデザインのボタン素材が作れる。
+            </p>
+            <a href="/2_5dbutton" class="link-button able">
+              <span class="button-content">
+                <span class="button-image">
+                  <img src="/images/share/icon_view.png"/>
+                </span>
+                <span class="button-text">www.noht.co.jp/2_5dbutton</span>
+              </span>
+            </a>
+            <span class="twitter">
+              <span class="image"><img src="/images/share/icon_twitter.png"/></span>
+              <span class="count">516</span>
+            </span>
+            <br/>
+            <p class="cooperator">
+              Director,Design KeiichiroHirai<br/>
+              Frontend YuheiYamamori
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</article>
+-->
 <article class="promotion-wrap secondpress" >
   <div class="promotion">
     <header class="panel banner">
@@ -131,7 +177,7 @@
             -->
             <br/>
             <p class="cooperator">
-              Director,Artwork KeiichiroHirai<br/>
+              Director,Design KeiichiroHirai<br/>
               Frontend YuheiYamamori<br/>
               Backend TsuyoshiYasuda, TakumaFurutani
             </p>
@@ -319,7 +365,7 @@
             -->
             <br/>
             <p class="cooperator">
-              Director,Designer,Engineer KeiichiroHirai<br/>
+              Director,Design,Engineer KeiichiroHirai<br/>
               LAUNCHED 2008
             </p>
           </div>
@@ -365,7 +411,7 @@
             -->
             <br/>
             <p class="cooperator">
-              Director,Designer,Engineer KeiichiroHirai<br/>
+              Director,Design,Engineer KeiichiroHirai<br/>
               LAUNCHED 2008
             </p>
           </div>

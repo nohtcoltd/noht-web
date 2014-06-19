@@ -509,7 +509,7 @@ $(function()
   {
     var html_code_config = get_html_code_config();
     var text = $("." + html_code_config["label"].class_name + " .text-box").val();
-    return text
+    return escapehtml(text);
   }
 
   //書き換えた時の挙動
@@ -521,6 +521,15 @@ $(function()
      change_html();
     });
   }
+
+  //html escape
+  function escapehtml(s) {
+    s=s.replace(/&/g,'&amp;');
+    s=s.replace(/>/g,'&gt;');
+    s=s.replace(/</g,'&lt;');
+    return s;
+  }
+
 
   //--------------------------
   //アイコンの選択
@@ -624,11 +633,11 @@ $(function()
     css_code["icon_font"] = {
       font_face: '@font-face {' + entity["nl"] + entity["indent_1"] +
         'font-family: "LigatureSymbols";' + entity["nl"] + entity["indent_1"] +
-        'src: url("/font/LigatureSymbols-2.11.eot");' + entity["nl"] + entity["indent_1"] +
-        'src: url("/font/LigatureSymbols-2.11.eot?#iefix") format("embedded-opentype"),' + entity["nl"] + entity["indent_3"] +
-        '     url("/font/LigatureSymbols-2.11.woff") format("woff"),' + entity["nl"] + entity["indent_3"] +
-        '     url("/font/LigatureSymbols-2.11.ttf") format("truetype"),' + entity["nl"] + entity["indent_3"] +
-        '     url("/font/LigatureSymbols-2.11.svg#LigatureSymbols") format("svg");' + entity["nl"] + entity["indent_1"] +
+        'src: url("../font/LigatureSymbols-2.11.eot");' + entity["nl"] + entity["indent_1"] +
+        'src: url("../font/LigatureSymbols-2.11.eot?#iefix") format("embedded-opentype"),' + entity["nl"] + entity["indent_3"] +
+        '     url("../font/LigatureSymbols-2.11.woff") format("woff"),' + entity["nl"] + entity["indent_3"] +
+        '     url("../font/LigatureSymbols-2.11.ttf") format("truetype"),' + entity["nl"] + entity["indent_3"] +
+        '     url("../font/LigatureSymbols-2.11.svg#LigatureSymbols") format("svg");' + entity["nl"] + entity["indent_1"] +
         'font-weight: normal;' + entity["nl"] + entity["indent_1"] +
         'font-style: normal;' + entity["nl"] +
         '}' + entity["nl"],
@@ -785,7 +794,7 @@ $(function()
     {
       var target = this;
       $("." + target + " .copy-button").zclip({
-        path: "js/ZeroClipboard.swf",
+        path: "/js/vendor/ZeroClipboard.swf",
         copy: function()
         {
           return $("." + target + " .code-convert").val();
@@ -830,7 +839,7 @@ $(function()
   {
     $.ajax({
       type: "POST",
-      url: "/created_button/created_button.php",
+      url: "/2_5dbutton/create",
       data: {
         html_code: get_html_code(),
         label_size: get_current_slider_val("label_size"),

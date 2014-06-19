@@ -77,6 +77,52 @@
     a {
         text-decoration: none;
     }
+    .global-header {
+        position: absolute;
+        line-height: 1;
+        width: 100%;
+        height: 35px;
+        z-index: 10;
+        text-align: left;
+        background-color: rgba(0, 0, 0, 0.3);
+        .gheader-content {
+            display: table;
+            height: 100%;
+            padding-left: 50px;
+            > * {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+        .noht-logo {
+            width: 45px;
+            height: 16px;
+            background: url("../images/share/logo_noht_white.png") no-repeat center;
+            background-size: contain;
+            cursor: pointer;
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+            }
+        }
+        .language {
+            color: #fff;
+            padding-left: 50px;
+            font-weight: 600;
+            a, a:visited {
+                padding: 7px;
+                height: 20px;
+                color: #fff;
+                font-size: 12px;
+                margin-right: 10px;
+                &.selected {
+                    background-color: rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+    }
     width: 100%;
     .applestore {
         padding-top: 55px;
@@ -111,20 +157,6 @@
             background-position: 10px 150px;
             text-align: right;
         }
-        .language {
-            position: absolute;
-            font-size: 19px;
-            color: #fff;
-            top: 20px;
-            right: 20px;
-            a, a:visited {
-                color: #fff;
-                margin: 0px 5px;
-                &.selected {
-                    text-decoration: underline;
-                }
-            }
-        }
         .title {
             $icon-size: 67px;
             display: inline-block;
@@ -146,6 +178,21 @@
             .logo img {
                 width: 294px;
             }
+        }
+        .sns-buttons {
+            padding-top: 50px;
+            width: 100%;
+            display: inline-block;
+        }
+        .sns-button {
+            display: inline-block;
+            margin-right: 3px;
+        }
+        .sns-button.facebook iframe {
+            width: 100px !important;
+        }
+        iframe.twitter-share-button {
+            width: 80px !important;
         }
     }
     .display-video-wrap {
@@ -268,8 +315,10 @@
                         width: 100%;
                         height: 100%;
                         left: 0;
-                        top: 0;
-                        background:transparent url("/images/alcCalc/icon_arrow_down.png") center 14px no-repeat;
+                        top: -9px;
+                        background-image: url("/images/alcCalc/icon_arrow_down.png");
+                        background-repeat: no-repeat;
+                        background-position: center;
                         -webkit-background-size: 12px;
                         background-size: 12px;
                     }
@@ -389,6 +438,9 @@
         background-color: #f4f4f4;
         .copyright {
             font-size: 17px;
+            a, a:visited {
+                color: $main-color;
+            }
         }
         .staff {
             padding-top: $padding-height;
@@ -474,7 +526,7 @@
                             width: 10px;
                         }
                         &:after {
-                            background-position-y: 4px;
+                            top: -13px;
                             -webkit-background-size: 2%;
                             background-size: 2%;
                         }
