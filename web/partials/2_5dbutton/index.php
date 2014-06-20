@@ -428,7 +428,7 @@
           </div>
         </section>
         <section class="downloads">
-          <a class="ligature-symbols download-button" href="LigatureSymbols.zip">
+          <a class="ligature-symbols download-button" href="https://github.com/kudakurage/LigatureSymbols/archive/master.zip">
             <div class="button-content-inset">
               <span class="icon-font-inset">download</span>
               <span class="button-text-inset">Download Ligature Symbols</span>

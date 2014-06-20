@@ -1,6 +1,6 @@
 <article class="about-contents">
   <header>
-    <img src="/images/about/logo_noht_gray_en.png" alt="">
+    <img src="/images/about/logo_noht_gray.png" alt="">
   </header>
   <section class="overview">
     <div class="profile">
@@ -36,7 +36,7 @@
     </ul>
   </section>
   <section class="us-office">
-    <img src="/images/about/logo_noht_gray_us_en.png" alt="">
+    <img src="/images/about/logo_noht_gray_us.png" alt=""><br/>
     Location 113 Barksdale Professional Center Newark, DE 19711-3258 USA
   </section>
 </article>

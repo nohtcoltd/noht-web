@@ -47,12 +47,12 @@
     </section>
   </div>
 </article>
-<!--
+
 <article class="promotion-wrap button2_5d" >
   <div class="promotion">
     <header class="panel banner">
       <p class="title">
-        FLAT UI ELEMENTS<br/>
+        WEB UI ELEMENTS<br/>
         2.5dBUTTON
       </p>
     </header>
@@ -61,7 +61,7 @@
         <div class="content">
           <div class="thumbnail"><img src="/images/products/thumb_25dbutton.png"/></div>
           <h2 class="title">
-            FLAT UI ELEMENTS<br/>
+            WEB UI ELEMENTS<br/>
             2.5dBUTTON
           </h2>
           <div class="text">
@@ -77,10 +77,12 @@
                 <span class="button-text">www.noht.co.jp/2_5dbutton</span>
               </span>
             </a>
+            <!--
             <span class="twitter">
               <span class="image"><img src="/images/share/icon_twitter.png"/></span>
               <span class="count">516</span>
             </span>
+          -->
             <br/>
             <p class="cooperator">
               Director,Design KeiichiroHirai<br/>
@@ -92,7 +94,6 @@
     </section>
   </div>
 </article>
--->
 <article class="promotion-wrap secondpress" >
   <div class="promotion">
     <header class="panel banner">

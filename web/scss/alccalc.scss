@@ -1,21 +1,11 @@
 //公開時用
 #alccalc {
-    .sns-buttons {
-        display: none !important;
+    .sns-button.facebook iframe {
+        position: relative;
+        top: 1px;
     }
-    .applestore {
-        display: none !important;
-    }
-    .display-image {
-        height: 79% !important;
-    }
-    .caution {
-        padding-top: 240px !important;
-    }
-    @media screen and (max-width: 700px) {
-        .caution {
-            padding-top: 140px !important;
-        }
+    iframe.twitter-share-button {
+        width: 56px !important;
     }
 }
 #alccalc {
@@ -132,10 +122,10 @@
         a {
             @include transition(100ms);
             display: inline-block;
-            opacity: 0.93;
+            opacity: 1;
             width: 142px;
             &:hover {
-                opacity: 1;
+                opacity: 0.9;
             }
         }
         img {
@@ -190,12 +180,6 @@
         .sns-button {
             display: inline-block;
             margin-right: 3px;
-        }
-        .sns-button.facebook iframe {
-            width: 100px !important;
-        }
-        iframe.twitter-share-button {
-            width: 80px !important;
         }
     }
     .display-video-wrap {
@@ -415,11 +399,11 @@
         }
         .applestore {
             background-color: #fff;
-            padding-top: 230px;
+            padding-top: 290px;
         }
         .caution {
             background-color: #fff;
-            padding-top: 90px;
+            padding-top: 70px;
             font-size: 12px;
             font-weight: 600;
             line-height: 1.5em;
@@ -483,7 +467,7 @@
                 width: auto;
                 -webkit-background-size: 300px;
                 background-size: 300px;
-                background-position: center 400px;
+                background-position: center 500px;
                 .title {
                     width: 100%;
                     margin-top: 200px;
@@ -492,12 +476,28 @@
                     width: auto;
                     margin-top: 50px;
                 }
+                .sns-buttons {
+                    padding-top: 30px;
+                }
+                .applestore {
+                    padding-top: 45px;
+                }
             }
         }
     }
     @media screen and (max-width: 700px) {
-        header .title .logo img {
-            width: 200px;
+        header {
+            .title .logo img {
+                width: 200px;
+            }
+            .content {
+                .sns-buttons {
+                    padding-top: 40px;
+                }
+                .applestore {
+                    padding-top: 55px;
+                }
+            }
         }
         .display-video-wrap .display-video {
             width: 100%;

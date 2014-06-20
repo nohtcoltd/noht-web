@@ -12,7 +12,7 @@
   <div class="global-header">
     <div class="gheader-content">
       <span class="noht-logo">
-        <a href="/">
+        <a href="/en/">
         </a>
       </span>
       <span class="language">
@@ -41,7 +41,7 @@
 
           <!-- Hatena -->
           <span class="sns-button hatena">
-            <a href="http://b.hatena.ne.jp/entry/http://www.noht.co.jp/en/alcCalc/" class="hatena-bookmark-button" data-hatena-bookmark-title="alcCalc" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+            <a href="http://b.hatena.ne.jp/entry/http://www.noht.co.jp/en/alcCalc/" class="hatena-bookmark-button" data-hatena-bookmark-title="alcCalc" data-hatena-bookmark-layout="simple" title="このエントリーをはてなブックマークに追加">
               <img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
             </a>
             <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
@@ -49,7 +49,7 @@
 
           <!-- Twitter-->
           <span class="sns-button twitter">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.noht.co.jp/alcCalc/" data-lang="en">tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="http://www.noht.co.jp/alcCalc/" data-lang="en">tweet</a>
             <script>
               !function(d,s,id)
               {
@@ -61,11 +61,11 @@
 
           <!-- Facebook-->
           <span class="sns-button facebook">
-            <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.noht.co.jp%2Fen%2FalcCalc%2F&amp;width=130&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:130px; height:21px;" allowTransparency="true"></iframe>
+            <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.noht.co.jp%2Fen%2FalcCalc%2F&amp;width=130&amp;locale=en_US&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:48px; height:21px;" allowTransparency="true"></iframe>
           </span>
         </div>
         <div class="applestore">
-          <a href=""><img src="/images/alcCalc/banner_applestore.png" alt="apple store"></a>
+          <a href="http://itunes.apple.com/us/app/alccalc-alcohol-analysis-calculator/id887557458?l=ja&ls=1&mt=8"><img src="/images/alcCalc/banner_applestore.png" alt="apple store"></a>
         </div>
       </div>
     </div>
@@ -168,7 +168,7 @@
       </ul>
     </section>
     <section class="applestore">
-      <a href=""><img src="/images/alcCalc/banner_applestore.png" alt="apple store"></a>
+      <a href="http://itunes.apple.com/us/app/alccalc-alcohol-analysis-calculator/id887557458?l=ja&ls=1&mt=8"><img src="/images/alcCalc/banner_applestore.png" alt="apple store"></a>
     </section>
     <section class="caution">
       <div class="image">
@@ -183,7 +183,7 @@
   </section>
   <footer>
     <p class="copyright">
-      <a href="/">© NOHT CO.,LTD.</a>
+      <a href="/en/">© NOHT CO.,LTD.</a>
     </p>
     <p class="staff">
       Director / Designer : KEIICHIRO HIRAI <a href="http://twitter.com/hirausan">@hirausan</a><br/>
