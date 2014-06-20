@@ -440,7 +440,7 @@
               <span class="button-text-inset">Download Created Button ZIP</span>
             </div>
           </a>
-          <a class="github link-button">
+          <a class="github link-button" href="https://github.com/nohtcoltd/2_5dbutton">
             <div class="button-content-inset">
               <span class="icon-font-inset">github</span>
               <span class="button-text-inset">GitHub</span>
