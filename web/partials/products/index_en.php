@@ -16,17 +16,17 @@
           </h2>
           <div class="text">
             <p>
-              美しいUIで現在の体内アルコール濃度や酔いが覚めるまでの時間をリアルタイムで計算して表示する無料iPhoneアプリ。
+              The iPhone App which calculates and displays the Blood/ Breath Alcohol Content and the time when you’ll sober up with its beautiful UI in real time.
             </p>
             <p>
-              二日酔いのおそれや摂取カロリーも自動で計算。またそれらの情報をシェアする機能も。
+              It also has other functions: calculating calories, hangover forecast and social share buttons.
             </p>
-            <a href="/alcCalc" class="link-button able">
+            <a href="/en/alcCalc" class="link-button able">
               <span class="button-content">
                 <span class="button-image">
                   <img src="/images/share/icon_view.png"/>
                 </span>
-                <span class="button-text">www.noht.co.jp/alcCalc</span>
+                <span class="button-text">www.noht.co.jp/en/alcCalc</span>
               </span>
             </a>
             <!--
@@ -111,8 +111,8 @@
           </h2>
           <div class="text">
             <p>
-              AIファイル、PSDファイルなどからオリジナルデザインの缶バッジを製作できるサービス。<br/>
-              年間1500万個以上の製作実績を誇り、国内シェア最大級。
+              The web service which makes and delivers original designed buttons from your design data ( AI, PSD, etc.)<br/>
+              Making over 15 million buttons a year, which is one of the largest scale in Japan. 
             </p>
             <a href="http://www.secondpress.us" class="link-button able">
               <span class="button-content">
@@ -158,8 +158,8 @@
           </h2>
           <div class="text">
             <p>
-              AiファイルやPSDファイルを正確に画像ファイルに変換するネイティブエンジンを利用したコンバータ。<br/>
-              D&DでコンバートするカジュアルなインターフェースからWebAPIまで利用可能。
+              The service which converts AI files to PSD files or PSD files to AI files, using the native engine which converts AI and PSD files to image files.<br/>
+              You can use both Web API and casual interface.
             </p>
             <div class="link-button disable">
               <div class="disable-content">
@@ -205,11 +205,11 @@
           </h2>
           <div class="text">
             <p>
-              アップロードされたAIファイルやPSDファイルを分析して、様々な情報を抽出する。
+              This program analyze the uploaded AI and PSD files and extract various information.
             </p>
             <p>
-              WebAPIを利用すると、印刷業に付き物であったデータチェックを<br/>
-              ユーザの入稿タイミング時点で自動で行うことができる。
+              Using this Web API, you can automate the process of checking the design data<br/>
+              which is necessary for printing business.
             </p>
             <div class="link-button disable">
               <div class="disable-content">
@@ -255,8 +255,8 @@
           </h2>
           <div class="text">
             <p>
-              オリジナルデザインのラバーストラップやキーホルダーなどを製作できるサービス。<br />
-              本年度リリース予定
+              The service of making original designed rubber keychains or straps.<br/>
+              Scheduled to release in 2014. 
             </p>
             <div class="link-button disable">
               <div class="disable-content">
@@ -302,7 +302,7 @@
           </h2>
           <div class="text">
             <p>
-              コンテンポラリ・マス・プログレッシブユニット、NUITOが主催する音楽レーベル。
+              The record label by NUITO: Contemporary Math Progressive Unit.
             </p>
             <a href="http://nuito.org" class="link-button able">
               <span class="button-content">
@@ -346,15 +346,15 @@
           </h2>
           <div class="text">
             <p>
-              入力されたソースをモノミックスにて<br/>
-              LとRの各チャンネルに正相と逆相を振分け出力するVSTプラグイン。
+              The VST plugin which divides the input sound into normal and reverse phase,<br/>
+              and output the normal into left channel, the reverse into right.
             </p>
             <div class="link-button disable">
               <div class="disable-content">
                 <span class="icon">
                   <img src="/images/share/icon_view_disable.png"/>
                 </span>
-                <span class="disable-text">公開終了</span>
+                <span class="disable-text">Out of service</span>
               </div>
             </div>
             <!--
@@ -392,15 +392,15 @@
           </h2>
           <div class="text">
             <p>
-              アナログの歪みをエミュレートしたシンプルなコンプレッサー／リミッター。<br/>
-              マキシマイザとしても使用可能なVSTプラグイン。
+              The simple compressor/ limiter VST plugin which emulates the analog distortion.<br/>
+              It can be used as a maximizer.
             </p>
             <div class="link-button disable">
               <div class="disable-content">
                 <span class="icon">
                   <img src="/images/share/icon_view_disable.png"/>
                 </span>
-                <span class="disable-text">公開終了</span>
+                <span class="disable-text">Out of service</span>
               </div>
             </div>
             <!--

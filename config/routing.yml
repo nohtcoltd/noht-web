@@ -38,12 +38,32 @@ contact:
 alcCalc:
   GET: partials/alcCalc/index.php
 
-#2_5dbutton:
-#  GET: partials/2_5dbutton/index.php
-#  create:
-#    POST: action/2_5dbutton/create_button.php
+2_5dbutton:
+  GET: partials/2_5dbutton/index.php
+  create:
+    POST: action/2_5dbutton/create_button.php
 
 en:
+  GET: templates/template_en.php
+  xhr:
+    GET: partials/products/index_en.php
+
+  products:
+    GET: templates/template_en.php
+    xhr:
+      GET: partials/products/index_en.php
+
+  about:
+    GET: templates/template_en.php
+    xhr:
+      GET: partials/about/index_en.php
+
+  contact:
+    GET: templates/template_en.php
+    POST: action/contact/post.php
+    xhr:
+      GET: partials/contact/index_en.php
+
   alcCalc:
     GET: partials/alcCalc/index_en.php
 

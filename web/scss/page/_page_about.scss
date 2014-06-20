@@ -11,19 +11,24 @@
   section {
     line-height: 2;
   }
-  header img, .us-office img {
-    height: 50px;
+  img.logo {
+    height: 25px;
+  }
+  img.logo-caption {
+    height: 18px;
   }
   .overview {
     margin-top: 50px;
     @include clearfix;
     span {
       display: inline-block;
+      vertical-align: middle;
     }
     .caption {
       letter-spacing: 13px;
     }
     .text {
+      padding-left: 10px;
       width: auto;
     }
   }
@@ -96,10 +101,11 @@
     margin-top: 120px;
     line-height: 1.5;
   }
-  .us-office img {
+  .us-office {
     margin-top: 50px;
-    display: block;
-    margin-bottom: 20px;
+    p {
+      padding-top: 20px;
+    }
   }
 }
 #about {
@@ -117,20 +123,33 @@
   //----------------------------------------
   // smart phone版はここ
   //----------------------------------------
-    @media screen and (max-width: $smart_phone_width) {
-    header img, .us-office img {
-      height: 30px;
+  @media screen and (max-width: $smart_phone_width) {
+    .about-contents {
+      text-align: center;
+    }
+    header, .us-office {
+      text-align: center;
     }
     .profile {
+      display: inline-block;
+      width: 100%;
       float: none;
       padding-right: 0;
       text-align: center;
+      span {
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      .caption {
+        text-align: left;
+      }
       .text {
         text-align: left;
-        width: 30%;
+        width: 20%;
       }
     }
     .address {
+      float: none;
       padding: 0px 10px;
       text-align: center;
       .number {
@@ -139,11 +158,29 @@
       span {
         display: inline-block;
         width: 100%;
-        text-align: left;
       }
     }
     .about-contents {
       padding: 50px 20px;
+    }
+  }
+}
+
+html.en #about {
+  .caption {
+    width: 170px;
+    letter-spacing: 0;
+  }
+  header img, .us-office img {
+    height: 28px;
+  }
+  $smart_phone_width: 700px;
+  //----------------------------------------
+  // smart phone版はここ
+  //----------------------------------------
+  @media screen and (max-width: $smart_phone_width) {
+    .profile .caption {
+      width: 140px;
     }
   }
 }

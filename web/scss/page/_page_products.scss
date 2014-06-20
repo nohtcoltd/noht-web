@@ -84,17 +84,19 @@
         }
         .content {
             display: table;
+            width: 100%;
             height: 100%;
             font-size: 0;
-            padding: 0px 20px;
             > * {
                 @include centering-table();
             }
         }
         .thumbnail img {
+            @include transition($animate_time);
             width: 200px;
         }
         .text {
+            @include transition($animate_time);
             width: 100%;
             text-align: left;
             color: rgba(255, 255, 255, 0.85);
@@ -181,6 +183,7 @@
             }
             .cooperator {
                 font-size: 12px;
+                line-height: 1.7;
             }
         }
         .title {
@@ -239,7 +242,7 @@
         $height: 60%;
         $hover-height: $height + $height /15;
         .panel {
-            background-color: #07a3d3;
+            background-color: #04a2bc;
             &:hover .background {
                 height: $hover-height;
             }
@@ -255,7 +258,7 @@
         $height: 120%;
         $hover-height: $height + $height /15;
         .panel {
-            background-color: #bf1920;
+            background-color: #cb0a14;
             &:hover .background {
                 height: $hover-height;
             }
@@ -268,17 +271,17 @@
         }
     }
     .ai_loupe {
-        $height: 35%;
+        $height: 97%;
         $hover-height: $height + $height /15;
         .panel {
-            background-color: #d16f0f;
+            background-color: #e06a00;
             &:hover .background {
                 height: $hover-height;
             }
         }
         .background {
             height: $height;
-            top: 33%;
+            top: 10px;
             background-image: url("../images/products/img_ailoupe.png");
             background-position: center center;
         }
@@ -322,7 +325,7 @@
         $height: 25%;
         $hover-height: $height + $height /15;
         .panel {
-            background-color: #ba2b48;
+            background-color: #d3003c;
             &:hover .background {
                 height: $hover-height;
             }
@@ -353,21 +356,12 @@
 }
 
 #products {
-    $pc_wide: 1400px;
     $pc_short: 1100px;
     $tablet_width: 900px;
-    $smart_phone_width: 700px;
+    $smart_phone_width: 640px;
     //----------------------------------------
     // pcのウィンドウ幅縮小時
     //----------------------------------------
-    @media screen and (min-width:$pc_wide) {
-        .description .content {
-            padding-left: 200px;
-            .text {
-                padding-left: 40px;
-            }
-        }
-    }
     @media screen and (max-width:$pc_short) {
         .description .content {
             .thumbnail img {
@@ -428,7 +422,7 @@
                     padding: 0;
                     padding-top: 20px;
                     p {
-                        text-align: left;
+                        text-align: center;
                         font-size: 13px;
                         &:first-child {
                         }
@@ -438,6 +432,7 @@
                     }
                     .cooperator {
                         display: inline-block;
+                        text-align: left;
                         font-size: 10px;
                     }
                 }
@@ -542,7 +537,7 @@
             height: $height;
         }
         .ai_loupe .panel:hover .background {
-            $height: 35%;
+            $height: 97%;
             height: $height;
         }
         .button2_5d .panel:hover .background {

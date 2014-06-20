@@ -11,8 +11,7 @@ html {
     $logo-width: 120px;
     $logo-height: 40px;
     $header-width: 180px;
-    @include perspective(2000px);
-    @include perspective-origin(50% 50% 50%);
+    @include perspective(1000px);
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     position: relative;
@@ -21,8 +20,14 @@ html {
     top: 0;
     left: 0;
     overflow: hidden;
+    &.wrapper1 {
+        @include perspective-origin(50% 100%);
+    }
+    &.wrapper2 {
+        @include perspective-origin(50% 0%);
+    }
     #wrapper1, #wrapper2 {
-        @include transform-origin(center center 0px);
+        @include transform-origin(50% 50%);
         @include backface-visibility(hidden);
         display: block;
         width: 100%;
@@ -38,11 +43,9 @@ html {
         @include transform(rotateX(0deg) translate3d(0px, 0px, 0px));
         z-index: 10;
     }
-    #wrapper1 {
-        .site-content {
-            background-color: #fff;
-            padding-left: $header-width;
-        }
+    #wrapper1 .site-content {
+        background-color: #fff;
+        padding-left: $header-width;
     }
     #header {
         display: table;
@@ -122,7 +125,16 @@ html {
             }
         }
         .language {
-            margin-top: 50px;
+            position: absolute;
+            padding-left: 20px;
+            bottom: 80px;
+            span {
+                margin-right: 5px;
+                padding: 5px 8px;
+            }
+            .selected {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
         }
     }
     .main {
@@ -254,7 +266,7 @@ html {
     //----------------------------------------
     @media screen and (max-width: $smart_phone_width) {
         $padding-top: 45px;
-        $logo_width: 80px;
+        $logo_width: 50px;
         #wrapper1 {
             #header {
                 position: fixed;
@@ -272,7 +284,6 @@ html {
                     width: 100%;
                     height: 100%;
                     padding: 0px 0px;
-                    text-align: center;
                 }
                 .logo {
                     position: absolute;
@@ -281,10 +292,10 @@ html {
                     z-index: 10;
                     .pjax-link {
                         display: inline-block;
-                        width: 100px;
+                        width: 60px;
                         height: 45px;
                         background-image: url("../images/share/logo_noht_gray.png");
-                        background-position: center;
+                        background-position: 10px 19px;
                         -webkit-background-size: $logo-width auto;
                         background-size: $logo-width auto;
                     }
@@ -299,7 +310,6 @@ html {
                     opacity: 0;
                     z-index: 0;
                     > li {
-                        font-size: 0;
                         margin-bottom: 8px;
                         &:last-child {
                             margin-bottom: 0;
@@ -311,13 +321,14 @@ html {
                         .pjax-link {
                             @include transition(100ms ease-in-out);
                             display: block;
-                            width: 120px;
-                            height: 120px;
+                            width: 100px;
+                            height: 100px;
                             background-color: #eee;
                             background-repeat: no-repeat;
                             background-position: center;
                             -webkit-background-size: 50%;
                             background-size: 50%;
+                            font-size: 0;
                             > span {
                                 display: none;
                             }
@@ -335,11 +346,33 @@ html {
                             background-image: url("../images/share/icon_contact.png");
                         }
                     }
-                }
-                .language {
-                    margin-top: 30px;
-                    display: block;
-                    width: 100%;
+                    .language {
+                        @include clearfix;
+                        position: static;
+                        margin-bottom: 10px;
+                        bottom: auto;
+                        padding-left: 0;
+                        span {
+                            text-align: center;
+                            margin: 0;
+                            background-color: #eee;
+                            padding: 0;
+                        }
+                        .selected {
+                            background-color: #ccc;
+                        }
+                        a {
+                            display: block;
+                            padding: 10px 15px;
+                        }
+                        .en {
+                            float: left;
+                            margin-bottom: 10px;
+                        }
+                        .jp {
+                            float: right;
+                        }
+                    }
                 }
                 .menu-button {
                     $icon_size: 22px;
@@ -347,8 +380,8 @@ html {
                     top: 20px;
                     margin-top: -$icon_size / 2;
                     right: 20px;
-                    width: $icon_size + 5px;
-                    height: $icon_size + 5px;
+                    width: $icon_size + 8px;
+                    height: $icon_size + 8px;
                     background-image: url("../images/share/icon_menu.png");
                     background-position: center;
                     background-repeat: no-repeat;
@@ -363,6 +396,7 @@ html {
                     height: 100%;
                     z-index: 20;
                     background-color: rgba(255, 255, 255, 1);
+                    overflow: scroll;
                     #gmenu {
                         @include transition(300ms ease-in-out);
                         opacity: 1;
@@ -370,6 +404,7 @@ html {
                     .menu-button {
                         background-image: url("../images/share/icon_cross.png");
                         opacity: 1;
+                        right: 8px;
                     }
                 }
             }

@@ -1,5 +1,8 @@
 //公開時用
 #alccalc {
+    .sns-buttons {
+        display: none !important;
+    }
     .applestore {
         display: none !important;
     }
@@ -451,6 +454,29 @@
             color: #4f4f4f;
         }
     }
+    @media screen and (max-width: 1200px) {
+        header {
+            .content {
+                width: 800px;
+                -webkit-background-size: 400px;
+                background-size: 400px;
+                background-position: left 180px;
+                .title {
+                }
+            }
+        }
+        .main .using {
+            margin-top: 840px;
+            ul {
+                padding: 30px 0px;
+            }
+            li {
+                width: 230px;
+                height: 120px;
+                font-size: 16px;
+            }
+        }
+    }
     @media screen and (max-width: 900px) {
         header {
             .content {
@@ -466,17 +492,6 @@
                     width: auto;
                     margin-top: 50px;
                 }
-            }
-        }
-        .main .using {
-            margin-top: 840px;
-            ul {
-                padding: 30px 0px;
-            }
-            li {
-                width: 250px;
-                height: 120px;
-                font-size: 16px;
             }
         }
     }
@@ -564,12 +579,13 @@
                     padding: 0;
                 }
                 li {
+                    display: block;
                     margin: 20px auto 30px;
                     font-size: 14px;
                     height: auto;
                     &:before {
-                        top: -45px;
-                        left: -70px;
+                        top: -41px;
+                        left: -90px;
                         height: 100px;
                         -webkit-background-size: 20%;
                         background-size: 20%;
@@ -580,7 +596,7 @@
                 }
                 .caption {
                     text-align: left;
-                    padding-left: 120px;
+                    padding-left: 70px;
                 }
             }
             section.applestore {

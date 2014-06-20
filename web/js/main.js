@@ -59,6 +59,8 @@ $(function()
         }
         url = url + "/xhr";
 
+        console.log(url);
+
         $.ajax(
         {
           type: 'GET',
@@ -134,6 +136,14 @@ $(function()
     parsed_path = path.split("/");
     parsed_path.splice(0, 1);
 
+    if (parsed_path[0] == "en") {
+      parsed_path.splice(0,1);
+      $("html").addClass("en");
+    } else {
+      $("html").removeClass("en");
+    }
+
+
     if(parsed_path[0] == "contact") {
       //var target_path = 'index';
       // productsをindexに設定している間のみ
@@ -162,15 +172,15 @@ $(function()
     }
     if (target_path == 'about') {
       init_about_function();
-      document.title = "ABOUT - NOHT.,CO.LTD.";
+      document.title = "ABOUT - NOHT CO.,LTD.";
     }
     if (target_path == 'products') {
       init_products_function();
-      document.title = "NOHT.,CO.LTD.";
+      document.title = "NOHT CO.,LTD.";
     }
     if (target_path == 'contact') {
       $.getScript("/js/contact.js");
-      document.title = "CONTACT - NOHT.,CO.LTD.";
+      document.title = "CONTACT - NOHT CO.,LTD.";
     }
 
     current_content = target_path;
@@ -1020,8 +1030,6 @@ $(function()
       return;
     };
 
-    var $targets = $('#products .promotion-wrap');
-
     function window_resize()
     {
       var timer = false;
@@ -1048,6 +1056,7 @@ $(function()
     {
       var style_id = 'product_box';
       var window_width = $(window).width();
+      var parse_width = $(window).width() / 1920;
 
       if(window_width > 1200) {
         window_width = 1200;
@@ -1057,12 +1066,14 @@ $(function()
       var description_y = box_height / 2;
       var description_z = box_height / 2;
       var origin = box_height / 2;
+      var content_width = parseInt(200 * (parse_width * parse_width));
 
       if(window_width < 900) {
         var description_height = box_height * 3;
         var description_y = 0;
         var description_z = description_height;
         var origin = description_height;
+        var content_width = 0;
       }
 
       var
@@ -1093,6 +1104,12 @@ $(function()
           -ms-transform: rotateX(-90deg) translate3d(0px, %description_z%px, %description_y%px);\
           -o-transform: rotateX(-90deg) translate3d(0px, %description_z%px, %description_y%px);\
       }\
+      #products .thumbnail {\
+        padding-left: %content_width%px;\
+      }\
+      #products .text {\
+        padding-right: %content_width%px;\
+      }\
       </style>';
 
       var
@@ -1102,6 +1119,7 @@ $(function()
       style = style.replace(/%origin%/g, origin);
       style = style.replace(/%description_y%/g, description_y);
       style = style.replace(/%description_z%/g, description_z);
+      style = style.replace(/%content_width%/g, content_width);
 
 
       if(document.getElementById(style_id) != null) {
@@ -1111,7 +1129,7 @@ $(function()
     }
 
     //バナーの切り替わり
-    function banner_animation()
+    function banner_animation($targets)
     {
       var box_animate = false;
       var link_button = false;
@@ -1172,7 +1190,7 @@ $(function()
           if(box_animate) {
             $("#wrapper1 .main").css("z-index", "20");
             target.toggleClass("animated");
-            
+
             if (timer !== false) {
                 clearTimeout(timer);
             }
@@ -1187,7 +1205,7 @@ $(function()
       }
     }
     //プロダクトページ コンテンツ順次ロード用関数
-    function content_lazy_load()
+    function content_lazy_load($targets)
     {
       var
       count = 0,
@@ -1217,11 +1235,13 @@ $(function()
       });
     }
 
+    var $targets = $('#products .promotion-wrap');
+
     prepend_banner_background();
-    content_lazy_load();
+    content_lazy_load($targets);
     window_resize();
     change_box_height();
-    banner_animation();
+    banner_animation($targets);
     products_function = true;
   }
 });

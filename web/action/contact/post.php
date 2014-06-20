@@ -72,26 +72,21 @@ function send_mail_to_customer($post_data)
   $message = h($post_data["message"]);
 
   $text = "
-    $name 様
-    お問い合わせありがとうございます。
+    Hi $name,
 
-    www.noht.co.jpのお問い合わせフォームより、以下の内容の投稿を受け付けました。
-    お心当たりのない場合はinfo@noht.co.jpまでご連絡ください。
+    Thank you for your interest in our services!
+    Please confirm your inquiry below:
 
-    お名前
-    $name 様
-
-    会社名
-    $company
-
-    メールアドレス
-    $mail
-
-    問い合わせ内容
+    Name: $name
+    Company: $company
+    Email: $mail
+    Message:
     $message
+
+    If you have any questions, please contact us at info@noht.co.jp.
     ";
 
-  $subject="問い合わせを受け付けました。";
+  $subject="We have received your inquiry.";
   $mailfrom="From:<info@noht.co.jp>";
 
   mb_send_mail($mail,$subject,$text,$mailfrom);

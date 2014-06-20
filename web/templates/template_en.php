@@ -6,8 +6,8 @@ function h($str) {
 function check_include($expect)
 {
   global $parsed_path, $routing_data, $method;
-  $parsed_path[0] = $parsed_path[0] === "" ? "products" : $parsed_path[0];
-  if($parsed_path[0] == $expect) {
+  $parsed_path[1] = $parsed_path[1] === "" ? "products" : $parsed_path[1];
+  if($parsed_path[1] == $expect) {
     $parsed_path[] = "xhr";
     include_action_file($routing_data, $parsed_path, "GET");
   }
@@ -28,35 +28,35 @@ function check_include($expect)
     \ \  \\ \  \ \  \\\  \ \  \ \  \   \ \  \ 
      \ \__\\ \__\ \_______\ \__\ \__\   \ \__\
       \|__| \|__|\|_______|\|__|\|__|    \|__|
-
+      
 -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>NOHT CO.,LTD.</title>
-    <meta name="description" content="株式会社ノート（NOHT CO.,LTD.）はウェブサイトやサービスの企画・運営、システムやアプリケーションの開発を行っています。">
+    <meta name="description" content="NOHT CO.,LTD. is planning and running of the websites or services, developing system and applications.">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="shortcut icon" href="/favicon.ico" />
     <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
-  <body id='general-layout' class="<?php echo ($parsed_path[0] === "contact") ? "wrapper2" : "wrapper1"?>">
-    <div id="wrapper1" class="<?php echo ($parsed_path[0] !== "" || $parsed_path[0] === "contact") ? $parsed_path[0] : "products"?>">
+  <body id='general-layout' class="<?php echo ($parsed_path[1] === "contact") ? "wrapper2" : "wrapper1"?>">
+    <div id="wrapper1" class="<?php echo ($parsed_path[1] !== "" || $parsed_path[1] === "contact") ? $parsed_path[1] : "products"?>">
       <header id="header">
         <div class="h-contents">
           <h1 class="logo">
-            <a class="pjax-link" href="/"></a>
+            <a class="pjax-link" href="/en/"></a>
           </h1>
           <ul id="gmenu">
             <li class="language">
-              <span class="en"><a href="/en/">EN</a></span><span class="jp selected"><a href="/">JP</a></span>
+              <span class="en selected"><a href="/en/">EN</a></span><span class="jp"><a href="/">JP</a></span>
             </li>
-            <li class="products"><a class="pjax-link" href="/">
+            <li class="products"><a class="pjax-link" href="/en/">
               <span class="bg-color"><p>PRODUCTS</p></span><span class="bg-none"><p>PRODUCTS</p></span>
             </a></li>
-            <li class="about"><a class="pjax-link" href="/about/">
+            <li class="about"><a class="pjax-link" href="/en/about/">
               <span class="bg-color"><p>ABOUT</p></span><span class="bg-none"><p>ABOUT</p></span>
             </a></li>
-            <li class="contact"><a class="pjax-link" href="/contact/">
+            <li class="contact"><a class="pjax-link" href="/en/contact/">
               <p>CONTACT</p>
             </a></li>
           </ul>
@@ -65,10 +65,10 @@ function check_include($expect)
       </header>
       <div class="main">
         <ul class="site-contents">
-          <li id="products" class="site-content ajax-content" data-ajax="/products">
+          <li id="products" class="site-content ajax-content" data-ajax="/en/products">
             <?php check_include("products") ?>
           </li>
-          <li id="about" class="site-content ajax-content" data-ajax="/about">
+          <li id="about" class="site-content ajax-content" data-ajax="/en/about">
             <?php check_include("about") ?>
           </li>
         </ul>
@@ -77,7 +77,7 @@ function check_include($expect)
     <div id="wrapper2" class="contact">
       <div class="main">
         <div class="site-contents">
-          <div id="contact" class="site-content ajax-content" data-ajax="/contact">
+          <div id="contact" class="site-content ajax-content" data-ajax="/en/contact">
             <?php check_include("contact") ?>
           </div>
         </div>

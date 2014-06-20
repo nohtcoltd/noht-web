@@ -26,12 +26,16 @@ function get_parsed_path()
 {
   $url = parse_url($_SERVER["REQUEST_URI"]);
   $path = $url["path"];
-
   $parsed_path = explode("/", $path);
+
   //$parsed_path[0]は必ず空になるので
   //array_shiftで削除する
   if (count($parsed_path) != 0) {
     array_shift($parsed_path);
+  }
+
+  if ($_SERVER["HTTP_HOST"] == "button.noht.co.jp" && $parsed_path[0] != "2_5dbutton") {
+    array_unshift($parsed_path, "2_5dbutton");
   }
 
   return $parsed_path;
