@@ -25,7 +25,8 @@
   function stock_value()
   {
     $val = array();
-    $val['html_code'] = decode_entities($_POST['html_code']);
+    $val['text'] = decode_entities($_POST['text']);
+    $val['icon'] = decode_entities($_POST['icon']);
     $val['label_size'] = decode_entities($_POST['label_size']);
     $val['icon_size'] = decode_entities($_POST['icon_size']);
     $val['label_color'] = decode_entities($_POST['label_color']);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html id="button2_5d" class="no-js" lang="ja">
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -220,6 +220,7 @@
               <li class="icon-font-inset">help</li>
               <li class="icon-font-inset">refreshbutton</li>
               <li class="icon-font-inset">terminal</li>
+              <li class="icon-font-inset">download</li>
             </ul>
           </div>
           <div class="logos">
@@ -428,27 +429,29 @@
           </div>
         </section>
         <section class="downloads">
-          <a class="ligature-symbols download-button" href="https://github.com/kudakurage/LigatureSymbols/archive/master.zip">
-            <div class="button-content-inset">
-              <span class="icon-font-inset">download</span>
-              <span class="button-text-inset">Download Ligature Symbols</span>
-            </div>
-          </a>
           <a class="created-button download-button">
             <div class="button-content-inset">
-              <span class="icon-font-inset">present</span>
-              <span class="button-text-inset">Download Created Button ZIP</span>
+              <span class="icon-font-inset">download</span>
             </div>
           </a>
+          <p class="dl-caption">
+            Download Your Created Button ZIP
+          </p>
           <a class="github link-button" href="https://github.com/nohtcoltd/2_5dbutton">
             <div class="button-content-inset">
               <span class="icon-font-inset">github</span>
-              <span class="button-text-inset">GitHub</span>
+              <span class="button-text-inset">GitHub - 2.5dBUTTON</span>
             </div>
           </a>
-          <p>
-            <a href="http://kudakurage.com/ligature_symbols/">Ligature Symbols</a> by Kazuyuki Motoyama
-          </p>
+        </section>
+        <section class="lisence">
+          <span>
+            <p class="caption">This page uses the Ligature Symbols and the Modernizr WordPress Plugin.</p>
+            <p>
+              <a href="http://kudakurage.com/ligature_symbols">Ligature Symbols</a> by Kazuyuki Motoyama<br/>
+              <a href="http://modernizr.com">Modernizr</a> by Modernizr Team
+            </p>
+          </span>
         </section>
       </div>
     </section>
@@ -460,6 +463,7 @@
   </article>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+  <script type="text/javascript" src="/js/vendor/modernizr-2.6.2.min.js"></script>
   <script type="text/javascript" src="/js/vendor/jquery-ui-1.10.3.custom.js"></script>
   <script type="text/javascript" src="/js/vendor/spectrum.js"></script>
   <script type="text/javascript" src="/js/vendor/jquery.zclip.js"></script>

@@ -27,7 +27,7 @@
     user-select: $select;
     -moz-user-select: $select;
     -webkit-user-select: $select;
-    -ms-user-select: $select;    
+    -ms-user-select: $select;
   }
 
   @mixin bubble-talk($color, $width, $height, $direction, $position: 50%) {
@@ -110,14 +110,14 @@
       }
       &:before {
         @include transition($speed, ease-in-out);
-        border-bottom: $popup-dist solid rgba($darken, 0); 
+        border-bottom: $popup-dist solid rgba($darken, 0);
       }
     }
     &:active {
       @include transition(0ms);
       top: 0px;
       background-color: rgba(darken($button-color, 15%), 1);
-      box-shadow: 0px($popup-dist / 5) + 2 0px 0px rgba($darken, 1) inset; 
+      box-shadow: 0px($popup-dist / 5) + 2 0px 0px rgba($darken, 1) inset;
       .button-content-inset {
         @include transition(0ms);
         box-shadow: 0px 0px 0px 0px rgba(darken($button-color, $side-darkness + 20%), 0);
@@ -127,11 +127,39 @@
         top: -$popup-dist;
         border-bottom: 0px solid rgba($darken, 0);
         padding-bottom: $popup-dist;
-      }    
+      }
+    }
+    .touch & {
+      &:hover {
+        background-color: rgba($button-color, 1);
+        top: 0px;
+        .button-content-inset {
+          box-shadow: 0px 0px 0px 0px rgba($button-color, 1);
+        }
+        &:before {
+          border-bottom: 0px solid rgba($darken, 0);
+        }
+      }
+      &:active {
+        @include transition(0ms);
+        top: 0px;
+        background-color: rgba(darken($button-color, 15%), 1);
+        box-shadow: 0px($popup-dist / 5) + 2 0px 0px rgba($darken, 1) inset;
+        .button-content-inset {
+          @include transition(0ms);
+          box-shadow: 0px 0px 0px 0px rgba(darken($button-color, $side-darkness + 20%), 0);
+        }
+        &:before {
+          @include transition(0ms);
+          top: -$popup-dist;
+          border-bottom: 0px solid rgba($darken, 0);
+          padding-bottom: $popup-dist;
+        }
+      }
     }
   }
 
-  @mixin preset-button( $bg-color, $preset-w: 150px, $preset-h: 30px, $move-length: 3px, $preset-radius: 3px, $speed: 100ms) { 
+  @mixin preset-button( $button-color, $preset-w: 150px, $preset-h: 30px, $popup-dist: 3px, $preset-radius: 3px, $speed: 100ms) {
     @include user-select;
     @include transition(0ms);
     position: relative;
@@ -141,8 +169,8 @@
     top: 0px;
     cursor: pointer;
     border-radius: $preset-radius;
-    background-color: rgba($bg-color, 1);
-    box-shadow: 0px ($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 0) inset, 0px 0px 0px 0px rgba(darken($bg-color, 15%), 0); 
+    background-color: rgba($button-color, 1);
+    box-shadow: 0px ($popup-dist/5) + 2 0px 0px rgba(darken($button-color, 15%), 0) inset, 0px 0px 0px 0px rgba(darken($button-color, 15%), 0);
     &:before {
       content: "";
       position: absolute;
@@ -151,34 +179,54 @@
       top: 0;
       left: 0;
       border-radius: $preset-radius;
-      border-bottom: 0px solid rgba(darken($bg-color, 10%), 0);
-      background-color: rgba($bg-color, 0);
+      border-bottom: 0px solid rgba(darken($button-color, 10%), 0);
+      background-color: rgba($button-color, 0);
     }
     &:hover {
       @include transition($speed, ease-in-out);
-      background-color: rgba(lighten($bg-color, 5%), 1);
-      top: -$move-length;
-      box-shadow: 0px ($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 0) inset, 0px $move-length 0px 0px rgba(darken($bg-color, 15%), 1); 
+      background-color: rgba(lighten($button-color, 5%), 1);
+      top: -$popup-dist;
+      box-shadow: 0px ($popup-dist/5) + 2 0px 0px rgba(darken($button-color, 15%), 0) inset, 0px $popup-dist 0px 0px rgba(darken($button-color, 15%), 1);
       &:before {
         @include transition($speed, ease-in-out);
-        border-bottom: $move-length solid rgba(darken($bg-color, 10%), 0); 
+        border-bottom: $popup-dist solid rgba(darken($button-color, 10%), 0);
       }
-    } 
+    }
     &:active {
       @include transition(0ms);
-      background-color: rgba(darken($bg-color, 5%), 1);
+      background-color: rgba(darken($button-color, 5%), 1);
       top: 0px;
-      box-shadow: 0px ($move-length/5) + 2 0px 0px rgba(darken($bg-color, 15%), 1) inset, 0px 0px 0px 0px rgba(darken($bg-color, 15%), 0); 
+      box-shadow: 0px ($popup-dist/5) + 2 0px 0px rgba(darken($button-color, 15%), 1) inset, 0px 0px 0px 0px rgba(darken($button-color, 15%), 0);
       &:before {
         @include transition(0ms);
-        top: -$move-length;
-        border-bottom: 0px solid rgba(darken($bg-color, 10%), 0);
-        padding-bottom: $move-length;
-      }    
+        top: -$popup-dist;
+        border-bottom: 0px solid rgba(darken($button-color, 10%), 0);
+        padding-bottom: $popup-dist;
+      }
+    }
+    .touch &:hover {
+      background-color: rgba($button-color, 1);
+      top: 0px;
+      box-shadow: 0px 0px 0px 0px rgba($button-color, 0) inset, 0px 0px 0px 0px rgba($button-color, 1);
+      &:before {
+        border-bottom: 0px solid rgba($button-color, 0);
+      }
+    }
+    .touch &:active {
+      @include transition(0ms);
+      background-color: rgba(darken($button-color, 5%), 1);
+      top: 0px;
+      box-shadow: 0px ($popup-dist/5) + 2 0px 0px rgba(darken($button-color, 15%), 1) inset, 0px 0px 0px 0px rgba(darken($button-color, 15%), 0);
+      &:before {
+        @include transition(0ms);
+        top: -$popup-dist;
+        border-bottom: 0px solid rgba(darken($button-color, 10%), 0);
+        padding-bottom: $popup-dist;
+      }
     }
   }
 
-  @mixin triangle-bottom($top, $left) { 
+  @mixin triangle-bottom($top, $left) {
     position: absolute;
     top: $top;
     left: $left;
@@ -231,11 +279,11 @@
       }
   }
   .wrap {
-    font-family: "ヒラギノ角ゴ Pro W3", 
-    "Hiragino Kaku Gothic Pro", 
-    "メイリオ", Meiryo, 
-    "ＭＳ Ｐゴシック", 
-    "MS PGothic", 
+    font-family: "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro",
+    "メイリオ", Meiryo,
+    "ＭＳ Ｐゴシック",
+    "MS PGothic",
     sans-serif;
     min-width: 1000px;
     text-decoration: none;
@@ -292,18 +340,18 @@
             .green {
               @include preset-button(#b5c23a);
             }
-            .blue {            
-              @include preset-button(#4587c0);              
+            .blue {
+              @include preset-button(#4587c0);
             }
             .red {
               @include preset-button(#c94240);
             }
             .black {
               @include preset-button(#474747);
-            } 
+            }
             .preset-button {
               margin: 15px;
-            }      
+            }
           }
         }
       }
@@ -328,6 +376,8 @@
         }
       }
       .selector {
+        width: 1000px;
+        margin: 0px auto;
         .selector-content {
           @include inline-block;
           background-color: #fafafa;
@@ -430,7 +480,9 @@
         }
       }
       .code {
-        margin-top: 50px;
+        width: 1000px;
+        margin: 0px auto;
+        padding-top: 10px;
         .code-box {
           @include inline-block;
           position: relative;
@@ -470,26 +522,44 @@
       }
     }
     .downloads {
+      font-size: 0;
       @include inline-block;
-      padding: 60px 0px;
+      margin-top: 10px;
       > a {
         margin: 0px 5px;
       }
       .download-button {
-        @include general-button-inset(15px, 34px, #787878, 2px, 2px, 20px, 18px, 50ms, #fafafa, 25%);
+        @include general-button-inset(50px, 100px, #fff, 10px, 20px, 370px, 0px, 50ms, #7c7c7c, 2%);
       }
       .link-button {
+        margin-top: 60px;
         @include general-button-inset(15px, 34px, #555555, 2px, 2px, 15px, 5px, 50ms, #fafafa, 25%);
+      }
+      .dl-caption {
+        padding-left: 25px;
+        margin-top: 15px;
+        font-size: 17px;
+      }
+    }
+    .lisence {
+      margin-top: 50px;
+      > span  {
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 20px 100px;
       }
       a, a:visited {
         color: #686868;
       }
-      p {
-        padding-left: 25px;
-        margin-top: 15px;
-        text-align: left;
-        font-size: 12px;
+      .caption {
+        font-size: 14px;
+        padding-bottom: 20px;
       }
+      p {
+        font-size: 12px;
+        line-height: 2;
+      }
+
     }
     footer {
       background-color: #eaeaea;
@@ -506,7 +576,7 @@
     border-radius: 0px;
     background-color: #8c8c8c;
     &:hover {
-      .ui-state-default { 
+      .ui-state-default {
         top: -5px;
         width: 14px;
         height: 14px;

@@ -1,5 +1,6 @@
 $(function()
 {
+
   //エスケープ文字
   function get_entity()
   {
@@ -601,6 +602,8 @@ $(function()
       user_style_end: "/*------------------------------------------" + entity["nl"] + "// User style end"  + entity["nl"] + "----------------------------------------- */" + entity["nl"],
       core_style_start: entity["nl"] + "/*------------------------------------------" + entity["nl"] + "// Core style start"  + entity["nl"] + "// not change"  + entity["nl"] + "----------------------------------------- */" + entity["nl"] + entity["nl"],
       core_style_end: entity["nl"] + "/*------------------------------------------" + entity["nl"] + "// Core style end"  + entity["nl"] + "----------------------------------------- */" + entity["nl"],
+      touch_start: entity["nl"] + "/*------------------------------------------" + entity["nl"] + "// Touch style start" + entity["nl"] + "----------------------------------------- */",
+      touch_end: entity["nl"] + "/*------------------------------------------" + entity["nl"] + "// Touch style end"  + entity["nl"] + "----------------------------------------- */" + entity["nl"],
       hover:  entity["nl"] + entity["nl"] + "/*----------------- at hover -----------------*/",
       active: entity["nl"] + entity["nl"] + "/*----------------- at active -----------------*/"
     };
@@ -617,7 +620,13 @@ $(function()
       button_content_hover: entity["nl"] + entity["nl"] + ".general-button:hover .button-content" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
       general_active: entity["nl"] + entity["nl"] + ".general-button:active" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
       general_active_before: entity["nl"] + entity["nl"] + ".general-button:active:before" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
-      button_content_active: entity["nl"] + entity["nl"] + ".general-button:active .button-content" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"]
+      button_content_active: entity["nl"] + entity["nl"] + ".general-button:active .button-content" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
+      touch_hover: entity["nl"] + entity["nl"] + ".touch .general-button:hover" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
+      touch_hover_before: entity["nl"] + entity["nl"] + ".touch .general-button:hover:before" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
+      touch_content_hover: entity["nl"] + entity["nl"] + ".touch .general-button:hover .button-content" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
+      touch_active: entity["nl"] + entity["nl"] + ".touch .general-button:active" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
+      touch_active_before: entity["nl"] + entity["nl"] + ".touch .general-button:active:before" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
+      touch_content_active: entity["nl"] + entity["nl"] + ".touch .general-button:active .button-content" + entity["indent_1"] + "{" + entity["nl"] + entity["indent_1"],
     };
 
     //コード短縮
@@ -693,15 +702,28 @@ $(function()
             "" + css_code["class_name"].general_active_before + css_code["snippets"].transition_active + css_code["snippets"].close +
             "" + css_code["class_name"].button_content_active + css_code["snippets"].transition_active  + css_code["snippets"].close + entity["nl"]
     };
+
+    //touch
+    css_code["touch_css"] = {
+    hover: "" + css_code["class_name"].touch_hover + "top: 0px;" + entity["nl"] + entity["indent_1"] + "background-color: " + get_current_color_val("button") + ";"+ css_code["snippets"].close +
+           "" + css_code["class_name"].touch_hover_before + "border-bottom: 0px solid rgba("+ modify_color_val().side + ", 0);"+ css_code["snippets"].close +
+           "" + css_code["class_name"].touch_content_hover + "box-shadow: 0px 0px 0px 0px rgba("+ modify_color_val().side + ", 1);"+ entity["nl"] + css_code["snippets"].close,
+    active: "" + css_code["class_name"].touch_active + "background-color: "+ modify_color_val().darken + ";"+ entity["nl"] + entity["indent_1"] + "box-shadow: 0px "+ (( get_current_slider_val("popup") / 5) + 1) + "px 0px 0px rgba("+ modify_color_val().inset + ", 1) inset;"+ css_code["snippets"].close +
+            "" + css_code["class_name"].touch_active_before + "top: -"+ get_current_slider_val("popup") + "px;"+ entity["nl"] + entity["indent_1"] + "padding-bottom: "+ get_current_slider_val("popup") + "px;"+ entity["nl"] + entity["indent_1"] + "border-bottom: 0px solid rgba("+ modify_color_val().side + ", 0);"+ css_code["snippets"].close +
+            "" + css_code["class_name"].touch_content_active + "box-shadow: 0px 0px 0px 0px rgba("+ modify_color_val().side + ", 0);"+ css_code["snippets"].close
+    };
+
     return  {
       //style変更用
       insert_head: css_code["display_margin"]
                   + css_code["variable_css"].nomal + css_code["variable_css"].hover + css_code["variable_css"].active
-                  + css_code["constant_css"].nomal  + css_code["constant_css"].hover + css_code["constant_css"].active,
+                  + css_code["constant_css"].nomal  + css_code["constant_css"].hover + css_code["constant_css"].active
+                  + css_code["touch_css"].hover + css_code["touch_css"].active,
       //htmlに表示
       insert_html: css_code["icon_font"].font_face + css_code["icon_font"].font_family
                   + css_code["comments"].user_style_start + css_code["variable_css"].nomal + css_code["comments"].hover + css_code["variable_css"].hover + css_code["comments"].active + css_code["variable_css"].active + css_code["comments"].user_style_end
                   + css_code["comments"].core_style_start + css_code["constant_css"].nomal + css_code["comments"].hover + css_code["constant_css"].hover + css_code["comments"].active + css_code["constant_css"].active + css_code["comments"].core_style_end
+                  + css_code["comments"].touch_start + css_code["comments"].hover + css_code["touch_css"].hover + css_code["comments"].active +css_code["touch_css"].active + entity["nl"] + css_code["comments"].touch_end
     }
    }
 
@@ -711,39 +733,41 @@ $(function()
     var entity = get_entity();
     var label_text = get_current_text();
     var icon = get_current_icon();
+
     var html_code = "<div class=" + '"general-button"' + ">" +
-                    entity["nl"] + entity["indent_1"] + "<div class=" + '"button-content"' + ">" +
-                    entity["nl"] + entity["indent_2"] + "<span class=" + '"icon-font"' + ">" + icon + "</span>" +
-                    entity["nl"] + entity["indent_2"] + "<span class=" + '"button-text"' + ">" + label_text + "</span>" +
-                    entity["nl"] + entity["indent_1"] + "</div>" +
-                    entity["nl"] + "</div>" +
-                    entity["nl"];
+      entity["nl"] + entity["indent_1"] + "<div class=" + '"button-content"' + ">" +
+      entity["nl"] + entity["indent_2"] + "<span class=" + '"icon-font"' + ">" + icon + "</span>" +
+      entity["nl"] + entity["indent_2"] + "<span class=" + '"button-text"' + ">" + label_text + "</span>" +
+      entity["nl"] + entity["indent_1"] + "</div>" +
+      entity["nl"] + "</div>" +
+      entity["nl"];
 
     $(".icon .icon-font-inset").css("font-size", "40px");
 
     if (icon == "none" && label_text == "") {
       var html_code = "<div class=" + '"general-button"' + ">" +
-                  entity["nl"] + entity["indent_1"] + "<div class=" + '"button-content"' + ">" +
-                  entity["nl"] + entity["indent_1"] + "</div>" +
-                  entity["nl"] + "</div>" +
-                  entity["nl"];
+        entity["nl"] + entity["indent_1"] + "<div class=" + '"button-content"' + ">" +
+        entity["nl"] + entity["indent_1"] + "</div>" +
+        entity["nl"] + "</div>" +
+        entity["nl"];
       $(".icon .icon-font-inset").css("font-size", "25px");
     } else if (icon == "none") {
       var html_code = "<div class=" + '"general-button"' + ">" +
-                  entity["nl"] + entity["indent_1"] + "<div class=" + '"button-content"' + ">" +
-                  entity["nl"] + entity["indent_2"] + "<span class=" + '"button-text"' + ">" + label_text + "</span>" +
-                  entity["nl"] + entity["indent_1"] + "</div>" +
-                  entity["nl"] + "</div>" +
-                  entity["nl"];
+        entity["nl"] + entity["indent_1"] + "<div class=" + '"button-content"' + ">" +
+        entity["nl"] + entity["indent_2"] + "<span class=" + '"button-text"' + ">" + label_text + "</span>" +
+        entity["nl"] + entity["indent_1"] + "</div>" +
+        entity["nl"] + "</div>" +
+        entity["nl"];
       $(".icon .icon-font-inset").css("font-size", "25px");
     } else if (label_text == "") {
       var html_code = "<div class=" + '"general-button"' + ">" +
-                    entity["nl"] + entity["indent_1"] + "<div class=" + '"button-content"' + ">" +
-                    entity["nl"] + entity["indent_2"] + "<span class=" + '"icon-font"' + ">" + icon + "</span>" +
-                    entity["nl"] + entity["indent_1"] + "</div>" +
-                    entity["nl"] + "</div>" +
-                    entity["nl"];
+        entity["nl"] + entity["indent_1"] + "<div class=" + '"button-content"' + ">" +
+        entity["nl"] + entity["indent_2"] + "<span class=" + '"icon-font"' + ">" + icon + "</span>" +
+        entity["nl"] + entity["indent_1"] + "</div>" +
+        entity["nl"] + "</div>" +
+        entity["nl"];
     }
+
     return html_code;
   }
 
@@ -772,9 +796,15 @@ $(function()
   //HTMLを変更//
   function change_html()
   {
+    var entity = get_entity();
+    var modernizr_comment = '<!-- ' +
+    entity["nl"] + entity["indent_1"] +'Using Modernizr.js for smartphone.' +
+    entity["nl"] + entity["indent_1"] +'http://modernizr.com' +
+    entity["nl"] + '-->' + entity["nl"];
+
     var html = get_html_code();
     $(".demo-display").html(html);
-    $(".html .code-convert").html(html);
+    $(".html .code-convert").text(modernizr_comment + html);
   }
 
   //デモボタンの初期化用
@@ -841,7 +871,8 @@ $(function()
       type: "POST",
       url: "/2_5dbutton/create",
       data: {
-        html_code: get_html_code(),
+        text: get_current_text(),
+        icon: get_current_icon(),
         label_size: get_current_slider_val("label_size"),
         icon_size: get_current_slider_val("icon_size"),
         label_color: get_current_color_val("label").toHexString(),
