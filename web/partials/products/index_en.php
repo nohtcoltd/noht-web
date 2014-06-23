@@ -65,8 +65,8 @@
           </h2>
           <div class="text">
             <p>
-              hoverででっぱりon_clickでへっこむフラットなボタン。<br/>
-              ジェネレータで自由なデザインのボタン素材が作れる。
+              Flat Buttons which pop up on hover and are pressed on click.<br/>
+              You can generate button materials as you like.
             </p>
             <a href="/2_5dbutton" class="link-button able">
               <span class="button-content">
