@@ -8,7 +8,7 @@
   font-weight: normal;
   font-style: normal;
 }
-  
+
 .icon-font {
   font-family: "LigatureSymbols";
   -webkit-text-rendering: optimizeLegibility;
@@ -38,7 +38,7 @@
 @mixin user-select($select: none) {
   -moz-user-select: $select;
   -webkit-user-select: $select;
-  -ms-user-select: $select;    
+  -ms-user-select: $select;
   user-select: $select;
 }
 
@@ -99,14 +99,14 @@
     }
     &:before {
       @include transition($speed, ease-in-out);
-      border-bottom: $popup-dist solid rgba($darken, 0); 
+      border-bottom: $popup-dist solid rgba($darken, 0);
     }
   }
   &:active {
     @include transition(0ms);
     top: 0px;
     background-color: rgba(darken($button-color, 5%), 1);
-    box-shadow: 0px($popup-dist / 5) + 1 0px 0px rgba($darken, 1) inset; 
+    box-shadow: 0px($popup-dist / 5) + 1 0px 0px rgba($darken, 1) inset;
     .button-content {
       @include transition(0ms);
       box-shadow: 0px 0px 0px 0px rgba(darken($button-color, $side-darkness + 5%), 0);
@@ -116,7 +116,7 @@
       top: -$popup-dist;
       border-bottom: 0px solid rgba($darken, 0);
       padding-bottom: $popup-dist;
-    }    
+    }
   }
 }
 

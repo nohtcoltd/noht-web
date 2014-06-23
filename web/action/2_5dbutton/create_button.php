@@ -36,7 +36,7 @@
     $val['speed'] = decode_entities($_POST['speed']);
     $val['button_color'] = decode_entities($_POST['button_color']);
     $val['side_darkness'] = decode_entities($_POST['side_darkness']);
-    $pval['line_height'] = decode_entities($_POST['line_height']);
+    //$val['line_height'] = decode_entities($_POST['line_height']);
     return $val;
   }
 
@@ -103,7 +103,7 @@
   //-------------------------------------------------
   function scss_compile($scss_file, $css_file)
   {
-    exec("sass --style expanded {$scss_file} {$css_file}");
+    exec("bundle exec sass --style expanded {$scss_file} {$css_file}");
   }
 
   //-------------------------------------------------
