@@ -79,6 +79,14 @@
       </div>
     </div>
   </section>
+  <section class="get-hashtag">
+    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/alcCalc" data-widget-id="481356220561764352" height="300" data-chrome="noheader nofooter">#alcCalc件のツイート</a>
+    <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    </script>
+  </section>
   <section class="main">
     <section class="caption">
       <p>

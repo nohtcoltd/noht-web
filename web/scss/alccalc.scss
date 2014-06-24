@@ -210,6 +210,18 @@
             height: 100%;
         }
     }
+    .get-hashtag {
+        display: none;
+        padding-top: 30px;
+        background-color: #f4f4f4;
+        #twitter-widget-1 {
+//           max-width: 80% !important;
+//           width: 80% !important;
+        }
+        .timeline {
+            background-color: $main-color !important;
+        }
+    }
     .main {
         position: relative;
         background: #f4f4f4 ;
@@ -503,6 +515,12 @@
             width: 100%;
             .video-container {
                 min-width: 0;
+            }
+        }
+        .get-hashtag {
+            #twitter-widget-1 {
+                //max-width: 100% !important;
+                //width: 100% !important;
             }
         }
         .main {

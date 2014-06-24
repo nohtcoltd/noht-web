@@ -1,5 +1,74 @@
 $(function()
 {
+//-------------------------------------
+//twitter-widget iframe内部のstyle変更
+//-------------------------------------
+function load_iframe_style()
+{
+  $(window).load(function()
+  {
+    setTimeout(function()
+    {
+      style_inner_iframe();
+      $(".get-hashtag").css("display", "block");
+    }, 1000);
+  });
+}
+
+function style_inner_iframe()
+{
+  var window_width = $(window).width();
+  var target = $('iframe.twitter-timeline');
+  var target_contents = target.contents();
+
+  target_contents.find(".stream").css({
+    "overflow-x": "intial"
+  });
+  target_contents.find(".timeline").css({
+    "border": "none",
+  });
+  target_contents.find(".tweet").css({
+    "max-width": "700px",
+    "margin": "0px auto"
+  });
+
+  if(window_width < 700) {
+    target.attr("height", "200").removeAttr("style").css({
+      "border": "none",
+      "max-width": "100%",
+      "width": "700px",
+      "min-width": "180px"
+    });
+    target_contents.find(".tweet").css({
+      "padding": "20px 10px 0px 69px",
+    });
+    target_contents.find(".timeline .e-entry-title").css({
+      "font-size": "12px"
+    });
+  } else {
+    target.attr("height", "300").removeAttr("style").css({
+      "border": "none",
+      "width": "80%",
+      "min-width": "180px"
+    });
+    target_contents.find(".tweet").css({
+      "padding": "32px 12px 10px 69px"
+    });
+    target_contents.find(".timeline .e-entry-title").css({
+      "font-size": "14px"
+    });
+  }
+}
+
+function responsiv_inner_iframe()
+{
+  $(window).resize(function()
+  {
+    style_inner_iframe();
+  });
+}
+
+
 //--------------------
 //値の保持
 //--------------------
@@ -351,6 +420,8 @@ $(function()
 
   function init()
   {
+    load_iframe_style();
+    responsiv_inner_iframe();
     scroll_top();
     reserve_now();
   }
