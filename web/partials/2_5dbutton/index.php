@@ -468,5 +468,6 @@
   <script type="text/javascript" src="/js/vendor/spectrum.js"></script>
   <script type="text/javascript" src="/js/vendor/jquery.zclip.js"></script>
   <script type="text/javascript" src="/js/2_5dbutton.js"></script>
+  <?php include("templates/ga.php"); ?>
 </body>
 </html>

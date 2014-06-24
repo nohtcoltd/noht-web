@@ -194,5 +194,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
   <script type="text/javascript" src="/js/alccalc.js"></script>
+  <?php include("templates/ga.php"); ?>
 </body>
 </html>

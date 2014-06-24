@@ -141,11 +141,24 @@ $(function()
         }
         return_animation();
       } else if(data.status == "success") {
+        ga_send();
         close_animation();
       }
 
       is_submit = false;
     });
+  }
+
+  function ga_send()
+  {
+     var location = window.location.pathname + window.location.search;
+     if(ga) {
+        ga('send', {
+            'hitType': 'pageview',
+            'page': '/contact/thanks',
+            'title': 'contact/thanks'
+        });
+     }
   }
 
 
