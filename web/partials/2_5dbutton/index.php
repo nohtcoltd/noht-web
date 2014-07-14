@@ -302,7 +302,7 @@
       <img src="/images/2_5dbutton/logo_2_5dbutton.png" alt="logo">
     </header>
 
-    <div class="sns-buttons">
+    <div class="sns-buttons top">
       <!-- google+1 -->
       <span class="sns-button google">
         <div class="g-plusone" data-size="medium" data-annotation="none"></div>
@@ -316,14 +316,11 @@
           })();
         </script>
       </span>
-
       <!-- Hatena -->
       <span class="sns-button hatena">
-        <a href="http://b.hatena.ne.jp/entry/http://noht.co.jp/2_5dbutton" class="hatena-bookmark-button" data-hatena-bookmark-title="2.5dBUTTON" data-hatena-bookmark-layout="simple" title="このエントリーをはてなブックマークに追加">
-          <img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-          <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        <a href="http://b.hatena.ne.jp/entry/http://noht.co.jp/2_5dbutton" class="hatena-bookmark-button" data-hatena-bookmark-title="2.5dBUTTON" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
       </span>
-
       <!-- Twitter-->
       <span class="sns-button twitter">
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://noht.co.jp/2_5dbutton" data-count="none" data-lang="en">Tweet</a>
@@ -335,7 +332,6 @@
           fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
         </script>
       </span>
-
       <!-- Facebook-->
       <span class="sns-button facebook">
         <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fnoht.co.jp%2F2_5dbutton&amp;width=130&amp;locale=en_US&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:48px; height:21px;" allowTransparency="true"></iframe>
@@ -496,6 +492,24 @@
         </section>
       </div>
     </section>
+    <div class="sns-buttons bottom">
+      <!-- google+1 -->
+      <span class="sns-button google">
+        <div class="g-plusone" data-size="medium" data-annotation="none"></div>
+      </span>
+      <!-- Hatena -->
+      <span class="sns-button hatena">
+        <a href="http://b.hatena.ne.jp/entry/http://noht.co.jp/2_5dbutton" class="hatena-bookmark-button" data-hatena-bookmark-title="2.5dBUTTON" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+      </span>
+      <!-- Twitter-->
+      <span class="sns-button twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://noht.co.jp/2_5dbutton" data-count="none" data-lang="en">Tweet</a>
+      </span>
+      <!-- Facebook-->
+      <span class="sns-button facebook">
+        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fnoht.co.jp%2F2_5dbutton&amp;width=130&amp;locale=en_US&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:48px; height:21px;" allowTransparency="true"></iframe>
+      </span>
+    </div>
     <footer>
       <a href="/">
         <img src="/images/2_5dbutton/rogo_noht.png">
