@@ -1036,7 +1036,7 @@ $(function()
       $(window).resize(function()
       {
         if (timer !== false) {
-            clearTimeout(timer);
+          clearTimeout(timer);
         }
         timer = setTimeout(function()
         {

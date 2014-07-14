@@ -68,14 +68,14 @@
       @include transition(0ms);
       display: table;
       border-radius: 0px 0px $radius $radius;
-      padding: $horizontal-padding ($vertical-padding/2);
+      padding: $vertical-padding ($horizontal-padding/2);
       color: $label-color;
       box-shadow: 0px 0px 0px 0px rgba($darken, 0);
       .button-text-inset {
         display: table-cell;
         vertical-align: middle;
         text-decoration: none;
-        padding: 0px ($vertical-padding/2);
+        padding: 0px ($horizontal-padding/2);
         font-size: $label-size;
         @if $label-size < $icon-size {
           line-height:($icon-size / $label-size) + 0em;
@@ -86,7 +86,7 @@
       .icon-font-inset {
         display: table-cell;
         vertical-align: middle;
-        padding: 0px ($vertical-padding/2);
+        padding: 0px ($horizontal-padding/2);
         font-size: $icon-size;
       }
     }
@@ -530,11 +530,11 @@
         margin: 0px 5px;
       }
       .download-button {
-        @include general-button-inset(50px, 100px, #fff, 10px, 20px, 370px, 0px, 50ms, #7c7c7c, 2%);
+        @include general-button-inset(50px, 100px, #fff, 10px, 370px, 20px, 0px, 50ms, #7c7c7c, 2%);
       }
       .link-button {
         margin-top: 60px;
-        @include general-button-inset(15px, 34px, #555555, 2px, 2px, 15px, 5px, 50ms, #fafafa, 25%);
+        @include general-button-inset(15px, 34px, #555555, 2px, 15px, 2px, 5px, 50ms, #fafafa, 25%);
       }
       .dl-caption {
         padding-left: 25px;

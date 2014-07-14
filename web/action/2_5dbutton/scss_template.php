@@ -57,14 +57,14 @@
     @include transition(0ms);
     display: table;
     border-radius: 0px 0px $radius $radius;
-    padding: $horizontal-padding ($vertical-padding/2);
+    padding: $vertical-padding ($horizontal-padding/2);
     color: $label-color;
     box-shadow: 0px 0px 0px 0px rgba($darken, 0);
     .button-text {
       display: table-cell;
       vertical-align: middle;
       text-decoration: none;
-      padding: 0px ($vertical-padding/2);
+      padding: 0px ($horizontal-padding/2);
       font-size: $label-size;
       @if $label-size < $icon-size {
         line-height:($icon-size / $label-size) + 0em;
@@ -75,7 +75,7 @@
     .icon-font {
       display: table-cell;
       vertical-align: middle;
-      padding: 0px ($vertical-padding/2);
+      padding: 0px ($horizontal-padding/2);
       font-size: $icon-size;
     }
   }
@@ -135,7 +135,7 @@
       @include transition(0ms);
       top: 0px;
       background-color: rgba(darken($button-color, 5%), 1);
-      box-shadow: 0px($popup-dist / 5) + 1 0px 0px rgba($darken, 1) inset; 
+      box-shadow: 0px($popup-dist / 5) + 1 0px 0px rgba($darken, 1) inset;
       .button-content {
         @include transition(0ms);
         box-shadow: 0px 0px 0px 0px rgba(darken($button-color, $side-darkness + 5%), 0);
@@ -145,7 +145,7 @@
         top: -$popup-dist;
         border-bottom: 0px solid rgba($darken, 0);
         padding-bottom: $popup-dist;
-      }    
+      }
     }
   }
 }

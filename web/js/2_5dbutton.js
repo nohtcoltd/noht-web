@@ -260,7 +260,7 @@ $(function()
 
     slider["horizontal_padding"] = {
       class_name: "horizontal-padding",
-      intial: 6,
+      intial: 15,
       min: 1,
       max: 45,
       unit: "px"
@@ -268,7 +268,7 @@ $(function()
 
     slider["vertical_padding"] = {
       class_name: "vertical-padding",
-      intial: 15,
+      intial: 6,
       min: 1,
       max: 45,
       unit: "px"
@@ -341,17 +341,17 @@ $(function()
   {
     if (get_current_slider_val("icon_size") < get_current_slider_val("label_size")) {
       var modify_val = {
-        radius: parseInt(get_current_slider_val("radius") * ((get_current_slider_val("label_size") + get_current_slider_val("horizontal_padding") * 2) / 2) / 100),
+        radius: parseInt(get_current_slider_val("radius") * ((get_current_slider_val("label_size") + get_current_slider_val("vertical_padding") * 2) / 2) / 100),
         line_height: 1.0,
-        padding:  110 - ((get_current_slider_val("label_size")/2) + get_current_slider_val("horizontal_padding")),
-        vertical_padding: get_current_slider_val("vertical_padding") / 2
+        padding:  110 - ((get_current_slider_val("label_size")/2) + get_current_slider_val("vertical_padding")),
+        horizontal_padding: get_current_slider_val("horizontal_padding") / 2
       };
     } else {
       var modify_val = {
-        radius: parseInt(get_current_slider_val("radius") * ((get_current_slider_val("icon_size") + get_current_slider_val("horizontal_padding") * 2) / 2) / 100),
+        radius: parseInt(get_current_slider_val("radius") * ((get_current_slider_val("icon_size") + get_current_slider_val("vertical_padding") * 2) / 2) / 100),
         line_height: (get_current_slider_val("icon_size") / get_current_slider_val("label_size")).toFixed(1),
-        padding: 110 - ((get_current_slider_val("icon_size")/2) + get_current_slider_val("horizontal_padding")),
-        vertical_padding: get_current_slider_val("vertical_padding") / 2
+        padding: 110 - ((get_current_slider_val("icon_size")/2) + get_current_slider_val("vertical_padding")),
+        horizontal_padding: get_current_slider_val("horizontal_padding") / 2
       };
     };
     return modify_val;
@@ -677,9 +677,9 @@ $(function()
     css_code["variable_css"] = {
     nomal: "" + css_code["class_name"].general + css_code["snippets"].radius_all + entity["nl"] + entity["indent_1"] + "background-color: "+ get_current_color_val("button") + ";"+ css_code["snippets"].close +
            "" + css_code["class_name"].general_before +  css_code["snippets"].radius_all + entity["nl"] + entity["indent_1"] + "border-bottom: 0px solid rgba("+ modify_color_val().side + ", 0);"+ entity["nl"] + entity["indent_1"] + "background-color: rgba("+ modify_color_val().side + ", 0);"+ css_code["snippets"].close +
-           "" + css_code["class_name"].button_content + css_code["snippets"].radius_bottom + entity["nl"] + entity["indent_1"] + "padding: "+ get_current_slider_val("horizontal_padding") + "px "+ modify_slider_val().vertical_padding + "px;"+ entity["nl"] + entity["indent_1"] + "box-shadow: 0px 0px 0px 0px rgba("+ modify_color_val().side + ", 0);" + entity["nl"] + entity["indent_1"] + "color: "+ get_current_color_val("label") + ";"+ css_code["snippets"].close +
-           "" + css_code["class_name"].button_text + "padding: 0px "+ modify_slider_val().vertical_padding + "px;"+ entity["nl"] + entity["indent_1"] + "line-height: "+ modify_slider_val().line_height + "em;"+ entity["nl"] + entity["indent_1"] + "font-size: "+ get_current_slider_val("label_size") + "px;" + entity["nl"] + "}" +
-           "" + css_code["class_name"].icon_font + "padding: 0px "+ modify_slider_val().vertical_padding + "px;"+ entity["nl"] + entity["indent_1"] + "font-size: "+ get_current_slider_val("icon_size") + "px;"+ css_code["snippets"].close,
+           "" + css_code["class_name"].button_content + css_code["snippets"].radius_bottom + entity["nl"] + entity["indent_1"] + "padding: "+ get_current_slider_val("vertical_padding") + "px "+ modify_slider_val().horizontal_padding + "px;"+ entity["nl"] + entity["indent_1"] + "box-shadow: 0px 0px 0px 0px rgba("+ modify_color_val().side + ", 0);" + entity["nl"] + entity["indent_1"] + "color: "+ get_current_color_val("label") + ";"+ css_code["snippets"].close +
+           "" + css_code["class_name"].button_text + "padding: 0px "+ modify_slider_val().horizontal_padding + "px;"+ entity["nl"] + entity["indent_1"] + "line-height: "+ modify_slider_val().line_height + "em;"+ entity["nl"] + entity["indent_1"] + "font-size: "+ get_current_slider_val("label_size") + "px;" + entity["nl"] + "}" +
+           "" + css_code["class_name"].icon_font + "padding: 0px "+ modify_slider_val().horizontal_padding + "px;"+ entity["nl"] + entity["indent_1"] + "font-size: "+ get_current_slider_val("icon_size") + "px;"+ css_code["snippets"].close,
     hover: "" + css_code["class_name"].general_hover + "top: -"+ get_current_slider_val("popup") + "px;"+ entity["nl"] + entity["indent_1"] + css_code["snippets"].transition_hover + entity["nl"] + entity["indent_1"] + "background-color: "+ modify_color_val().lighten +";"+ css_code["snippets"].close +
            "" + css_code["class_name"].general_hover_before + "border-bottom: "+ get_current_slider_val("popup") + "px solid rgba("+ modify_color_val().side + ", 0);"+ entity["nl"] + entity["indent_1"] + css_code["snippets"].transition_hover + css_code["snippets"].close +
            "" + css_code["class_name"].button_content_hover + "box-shadow: 0px "+ get_current_slider_val("popup") + "px 0px 0px rgba("+ modify_color_val().side + ", 1);"+ entity["nl"] + entity["indent_1"] + css_code["snippets"].transition_hover + css_code["snippets"].close,

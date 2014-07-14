@@ -446,7 +446,7 @@
         </section>
         <section class="lisence">
           <span>
-            <p class="caption">This page uses the Ligature Symbols and the Modernizr WordPress Plugin.</p>
+            <p class="caption">This page uses the Ligature Symbols and the Modernizr.</p>
             <p>
               <a href="http://kudakurage.com/ligature_symbols">Ligature Symbols</a> by Kazuyuki Motoyama<br/>
               <a href="http://modernizr.com">Modernizr</a> by Modernizr Team
