@@ -301,6 +301,47 @@
     <header>
       <img src="/images/2_5dbutton/logo_2_5dbutton.png" alt="logo">
     </header>
+
+    <div class="sns-buttons">
+      <!-- google+1 -->
+      <span class="sns-button google">
+        <div class="g-plusone" data-size="medium" data-annotation="none"></div>
+        <script type="text/javascript">
+          (function()
+          {
+            var po = document.createElement('script');
+            po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+      </span>
+
+      <!-- Hatena -->
+      <span class="sns-button hatena">
+        <a href="http://b.hatena.ne.jp/entry/http://noht.co.jp/2_5dbutton" class="hatena-bookmark-button" data-hatena-bookmark-title="2.5dBUTTON" data-hatena-bookmark-layout="simple" title="このエントリーをはてなブックマークに追加">
+          <img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+          <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+      </span>
+
+      <!-- Twitter-->
+      <span class="sns-button twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://noht.co.jp/2_5dbutton" data-count="none" data-lang="en">Tweet</a>
+        <script>
+        !function(d,s,id)
+        {
+          var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+          if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+        </script>
+      </span>
+
+      <!-- Facebook-->
+      <span class="sns-button facebook">
+        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fnoht.co.jp%2F2_5dbutton&amp;width=130&amp;locale=en_US&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:48px; height:21px;" allowTransparency="true"></iframe>
+      </span>
+    </div>
+
     <section class="generator-content">
       <section class="presets">
         <div class="presets-navigation left">
