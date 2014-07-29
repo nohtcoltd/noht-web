@@ -559,11 +559,16 @@
       }
     }
     .lisence {
+      > p {
+        font-size: 15px;
+        padding-bottom: 20px;
+      }
       margin-top: 50px;
       > span  {
         display: inline-block;
         background-color: rgba(0, 0, 0, 0.05);
         padding: 20px 100px;
+        font-size: 12px;
       }
       a, a:visited {
         color: #686868;
@@ -573,7 +578,6 @@
         padding-bottom: 20px;
       }
       p {
-        font-size: 12px;
         line-height: 2;
       }
 

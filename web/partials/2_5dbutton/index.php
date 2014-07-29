@@ -480,8 +480,12 @@
               <span class="button-text-inset">GitHub - 2.5dBUTTON</span>
             </div>
           </a>
-        </section>
+        </section>    
         <section class="lisence">
+          <p>
+            Director,Design KeiichiroHirai  <a href="https://twitter.com/hirausan">@hirausan</a><br/>
+            Frontend YuheiYamamori
+          </p>
           <span>
             <p class="caption">This page uses the Ligature Symbols and the Modernizr.</p>
             <p>
