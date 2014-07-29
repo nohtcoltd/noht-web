@@ -1438,6 +1438,9 @@
         margin-bottom: 5px;
       }
     }
+    .notify > .turnBoxFaceNum2 > .message {
+      padding: 0px 20px;
+    }
     .login-form > .turnBoxFaceNum2 .remember {
       font-size: 11px;
     }
@@ -1457,6 +1460,12 @@
       input {
         width: 60%;
       }
+    }
+    .alert-dialog > .turnBoxFaceNum2 > .ok {
+      margin-top: 10px;
+    }
+    .alert-dialog > .turnBoxFaceNum2 > .cancel {
+      width: 256px;
     }
     .notify > .turnBoxFaceNum2 > .message, .alert-dialog > .turnBoxFaceNum2 > .message {
       line-height: 1.55;
