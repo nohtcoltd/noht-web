@@ -222,6 +222,22 @@
             color: #686868;
         }
     }
+    .turnbox-js {
+        $height: 35%;
+        $hover-height: $height + $height /15;
+        .panel {
+            background-color: #3a3a3a;
+            &:hover .background {
+                height: $hover-height;
+            }
+        }
+        .background {
+            height: $height;
+            top: 36%;
+            background-image: url("../images/products/img_turnbox_js.png");
+            background-position: center center;
+        }
+    }
     .alccalc {
         $height: 150%;
         $hover-height: $height + $height /15;
@@ -519,6 +535,10 @@
                     font-size: 10px;
                 }
             }
+        }
+        .turnbox-js .panel:hover .background {
+            $height: 35%;
+            height: $height;
         }
         .secondpress .panel:hover .background {
             $height: 150%;

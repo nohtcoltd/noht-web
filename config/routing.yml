@@ -43,6 +43,9 @@ alcCalc:
   create:
     POST: action/2_5dbutton/create_button.php
 
+turnbox:
+  GET: partials/turnBox/index.php
+
 en:
   GET: templates/template_en.php
   xhr:

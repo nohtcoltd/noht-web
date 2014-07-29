@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>2.5dBUTTON</title>
+  <title>2.5dBUTTON - NOHT CO.,LTD.</title>
   <link rel="stylesheet" type="text/css" media="screen" href="/css/vender/reset.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/css/vender/spectrum.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/css/vender/jquery-ui-1.10.3.custom.css" />
