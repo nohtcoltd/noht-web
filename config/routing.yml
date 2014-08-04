@@ -46,6 +46,9 @@ alcCalc:
 turnbox:
   GET: partials/turnBox/index.php
 
+sign:
+  GET: partials/sign/index.php
+
 en:
   GET: templates/template_en.php
   xhr:

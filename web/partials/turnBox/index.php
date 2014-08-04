@@ -59,7 +59,7 @@
     </div>
     <div class="title">
       <div>
-        <p class="turnBoxButton turnBoxTo3">      
+        <p class="turnBoxButton turnBoxTo3">
           TURNBOX.js
         </p>
       </div>
@@ -134,7 +134,7 @@
             </div>
             <div>
               <div class="uploading-bar"></div>
-            </div>  
+            </div>
             <div>
               <p>
                 COMPLETE
@@ -177,21 +177,11 @@
               </ul>
               <div class="help">
                 <div class="forgot-pass">
-                  <div>
-                    <p class="turnBoxButton turnBoxButtonEventMouseover turnBoxButtonEventTouchstart">Forgot password?</p>
-                  </div>
-                  <div>
-                    <p class="turnBoxButton turnBoxButtonPrev turnBoxButtonEventMouseout turnBoxButtonEventTouchend">Forgot password?</p>
-                  </div>
+                  Forgot password?
                 </div>
                 <br/>
                 <div class="sign-up">
-                  <div>
-                    <p class="turnBoxButton turnBoxButtonEventMouseover turnBoxButtonEventTouchstart">Sign up?</p>
-                  </div>
-                  <div>
-                    <p class="turnBoxButton turnBoxButtonPrev turnBoxButtonEventMouseout turnBoxButtonEventTouchend">Sign up?</p>
-                  </div>
+                  Sign up?
                 </div>
               </div>
               <div class="login-contents">
@@ -208,16 +198,7 @@
                   </div>
                 </div>
                 <span class="check">
-                  <div>
-                    <p class="ok turnBoxButton turnBoxButtonEventMouseover turnBoxButtonEventTouchstart">
-                      GO
-                    </p>
-                  </div>
-                  <div>
-                    <p class="go turnBoxButton turnBoxButtonPrev turnBoxButtonEventMouseout turnBoxButtonEventTouchend">
-                      GO
-                    </p>
-                  </div>
+                  GO
                 </span>
               </div>
               <div class="login-sns">
@@ -240,7 +221,7 @@
               </div>
             </div>
             <div>
-              <p class="turnBoxButton turnBoxButtonPrev">THANKS</p>
+              <p class="turnBoxButton turnBoxButtonPrev">LOGIN SUCCEEDED</p>
             </div>
           </div>
         </div>
@@ -258,20 +239,11 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
               <span class="check">
-                <div>
-                  <p class="turnBoxButton turnBoxButtonEventMouseover turnBoxButtonEventTouchstart">
-                    OK
-                  </p>
-                </div>
-                <div>
-                  <p class="ok turnBoxButton turnBoxButtonPrev turnBoxButtonEventMouseout turnBoxButtonEventTouchend turnBoxButtonEventTouchmove">
-                    OK
-                  </p>
-                </div>
+                OK
               </span>
             </div>
             <div>
-              <p class="turnBoxButton turnBoxButtonPrev">THANKS</p>
+              <p class="turnBoxButton turnBoxButtonPrev">CONFIRMED</p>
             </div>
           </div>
         </div>
@@ -308,7 +280,7 @@
               </span>
             </div>
             <div>
-              <p class="turnBoxButton turnBoxButtonPrev">THANKS</p>
+              <p class="turnBoxButton turnBoxButtonPrev">SENDING SUCCEEDED</p>
             </div>
           </div>
         </div>
@@ -325,22 +297,11 @@
               <p class="message">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
-              <span class="ok">
-                <div>
-                  <p class="turnBoxButton turnBoxButtonEventMouseover turnBoxButtonEventTouchstart">
-                    OK
-                  </p>
-                </div>
-                <div>
-                  <p class="parent-action turnBoxButton turnBoxButtonPrev turnBoxButtonEventMouseout turnBoxButtonEventTouchend">
-                    OK
-                  </p>
-                </div>
-              </span>
+              <span class="ok">OK</span>
               <span class="cancel">CANCEL</span>
             </div>
             <div>
-              <p class="turnBoxButton turnBoxButtonPrev">THANKS</p>
+              <p class="turnBoxButton turnBoxButtonPrev">CONFIRMED</p>
             </div>
           </div>
         </div>
@@ -378,7 +339,7 @@
           <div>CONTENT 1</div>
           <div>CONTENT 2</div>
           <div>CONTENT 3</div>
-        </div>      
+        </div>
       </div>
       <div class="examples plural-box">
         <div class="radio-wrapper">
@@ -453,13 +414,13 @@
         </div>
       </div>
       <footer>
-        <div class="credit">          
+        <div class="credit">
           <p>
             Director,Design KeiichiroHirai  <a href="http://twitter.com/hirausan">@hirausan</a><br/>
             Frontend YuheiYamamori
           </p>
           <p>
-            This page uses the Spectrum.<a href="http://bgrins.github.io/spectrum/">Spectrum</a> by <a href="https://twitter.com/bgrins">@bgrins.</a>            
+            This page uses the Spectrum.<a href="http://bgrins.github.io/spectrum/">Spectrum</a> by <a href="https://twitter.com/bgrins">@bgrins.</a>
           </p>
         </div>
         <div class="sns-buttons bottom">
@@ -653,7 +614,7 @@
               <span class="code-color string">"skip"</span><br/> 通過する面の表示をキャンセルして、指定した面に９０°の回転でアニメーションをします。<br/>
               面の指定はturnBoxButtonの<span class="code-color string">"turnBoxButtonTo"</span>で行えます。
             </span>
-          </li>  
+          </li>
         </ul>
       </section>
       <section class="turn-box-button">
@@ -775,7 +736,7 @@
   <span class="code-color attribute">.turnBoxFaceNum4</span> {
     <span class="code-color function">background</span>: <span class="code-color function">gray</span>;
   }
-  
+
 &lt;/<span class="code-color tag">style</span>&gt;
 
 &lt;<span class="code-color tag">div</span> <span class="code-color attribute">class</span>=<span class="code-color string">"css-sample"</span>&gt;
@@ -866,7 +827,7 @@
           <span class="link-button-skip">skip to 2</span>
         </div>
         <pre>
-          <div class="code">    
+          <div class="code">
 &lt;<span class="code-color tag">div</span> <span class="code-color attribute">class</span>=<span class="code-color string">"link-sample"</span>&gt;
   &lt;<span class="code-color tag">div</span>&gt;
     &lt;<span class="code-color tag">p</span> <span class="code-color attribute">class</span>=<span class="code-color string">"turnBoxButton"</span>&gt;NEXT&lt;/<span class="code-color tag">p</span>&gt;
@@ -901,7 +862,7 @@
 
   <span class="code-color jquery">$</span>(<span class="code-color string">".child-box"</span>).turnBox({
     width: <span class="code-color number">80</span>,
-    height: <span class="code-color number">40</span> 
+    height: <span class="code-color number">40</span>
   });
 
   <span class="code-color jquery">$</span>(<span class="code-color string">".link-button-inner"</span>).turnBoxLink({
@@ -1123,13 +1084,13 @@
         </div>
       </section>
       <footer>
-        <div class="credit">          
+        <div class="credit">
           <p>
             Director,Design KeiichiroHirai  <a href="https://twitter.com/hirausan">@hirausan</a><br/>
             Frontend YuheiYamamori
           </p>
           <p>
-            This page uses the Spectrum.<a href="http://bgrins.github.io/spectrum/">Spectrum</a> by <a href="https://twitter.com/bgrins">@bgrins.</a>            
+            This page uses the Spectrum.<a href="http://bgrins.github.io/spectrum/">Spectrum</a> by <a href="https://twitter.com/bgrins">@bgrins.</a>
           </p>
         </div>
         <div class="sns-buttons bottom">
@@ -1180,13 +1141,13 @@
         </div>
       </div>
       <footer>
-        <div class="credit">          
+        <div class="credit">
           <p>
             Director,Design KeiichiroHirai  <a href="https://twitter.com/hirausan">@hirausan</a><br/>
             Frontend YuheiYamamori
           </p>
           <p>
-            This page uses the Spectrum.<a href="http://bgrins.github.io/spectrum/">Spectrum</a> by <a href="https://twitter.com/bgrins">@bgrins.</a>            
+            This page uses the Spectrum.<a href="http://bgrins.github.io/spectrum/">Spectrum</a> by <a href="https://twitter.com/bgrins">@bgrins.</a>
           </p>
         </div>
         <div class="sns-buttons bottom">
@@ -1220,5 +1181,6 @@
   <script type="text/javascript" src="/js/vendor/spectrum.js"></script>
   <script type="text/javascript" src="/js/turnBox.js"></script>
   <script type="text/javascript" src="/js/turnBoxLayout.js"></script>
+  <?php include("templates/ga.php"); ?>
 </body>
 </html>

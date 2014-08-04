@@ -27,10 +27,7 @@ $(function()
   {
     var duration = 450;
     var general_box = $(".example.login-form");
-    var confirm_box = general_box.find(".check");
     var remember_box = general_box.find(".remember");
-    var forgotpass_box = general_box.find(".forgot-pass");
-    var signup_box = general_box.find(".sign-up");
 
     general_box.turnBox({
       width: width,
@@ -42,33 +39,9 @@ $(function()
       type: "repeat"
     });
 
-     confirm_box.turnBox({
-      width: parseInt(width * 0.4),
-      height: 50,
-      perspective: 3000,
-      duration: 300,
-      easing: "ease-in-out"
-    });
-
      remember_box.turnBox({
       width: parseInt(width * 0.35),
       height: 30,
-      perspective: 3000,
-      duration: 300,
-      easing: "ease-in-out"
-    });
-
-     forgotpass_box.turnBox({
-      width: parseInt(width * 0.4),
-      height: 23,
-      perspective: 3000,
-      duration: 300,
-      easing: "ease-in-out"
-    });
-
-     signup_box.turnBox({
-      width: parseInt(width * 0.23),
-      height: 23,
       perspective: 3000,
       duration: 300,
       easing: "ease-in-out"
@@ -94,25 +67,16 @@ $(function()
     });
 
 
-    confirm_box.find(".go").turnBoxLink({
+    general_box.find(".check").turnBoxLink({
       box: ".login-form",
       events: "click touchend"
     });
 
-    confirm_box.find(".go").on("click touchend", function()
+    general_box.find(".check").on("click touchend", function()
     {
       setTimeout(function()
       {
-        confirm_box.turnBoxAnimate({
-          animation: false
-        });
         remember_box.turnBoxAnimate({
-          animation: false
-        });
-        forgotpass_box.turnBoxAnimate({
-          animation: false
-        });
-        signup_box.turnBoxAnimate({
           animation: false
         });
         general_box.find("input").val("").attr("checked", false);
@@ -125,7 +89,6 @@ $(function()
   {
     var duration = 450;
     var general_box = $(".example.notify");
-    var confirm_box = general_box.find(".check");
 
     general_box.turnBox({
       width: width,
@@ -136,28 +99,10 @@ $(function()
       easing: "ease-in-out",
       type: "repeat"
     });
-
-    confirm_box.turnBox({
-      width: width,
-      height: 75,
-      perspective: 3000,
-      duration: 200,
-      easing: "ease-in-out"
-    });
     
-    general_box.find(".ok").turnBoxLink({
+    general_box.find(".check").turnBoxLink({
       box: ".notify",
       events: "click touchend"
-    });
-
-    general_box.find(".ok").on("click touchend", function()
-    {
-      setTimeout(function()
-      {
-        confirm_box.turnBoxAnimate({
-          animation: false
-        });
-      }, duration);
     });
   }
 
@@ -217,7 +162,6 @@ $(function()
   {
     var duration = 450;
     var general_box = $(".example.alert-dialog");
-    var agree_box_class = general_box.find(".ok");
 
     general_box.turnBox({
       width: width,
@@ -229,15 +173,7 @@ $(function()
       type: "repeat"
     });
 
-     agree_box_class.turnBox({
-      width: width * 0.9,
-      height: 50,
-      perspective: 3000,
-      duration: 300,
-      easing: "ease-in-out"
-    });
-
-    agree_box_class.find(".parent-action").turnBoxLink({
+    general_box.find(".ok").turnBoxLink({
       box: ".alert-dialog",
       events: "click touchend"
     });
@@ -246,16 +182,6 @@ $(function()
     {
       box: ".alert-dialog",
       dist: "prev"
-    });
-
-    $(".parent-action").on("click touchend", function()
-    {
-      setTimeout(function()
-      {
-        agree_box_class.turnBoxAnimate({
-          animation: false
-        });
-      }, duration);
     });
   }
 
