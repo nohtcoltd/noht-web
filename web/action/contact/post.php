@@ -1,4 +1,6 @@
 <?php
+require_once("Mail.php");
+
 $post_data = $_POST;
 define("status_error", "error");
 define("status_success", "success");
@@ -67,11 +69,28 @@ function send_mail_to_customer($post_data)
   mb_internal_encoding("UTF8") ;
 
   $name = h($post_data["name"]);
-  $mail = h($post_data["mail"]);
+  $recipients = h($post_data["mail"]);
   $company = h($post_data["company"]);
   $message = h($post_data["message"]);
 
-  $text = "
+  $params = array(
+    "host" => "mail.noht.co.jp",   // SMTPサーバー名
+    "port" => 25,              // ポート番号
+    "auth" => true,            // SMTP認証を使用する
+    "username" => "info@noht.co.jp",  // SMTPのユーザー名
+    "password" => "8S9U8yy6CW49Oq85vA7EbQzzLoJ7xOVJ"   // SMTPのパスワード
+  );
+
+  $mailObject = Mail::factory("smtp", $params);
+
+  $subject="We have received your inquiry.";
+  $headers = array(
+    "To" => $recipients,
+    "From" => "info@noht.co.jp",
+    "Subject" => mb_encode_mimeheader($subject, 'ISO-2022-JP')
+  );
+
+  $body = "
     Hi $name,
 
     Thank you for your interest in our services!
@@ -79,17 +98,17 @@ function send_mail_to_customer($post_data)
 
     Name: $name
     Company: $company
-    Email: $mail
+    Email: $mail_to
     Message:
     $message
 
     If you have any questions, please contact us at info@noht.co.jp.
     ";
+  $body = mb_convert_encoding($body, "ISO-2022-JP", "UTF-8");
 
-  $subject="We have received your inquiry.";
-  $mailfrom="From:<info@noht.co.jp>";
-
-  mb_send_mail($mail,$subject,$text,$mailfrom);
+  $mailObject -> send($recipients, $headers, $body);
+  //$send = $mailObject -> send($recipients, $headers, $body);
+  //if (PEAR::isError($send)) { print($send->getMessage());}
 }
 
 function send_mail_to_noht($post_data)
@@ -104,8 +123,24 @@ function send_mail_to_noht($post_data)
   $company = h($post_data["company"]);
   $message = h($post_data["message"]);
 
-  $text = "
-    お問い合わせがありました。
+  $params = array(
+    "host" => "mail.noht.co.jp",   // SMTPサーバー名
+    "port" => 25,              // ポート番号
+    "auth" => true,            // SMTP認証を使用する
+    "username" => "info@noht.co.jp",  // SMTPのユーザー名
+    "password" => "8S9U8yy6CW49Oq85vA7EbQzzLoJ7xOVJ"   // SMTPのパスワード
+  );
+
+  $mailObject = Mail::factory("smtp", $params);
+
+  $subject="問い合わせがありました";
+  $headers = array(
+    "To" => $to,
+    "From" => "info@noht.co.jp",
+    "Subject" => mb_encode_mimeheader($subject, 'ISO-2022-JP')
+  );
+  $body = "
+    問い合わせがありました。
 
     お名前
     $name 様
@@ -118,12 +153,10 @@ function send_mail_to_noht($post_data)
 
     問い合わせ内容
     $message
-    ";
+  ";
+  $body = mb_convert_encoding($body, "ISO-2022-JP", "UTF-8");
 
-  $subject="問い合わせがありました";
-  $mailfrom="From:<info@noht.co.jp>";
-
-  mb_send_mail($to,$subject,$text,$mailfrom);
+  $mailObject -> send($to, $headers, $body);
 }
 
 function h($str) {
