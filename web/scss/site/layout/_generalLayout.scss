@@ -267,6 +267,13 @@ html {
     @media screen and (max-width: $smart_phone_width) {
         $padding-top: 45px;
         $logo_width: 50px;
+        @include perspective(none);
+        &.wrapper1 {
+            @include perspective-origin(initial);
+        }
+        &.wrapper2 {
+            @include perspective-origin(initial);
+        }
         #wrapper1 {
             #header {
                 position: fixed;
@@ -319,6 +326,7 @@ html {
                             top: -2px;
                         }
                         .pjax-link {
+                            @include perspective(none);
                             @include transition(100ms ease-in-out);
                             display: block;
                             width: 100px;
@@ -412,12 +420,12 @@ html {
                 z-index: 0;
                 padding-top:  $padding-top;
             }
-            .site-contents.pers-left {
-                @include perspective-origin(0% 50%);
-            }
             .site-content {
                 padding-left: 0;
             }
+        }
+        .site-contents {
+            @include perspective(none);
         }
         .about #about, .about #products, .products #about, .products #products {
             @include transform-origin(50%);
