@@ -201,7 +201,7 @@ $(function()
     $('#' + target_wrapper).removeClass().addClass(target_path + wrapper_transition_fix());
   }
 
-  //アニメーション中だけtransitionを持ったclassの付与する関数
+  //アニメーション中だけtransitionを持ったclassを付与する関数
   function content_tarnsition(current_path, target_path)
   {
     $("#" + target_path).addClass("show");
