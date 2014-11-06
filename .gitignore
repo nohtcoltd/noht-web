@@ -1,7 +1,6 @@
 web/.sass-cache/*
 *.scssc
 web/css/*
-web/downloads
 web/robots.txt
 web/action/2_5dbutton/downloads/*
 
