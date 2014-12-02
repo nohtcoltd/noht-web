@@ -201,6 +201,31 @@
             z-index: 20;
         }
     }
+    .sign {
+        $height: 100%;
+        $hover-height: $height + $height /15;
+        .panel {
+            background-color: #3a3a3a;
+            &:hover .background {
+                height: $hover-height;
+            }
+        }
+        .banner .background-image {
+            display: block;
+            width: 100%;
+            min-height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .background {
+            height: $height;
+            right: -5%;
+            background-image: url("../images/products/img_sign.png");
+            background-position: right 10% center;
+        }
+    }
 
     .secondpress {
         $height: 150%;
@@ -535,6 +560,10 @@
                     font-size: 10px;
                 }
             }
+        }
+        .sign .panel:hover .background {
+            $height: 100%;
+            height: $height;
         }
         .turnbox-js .panel:hover .background {
             $height: 35%;
