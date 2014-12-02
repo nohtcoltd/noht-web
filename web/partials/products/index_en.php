@@ -1,3 +1,43 @@
+<article class="promotion-wrap sign" >
+  <div class="promotion">
+    <header class="panel banner">
+      <img class="background-image" src="/images/products/bg_sign.jpg"/>
+      <p class="title">
+        NEWS MEDIA<br/>
+        sign
+      </p>
+    </header>
+    <section class="panel description">
+      <div class="content-wrap">
+        <div class="content">
+          <div class="thumbnail"><img src="/images/products/thumb_sign.png"/></div>
+          <h2 class="title">
+            NEWS MEDIA<br/>
+            sign
+          </h2>
+          <div class="text">
+            <p>Sign, news media on Web.</p>
+            <a href="http://sign.jp" class="link-button able">
+              <span class="button-content">
+                <span class="button-image">
+                  <img src="/images/share/icon_view.png"/>
+                </span>
+                <span class="button-text">sign.jp<span>
+              </span>
+            </a>
+            <br/>
+            <p class="cooperator">
+              Director,Design KeiichiroHirai<br/>
+              Frontend YuheiYamamori<br/>
+              Infrastructure TakumaFurutani<br/>
+              Assistant AtsushiTomofuji
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</article>
 <article class="promotion-wrap turnbox-js" >
   <div class="promotion">
     <header class="panel banner">
@@ -158,8 +198,8 @@
           </h2>
           <div class="text">
             <p>
-              The web service which makes and delivers original designed buttons from your design data ( AI, PSD, etc.)<br/>
-              Making over 15 million buttons a year, which is one of the largest scale in Japan. 
+              The Web service which makes and delivers original designed buttons from your design data ( AI, PSD, etc.)<br/>
+              Making over 15 million buttons a year, which is one of the largest scale in Japan.
             </p>
             <a href="http://www.secondpress.us" class="link-button able">
               <span class="button-content">
@@ -303,7 +343,7 @@
           <div class="text">
             <p>
               The service of making original designed rubber keychains or straps.<br/>
-              Scheduled to release in 2014. 
+              Scheduled to release in 2014.
             </p>
             <div class="link-button disable">
               <div class="disable-content">
