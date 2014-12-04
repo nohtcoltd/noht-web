@@ -253,7 +253,7 @@
                 <span class="icon">
                   <img src="/images/share/icon_view_disable.png"/>
                 </span>
-                <span class="disable-text">COMING 2014</span>
+                <span class="disable-text">COMING 2015</span>
               </div>
             </div>
             <!--
@@ -303,7 +303,7 @@
                 <span class="icon">
                   <img src="/images/share/icon_view_disable.png"/>
                 </span>
-                <span class="disable-text">COMING 2014</span>
+                <span class="disable-text">COMING 2015</span>
               </div>
             </div>
             <!--
@@ -343,14 +343,14 @@
           <div class="text">
             <p>
               The service of making original designed rubber keychains or straps.<br/>
-              Scheduled to release in 2014.
+              Scheduled to release in 2015.
             </p>
             <div class="link-button disable">
               <div class="disable-content">
                 <span class="icon">
                   <img src="/images/share/icon_view_disable.png"/>
                 </span>
-                <span class="disable-text">COMING 2014</span>
+                <span class="disable-text">COMING 2015</span>
               </div>
             </div>
             <!--
