@@ -16,7 +16,7 @@
             sign
           </h2>
           <div class="text">
-            <p>Webニュースメディア『SIGN』</p>
+            <p>Alternative news & Magazine『SIGN』</p>
             <a href="http://sign.jp" class="link-button able">
               <span class="button-content">
                 <span class="button-image">
