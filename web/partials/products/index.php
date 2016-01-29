@@ -253,7 +253,7 @@
                 <span class="icon">
                   <img src="/images/share/icon_view_disable.png"/>
                 </span>
-                <span class="disable-text">COMING 2015</span>
+                <span class="disable-text">COMING 2016</span>
               </div>
             </div>
             <!--
@@ -303,7 +303,7 @@
                 <span class="icon">
                   <img src="/images/share/icon_view_disable.png"/>
                 </span>
-                <span class="disable-text">COMING 2015</span>
+                <span class="disable-text">COMING 2016</span>
               </div>
             </div>
             <!--
@@ -350,7 +350,7 @@
                 <span class="icon">
                   <img src="/images/share/icon_view_disable.png"/>
                 </span>
-                <span class="disable-text">COMING 2015</span>
+                <span class="disable-text">COMING 2016</span>
               </div>
             </div>
             <!--
