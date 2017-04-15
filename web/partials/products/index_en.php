@@ -1,36 +1,43 @@
-<article class="promotion-wrap sign" >
+
+<article class="promotion-wrap button2_5d" >
   <div class="promotion">
     <header class="panel banner">
-      <img class="background-image" src="/images/products/bg_sign.jpg"/>
       <p class="title">
-        NEWS MEDIA<br/>
-        sign
+        WEB UI ELEMENTS<br/>
+        2.5dBUTTON
       </p>
     </header>
     <section class="panel description">
       <div class="content-wrap">
         <div class="content">
-          <div class="thumbnail"><img src="/images/products/thumb_sign.png"/></div>
+          <div class="thumbnail"><img src="/images/products/thumb_25dbutton.png"/></div>
           <h2 class="title">
-            NEWS MEDIA<br/>
-            sign
+            WEB UI ELEMENTS<br/>
+            2.5dBUTTON
           </h2>
           <div class="text">
-            <p>Alternative news & Magazine『SIGN』</p>
-            <a href="http://sign.jp" class="link-button able">
+            <p>
+              Flat Buttons which pop up on hover and are pressed on click.<br/>
+              You can generate button materials as you like.
+            </p>
+            <a href="/2_5dbutton" class="link-button able">
               <span class="button-content">
                 <span class="button-image">
                   <img src="/images/share/icon_view.png"/>
                 </span>
-                <span class="button-text">sign.jp<span>
+                <span class="button-text">www.noht.co.jp/2_5dbutton</span>
               </span>
             </a>
+            <!--
+            <span class="twitter">
+              <span class="image"><img src="/images/share/icon_twitter.png"/></span>
+              <span class="count">516</span>
+            </span>
+          -->
             <br/>
             <p class="cooperator">
               Director,Design KeiichiroHirai<br/>
-              Frontend YuheiYamamori<br/>
-              Infrastructure TakumaFurutani<br/>
-              Assistant AtsushiTomofuji
+              Frontend YuheiYamamori
             </p>
           </div>
         </div>
@@ -127,52 +134,6 @@
               Director,Design KeiichiroHirai<br/>
               Engineer TakumaFurutani<br/>
               Assistant AtsushiTomofuji
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</article>
-<article class="promotion-wrap button2_5d" >
-  <div class="promotion">
-    <header class="panel banner">
-      <p class="title">
-        WEB UI ELEMENTS<br/>
-        2.5dBUTTON
-      </p>
-    </header>
-    <section class="panel description">
-      <div class="content-wrap">
-        <div class="content">
-          <div class="thumbnail"><img src="/images/products/thumb_25dbutton.png"/></div>
-          <h2 class="title">
-            WEB UI ELEMENTS<br/>
-            2.5dBUTTON
-          </h2>
-          <div class="text">
-            <p>
-              Flat Buttons which pop up on hover and are pressed on click.<br/>
-              You can generate button materials as you like.
-            </p>
-            <a href="/2_5dbutton" class="link-button able">
-              <span class="button-content">
-                <span class="button-image">
-                  <img src="/images/share/icon_view.png"/>
-                </span>
-                <span class="button-text">www.noht.co.jp/2_5dbutton</span>
-              </span>
-            </a>
-            <!--
-            <span class="twitter">
-              <span class="image"><img src="/images/share/icon_twitter.png"/></span>
-              <span class="count">516</span>
-            </span>
-          -->
-            <br/>
-            <p class="cooperator">
-              Director,Design KeiichiroHirai<br/>
-              Frontend YuheiYamamori
             </p>
           </div>
         </div>
