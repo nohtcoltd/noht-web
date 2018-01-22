@@ -1,14 +1,14 @@
 <article class="about-contents">
   <header>
-    <img class="logo" src="/images/about/logo_noht_gray.png" alt="logo"><br/>
-    <img class="logo-caption" src="/images/about/logo_caption.png" alt="logo_caption">
+    <?php include("svg/logo_noht_long.svg"); ?>
+    <?php include("svg/logo_noht_jp.svg"); ?>
   </header>
   <section class="overview">
     <div class="profile">
       <ul>
         <li><span class="caption">代表者</span><span class="text">平井 慶一郎</span></li>
         <li><span class="caption">資本金</span><span class="text">１億円</span></li>
-        <li><span class="caption">従業員</span><span class="text">１２８名</span></li>
+        <li><span class="caption">従業員</span><span class="text">１５９名</span></li>
       </ul>
     </div>
     <span class="address">
@@ -37,8 +37,7 @@
     </ul>
   </section>
   <section class="us-office">
-    <img class="logo" src="/images/about/logo_noht_gray_us.png" alt="logo_us"><br/>
-    <img class="logo-caption" src="/images/about/logo_caption_us.png" alt="logo_caption_us">
+    <?php include("svg/logo_noht_us_long.svg"); ?>
     <p>
       所在地　113 Barksdale Professional Center Newark, DE 19711-3258 USA
     </p>

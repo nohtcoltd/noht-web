@@ -142,3 +142,32 @@
     text-decoration: none;
   }
 }
+
+
+@mixin flex-container($direction, $wrap: wrap, $justify: left, $align-items: stretch, $align-content: center){
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+
+  @include flex-flow($direction $wrap);
+  @include justify-content($justify);
+  @include align-items($align-items);
+  @include align-content($align-content);
+}
+
+@mixin inline-flex-container($direction, $wrap: wrap, $justify: left, $align-items: stretch, $align-content: center){
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flex;
+  display: -o-inline-flex;
+  display: inline-flex;
+
+  @include flex-flow($direction $wrap);
+  @include justify-content($justify);
+  @include align-items($align-items);
+  @include align-content($align-content);
+}
+
+

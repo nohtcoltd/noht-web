@@ -11,11 +11,14 @@
   section {
     line-height: 2;
   }
-  img.logo {
-    height: 25px;
+
+  .svg-LogoLong {
+    width: 210px;
   }
-  img.logo-caption {
-    height: 18px;
+
+  .svg-LogoJp {
+    display: block;
+    width: 155px;
   }
   .overview {
     margin-top: 50px;
@@ -55,7 +58,7 @@
         .left {
           @include transform(rotateZ(-90deg) translate3d(0px, 0px, 0px));
           top: -$image_size;
-        } 
+        }
         .right {
           @include transform(rotateZ(90deg) translate3d(0px, 0px, 0px));
           top: -$image_size;
@@ -102,6 +105,9 @@
     line-height: 1.5;
   }
   .us-office {
+    .svg-LogoUsLong {
+      width: 300px;
+    }
     margin-top: 50px;
     p {
       padding-top: 20px;
@@ -124,6 +130,15 @@
   // smart phone版はここ
   //----------------------------------------
   @media screen and (max-width: $smart_phone_width) {
+    svg {
+      max-width: 100%;
+    }
+    .svg-LogoJp {
+      margin: 0 auto;
+    }
+    .svg-LogoUsLong {
+      margin: 0 auto;
+    }
     .about-contents {
       text-align: center;
     }
@@ -170,9 +185,6 @@ html.en #about {
   .caption {
     width: 170px;
     letter-spacing: 0;
-  }
-  header img, .us-office img {
-    height: 28px;
   }
   $smart_phone_width: 700px;
   //----------------------------------------

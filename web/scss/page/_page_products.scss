@@ -7,7 +7,7 @@
     .promotion-wrap {
         @include transition($animate_time);
         position: relative;
-        margin: 1.5% 1%;
+        margin: 1.5%;
         z-index: 10;
         &:hover {
             z-index: 20;
@@ -53,6 +53,7 @@
             font-weight: 300;
             font-size: 19px;
             color: rgba(255, 255, 255, 0.85);
+            // font-family: 'Open Sans', sans-serif;
             &:first-line {
                 font-size: 13px;
             }
@@ -201,6 +202,39 @@
             z-index: 20;
         }
     }
+
+    .noht_of_north {
+        .panel {
+            background-color: #f4f4f4;
+        }
+        .background {
+            background-image: url("../svg/logo_NN.svg");
+            width: 100%;
+            height: 100%;
+            background-size: 150px;
+            background-position: center;
+        }
+        .banner .title {
+            color: #222;
+        }
+    }
+
+    .colony {
+        .panel {
+            background-color: #2d2d2d;
+            &.description {
+                background-color: #888;
+            }
+        }
+        .background {
+            background-image: url("../svg/logo_colony.svg");
+            width: 100%;
+            height: 100%;
+            background-size: 50%;
+            background-position: right bottom -40px;
+        }
+    }
+
     .sign {
         $height: 100%;
         $hover-height: $height + $height /15;
@@ -559,6 +593,20 @@
                     line-height: 1.4;
                     font-size: 10px;
                 }
+            }
+        }
+
+
+        .noht_of_north {
+            .background {
+                background-size: auto 70%;
+            }
+        }
+
+        .colony {
+            .background {
+                background-size: 60%;
+                background-position: right bottom -15px;
             }
         }
         .sign .panel:hover .background {

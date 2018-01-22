@@ -1,13 +1,13 @@
 <article class="about-contents">
   <header>
-    <img src="/images/about/logo_noht_gray.png" alt="">
+    <?php include("svg/logo_noht_long.svg"); ?>
   </header>
   <section class="overview">
     <div class="profile">
       <ul>
         <li><span class="caption">Representative Director </span><span class="text">Keiichiro HIRAI</span></li>
         <li><span class="caption">Capital Stock</span><span class="text">100 Million Yen</span></li>
-        <li><span class="caption">Employee Number</span><span class="text">128 PEOPLE</span></li>
+        <li><span class="caption">Employee Number</span><span class="text">159 PEOPLE</span></li>
       </ul>
     </div>
     <span class="address">
@@ -36,7 +36,8 @@
     </ul>
   </section>
   <section class="us-office">
-    <img src="/images/about/logo_noht_gray_us.png" alt=""><br/>
+    <?php include("svg/logo_noht_us_long.svg"); ?>
+    <br/>
     Location 113 Barksdale Professional Center Newark, DE 19711-3258 USA
   </section>
 </article>

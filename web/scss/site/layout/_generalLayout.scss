@@ -20,6 +20,9 @@ html {
     top: 0;
     left: 0;
     overflow: hidden;
+    > * {
+        -webkit-tap-highlight-color:rgba(0,0,0,0);
+    }
     &.wrapper1 {
         @include perspective-origin(50% 100%);
     }
@@ -66,11 +69,13 @@ html {
         .logo .pjax-link {
             display: inline-block;
             width: 100%;
-            height: $logo-height;
-            background: url("../images/share/logo_noht.png") no-repeat;
-            -webkit-background-size: 120px auto;
-            background-size: $logo-width auto;
-            background-position: 20px center;
+            height: auto;
+            box-sizing: border-box;
+            margin-left: 20px;
+            svg {
+                display: block;
+                width: 120px;
+            }
         }
         #gmenu {
             padding-top: 60px;
@@ -241,6 +246,9 @@ html {
             .logo .pjax-link {
                 -webkit-background-size: $logo-width auto;
                 background-size: $logo-width auto;
+                svg {
+                    width: $logo-width;
+                }
             }
             #gmenu {
                 padding-top: 40px;
@@ -266,6 +274,7 @@ html {
     //----------------------------------------
     @media screen and (max-width: $smart_phone_width) {
         $padding-top: 45px;
+        $h: 50px;
         $logo_width: 50px;
         @include perspective(none);
         &.wrapper1 {
@@ -276,17 +285,18 @@ html {
         }
         #wrapper1 {
             #header {
+                @include transition(height 0ms 300ms, background-color 300ms ease-in-out);
                 position: fixed;
                 display: block;
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 45px;
+                height: $h;
                 z-index: 10;
                 background-color: rgba(255, 255, 255, 0);
                 overflow: hidden;
                 .h-contents {
-                    display: table;
+                    @include flex-container(column, wrap, center, center);
                     position: relative;
                     width: 100%;
                     height: 100%;
@@ -295,29 +305,34 @@ html {
                 .logo {
                     position: absolute;
                     width: 100%;
+                    height: $h;
+                    top: 0;
                     display: block;
                     z-index: 10;
                     .pjax-link {
                         display: inline-block;
                         width: 60px;
-                        height: 45px;
-                        background-image: url("../images/share/logo_noht_gray.png");
-                        background-position: 10px 19px;
-                        -webkit-background-size: $logo-width auto;
-                        background-size: $logo-width auto;
+                        height: 100%;
+                        svg {
+                            position: relative;
+                            width: 50px;
+                            top: 50%;
+                            transform: translate(0, -50%);
+                        }
                     }
                 }
                 #gmenu {
+                    @include transition(300ms ease-in-out);
+                    @include flex-container(column, wrap, center, center);
                     position: relative;
-                    display: table-cell;
                     vertical-align: middle;
-                    width: 1%;
                     height: 100%;
                     top: 0;
                     opacity: 0;
                     z-index: 0;
+                    padding-top: 0;
                     > li {
-                        margin-bottom: 8px;
+                        margin-bottom: 25px;
                         &:last-child {
                             margin-bottom: 0;
                         }
@@ -329,98 +344,151 @@ html {
                             @include perspective(none);
                             @include transition(100ms ease-in-out);
                             display: block;
-                            width: 100px;
-                            height: 100px;
-                            background-color: #eee;
-                            background-repeat: no-repeat;
-                            background-position: center;
-                            -webkit-background-size: 50%;
-                            background-size: 50%;
-                            font-size: 0;
-                            > span {
-                                display: none;
+                            font-size: 16px;
+                            &:hover {
+                                background-color: transparent;
+                                .bg-color {
+                                    background-color: transparent;
+                                }
+                                .bg-none {
+                                    background-color: transparent;
+                                }
+                            }
+
+                            .bg-color {
+                                background-color: transparent;
+                            }
+                            .bg-none {
+                                background-color: transparent;
+                            }
+                            span {
+                                @include transform(rotate(0deg) translate3d(0, 0, 0));
+                            }
+                            p {
+                                padding: 0;
+                                text-align: center;
+                                height: 100%;
+                                line-height: calc(50/16);
+                                font-weight: normal;
                             }
                         }
                         &.selected .pjax-link {
-                            background-color: #ccc;
-                        }
-                        &.products .pjax-link {
-                            background-image: url("../images/share/icon_products.png");
-                        }
-                        &.about .pjax-link {
-                            background-image: url("../images/share/icon_about.png");
-                        }
-                        &.contact .pjax-link {
-                            background-image: url("../images/share/icon_contact.png");
+
+                            .bg-color {
+                                background-color: transparent;
+                                color: #222;
+                            }
+                            .bg-none {
+                                background-color: transparent;
+                                color: #222;
+                            }
                         }
                     }
                     .language {
-                        @include clearfix;
+                        @include order(4);
+                        @include flex-container(row, wrap, center, center);
                         position: static;
-                        margin-bottom: 10px;
+                        margin-top: 60px;
                         bottom: auto;
                         padding-left: 0;
+                        text-align: center;
                         span {
+                            display: inline-block;
                             text-align: center;
                             margin: 0;
-                            background-color: #eee;
+                            background-color: transparent;
                             padding: 0;
                         }
                         .selected {
-                            background-color: #ccc;
+                            // background-color: #ccc;
+                            a {
+                                color: #222;
+                            }
                         }
                         a {
                             display: block;
                             padding: 10px 15px;
+                            font-weight: bold;
+                            color: #ccc;
                         }
                         .en {
-                            float: left;
-                            margin-bottom: 10px;
                         }
                         .jp {
-                            float: right;
+                            margin-left: 15px;
                         }
                     }
                 }
                 .menu-button {
-                    $icon_size: 22px;
+                    $icon_size: 20px;
                     position: absolute;
-                    top: 20px;
-                    margin-top: -$icon_size / 2;
                     right: 20px;
                     width: $icon_size + 8px;
-                    height: $icon_size + 8px;
-                    background-image: url("../images/share/icon_menu.png");
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    -webkit-background-size: 80%;
-                    background-size: 80%;
+                    height: $h;
                     cursor: pointer;
                     z-index: 10;
-                    opacity: 0.5;
+                    top: 0;
+                    .icon {
+                        @include transition(200ms 200ms);
+                        position: relative;
+                        width: 80%;
+                        top: 50%;
+                        height: 1px;
+                        margin: auto;
+                        background-color: #222;
+                        opacity: 1;
+                        &:before, &:after {
+                            @include transform(rotate(0));
+                            @include transition(200ms);
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                            background-color: #222;
+                        }
+                        $adjust: 6px;
+                         &:before {
+                            margin-top: -$adjust;
+                         }
+                         &:after {
+                            margin-top: $adjust;
+                         }
+
+                    }
                 }
                 &.show {
-                    @include transition(background-color 300ms ease-in-out);
+                    @include transition(height 0ms, background-color 300ms ease-in-out);
                     height: 100%;
                     z-index: 20;
                     background-color: rgba(255, 255, 255, 1);
                     overflow: scroll;
                     #gmenu {
-                        @include transition(300ms ease-in-out);
                         opacity: 1;
                     }
                     .menu-button {
-                        background-image: url("../images/share/icon_cross.png");
-                        opacity: 1;
-                        right: 8px;
+                        .icon {
+                            @include transition(200ms);
+                            background-color: rgba(#222, 0);
+                            &:before, &:after {
+                                @include transition(margin-top 200ms, transform 200ms 200ms);
+                                margin-top: 0;
+                            }
+                            &:before {
+                                @include transform(rotate(45deg));
+                            }
+                            &:after {
+                                @include transform(rotate(-45deg));
+                            }
+                        }
                     }
                 }
             }
             .main {
                 z-index: 0;
-                padding-top:  $padding-top;
             }
             .site-content {
+                padding-top:  $padding-top;
                 padding-left: 0;
             }
         }

@@ -21,14 +21,14 @@ function check_include($expect)
 <!--[if gt IE 8]><!--> <html lang="ja" class="no-js"> <!--<![endif]-->
   <head>
     <!--
-   ________   ________  ___  ___  _________   
-  |\   ___  \|\   __  \|\  \|\  \|\___   ___\ 
-  \ \  \\ \  \ \  \|\  \ \  \\\  \|___ \  \_| 
-   \ \  \\ \  \ \  \\\  \ \   __  \   \ \  \  
-    \ \  \\ \  \ \  \\\  \ \  \ \  \   \ \  \ 
+   ________   ________  ___  ___  _________
+  |\   ___  \|\   __  \|\  \|\  \|\___   ___\
+  \ \  \\ \  \ \  \|\  \ \  \\\  \|___ \  \_|
+   \ \  \\ \  \ \  \\\  \ \   __  \   \ \  \
+    \ \  \\ \  \ \  \\\  \ \  \ \  \   \ \  \
      \ \__\\ \__\ \_______\ \__\ \__\   \ \__\
       \|__| \|__|\|_______|\|__|\|__|    \|__|
-      
+
 -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +44,9 @@ function check_include($expect)
       <header id="header">
         <div class="h-contents">
           <h1 class="logo">
-            <a class="pjax-link" href="/en/"></a>
+            <a class="pjax-link" href="/en/">
+              <?php include("svg/logo_noht_short.svg"); ?>
+            </a>
           </h1>
           <ul id="gmenu">
             <li class="language">
@@ -60,7 +62,7 @@ function check_include($expect)
               <p>CONTACT</p>
             </a></li>
           </ul>
-          <div class="menu-button"></div>
+          <div class="menu-button"><div class="icon"></div></div>
         </div>
       </header>
       <div class="main">
