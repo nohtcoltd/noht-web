@@ -39,7 +39,7 @@
   <section class="us-office">
     <?php include("svg/logo_noht_us_long.svg"); ?>
     <p>
-      所在地　113 Barksdale Professional Center Newark, DE 19711-3258 USA
+      所在地　3511 Silverside Road, Suite 105 Wilmington, DE 19810 USA
     </p>
   </section>
 </article>

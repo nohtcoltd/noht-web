@@ -38,6 +38,6 @@
   <section class="us-office">
     <?php include("svg/logo_noht_us_long.svg"); ?>
     <br/>
-    Location 113 Barksdale Professional Center Newark, DE 19711-3258 USA
+    Location 3511 Silverside Road, Suite 105 Wilmington, DE 19810 USA
   </section>
 </article>
