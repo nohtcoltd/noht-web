@@ -4,10 +4,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>2.5dBUTTON - NOHT CO.,LTD.</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="/css/vender/reset.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/css/vender/spectrum.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/css/vender/jquery-ui-1.10.3.custom.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/css/2_5dbutton.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/vendor/reset.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/vendor/spectrum.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/vendor/jquery-ui-1.10.3.custom.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
 </head>
 <body class="button-generator">
   <div class="noht-logo">
@@ -480,7 +480,7 @@
               <span class="button-text-inset">GitHub - 2.5dBUTTON</span>
             </div>
           </a>
-        </section>    
+        </section>
         <section class="lisence">
           <p>
             Director,Design KeiichiroHirai  <a href="https://twitter.com/hirausan">@hirausan</a><br/>

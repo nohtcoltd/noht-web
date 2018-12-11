@@ -742,7 +742,7 @@ $(function()
       entity["nl"] + "</div>" +
       entity["nl"];
 
-    $(".icon .icon-font-inset").css("font-size", "40px");
+    $(".icon .icon-font-inset").css("font-size", "30px");
 
     if (icon == "none" && label_text == "") {
       var html_code = "<div class=" + '"general-button"' + ">" +

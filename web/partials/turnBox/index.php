@@ -11,7 +11,6 @@
   <title>TURNBOX.js - NOHT CO.,LTD.</title>
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/css/vender/spectrum.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/css/turn_box.css" />
 </head>
 <body id="turnBox">
   <header>
