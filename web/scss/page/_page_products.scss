@@ -203,16 +203,34 @@
         }
     }
 
-    .noht_of_north {
+    .bananana {
+        .panel {
+            background-color: #efc806;
+        }
+        .background {
+            background-image: url("../images/products/img_bananana.png");
+            width: 100%;
+            height: 100%;
+            background-size: 100px;
+            background-position: right 20% center;
+
+        }
+        .banner .title {
+            color: #222;
+        }
+    }
+
+    .antenna {
         .panel {
             background-color: #f4f4f4;
         }
         .background {
-            background-image: url("../svg/logo_NN.svg");
+            background-image: url("../images/products/img_antenna.png");
             width: 100%;
             height: 100%;
-            background-size: 150px;
-            background-position: center;
+            background-size: 50% auto;
+            background-position: center bottom 82%;
+
         }
         .banner .title {
             color: #222;
