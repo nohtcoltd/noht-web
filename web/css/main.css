@@ -1478,6 +1478,16 @@ html.en #about .caption {
     background-position: right 20% center; }
   #products .bananana .banner .title {
     color: #222; }
+  #products .antenna .panel {
+    background-color: #f4f4f4; }
+  #products .antenna .background {
+    background-image: url("../images/products/img_antenna.png");
+    width: 100%;
+    height: 100%;
+    background-size: 50% auto;
+    background-position: center bottom 82%; }
+  #products .antenna .banner .title {
+    color: #222; }
   #products .colony .panel {
     background-color: #2d2d2d; }
     #products .colony .panel.description {

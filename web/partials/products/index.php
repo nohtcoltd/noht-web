@@ -43,6 +43,52 @@
   </div>
 </article>
 
+
+<article class="promotion-wrap antenna" >
+  <div class="promotion">
+    <header class="panel banner">
+      <p class="title">
+        iOS app<br/>
+        Antenna
+      </p>
+    </header>
+    <section class="panel description">
+      <div class="content-wrap">
+        <div class="content">
+          <div class="thumbnail"><img src="/images/products/thumb_atwork.png"/></div>
+          <h2 class="title">
+            iOS app<br/>
+            Antenna
+          </h2>
+          <div class="text">
+            <p>
+              すべてのサイトデザインを画一化して表示する まとめ・ニュースリーダー
+            </p>
+
+            <a href="https://itunes.apple.com/jp/app//id1435503422?mt=8" target="_blank" class="link-button able">
+              <span class="button-content">
+                <span class="button-text">Antenna</span>
+              </span>
+            </a>
+            <!--
+            <span class="twitter">
+              <span class="image"><img src="/images/share/icon_twitter.png"/></span>
+              <span class="count">516</span>
+            </span>
+          -->
+            <br/>
+            <p class="cooperator">
+              Director/Design Hirausan<br/>
+              Client side Azarashi<br/>
+              Server side Firliya
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</article>
+
 <article class="promotion-wrap colony" >
   <div class="promotion">
     <header class="panel banner">
