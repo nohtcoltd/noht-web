@@ -1,32 +1,29 @@
-<article class="promotion-wrap noht_of_north" >
+<article class="promotion-wrap bananana" >
   <div class="promotion">
     <header class="panel banner">
       <p class="title">
-        MINING FARM<br/>
-        NOHT OF NORTH
+        SOUND DEVICE<br/>
+        BANANANA EFFECTS
       </p>
     </header>
     <section class="panel description">
       <div class="content-wrap">
         <div class="content">
-          <div class="thumbnail"><img src="/images/products/thumb_atwork.png"/></div>
+          <div class="thumbnail"><img src="/images/products/thumb_bananana.png"/></div>
           <h2 class="title">
-            MINING FARM<br/>
-            NOHT OF NORTH
+            SOUND DEVICE<br/>
+            BANANANA EFFECTS
           </h2>
           <div class="text">
             <p>
-              MINING!!!!!!!
+              Good Device.
             </p>
 
-            <div class="link-button disable">
-              <div class="disable-content">
-                <span class="icon">
-                  <img src="/images/share/icon_view_disable.png"/>
-                </span>
-                <span class="disable-text">NOLINK</span>
-              </div>
-            </div>
+            <a href="https://www.banananaeffects.com/" target="_blank" class="link-button able">
+              <span class="button-content">
+                <span class="button-text">BANANANA EFFECTS</span>
+              </span>
+            </a>
             <!--
             <span class="twitter">
               <span class="image"><img src="/images/share/icon_twitter.png"/></span>
@@ -35,7 +32,9 @@
           -->
             <br/>
             <p class="cooperator">
-              Producer KeiichiroHirai
+              Produce/Design KEIICHIRO HIRAI<br/>
+              Design/Engineering JYUNPEI NOGUCHI<br/>
+              Management ATSUSHI TOMOFUJI
             </p>
           </div>
         </div>

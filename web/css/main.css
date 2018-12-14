@@ -1468,15 +1468,15 @@ html.en #about .caption {
     -o-transform: rotateX(0deg) translate3d(0px, 0px, 0px);
     transform: rotateX(0deg) translate3d(0px, 0px, 0px);
     z-index: 20; }
-  #products .noht_of_north .panel {
-    background-color: #f4f4f4; }
-  #products .noht_of_north .background {
-    background-image: url("../svg/logo_NN.svg");
+  #products .bananana .panel {
+    background-color: #efc806; }
+  #products .bananana .background {
+    background-image: url("../images/products/img_bananana.png");
     width: 100%;
     height: 100%;
-    background-size: 150px;
-    background-position: center; }
-  #products .noht_of_north .banner .title {
+    background-size: 100px;
+    background-position: right 20% center; }
+  #products .bananana .banner .title {
     color: #222; }
   #products .colony .panel {
     background-color: #2d2d2d; }
