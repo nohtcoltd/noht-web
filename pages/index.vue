@@ -1,11 +1,9 @@
+<script setup lang="ts">
+</script>
+]
 <template>
-  <Tutorial />
+  <article class="w-full fl-col-wrap h-screen bg-slate-50 text-sm">
+    HELLO
+  </article>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'IndexPage',
-})
-</script>
