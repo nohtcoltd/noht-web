@@ -32,7 +32,7 @@ const translateValue = (el, isNext) => {
     return `translate3d(0, ${flatPosition}px, ${zPosition}px)`
   }
 
-  return `translate3d(${flatPosition}px, 0, ${zPosition}px)`
+  return `translate3d(${-flatPosition}px, 0, ${zPosition}px)`
 }
 
 const rotateValue = (isNext) => {
