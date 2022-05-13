@@ -9,8 +9,6 @@ const fields = reactive({
   content: '',
 })
 
-const $form = ref<HTMLFormElement>(null)
-
 const submit = async () => {
   const formData = new FormData()
 
