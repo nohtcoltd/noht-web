@@ -35,7 +35,7 @@ const submit = async () => {
     <form netlify name="hoge">
       <input name="form-name" value="hoge" />
   -->
-  <form ref="$form" name="contact" method="POST" data-netlify="true" class="fl-col-nowrap fl-start-center-center">
+  <form name="contact" netlify class="fl-col-nowrap fl-start-center-center">
     <input type="hidden" name="form-name" value="contact" />
     {{ fields }}
     <input v-model="fields.name" placeholder="name" name="name" class="mt-3" />
