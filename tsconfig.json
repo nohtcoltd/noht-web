@@ -15,11 +15,7 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": [
-      "@types/node",
-      "@nuxt/types",
-      "@types/jquery",
-    ],
+    "types": ["@types/node", "@nuxt/types"],
     // "strict": true,
     // https://employment.en-japan.com/engineerhub/entry/2019/04/16/103000
     // いずれ有効にする
