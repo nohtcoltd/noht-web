@@ -25,13 +25,15 @@ export default defineNuxtConfig({
   plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  // components: true,
+  components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+  ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
