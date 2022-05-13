@@ -23,8 +23,6 @@ const submit = async () => {
     method: 'POST',
     body: formData,
   })
-
-  console.log(data)
 }
 </script>
 

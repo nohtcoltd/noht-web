@@ -5,11 +5,15 @@ export default defineNuxtConfig({
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'noht-web',
+    title: 'NOHT CO.,LTD.',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ja',
     },
+    link: [
+      { rel: 'stylesheet', href: '//cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css' },
+    ],
     meta: [
+
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
@@ -43,6 +47,11 @@ export default defineNuxtConfig({
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // @ts-ignore
+    extractCSS: {
+      ignoreOrder: true,
+    },
+
     hardSource: true,
   },
 })
