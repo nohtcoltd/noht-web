@@ -1,14 +1,132 @@
 <script setup lang="ts">
-import { ref } from '@vue/composition-api'
+import { onMounted, ref } from '@vue/composition-api'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 
 const current = ref<number>(1)
-const tst = ref<number>(1)
+const $hogeBox = ref<HTMLElement>(null)
+const anim = ref<Animation>(null)
+
+onMounted(() => {
+  return
+  anim.value = $hogeBox.value.animate(
+    {
+      transform: ['rotateY(360deg)'],
+    },
+    {
+      duration: 3000,
+
+      iterations: Infinity,
+    },
+  )
+})
+
+const hoge = () => anim.value.reverse()
 
 const changePage = (page) => (current.value = page)
 </script>
 <template>
   <article>
+    <div class=""></div>
+    <div class="p-10">
+      <div
+        class="bg-[red]"
+        :style="{
+          perspective: '300px',
+        }"
+      >
+        <div
+          :style="{
+            transformStyle: 'preserve-3d',
+            transform: `rotateX(0deg) rotateY(0deg)`,
+          }"
+          class="relative mx-auto w-[300px]"
+          ref="$hogeBox"
+        >
+          <div class="h-[120px] bg-slate-100 p-10 opacity-60">HOGE</div>
+          <div
+            class="absolute left-0 top-0 h-[180px] w-full bg-blue-100 p-10 opacity-60"
+            :style="{
+              transform: `translateY(-50%) translateZ(-90px) rotateX(90deg)`,
+            }"
+          >
+            top not<br />HOGE
+          </div>
+          <div
+            class="absolute left-0 bottom-0 h-[180px] w-full bg-blue-100 p-10 opacity-60"
+            :style="{
+              transform: `translateY(50%) translateZ(-90px) rotateX(-90deg)`,
+            }"
+          >
+            bottom rev<br />HOGE
+          </div>
+          <div
+            class="absolute top-0 left-0 h-full w-[280px] bg-blue-100 p-10 opacity-60"
+            :style="{
+              transform: `translateX(-50%) translateZ(-140px) rotateY(90deg)`,
+            }"
+          >
+            left rev<br />HOGE
+          </div>
+          <div
+            class="absolute top-0 right-0 h-full w-[280px] bg-blue-100 p-10 opacity-60"
+            :style="{
+              transform: `translateX(50%) translateZ(-140px) rotateY(90deg)`,
+            }"
+          >
+            right not<br />HOGE
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto w-fit bg-[yellow] fl-col-nowrap fl-center-center-center">
+      <!-- <div class="p-10 fl-col-nowrap fl-start-center-center">
+        <turn-box v-model="current" :is-axis-x="false" :is-reversed="true">
+          <template #face-2>
+            <div @click="current = 1" class="-opacity-50 w-[120px] bg-black p-5 px-6 text-white">HOGE</div>
+          </template>
+          <template #face-1>
+            <div @click="current = 2" class="-opacity-50 w-[180px] bg-gray-400 p-5 px-10 text-white">
+              HOGEGE<br />HOGEHOGE
+            </div>
+          </template>
+        </turn-box>
+      </div>
+      <div class="p-10 fl-col-nowrap fl-start-center-center">
+        <turn-box v-model="current" :is-axis-x="false" :is-reversed="false">
+          <template #face-1>
+            <div @click="current = 2" class="-opacity-50 w-[120px] bg-black p-5 px-6 text-white">HOGE</div>
+          </template>
+          <template #face-2>
+            <div @click="current = 1" class="-opacity-50 w-[180px] bg-gray-400 p-5 px-10 text-white">
+              HOGEGE<br />HOGEHOGE
+            </div>
+          </template>
+        </turn-box>
+      </div>
+      <div class="p-10 fl-col-nowrap fl-start-center-center">
+        <turn-box v-model="current" :is-axis-x="true" :is-reversed="true" class="w-[300px]">
+          <template #face-1>
+            <div @click="current = 2" class="-opacity-50 bg-black p-5 px-6 text-white">HOGE</div>
+          </template>
+          <template #face-2>
+            <div @click="current = 1" class="-opacity-50 bg-gray-400 p-5 px-10 text-white">HOGEGE<br />hoge</div>
+          </template>
+        </turn-box>
+      </div> -->
+      <div class="p-10 fl-col-nowrap fl-start-center-center">
+        <turn-box v-model="current" :is-axis-x="true" :is-reversed="false" class="w-[300px]">
+          <template #face-1>
+            <div @click="current = 2" class="-opacity-50 bg-black p-5 px-6 text-white">HOGE</div>
+          </template>
+          <template #face-2>
+            <div @click="current = 1" class="-opacity-50 bg-gray-400 p-5 px-10 text-white">HOGEGE<br />hoge</div>
+          </template>
+        </turn-box>
+      </div>
+
+      <div @click="hoge" class="p-10 text-[30px]">逆</div>
+    </div>
+    <!--
     <div class="py-32 fl-row-nowrap fl-start-stretch-stretch">
       <turn-box v-model="current" class="mx-auto w-[300px]" :is-reversed="false">
         <template #face-1>
@@ -70,7 +188,8 @@ const changePage = (page) => (current.value = page)
           </div>
         </template>
       </turn-box>
-    </div>
+    </div> -->
+
     <nuxt />
   </article>
 </template>
