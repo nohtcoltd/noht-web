@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, nextTick, onMounted, onUnmounted, watch, toRefs } from '@vue/composition-api'
 
+type Face = number
+
 const props = withDefaults(
   defineProps<{
-    value: number
+    value: Face
     duration: number
     perspective: number
     easing: string
@@ -11,7 +13,7 @@ const props = withDefaults(
     isReversed: boolean
   }>(),
   {
-    duration: 5000,
+    duration: 500,
     perspective: 500,
     easing: 'ease-out',
     isAxisX: true,
@@ -19,12 +21,12 @@ const props = withDefaults(
   },
 )
 
-const last = ref(1)
-const tmpFace = ref<number>(null)
-const tmpSide = ref<number>(null)
+const last = ref<Face>(1)
+const tmpFront = ref<Face>(null)
+const tmpSide = ref<Face>(null)
 const inAnimation = computed(() => !!tmpSide.value)
 const $tmpSide = ref<HTMLElement>(null)
-const $tmpFace = ref<HTMLElement>(null)
+const $tmpFront = ref<HTMLElement>(null)
 const $wrapper = ref<HTMLElement>(null)
 const $box = ref<HTMLElement>(null)
 const boxSize = ref<{
@@ -46,44 +48,34 @@ onUnmounted(() => {
 const refProps = toRefs(props)
 
 watch(refProps.value, async (newValue, oldValue) => {
-  console.log(tmpSide.value)
-
   if (inAnimation.value) {
     boxAnimate.value.reverse()
     wrapperAnimate.value.reverse()
     return
   }
 
-  tmpFace.value = oldValue
-  tmpSide.value = newValue
-
-  await nextTick()
-
-  setSideStyle()
-  setFaceStyle()
-  animateBox()
+  animateBox(oldValue, newValue)
 })
 
-const setSideStyle = () => {
+const createSide = async (value) => {
+  tmpSide.value = value
+  await nextTick()
   const $el = $tmpSide.value
   const { clientWidth, clientHeight } = $el
-  const enterPx = props.isAxisX ? clientHeight : clientWidth
+  const sidePx = props.isAxisX ? clientHeight : clientWidth
   const xPositionName = !props.isAxisX && !props.isReversed ? 'right' : 'left'
   const yPositionName = props.isAxisX && props.isReversed ? 'bottom' : 'top'
   const translation2dName = props.isAxisX ? 'translateY' : 'translateX'
-  let translation2dValue = enterPx / 2
+  let translation2dValue = sidePx / 2
 
   if ((!props.isReversed && props.isAxisX) || (props.isReversed && !props.isAxisX)) {
     translation2dValue = -translation2dValue
   }
 
-  const translationZValue = -enterPx / 2
+  const translationZValue = -sidePx / 2
   const rotationName = props.isAxisX ? 'rotateX' : 'rotateY'
   const rotationValue = props.isReversed ? -90 : 90
   const transformValue = `${translation2dName}(${translation2dValue}px) translateZ(${translationZValue}px) ${rotationName}(${rotationValue}deg)`
-
-  $box.value.style.width = `${boxSize.value.width}px`
-  $box.value.style.height = `${boxSize.value.height}px`
 
   $el.style.position = 'absolute'
   $el.style[xPositionName] = '0'
@@ -91,15 +83,22 @@ const setSideStyle = () => {
   $el.style.transform = transformValue
 }
 
-const setFaceStyle = () => {
-  $tmpFace.value.style.position = 'absolute'
+const createFront = async (value) => {
+  tmpFront.value = value
+  await nextTick()
+  $tmpFront.value.style.position = 'absolute'
 }
 
-const animateBox = () => {
+const animateBox = async (front: Face, side: Face) => {
+  await createSide(side)
+  createFront(front)
+
   const rotationName = props.isAxisX ? 'rotateX' : 'rotateY'
   const { clientWidth, clientHeight } = $tmpSide.value
   const transformOrigin = `50% 50% ${-(props.isAxisX ? boxSize.value.height : boxSize.value.width) / 2}px`
 
+  $box.value.style.width = `${boxSize.value.width}px`
+  $box.value.style.height = `${boxSize.value.height}px`
   $box.value.style.transformOrigin = transformOrigin
 
   let offSetLeft = (boxSize.value.width - clientWidth) / 2
@@ -117,6 +116,7 @@ const animateBox = () => {
     duration: props.duration,
     easing: props.easing,
   }
+
   boxAnimate.value = $box.value.animate(
     {
       left: ['0px', `${offSetLeft}px`],
@@ -147,9 +147,9 @@ const animateBox = () => {
     boxAnimate.value = null
     wrapperAnimate.value = null
 
-    tmpFace.value = null
+    tmpFront.value = null
     tmpSide.value = null
-    $tmpFace.value = null
+    $tmpFront.value = null
     $tmpSide.value = null
 
     await nextTick()
@@ -194,13 +194,13 @@ const changeBoxSize = () =>
           <slot :name="`face-${tmpSide}`" />
         </div>
         <div
-          v-if="tmpFace"
-          ref="$tmpFace"
-          :key="`tmp-face-${tmpFace}`"
+          v-if="tmpFront"
+          ref="$tmpFront"
+          :key="`tmp-face-${tmpFront}`"
           :class="isAxisX ? 'w-full' : ''"
           :data-tmp-face="value"
         >
-          <slot :name="`face-${tmpFace}`" />
+          <slot :name="`face-${tmpFront}`" />
         </div>
       </div>
     </div>
