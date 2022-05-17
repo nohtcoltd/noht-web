@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from '@vue/composition-api'
+import { ref, computed, nextTick } from '@vue/composition-api'
 
 const props = withDefaults(
   defineProps<{
@@ -21,55 +21,42 @@ const props = withDefaults(
 
 const last = ref(1)
 const inAnimation = ref(false)
+const $container = ref<HTMLElement>(null)
+const initialSize = ref<number>(null)
+const size = computed(() => (el: HTMLElement) => props.isAxisX ? el.clientHeight : el.clientWidth)
 
-const translation = computed(() => (el, isNext) => {
-  const { clientWidth, clientHeight } = el
-  const size = props.isAxisX ? clientHeight : clientWidth
-  const positionZ = size / 2
-  const position2d = isNext ? -size / 2 : size / 2
-
-  if (props.isAxisX) {
-    return `translate3d(0, ${position2d}px, ${positionZ}px)`
-  }
-
-  return `translate3d(${-position2d}px, 0, ${positionZ}px)`
-})
-
-const rotation = computed(() => (isNext) => {
-  const deg = isNext ? 90 : -90
-
-  if (props.isAxisX) {
-    return `rotate3d(1, 0, 0, ${deg}deg)`
-  }
-
-  return `rotate3d(0, 1, 0, ${deg}deg)`
-})
-
-const enter = async (el, done) => {
+const enter = async (el: HTMLElement, done) => {
   inAnimation.value = true
-  el.style.position = 'relative'
 
-  el.animate(
+  const axisTranslate = props.isAxisX ? 'translateY' : 'translateX'
+  const axisRotate = props.isAxisX ? 'rotateX' : 'rotateY'
+  const enterSize = size.value(el)
+  const enterZ = -enterSize / 2
+  const enterDeg = props.isReversed ? -90 : 90
+  const enterTranslate = props.isReversed ? -enterSize / 2 + initialSize.value : -enterSize / 2
+
+  el.style.transform = `${axisTranslate}(${enterTranslate}px) translateZ(${enterZ}px) ${axisRotate}(${enterDeg}deg)`
+  el.style.position = 'reactive'
+  el.style.zIndex = '10'
+
+  const boxOriginZ = props.isReversed ? size.value(el) / 2 - initialSize.value : -size.value(el) / 2
+  const boxDeg = props.isReversed ? 90 : -90
+  const boxOffset = props.isReversed ? -size.value(el) + initialSize.value : 0
+
+  const anim = await $container.value.animate(
     {
-      opacity: [0, 1],
-    },
-    {
-      duration: props.duration * 0.3,
-    },
-  )
-  await el.animate(
-    {
-      zIndex: [0, 10],
-      transform: [
-        `${rotation.value(!props.isReversed)} ${translation.value(el, !props.isReversed)}`,
-        `rotate3d(${props.isAxisX ? '1, 0' : '0, 1'}, 0, 0) translate3d(0, 0, 0)`,
-      ],
+      top: ['0px', `${boxOffset}px`],
+      transformOrigin: [`50% 50% 0px`, `50% 50% ${boxOriginZ}px`],
+      height: [`${initialSize.value}px`, `${size.value($container.value)}px`],
+      transform: [`rotate(0)`, `${axisRotate}(${boxDeg}deg)`],
     },
     {
       duration: props.duration,
-      easign: props.easign,
+      easing: props.easing,
     },
   ).finished
+
+  el.style.transform = ''
 
   inAnimation.value = false
   last.value = props.value
@@ -78,22 +65,19 @@ const enter = async (el, done) => {
 }
 
 const leave = async (el, done) => {
-  el.style.position = 'absolute'
-  el.style.width = '100%'
+  initialSize.value = size.value(el)
 
-  await el.animate(
-    {
-      zIndex: [10, 0],
-      transform: [
-        `rotate3d(1, 0, 0, 0) translate3d(0, 0, 0)`,
-        `${rotation.value(props.isReversed)} ${translation.value(el, props.isReversed)}`,
-      ],
-    },
-    {
-      duration: props.duration,
-      easign: props.easign,
-    },
-  ).finished
+  el.style.position = 'absolute'
+  el.style.zIndex = '0'
+
+  if (props.isAxisX) {
+    el.style.width = '100%'
+  } else {
+    el.style.height = '100%'
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, props.duration))
+
   done()
 }
 
@@ -108,22 +92,30 @@ const cancelLeave = (el, done) => {
 
 <template>
   <div
-    class="?bg-slate-50 relative"
     :style="{
       perspective: `${perspective}px`,
     }"
   >
-    <transition
-      :css="false"
-      @enter="enter"
-      @leave="leave"
-      @enter-cancelled="cancelEnter"
-      @leave-cancelled="cancelLeave"
+    <div
+      ref="$container"
+      class="relative"
+      :style="{
+        transformStyle: 'preserve-3d',
+      }"
     >
-      <div :key="`face-${value}`">
-        <slot :name="`face-${value}`" />
-      </div>
-    </transition>
+      <transition
+        :css="false"
+        @enter="enter"
+        @leave="leave"
+        @enter-cancelled="cancelEnter"
+        @leave-cancelled="cancelLeave"
+      >
+        <div :key="`face-${value}`">
+          <slot :name="`face-${value}`" />
+        </div>
+      </transition>
+    </div>
+
     <div v-if="inAnimation" class="absolute top-0 left-0 z-10 h-full w-full" />
   </div>
 </template>
