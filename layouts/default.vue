@@ -26,8 +26,8 @@ const changePage = (page) => (current.value = page)
 </script>
 <template>
   <article>
-    <div class=""></div>
-    <div class="p-10">
+    <div class="mx-auto mb-5 w-[100px] select-none bg-slate-500 p-10" @click="current = current === 1 ? 2 : 1">+</div>
+    <!-- <div class="p-10">
       <div
         class="bg-[red]"
         :style="{
@@ -77,9 +77,9 @@ const changePage = (page) => (current.value = page)
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="mx-auto w-fit bg-[yellow] fl-col-nowrap fl-center-center-center">
-      <!-- <div class="p-10 fl-col-nowrap fl-start-center-center">
+      <div class="p-10 fl-col-nowrap fl-start-center-center">
         <turn-box v-model="current" :is-axis-x="false" :is-reversed="true">
           <template #face-2>
             <div @click="current = 1" class="-opacity-50 w-[120px] bg-black p-5 px-6 text-white">HOGE</div>
@@ -112,7 +112,7 @@ const changePage = (page) => (current.value = page)
             <div @click="current = 1" class="-opacity-50 bg-gray-400 p-5 px-10 text-white">HOGEGE<br />hoge</div>
           </template>
         </turn-box>
-      </div> -->
+      </div>
       <div class="p-10 fl-col-nowrap fl-start-center-center">
         <turn-box v-model="current" :is-axis-x="true" :is-reversed="false" class="w-[300px]">
           <template #face-1>
@@ -124,7 +124,7 @@ const changePage = (page) => (current.value = page)
         </turn-box>
       </div>
 
-      <div @click="hoge" class="p-10 text-[30px]">逆</div>
+      <!-- <div @click="hoge" class="p-10 text-[30px]">逆</div> -->
     </div>
     <!--
     <div class="py-32 fl-row-nowrap fl-start-stretch-stretch">
