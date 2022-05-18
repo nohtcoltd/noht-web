@@ -25,10 +25,9 @@ const lastValue = ref<Face>(1)
 const tmpFront = ref<Face>(null)
 const tmpSide = ref<Face>(null)
 
-const $tmpSide = ref<HTMLElement>(null)
-const $tmpFront = ref<HTMLElement>(null)
 const $wrapper = ref<HTMLElement>(null)
 const $box = ref<HTMLElement>(null)
+const $tmpSide = ref<HTMLElement>(null)
 
 const boxAnimate = ref<Animation>(null)
 const wrapperAnimate = ref<Animation>(null)
@@ -42,13 +41,16 @@ watch(refProps.value, async (newValue, oldValue) => {
     return
   }
 
-  animateBox(oldValue, newValue)
+  rotateBox(oldValue, newValue)
 })
 
-const createSide = async (value) => {
-  tmpSide.value = value
-  await nextTick()
+const sideStyle = computed(() => {
   const $el = $tmpSide.value
+
+  if (!$el) {
+    return {}
+  }
+
   const { clientWidth, clientHeight } = $el
   const sidePx = props.isAxisX ? clientHeight : clientWidth
   const xPositionName = !props.isAxisX && !props.isReversed ? 'right' : 'left'
@@ -65,23 +67,18 @@ const createSide = async (value) => {
   const rotationValue = props.isReversed ? -90 : 90
   const transformValue = `${translation2dName}(${translation2dValue}px) translateZ(${translationZValue}px) ${rotationName}(${rotationValue}deg)`
 
-  $el.style.position = 'absolute'
-  $el.style[xPositionName] = '0'
-  $el.style[yPositionName] = '0'
-  $el.style.transform = transformValue
-}
+  return {
+    [xPositionName]: '0',
+    [yPositionName]: '0',
+    transform: transformValue,
+  }
+})
 
-const createFront = async (value) => {
-  tmpFront.value = value
-  await nextTick()
-  $tmpFront.value.style.position = 'absolute'
-}
-
-const animateBox = async (front: Face, side: Face) => {
+const rotateBox = async (front: Face, side: Face) => {
   const { clientWidth, clientHeight } = $box.value
-
-  await createSide(side)
-  createFront(front)
+  tmpSide.value = side
+  tmpFront.value = front
+  await nextTick()
 
   const rotationName = props.isAxisX ? 'rotateX' : 'rotateY'
   const sideWidth = $tmpSide.value.clientWidth
@@ -137,16 +134,13 @@ const animateBox = async (front: Face, side: Face) => {
 
     tmpFront.value = null
     tmpSide.value = null
-    $tmpFront.value = null
-    $tmpSide.value = null
   }
 }
 </script>
 
 <template>
-  <div ref="$wrapper" class="relative bg-[red] fl-col-nowrap fl-center-center-center">
+  <div ref="$wrapper" class="relative fl-col-nowrap fl-center-center-center">
     <div
-      class="fl-col-nowrap fl-center-center-center"
       :class="isAxisX ? 'w-full' : ''"
       :style="{
         perspective: `${perspective}px`,
@@ -166,15 +160,17 @@ const animateBox = async (front: Face, side: Face) => {
         <div
           v-if="tmpSide"
           :key="`tmp-side-${tmpSide}`"
+          class="absolute"
           :class="isAxisX ? 'w-full' : ''"
           :data-tmp-side="value"
           ref="$tmpSide"
+          :style="sideStyle"
         >
           <slot :name="`face-${tmpSide}`" />
         </div>
         <div
           v-if="tmpFront"
-          ref="$tmpFront"
+          class="absolute"
           :key="`tmp-face-${tmpFront}`"
           :class="isAxisX ? 'w-full' : ''"
           :data-tmp-face="value"
