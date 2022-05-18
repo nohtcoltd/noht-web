@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, onMounted, onUnmounted, watch, toRefs } from '@vue/composition-api'
+import { ref, computed, nextTick, watch, toRefs } from '@vue/composition-api'
 
 type Face = number
 
@@ -21,34 +21,22 @@ const props = withDefaults(
   },
 )
 
-const last = ref<Face>(1)
+const lastValue = ref<Face>(1)
 const tmpFront = ref<Face>(null)
 const tmpSide = ref<Face>(null)
-const inAnimation = computed(() => !!tmpSide.value)
+
 const $tmpSide = ref<HTMLElement>(null)
 const $tmpFront = ref<HTMLElement>(null)
 const $wrapper = ref<HTMLElement>(null)
 const $box = ref<HTMLElement>(null)
-const boxSize = ref<{
-  width: number
-  height: number
-}>(null)
+
 const boxAnimate = ref<Animation>(null)
 const wrapperAnimate = ref<Animation>(null)
-
-onMounted(() => {
-  window.addEventListener('resize', changeBoxSize)
-  changeBoxSize()
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', changeBoxSize)
-})
 
 const refProps = toRefs(props)
 
 watch(refProps.value, async (newValue, oldValue) => {
-  if (inAnimation.value) {
+  if (lastValue.value === tmpFront.value) {
     boxAnimate.value.reverse()
     wrapperAnimate.value.reverse()
     return
@@ -90,19 +78,22 @@ const createFront = async (value) => {
 }
 
 const animateBox = async (front: Face, side: Face) => {
+  const { clientWidth, clientHeight } = $box.value
+
   await createSide(side)
   createFront(front)
 
   const rotationName = props.isAxisX ? 'rotateX' : 'rotateY'
-  const { clientWidth, clientHeight } = $tmpSide.value
-  const transformOrigin = `50% 50% ${-(props.isAxisX ? boxSize.value.height : boxSize.value.width) / 2}px`
+  const sideWidth = $tmpSide.value.clientWidth
+  const sideHeight = $tmpSide.value.clientHeight
+  const transformOrigin = `50% 50% ${-(props.isAxisX ? clientHeight : clientWidth) / 2}px`
 
-  $box.value.style.width = `${boxSize.value.width}px`
-  $box.value.style.height = `${boxSize.value.height}px`
+  $box.value.style.width = `${clientWidth}px`
+  $box.value.style.height = `${clientHeight}px`
   $box.value.style.transformOrigin = transformOrigin
 
-  let offSetLeft = (boxSize.value.width - clientWidth) / 2
-  let offSetTop = (boxSize.value.height - clientHeight) / 2
+  let offSetLeft = (clientWidth - $tmpSide.value.clientWidth) / 2
+  let offSetTop = (clientHeight - $tmpSide.value.clientHeight) / 2
 
   if (props.isAxisX && !props.isReversed) {
     offSetTop = -offSetTop
@@ -128,21 +119,18 @@ const animateBox = async (front: Face, side: Face) => {
 
   wrapperAnimate.value = $wrapper.value.animate(
     {
-      width: [`${boxSize.value.width}px`, `${clientWidth}px`],
-      height: [`${boxSize.value.height}px`, `${clientHeight}px`],
+      width: [`${clientWidth}px`, `${sideWidth}px`],
+      height: [`${clientHeight}px`, `${sideHeight}px`],
     },
     options,
   )
 
   boxAnimate.value.onfinish = async () => {
-    $wrapper.value.style.width = ''
-    $wrapper.value.style.height = ''
     $box.value.style.transformOrigin = ''
-    $box.value.style.transform = ''
     $box.value.style.width = ''
     $box.value.style.height = ''
 
-    last.value = props.value
+    lastValue.value = props.value
 
     boxAnimate.value = null
     wrapperAnimate.value = null
@@ -151,17 +139,8 @@ const animateBox = async (front: Face, side: Face) => {
     tmpSide.value = null
     $tmpFront.value = null
     $tmpSide.value = null
-
-    await nextTick()
-    changeBoxSize()
   }
 }
-
-const changeBoxSize = () =>
-  (boxSize.value = {
-    width: $box.value.clientWidth,
-    height: $box.value.clientHeight,
-  })
 </script>
 
 <template>
@@ -181,7 +160,7 @@ const changeBoxSize = () =>
           transformStyle: 'preserve-3d',
         }"
       >
-        <div v-if="!inAnimation" :key="`face-${value}`" :class="isAxisX ? 'w-full' : ''" :data-face="value">
+        <div v-if="!tmpSide" :key="`face-${value}`" :class="isAxisX ? 'w-full' : ''" :data-face="value">
           <slot :name="`face-${value}`" />
         </div>
         <div
@@ -204,7 +183,5 @@ const changeBoxSize = () =>
         </div>
       </div>
     </div>
-
-    <!-- <div v-if="inAnimation" class="absolute top-0 left-0 z-10 h-full w-full" /> -->
   </div>
 </template>
