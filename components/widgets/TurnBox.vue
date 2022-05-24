@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, watch, toRefs, onMounted } from '#app'
+import { ref, computed, nextTick, watch, toRefs, onMounted, getCurrentInstance } from '#app'
 
 type Face = number
 
 // XXX: nuxt bridgeのvue2でv-forのrefが廃止、vue3のref="関数"が未実装なためDOM特定のためにidを降る
 // vue3なら不要
-const id = ref<number>()
-onMounted(() => (id.value = Math.floor(Math.random() * 10000)))
+const id = ref<number>(null)
+onMounted(() => (id.value = getCurrentInstance().uid))
 
 const props = withDefaults(
   defineProps<{
