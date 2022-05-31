@@ -25,21 +25,16 @@ export default defineNuxtConfig({
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  plugins: ['~/plugins/VeeValidate'],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxtjs/tailwindcss',
-  ],
+  modules: ['@nuxtjs/svg', 'nuxt-webfontloader', '@nuxtjs/tailwindcss'],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -49,6 +44,33 @@ export default defineNuxtConfig({
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    hardSource: true,
+    transpile: ['vee-validate/dist/rules'],
+
+    // safariのホットリロードバグ対策
+    filenames: {
+      app: ({ isDev }) => (isDev ? '[name].[hash].js' : '[chunkhash].js'),
+      chunk: ({ isDev }) => (isDev ? '[name].[hash].js' : '[chunkhash].js'),
+    },
+
+    // @ts-ignore
+    extractCSS: {
+      ignoreOrder: true,
+    },
+
+    // hardSource: true,
+  },
+
+  router: {
+    extendRoutes: (routes) => {
+      if (process.env.NODE_ENV === 'production') {
+        routes.filter(({ name }) => name !== 'demoTurnBox')
+      }
+    },
+  },
+
+  webfontloader: {
+    google: {
+      families: ['Poppins:400,500,600,700'],
+    },
   },
 })
