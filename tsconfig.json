@@ -13,13 +13,10 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "#app": ["./node_modules/@nuxt/bridge/dist/runtime/index.d.ts"]
     },
-    "types": [
-      "@types/node",
-      "@nuxt/types",
-      "@types/jquery",
-    ],
+    "types": ["@types/node", "@nuxt/types"],
     // "strict": true,
     // https://employment.en-japan.com/engineerhub/entry/2019/04/16/103000
     // いずれ有効にする
@@ -31,9 +28,6 @@
     "noImplicitThis": false, // Raise error on 'thisv' expressions with an implied 'any' type.
     "experimentalDecorators": true,
     "resolveJsonModule": true
-  },
-  "vueCompilerOptions": {
-    "experimentalCompatMode": 2
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
