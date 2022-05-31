@@ -10,10 +10,10 @@ module.exports = {
     extend: {},
     screens: {
       'pc-l': { max: '1400px' },
-      'pc-m': { max: '1200px' },
-      'pc-s': { max: '1024px' },
-      pc: { min: '751px' },
-      mb: { max: '750px' },
+      'pc-s': { max: '1200px' },
+      pc: { min: '1025px' },
+      tablet: { max: '1024px' },
+      mb: { max: '850px' },
       'mb-s': { max: '520px' },
     },
   },
@@ -133,11 +133,22 @@ module.exports = {
         {},
       )
 
-      const breakKeepAll = {
-        '.break-keep-all': { 'word-break': 'keep-all' },
+      const wordBreak = {
+        '.word-break-keep-all': { 'word-break': 'keep-all' },
+        '.word-break': { 'word-break': 'break-word' },
       }
 
-      addUtilities({ ...flexFlow, ...flexPlace, ...breakKeepAll })
+      const font = {
+        '.init-font-family': {
+          'font-family': `'Hiragino Sans', 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'Rubik', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif`,
+        },
+
+        '.font-poppins': {
+          'font-family': `'Poppins'`,
+        },
+      }
+
+      addUtilities({ ...flexFlow, ...flexPlace, ...wordBreak, ...font })
     }),
   ],
 }
