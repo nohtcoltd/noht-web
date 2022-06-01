@@ -71,7 +71,7 @@ const { isTablet } = useMediaQuery()
           <template #face-4>
             <PageWrapper :is-rotating="isRotating" class="fl-col-nowrap fl-center-center-center">
               <div class="max-w-[300px] py-[80px]" ref="$navi">
-                <NaviMenu :is-disabled="isRotating" :is-button-rotation-disabled="true" />
+                <NaviMenu :is-redirection-disabled="isRotating" :is-button-rotation-disabled="true" />
                 <CloseButton @click="closeMobileNavi" class="mx-auto mt-[80px]" />
               </div>
             </PageWrapper>

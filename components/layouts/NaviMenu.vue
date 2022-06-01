@@ -8,17 +8,17 @@ const isCurrentRoute = computed(() => (routeName) => route.name === routeName)
 
 const props = withDefaults(
   defineProps<{
-    isDisabled: boolean
+    isRedirectionDisabled: boolean
     isButtonRotationDisabled: boolean
   }>(),
   {
-    isDisabled: false,
+    isRedirectionDisabled: false,
     isButtonRotationDisabled: false,
   },
 )
 
 const redirectTo = async (routeName) => {
-  if (props.isDisabled) {
+  if (props.isRedirectionDisabled) {
     return
   }
 
