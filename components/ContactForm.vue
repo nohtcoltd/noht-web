@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { reactive, inject, ref, ComponentInstance, useRoute } from '#app'
+import { reactive, inject, ref, ComponentInstance, useRoute, onMounted } from '#app'
+import { useContext } from '@nuxtjs/composition-api'
 import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
+
+const { $recaptcha } = useContext()
 
 const route = useRoute()
 const $observer = ref<ComponentInstance>(null)
@@ -13,7 +16,30 @@ const fields = reactive({
   content: '',
 })
 
+const validateRecaptcha = async (): Promise<string> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const token: string = await $recaptcha.getResponse()
+
+      await $recaptcha.reset()
+
+      resolve(token)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
 const submit = async () => {
+  const recaptchaToken = await validateRecaptcha().catch((error) => {
+    console.error(error)
+    return null
+  })
+
+  if (!recaptchaToken) {
+    return
+  }
+
   const formData = new FormData()
 
   formData.append('name', fields.name)
@@ -21,11 +47,14 @@ const submit = async () => {
   formData.append('mail', fields.mail)
   formData.append('content', fields.content)
   formData.append('form-name', 'contact')
+  formData.append('g-recaptcha-response', recaptchaToken)
 
   const data = await $fetch('/', {
     method: 'POST',
     body: formData,
   })
+
+  console.log(data)
 }
 
 const reset = () => {
@@ -53,7 +82,12 @@ addHandle(() => {
       <input name="form-name" value="hoge" />
   -->
   <validation-observer ref="$observer" v-slot="{ handleSubmit }" slim>
-    <form name="contact" netlify class="w-full text-[16px] fl-col-nowrap fl-start-center-center mb:text-[14px]">
+    <form
+      name="contact"
+      netlify
+      data-netlify-recaptcha="true"
+      class="w-full text-[16px] fl-col-nowrap fl-start-center-center mb:text-[14px]"
+    >
       <input type="hidden" name="form-name" value="contact" />
       <div class="w-full max-w-[350px]">
         <validation-provider mode="passive" rules="required" v-slot="{ errors }" slim>
@@ -76,6 +110,10 @@ addHandle(() => {
         />
         <ErrorMessage :error="errors[0]" />
       </validation-provider>
+
+      <div class="mt-[1em]">
+        <recaptcha />
+      </div>
 
       <div
         @click="handleSubmit(submit)"
