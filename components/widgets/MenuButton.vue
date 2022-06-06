@@ -1,5 +1,5 @@
 <template>
-  <button class="block w-[10vw] max-w-[35px] p-1 my-hover:opacity-70" @click="$emit('click', $event)">
+  <button class="block w-[clamp(30px,9vw,35px)] p-1 my-hover:opacity-70" @click="$emit('click', $event)">
     <div class="pointer-events-none relative aspect-square w-full">
       <div
         v-for="num in 3"

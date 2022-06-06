@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import Index from '~/pages/index.vue'
-import Abount from '~/pages/about/index.vue'
+import About from '~/pages/about/index.vue'
 import Contact from '~/pages/contact/index.vue'
 import useTurnPage from '~/composables/useTurnPage'
 import useMediaQuery from '~/composables/useMediaQuery'
@@ -57,7 +57,7 @@ const {
           <template #face-2>
             <PageWrapper :is-rotating="isRotating">
               <MobileHeader @click:menu="openMobileNavi" />
-              <abount ref="$about" />
+              <about ref="$about" />
             </PageWrapper>
           </template>
           <template #face-3>
