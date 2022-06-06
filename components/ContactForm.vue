@@ -6,6 +6,7 @@ import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 
 const { $recaptcha } = useContext()
+const hasRecaptchaError = ref(false)
 
 const route = useRoute()
 const $observer = ref<ComponentInstance>(null)
@@ -20,11 +21,12 @@ const validateRecaptcha = async (): Promise<string> => {
   return new Promise(async (resolve, reject) => {
     try {
       const token: string = await $recaptcha.getResponse()
-
+      hasRecaptchaError.value = false
       await $recaptcha.reset()
 
       resolve(token)
     } catch (error) {
+      hasRecaptchaError.value = true
       reject(error)
     }
   })
@@ -113,6 +115,7 @@ addHandle(() => {
 
       <div class="mt-[1em]">
         <recaptcha />
+        <ErrorMessage v-if="hasRecaptchaError" error="失敗しました" />
       </div>
 
       <div
