@@ -89,6 +89,8 @@ export default () => {
   const handleResizeWindow = async () => {
     clearTimeout(windowResizingTimer)
     isWindowResizing.value = true
+    await nextTick()
+    shouldMobileNaviOpened.value = false
     windowResizingTimer = setTimeout(() => (isWindowResizing.value = false), 200)
   }
 
