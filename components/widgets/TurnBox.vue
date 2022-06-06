@@ -56,15 +56,15 @@ const nextAnimation = ref<Animation>(null)
 watch(toRefs(props).currentFace, async (newValue, oldValue) => {
   if (isRotating.value && newValue === prev.value && oldValue === next.value) {
     isForward.value = false
-    emits('finish:forward-rotation', oldValue, newValue, lastFace.value)
-    emits('start:backward-rotation', newValue, oldValue, lastFace.value)
+    emits('finish:forward-rotation', oldValue, newValue)
+    emits('start:backward-rotation', newValue, oldValue)
     reverseAnimation()
     return
   }
 
   if (!isForward.value && oldValue === prev.value && newValue === next.value) {
-    emits('finish:backward-rotation', oldValue, newValue, lastFace.value)
-    emits('start:forward-rotation', oldValue, newValue, lastFace.value)
+    emits('finish:backward-rotation', oldValue, newValue)
+    emits('start:forward-rotation', oldValue, newValue)
     isForward.value = true
     reverseAnimation()
     return
@@ -159,7 +159,7 @@ const createNext = async (face: Face) => {
 }
 
 const rotateBox = async (prev: Face, next: Face) => {
-  emits('start:rotation', prev, next, lastFace.value)
+  emits('start:rotation', prev, next)
 
   const prevWidth = $wrapper.value.clientWidth
   const prevHeight = $wrapper.value.clientHeight
@@ -254,12 +254,12 @@ const handleFinish = () => {
   $prev.value.style.transform = ''
 
   if (isForward.value) {
-    emits('complete:forward-rotation', prev.value, next.value, lastFace.value)
+    emits('complete:forward-rotation', prev.value, next.value)
   } else {
-    emits('complete:backward-rotation', prev.value, next.value, lastFace.value)
+    emits('complete:backward-rotation', prev.value, next.value)
   }
 
-  emits('complete:rotation', prev.value, next.value, lastFace.value)
+  emits('complete:rotation', prev.value, next.value)
 
   isForward.value = true
   isRotating.value = false
