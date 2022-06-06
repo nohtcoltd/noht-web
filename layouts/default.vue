@@ -26,8 +26,6 @@ const {
   openMobileNavi,
   closeMobileNavi,
 } = useTurnPage()
-
-const { isTablet } = useMediaQuery()
 </script>
 <template>
   <article
@@ -47,8 +45,8 @@ const { isTablet } = useMediaQuery()
           class="w-full"
           @start:rotation="startRotation"
           @complete:rotation="completeRotation"
-          @complete:forward="completeRotateForward"
-          @complete:backward="completeRotateBackward"
+          @complete:forward-rotation="completeRotateForward"
+          @complete:backward-rotation="completeRotateBackward"
         >
           <template #face-1>
             <PageWrapper :is-rotating="isRotating">

@@ -27,13 +27,13 @@ const completeRotationHandles: Handle[] = []
 const completeRotateForwardHandles: Handle[] = []
 const completeRotateBackwardHandles: Handle[] = []
 
-export const addPageStartRotationHandle: InjectionKey<(Handle) => void> = Symbol('addPageCompleteRotateForwardHandle')
-export const addPageFinishRotationHandle: InjectionKey<(Handle) => void> = Symbol('addPageCompleteRotateForwardHandle')
-export const addPageCompleteRotateForwardHandle: InjectionKey<(Handle) => void> = Symbol(
-  'addPageCompleteRotateForwardHandle',
+export const addStartRotationHandle: InjectionKey<(Handle) => void> = Symbol('addHandle:completeRotation')
+export const addCompleteRotationHandle: InjectionKey<(Handle) => void> = Symbol('addHandle:completeRotation')
+export const addCompleteForwardRotationHandle: InjectionKey<(Handle) => void> = Symbol(
+  'addHandle:completeForwardRotation',
 )
-export const addPageCompleteRotateBackwardHandle: InjectionKey<(Handle) => void> = Symbol(
-  'addPageCompleteRotateForwardHandle',
+export const addCompleteBackwardRotationHandle: InjectionKey<(Handle) => void> = Symbol(
+  'addHandle:completeBackwardRotation',
 )
 
 let windowResizingTimer = null
@@ -170,17 +170,18 @@ export default () => {
     next()
   })
 
-  provide(addPageStartRotationHandle, (handle: Handle) => startRotationHandles.push(handle))
-  provide(addPageFinishRotationHandle, (handle: Handle) => completeRotationHandles.push(handle))
-  provide(addPageCompleteRotateForwardHandle, (handle: Handle) => completeRotateForwardHandles.push(handle))
-  provide(addPageCompleteRotateBackwardHandle, (handle: Handle) => completeRotateBackwardHandles.push(handle))
+  provide(addStartRotationHandle, (handle: Handle) => startRotationHandles.push(handle))
+  provide(addCompleteRotationHandle, (handle: Handle) => completeRotationHandles.push(handle))
+  provide(addCompleteForwardRotationHandle, (handle: Handle) => completeRotateForwardHandles.push(handle))
+  provide(addCompleteBackwardRotationHandle, (handle: Handle) => completeRotateBackwardHandles.push(handle))
 
   return {
-    $el,
     $index,
     $about,
     $contact,
+    $navi,
     isRotating,
+    perspective,
     duration,
     isReversed,
     currentFace,

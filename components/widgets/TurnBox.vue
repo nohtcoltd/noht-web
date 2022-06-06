@@ -1,22 +1,17 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, watch, toRefs, onMounted, getCurrentInstance } from '#app'
+import { ref, computed, nextTick, watch, toRefs } from '#app'
 
 type Face = number
-
-// XXX: nuxt bridgeのvue2でv-forのrefが廃止、vue3のref="関数"が未実装なためDOM特定のためにidを降る
-// vue3なら不要
-const id = ref<number>(null)
-onMounted(() => (id.value = getCurrentInstance().uid))
 
 const props = withDefaults(
   defineProps<{
     value: Face
     faces: number
-    duration: number
-    perspective: number
-    easing: string
-    isAxisX: boolean
-    isReversed: boolean
+    duration?: number
+    perspective?: number
+    easing?: string
+    isAxisX?: boolean
+    isReversed?: boolean
   }>(),
   {
     duration: 500,
@@ -28,13 +23,19 @@ const props = withDefaults(
 )
 
 const emits = defineEmits<{
-  (e: 'update', value: Face): void
-  (e: 'start:rotate', value: Face): void
-  (e: 'finish:rotate', value: Face): void
+  (e: 'start:rotation', prev: Face, next: Face): void
+  (e: 'complete:rotation', prev: Face, next: Face): void
+  (e: 'start:forward-rotation', prev: Face, next: Face): void
+  (e: 'finish:forward-rotation', prev: Face, next: Face): void
+  (e: 'complete:forward-rotation', prev: Face, next: Face): void
+  (e: 'start:backward-rotation', prev: Face, next: Face): void
+  (e: 'finish:backward-rotation', prev: Face, next: Face): void
+  (e: 'complete:backward-rotation', prev: Face, next: Face): void
 }>()
 
-const inAnimation = ref(false)
-const lastValue = ref<Face>(1)
+const isRotating = ref(false)
+const isForward = ref(true)
+const lastFace = ref<Face>(1)
 const next = ref<Face>(null)
 const prev = ref<Face>(null)
 
@@ -43,13 +44,28 @@ const $box = ref<HTMLElement>(null)
 const $prev = ref<HTMLElement>(null)
 const $next = ref<HTMLElement>(null)
 
+// XXX: nuxt bridgeのvue2でv-forのrefが廃止、vue3のref="関数"が未実装なため子要素からDOM取得
+// vue3なら不要
+const getFaceElement = computed(() => (face) => Array.from($box.value.children)[face - 1] as HTMLElement)
+
 const wrapperAnimation = ref<Animation>(null)
 const boxAnimation = ref<Animation>(null)
 const prevAnimation = ref<Animation>(null)
 const nextAnimation = ref<Animation>(null)
 
-watch(toRefs(props).value, async (newValue, oldValue) => {
-  if (newValue === prev.value && oldValue === next.value) {
+watch(toRefs(props).currentFace, async (newValue, oldValue) => {
+  if (isRotating.value && newValue === prev.value && oldValue === next.value) {
+    isForward.value = false
+    emits('finish:forward-rotation', oldValue, newValue, lastFace.value)
+    emits('start:backward-rotation', newValue, oldValue, lastFace.value)
+    reverseAnimation()
+    return
+  }
+
+  if (!isForward.value && oldValue === prev.value && newValue === next.value) {
+    emits('finish:backward-rotation', oldValue, newValue, lastFace.value)
+    emits('start:forward-rotation', oldValue, newValue, lastFace.value)
+    isForward.value = true
     reverseAnimation()
     return
   }
@@ -62,12 +78,11 @@ const animationOption = computed(() => ({
   easing: props.easing,
 }))
 
-const createPrev = async (face) => {
+const createPrev = async (face: Face) => {
   prev.value = face
-  $prev.value = $wrapper.value.querySelector(`[data-face="${id.value}-${prev.value}"]`)
+  $prev.value = getFaceElement.value(face)
 
   const { clientWidth, clientHeight } = $prev.value
-  // console.log('f', clientWidth, clientHeight)
 
   $prev.value.style.position = 'absolute'
   $prev.value.style.width = `${clientWidth}px`
@@ -94,12 +109,11 @@ const createPrev = async (face) => {
   return
 }
 
-const createNext = async (face) => {
+const createNext = async (face: Face) => {
   next.value = face
-  $next.value = $wrapper.value.querySelector(`[data-face="${id.value}-${next.value}"]`)
+  $next.value = getFaceElement.value(face)
 
   const { clientWidth, clientHeight } = $next.value
-
   await nextTick()
 
   const xPositionName = !props.isAxisX && props.isReversed ? 'right' : 'left'
@@ -107,10 +121,8 @@ const createNext = async (face) => {
   const xPositionValue = props.isAxisX ? '0' : '100%'
   const yPositionValue = props.isAxisX ? '100%' : '0'
 
-  const rotationName = props.isAxisX ? 'rotateX' : 'rotateY'
-  const rotationValue = props.isReversed ? -90 : 90
-  const transformValue = `${rotationName}(${rotationValue}deg)`
-  const transformOriginValue =
+  const transform = `${props.isAxisX ? 'rotateX' : 'rotateY'}(${props.isReversed ? -90 : 90}deg)`
+  const transformOrigin =
     (props.isAxisX && !props.isReversed) || (!props.isAxisX && props.isReversed) ? '100% 100%' : '0 0'
 
   $next.value.style.width = `${clientWidth}px`
@@ -118,8 +130,8 @@ const createNext = async (face) => {
   $next.value.style.position = 'absolute'
   $next.value.style[xPositionName] = xPositionValue
   $next.value.style[yPositionName] = yPositionValue
-  $next.value.style.transform = transformValue
-  $next.value.style.transformOrigin = transformOriginValue
+  $next.value.style.transform = transform
+  $next.value.style.transformOrigin = transformOrigin
 
   nextAnimation.value = $next.value.animate(
     [
@@ -147,40 +159,63 @@ const createNext = async (face) => {
 }
 
 const rotateBox = async (prev: Face, next: Face) => {
-  emits('start:rotate', props.value)
-  const wrapperWidth = $wrapper.value.clientWidth
-  const wrapperHeight = $wrapper.value.clientHeight
-  const wrapperSize = props.isAxisX ? wrapperHeight : wrapperWidth
+  emits('start:rotation', prev, next, lastFace.value)
+
+  const prevWidth = $wrapper.value.clientWidth
+  const prevHeight = $wrapper.value.clientHeight
+  const prevSize = props.isAxisX ? prevHeight : prevWidth
 
   await createPrev(prev)
   await createNext(next)
 
+  // スクロール位置確保のためwidth/heightを与えておく
+  $wrapper.value.style.width = `${prevWidth}px`
+  $wrapper.value.style.height = `${prevHeight}px`
+
   await nextTick()
 
-  const rotationName = props.isAxisX ? 'rotateX' : 'rotateY'
   const nextWidth = $next.value.clientWidth
   const nextHeight = $next.value.clientHeight
-  const nextSize = props.isAxisX ? nextHeight : nextWidth
-
-  $wrapper.value.style.width = `${wrapperWidth}px`
-  $wrapper.value.style.height = `${wrapperHeight}px`
 
   $box.value.style.position = 'absolute'
-  $box.value.style.width = `${wrapperWidth}px`
-  $box.value.style.height = `${wrapperHeight}px`
+  $box.value.style.width = `${prevWidth}px`
+  $box.value.style.height = `${prevHeight}px`
 
-  const offsetX = !props.isAxisX && props.isReversed ? nextWidth - wrapperWidth : 0
-  const offsetY = props.isAxisX && !props.isReversed ? -(wrapperHeight - nextHeight) : 0
+  const rotate = props.isReversed ? 90 : -90
+  const adjustX = !props.isAxisX && props.isReversed ? nextWidth - prevWidth : 0
+  const adjustY = props.isAxisX && !props.isReversed ? -(prevHeight - nextHeight) : 0
+  const adjustZ = -prevSize / 2
 
-  inAnimation.value = true
+  let adjust2d = adjustZ
+
+  if ((!props.isAxisX && props.isReversed) || (props.isAxisX && !props.isReversed)) {
+    adjust2d = -adjust2d
+  }
+
+  $prev.value.style.transform = `${$prev.value.style.transform} translateZ(${-adjustZ}px)`
+  $next.value.style.transform = `${$next.value.style.transform} ${
+    props.isAxisX ? 'translateY' : 'translateX'
+  }(${adjust2d}px)`
+
+  isRotating.value = true
 
   boxAnimation.value = $box.value.animate(
-    {
-      transformOrigin: [`50% 50% ${-nextSize / 2}px`, `50% 50% ${-wrapperSize / 2}px`],
-      transform: [
-        `translateX(${offsetX}px) translateY(${offsetY}px) ${rotationName}(${props.isReversed ? 90 : -90}deg)`,
-      ],
-    },
+    [
+      {
+        transform: `translateX(0px) translateY(0px) translateZ(${adjustZ}px) rotate(0deg)`,
+        offset: 0,
+      },
+      {
+        transform: `
+          translateX(${adjustX}px)
+          translateY(${adjustY}px)
+          translateZ(${adjustZ}px)
+          ${props.isAxisX ? 'rotateX' : 'rotateY'}(${rotate}deg)
+        `,
+
+        offset: 1,
+      },
+    ],
     animationOption.value,
   )
 
@@ -188,22 +223,16 @@ const rotateBox = async (prev: Face, next: Face) => {
 
   wrapperAnimation.value = $wrapper.value.animate(
     {
-      width: [`${wrapperWidth}px`, `${nextWidth}px`],
-      height: [`${wrapperHeight}px`, `${nextHeight}px`],
+      width: [`${prevWidth}px`, `${nextWidth}px`],
+      height: [`${prevHeight}px`, `${nextHeight}px`],
     },
     animationOption.value,
   )
-
-  // setTimeout(() => {
-  //   boxAnimation.value.pause()
-  //   wrapperAnimation.value.pause()
-  // }, props.duration - 500)
 
   return
 }
 
 const handleFinish = () => {
-  inAnimation.value = false
   $wrapper.value.style.width = ''
   $wrapper.value.style.height = ''
 
@@ -222,16 +251,24 @@ const handleFinish = () => {
   $prev.value.style.width = ''
   $prev.value.style.height = ''
   $prev.value.style.position = ''
+  $prev.value.style.transform = ''
 
-  lastValue.value = props.value
+  if (isForward.value) {
+    emits('complete:forward-rotation', prev.value, next.value, lastFace.value)
+  } else {
+    emits('complete:backward-rotation', prev.value, next.value, lastFace.value)
+  }
 
+  emits('complete:rotation', prev.value, next.value, lastFace.value)
+
+  isForward.value = true
+  isRotating.value = false
   boxAnimation.value = null
   wrapperAnimation.value = null
 
+  lastFace.value = props.currentFace
   prev.value = null
   next.value = null
-
-  emits('finish:rotate', props.value)
 }
 
 const reverseAnimation = () => {
@@ -249,12 +286,13 @@ const reverseAnimation = () => {
         :style="{
           perspective: `${perspective}px`,
         }"
-        :class="inAnimation ? 'absolute inset-0 mx-auto h-full w-full' : ''"
+        :class="isRotating ? 'absolute inset-0 mx-auto h-full w-full' : ''"
       >
         <div
           ref="$box"
           :style="{
             transformStyle: 'preserve-3d',
+            transformBox: 'fill-box',
           }"
         >
           <div v-for="face in faces" :key="`face-${face}`" :data-face="`${id}-${face}`">
