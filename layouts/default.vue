@@ -4,18 +4,19 @@ import Index from '~/pages/index.vue'
 import About from '~/pages/about/index.vue'
 import Contact from '~/pages/contact/index.vue'
 import useTurnPage from '~/composables/useTurnPage'
-import useMediaQuery from '~/composables/useMediaQuery'
-import NaviMenu from '~/components/layouts/NaviMenu.vue'
+import PcNaviMenu from '~/components/layouts/PcNaviMenu.vue'
 import PageWrapper from '~/components/layouts/PageWrapper.vue'
 import CloseButton from '~/components/widgets/CloseButton.vue'
 import MobileHeader from '../components/layouts/MobileHeader.vue'
+import MobileNaviMenu from '~/components/layouts/MobileNaviMenu.vue'
 
 const {
-  $el,
   $index,
   $about,
   $contact,
+  $navi,
   isRotating,
+  perspective,
   duration,
   isReversed,
   currentFace,
@@ -28,21 +29,18 @@ const {
 } = useTurnPage()
 </script>
 <template>
-  <article
-    class="h-screen w-screen overflow-x-hidden overflow-y-scroll text-[length:clamp(15px,2.2vw,50px)] init-font-family"
-    ref="$el"
-  >
+  <article class="min-h-screen w-screen text-[length:clamp(15px,2.2vw,50px)] init-font-family">
     <div class="mx-auto w-full max-w-[1800px] fl-row-nowrap fl-start-stretch-stretch">
-      <NaviMenu v-if="!isTablet" class="sticky top-[30%] z-10 h-full pl-[2.6em] pr-[1em]" />
+      <PcNaviMenu />
       <div class="relative z-0 flex-1 tablet:w-full">
         <TurnBox
+          :current-face="currentFace"
           :is-axis-x="false"
           :faces="4"
-          :value="currentFace"
           :is-reversed="isReversed"
-          :duration="duration * 1"
-          :perspective="5000"
-          class="w-full"
+          :duration="duration"
+          :perspective="perspective"
+          class="min-h-screen w-full"
           @start:rotation="startRotation"
           @complete:rotation="completeRotation"
           @complete:forward-rotation="completeRotateForward"
@@ -67,12 +65,16 @@ const {
             </PageWrapper>
           </template>
           <template #face-4>
-            <PageWrapper :is-rotating="isRotating" class="fl-col-nowrap fl-center-center-center">
-              <div class="max-w-[300px] py-[80px]" ref="$navi">
-                <NaviMenu :is-redirection-disabled="isRotating" :is-button-rotation-disabled="true" />
-                <CloseButton @click="closeMobileNavi" class="mx-auto mt-[80px]" />
-              </div>
-            </PageWrapper>
+            <div
+              class="mx-auto h-screen py-[50px] fl-col-nowrap fl-center-center-center"
+              ref="$navi"
+              :style="{
+                maxHeight: '100dvh',
+              }"
+            >
+              <MobileNaviMenu :is-redirection-disabled="isRotating" />
+              <CloseButton @click="closeMobileNavi" class="mx-auto mt-[80px]" />
+            </div>
           </template>
         </TurnBox>
       </div>

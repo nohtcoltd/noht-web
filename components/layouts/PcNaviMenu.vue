@@ -1,0 +1,43 @@
+<script setup lang="ts">
+import { useRoute, useRouter, computed } from '#app'
+import TurnButton from '~/components/layouts/TurnButton.vue'
+import useMediaQuery from '~/composables/useMediaQuery'
+
+const route = useRoute()
+const router = useRouter()
+const isCurrentRoute = computed(() => (routeName) => route.name === routeName)
+const currentFace = computed(() => (routeName) => isCurrentRoute.value(routeName) ? 2 : 1)
+
+const props = withDefaults(
+  defineProps<{
+    isRedirectionDisabled: boolean
+  }>(),
+  {
+    isRedirectionDisabled: false,
+  },
+)
+
+const redirectTo = async (routeName) => {
+  if (props.isRedirectionDisabled) {
+    return
+  }
+
+  await router.push({ name: routeName })
+}
+
+const { isTablet } = useMediaQuery()
+</script>
+<template>
+  <div v-if="!isTablet" class="sticky top-0 z-10 h-screen pl-[2.6em] pr-[1em] fl-col-nowrap fl-center-stretch-stretch">
+    <div @click="redirectTo('index')" :class="isCurrentRoute('index') ? '' : 'cursor-pointer my-hover:opacity-80'">
+      <svg :is="require('assets/svg/logo.svg?inline')" class="mx-auto max-w-[max(120px,3.5em)]" />
+    </div>
+    <TurnButton :current-face="currentFace('index')" class="mt-[2.5em]" @click="redirectTo('index')"
+      >PRODUCTS</TurnButton
+    >
+    <TurnButton :current-face="currentFace('about')" class="mt-[.5em]" @click="redirectTo('about')">ABOUT</TurnButton>
+    <TurnButton :current-face="currentFace('contact')" class="mt-[.5em]" @click="redirectTo('contact')"
+      >CONTACT</TurnButton
+    >
+  </div>
+</template>

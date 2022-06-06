@@ -51,5 +51,6 @@ export default () => {
     isRetina: myGlobal && myGlobal.devicePixelRatio > 1,
     isMobile: computed(() => getIsMediaTo.value(breakPoints.mobile)),
     isTablet: computed(() => getIsMediaTo.value(breakPoints.tablet)),
+    isTouchDevice: computed(() => 'ontouchstart' in myGlobal || navigator.maxTouchPoints > 0),
   }
 }

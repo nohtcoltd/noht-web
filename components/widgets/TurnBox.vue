@@ -5,7 +5,7 @@ type Face = number
 
 const props = withDefaults(
   defineProps<{
-    value: Face
+    currentFace: Face
     faces: number
     duration?: number
     perspective?: number
@@ -295,9 +295,11 @@ const reverseAnimation = () => {
             transformBox: 'fill-box',
           }"
         >
-          <div v-for="face in faces" :key="`face-${face}`" :data-face="`${id}-${face}`">
-            <div v-show="face === value || prev === face || next === face">
-              <slot :name="`face-${face}`" />
+          <div v-for="face in faces" :key="`face-${face}`">
+            <div v-show="face === currentFace || prev === face || next === face">
+              <client-only>
+                <slot :name="`face-${face}`" />
+              </client-only>
             </div>
           </div>
         </div>
