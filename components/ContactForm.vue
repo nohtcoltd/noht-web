@@ -65,6 +65,7 @@ const reset = () => {
   fields.companyName = ''
   fields.mail = ''
   fields.content = ''
+  $recaptcha.reset()
 }
 
 const addHandle = inject(addCompleteForwardRotationHandle)
@@ -113,7 +114,7 @@ addHandle(() => {
         <ErrorMessage :error="errors[0]" />
       </validation-provider>
 
-      <div class="mt-[1em]">
+      <div class="mt-[2em]">
         <recaptcha />
         <ErrorMessage v-if="hasRecaptchaError" error="失敗しました" />
       </div>
