@@ -17,9 +17,9 @@ import TurnBox from '~/components/widgets/TurnBox.vue'
 import useMediaQuery from '~/composables/useMediaQuery'
 
 type TurnBoxProps = InstanceType<typeof TurnBox>['$props']
-type Face = TurnBoxProps['value']
+type Face = TurnBoxProps['currentFace']
 type RouteName = Route['name']
-type Handle = (prev?: Face, next?: Face, lastFace?: Face) => void
+type Handle = (prev?: Face, next?: Face) => void
 type PageInstance = ComponentInstance
 
 const startRotationHandles: Handle[] = []
@@ -49,10 +49,10 @@ export default () => {
     contact: 3,
   }
 
-  const $el = ref<HTMLElement>(null)
   const $index = ref<PageInstance>(null)
   const $about = ref<PageInstance>(null)
   const $contact = ref<PageInstance>(null)
+  const $navi = ref<HTMLElement>(null)
   const reservedRoute = ref<RouteName>(null)
   const shouldMobileNaviOpened = ref(false)
   const isMobileNaviOpened = computed(() => shouldMobileNaviOpened.value && isTablet.value)
@@ -63,11 +63,13 @@ export default () => {
   const lastRoute = ref<RouteName>(route.name)
   const isWindowResizing = ref(false)
   const tmpScrollTop = ref(0)
+  const $scrollContainer = computed(() => myGlobal.document.documentElement)
   const duration = computed((): TurnBoxProps['duration'] => {
     if (isWindowResizing.value) {
       return 0
     }
-    return isTablet.value ? 500 : 1000
+
+    return isTablet.value ? 600 : 1000
   })
   const isReversed = computed((): TurnBoxProps['isReversed'] => {
     if (lastFace.value === 4 && lastRoute.value !== route.name) {
@@ -76,11 +78,12 @@ export default () => {
 
     return currentFace.value < lastFace.value
   })
-
-  const faceToPage = computed((): { [key in Face]: PageInstance } => ({
-    1: $index.value,
-    2: $about.value,
-    3: $contact.value,
+  const perspective = computed(() => (isTablet.value ? 2000 : 5000))
+  const faceToDom = computed((): { [key in Face]: HTMLElement } => ({
+    1: $index.value.$el as HTMLElement,
+    2: $about.value.$el as HTMLElement,
+    3: $contact.value.$el as HTMLElement,
+    4: $navi.value,
   }))
 
   const handleResizeWindow = async () => {
@@ -100,22 +103,21 @@ export default () => {
   const openMobileNavi = () => (shouldMobileNaviOpened.value = true)
   const closeMobileNavi = () => (shouldMobileNaviOpened.value = false)
 
-  const startRotation: Handle = (prev, next) => {
+  const startRotation: Handle = async (prev, next) => {
     rotatingFaces.value = [prev, next]
 
-    tmpScrollTop.value = $el.value.scrollTop
-    const $prev = faceToPage.value[prev]?.$el as HTMLElement
+    tmpScrollTop.value = myGlobal.scrollY
 
-    if (!$prev) {
-      return
-    }
+    const height = myGlobal.innerHeight
+    const $prev = faceToDom.value[prev]
 
     $prev.style.transform = `translateY(-${tmpScrollTop.value}px)`
-    $prev.style.height = `100vh`
-    $el.value.style.overflow = 'hidden'
-    $el.value.style.height = '100vh'
-    $el.value.style.width = `${$el.value.clientWidth - getScrollbarWidth()}px`
-    $el.value.scrollTop = 0
+    $prev.style.height = `${height}px`
+
+    $scrollContainer.value.style.position = 'fixed'
+    $scrollContainer.value.style.overflow = 'hidden'
+    $scrollContainer.value.style.height = `${height}px`
+    $scrollContainer.value.style.width = `${$scrollContainer.value.clientWidth - getScrollbarWidth()}px`
 
     startRotationHandles.forEach((handle: Handle) => handle(prev, next))
   }
@@ -123,13 +125,17 @@ export default () => {
   const completeRotation: Handle = async (prev, next) => {
     rotatingFaces.value = []
 
-    $el.value.style.overflow = ''
-    $el.value.style.height = ''
-    $el.value.style.width = ''
+    $scrollContainer.value.style.position = ''
+    $scrollContainer.value.style.width = ''
 
-    Object.keys(faceToPage.value).forEach((face) => {
-      faceToPage.value[face].$el.style.transform = ''
-      faceToPage.value[face].$el.style.height = ''
+    if (!isMobileNaviOpened.value) {
+      $scrollContainer.value.style.overflow = ''
+      $scrollContainer.value.style.height = ''
+    }
+
+    Object.keys(faceToDom.value).forEach((face) => {
+      faceToDom.value[face].style.transform = ''
+      faceToDom.value[face].style.height = ''
     })
 
     tmpScrollTop.value = 0
@@ -148,8 +154,9 @@ export default () => {
   }
 
   const completeRotateBackward: Handle = async (prev, next) => {
-    $el.value.scrollTop = tmpScrollTop.value
-
+    const scrollY = tmpScrollTop.value
+    await nextTick()
+    myGlobal.scrollTo(0, scrollY)
     completeRotateBackwardHandles.forEach((handle: Handle) => handle(prev, next))
   }
 

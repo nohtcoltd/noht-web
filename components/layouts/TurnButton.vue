@@ -1,62 +1,38 @@
 <script setup lang="ts">
 import { ref } from '#app'
 import TurnBox from '~/components/widgets/TurnBox.vue'
+import LinkButton from '~/components/layouts/LinkButton.vue'
 
-withDefaults(
-  defineProps<{
-    isRotated: boolean
-    isRotationDisabled: boolean
-  }>(),
-  {
-    isRotationDisabled: false,
-  },
-)
-const inRotation = ref(false)
-
-const startRotation = () => (inRotation.value = true)
-const finishRotation = () => (inRotation.value = false)
-
-defineEmits<{
-  (e: 'click'): void
+defineProps<{
+  currentFace: number
 }>()
+
+const isRotating = ref(false)
+
+const startRotation = () => (isRotating.value = true)
+const completeRotation = () => (isRotating.value = false)
 </script>
 
 <template>
-  <TurnBox
-    :faces="2"
-    :value="isRotated ? 2 : 1"
-    :is-axis-x="true"
-    :is-reversed="!isRotated"
-    :duration="isRotationDisabled ? 0 : 500"
-    @start:rotate="startRotation"
-    @finish:rotate="finishRotation"
-  >
-    <template #face-1>
-      <div class="wrapper">
-        <div
-          @click="$emit('click')"
-          class="button block text-[#111]"
-          :class="inRotation ? '' : 'my-hover:bg-[#00000015]'"
-        >
-          <slot />
+  <div v-on="$listeners">
+    <TurnBox
+      :current-face="currentFace"
+      :faces="2"
+      :is-axis-x="true"
+      :is-reversed="currentFace === 2"
+      @start:rotation="startRotation"
+      @complete:rotation="completeRotation"
+    >
+      <template #face-1>
+        <div class="py-[5px]">
+          <LinkButton :is-selected="false" :is-selectable="!isRotating"><slot /></LinkButton>
         </div>
-      </div>
-    </template>
-    <template #face-2>
-      <div class="wrapper">
-        <div class="button bg-[#111] text-white">
-          <slot />
+      </template>
+      <template #face-2>
+        <div class="py-[5px]">
+          <LinkButton :is-selected="true"><slot /></LinkButton>
         </div>
-      </div>
-    </template>
-  </TurnBox>
+      </template>
+    </TurnBox>
+  </div>
 </template>
-
-<style scoped>
-.wrapper {
-  @apply py-[5px];
-}
-.button {
-  @apply w-full select-none rounded-full px-[30px] py-[15px] text-center text-[length:max(40%,14px)] font-semibold tracking-[.3em] font-poppins;
-}
-</style>
