@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, inject, ref, ComponentInstance, useRoute, onMounted } from '#app'
+import { inject, ref, ComponentInstance, useRoute } from '#app'
 import { useContext } from '@nuxtjs/composition-api'
 import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
@@ -7,64 +7,76 @@ import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 
 const { $recaptcha } = useContext()
 const hasRecaptchaError = ref(false)
+const isFailed = ref(false)
 
 const route = useRoute()
 const $observer = ref<ComponentInstance>(null)
-const fields = reactive({
+const fields = ref({
   name: '',
   companyName: '',
   mail: '',
   content: '',
 })
 
+const emits = defineEmits<{
+  (e: 'sent', data: any)
+  (e: 'failed', data: any)
+}>()
+
 const validateRecaptcha = async (): Promise<string> => {
   return new Promise(async (resolve, reject) => {
     try {
       const token: string = await $recaptcha.getResponse()
-      hasRecaptchaError.value = false
       await $recaptcha.reset()
 
       resolve(token)
     } catch (error) {
-      hasRecaptchaError.value = true
       reject(error)
     }
   })
 }
 
 const submit = async () => {
-  const recaptchaToken = await validateRecaptcha().catch((error) => {
-    console.error(error)
-    return null
-  })
+  hasRecaptchaError.value = false
+  isFailed.value = false
 
-  if (!recaptchaToken) {
+  const recaptchaToken = await validateRecaptcha().catch((error) => new Error(error))
+
+  if (recaptchaToken instanceof Error) {
+    hasRecaptchaError.value = true
     return
   }
 
   const formData = new FormData()
 
-  formData.append('name', fields.name)
-  formData.append('company-name', fields.companyName)
-  formData.append('mail', fields.mail)
-  formData.append('content', fields.content)
+  formData.append('name', fields.value.name)
+  formData.append('company-name', fields.value.companyName)
+  formData.append('mail', fields.value.mail)
+  formData.append('content', fields.value.content)
+
+  // 以下netlify form用
   formData.append('form-name', 'contact')
   formData.append('g-recaptcha-response', recaptchaToken)
 
   const data = await $fetch('/', {
     method: 'POST',
     body: formData,
-  })
+  }).catch((error) => new Error(error))
 
-  console.log(data)
+  if (data instanceof Error) {
+    isFailed.value = true
+    return
+  }
+
+  emits('sent', data)
 }
 
 const reset = () => {
+  fields.value.name = ''
+  fields.value.companyName = ''
+  fields.value.mail = ''
+  fields.value.content = ''
   $observer.value.reset()
-  fields.name = ''
-  fields.companyName = ''
-  fields.mail = ''
-  fields.content = ''
   $recaptcha.reset()
 }
 
