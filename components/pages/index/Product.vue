@@ -11,7 +11,7 @@ withDefaults(
     headerBg: string
     detailBg: string
     staffBg: string
-    staffColor: string
+    staffColor?: string
   }>(),
   {
     staffColor: '#fff',
@@ -50,9 +50,9 @@ const { currentFace, duration, isRotating, changeCurrentFace, startRotation, com
     <template #face-2>
       <div class="body relative" @click="changeCurrentFace(3)" @pointerdown="handlePointerDown">
         <ProductDetail
-          class="bg-cover bg-no-repeat"
+          class="bg-cover bg-center bg-no-repeat"
           :style="{
-            background: detailBg,
+            backgroundImage: detailBg,
           }"
         >
           <template #image>

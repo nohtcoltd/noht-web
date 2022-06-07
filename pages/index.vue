@@ -201,8 +201,8 @@ const { isMobile } = useMediaQuery()
       <Product
         title="PICTOCLUB"
         caption="ACRYLIC PICTOGRAM SIGNS"
-        header-bg="#FFB200"
-        detail-bg="url(images/bg_bananana@2x.jpg)"
+        header-bg="#3D3D3D"
+        detail-bg="url(images/bg_pictoclub@2x.jpg)"
         staff-bg="#3D3D3D"
       >
         <template #header>
