@@ -7,7 +7,7 @@ import useTurnPage from '~/composables/useTurnPage'
 import PcNaviMenu from '~/components/layouts/PcNaviMenu.vue'
 import PageWrapper from '~/components/layouts/PageWrapper.vue'
 import CloseButton from '~/components/widgets/CloseButton.vue'
-import MobileHeader from '../components/layouts/MobileHeader.vue'
+import MobileHeader from '~/components/layouts/MobileHeader.vue'
 import MobileNaviMenu from '~/components/layouts/MobileNaviMenu.vue'
 
 const {

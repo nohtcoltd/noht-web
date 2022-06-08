@@ -1,6 +1,15 @@
 <script lang="ts" setup>
 import MapLink from '~/components/widgets/MapLink.vue'
 </script>
+
+<script lang="ts">
+import { defineComponent } from '#app'
+
+export default defineComponent({
+  layout: 'TurnPage',
+})
+</script>
+
 <template>
   <article
     class="text-left text-[length:clamp(13px,1vw,16px)] font-semibold leading-[1.8] tracking-[.8em] fl-col-nowrap fl-start-stretch-stretch mb:px-[20px] mb:text-[11px] mb:leading-[1.3] mb:tracking-[.4em]"

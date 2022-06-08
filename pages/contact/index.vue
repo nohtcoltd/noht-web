@@ -31,6 +31,15 @@ const enter = ($el: HTMLElement, done: () => void) => {
   done()
 }
 </script>
+
+<script lang="ts">
+import { defineComponent } from '#app'
+
+export default defineComponent({
+  layout: 'TurnPage',
+})
+</script>
+
 <template>
   <article class="relative bg-white px-[3em] text-[length:clamp(25px,2.3vw,28px)] tablet:px-0">
     <transition appear :css="false" @enter="enter">

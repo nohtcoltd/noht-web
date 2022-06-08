@@ -87,6 +87,11 @@ export default defineNuxtConfig({
     // hardSource: true,
   },
 
+  generate: {
+    subFolders: false,
+    fallback: '404.html',
+  },
+
   router: {
     extendRoutes: (routes) => {
       if (process.env.NODE_ENV === 'production') {
