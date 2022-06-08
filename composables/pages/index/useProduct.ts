@@ -50,7 +50,7 @@ export default () => {
       return
     }
 
-    if ($box.value.$el.contains(target)) {
+    if ($box.value && $box.value.$el.contains(target)) {
       return
     }
 
@@ -79,10 +79,6 @@ export default () => {
   const duration = computed(() => (inIndex.value ? 500 : 0))
 
   addHandle(() => {
-    if (inIndex.value) {
-      return
-    }
-
     currentFace.value = 1
   })
 
