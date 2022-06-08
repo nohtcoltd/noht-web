@@ -89,7 +89,7 @@ export default () => {
     clearTimeout(windowResizingTimer)
     isWindowResizing.value = true
     await nextTick()
-    shouldMobileNaviOpened.value = false
+    closeMobileNavi()
     windowResizingTimer = setTimeout(() => (isWindowResizing.value = false), 200)
   }
 
@@ -101,8 +101,14 @@ export default () => {
     globalThis.removeEventListener('resize', handleResizeWindow)
   })
 
-  const openMobileNavi = () => (shouldMobileNaviOpened.value = true)
-  const closeMobileNavi = () => (shouldMobileNaviOpened.value = false)
+  const openMobileNavi = () => {
+    shouldMobileNaviOpened.value = true
+    $scrollContainer.value.style.overflow = 'hidden'
+  }
+  const closeMobileNavi = () => {
+    shouldMobileNaviOpened.value = false
+    $scrollContainer.value.style.overflow = ''
+  }
 
   const startRotation: Handle = async (prev, next) => {
     rotatingFaces.value = [prev, next]
@@ -112,13 +118,10 @@ export default () => {
     const height = globalThis.innerHeight
     const $prev = faceToDom.value[prev]
 
-    $prev.style.transform = `translateY(-${tmpScrollTop.value}px)`
     $prev.style.height = `${height}px`
 
-    $scrollContainer.value.style.position = 'fixed'
-    $scrollContainer.value.style.overflow = 'hidden'
-    $scrollContainer.value.style.height = `${height}px`
-    $scrollContainer.value.style.width = `${$scrollContainer.value.clientWidth - getScrollbarWidth()}px`
+    await nextTick()
+    $prev.scroll(0, tmpScrollTop.value)
 
     startRotationHandles.forEach((handle: Handle) => handle(prev, next))
   }
@@ -126,20 +129,10 @@ export default () => {
   const completeRotation: Handle = async (prev, next) => {
     rotatingFaces.value = []
 
-    $scrollContainer.value.style.position = ''
-    $scrollContainer.value.style.width = ''
-
-    if (!isMobileNaviOpened.value) {
-      $scrollContainer.value.style.overflow = ''
-      $scrollContainer.value.style.height = ''
-    }
-
     Object.keys(faceToDom.value).forEach((face) => {
       faceToDom.value[face].style.transform = ''
       faceToDom.value[face].style.height = ''
     })
-
-    tmpScrollTop.value = 0
 
     if (reservedRoute.value !== route.name) {
       router.replace({ name: reservedRoute.value }).catch(() => {})
@@ -149,6 +142,10 @@ export default () => {
   }
 
   const completeRotateForward: Handle = async (prev, next) => {
+    faceToDom.value[prev].scroll(0, 0)
+
+    tmpScrollTop.value = 0
+
     completeRotateForwardHandles.forEach((handle: Handle) => handle(prev, next))
     lastFace.value = next
     lastRoute.value = route.name

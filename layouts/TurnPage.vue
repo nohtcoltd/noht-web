@@ -29,8 +29,13 @@ const {
 } = useTurnPage()
 </script>
 <template>
-  <article class="min-h-screen w-screen text-[length:clamp(15px,2.2vw,50px)] init-font-family">
-    <div class="mx-auto w-full max-w-[1800px] fl-row-nowrap fl-start-stretch-stretch">
+  <article
+    class="min-h-screen w-screen text-[length:clamp(15px,2.2vw,50px)] init-font-family"
+    :style="{
+      minHeight: '100dvh',
+    }"
+  >
+    <div class="mx-auto h-full min-h-[inherit] w-full max-w-[1800px] fl-row-nowrap fl-start-stretch-stretch">
       <PcNaviMenu />
       <div class="relative z-0 flex-1 tablet:w-full">
         <TurnBox
@@ -40,38 +45,32 @@ const {
           :is-reversed="isReversed"
           :duration="duration"
           :perspective="perspective"
-          class="min-h-screen w-full"
+          class="min-h-full w-full"
           @start:rotation="startRotation"
           @complete:rotation="completeRotation"
           @complete:forward-rotation="completeRotateForward"
           @complete:backward-rotation="completeRotateBackward"
         >
           <template #face-1>
-            <PageWrapper :is-rotating="isRotating">
+            <PageWrapper :is-rotating="isRotating" ref="$index">
               <MobileHeader @click:menu="openMobileNavi" />
-              <index ref="$index" />
+              <index />
             </PageWrapper>
           </template>
           <template #face-2>
-            <PageWrapper :is-rotating="isRotating">
+            <PageWrapper :is-rotating="isRotating" ref="$about">
               <MobileHeader @click:menu="openMobileNavi" />
-              <about ref="$about" />
+              <about />
             </PageWrapper>
           </template>
           <template #face-3>
-            <PageWrapper :is-rotating="isRotating">
+            <PageWrapper :is-rotating="isRotating" ref="$contact">
               <MobileHeader @click:menu="openMobileNavi" />
-              <contact ref="$contact" />
+              <contact />
             </PageWrapper>
           </template>
           <template #face-4>
-            <div
-              class="mx-auto h-screen py-[50px] fl-col-nowrap fl-center-center-center"
-              ref="$navi"
-              :style="{
-                maxHeight: '100dvh',
-              }"
-            >
+            <div class="mx-auto h-full py-[50px] fl-col-nowrap fl-center-center-center" ref="$navi">
               <MobileNaviMenu :is-redirection-disabled="isRotating" />
               <CloseButton @click="closeMobileNavi" class="mx-auto mt-[80px]" />
             </div>

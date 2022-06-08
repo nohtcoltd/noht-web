@@ -280,13 +280,14 @@ const reverseAnimation = () => {
 </script>
 
 <template>
-  <div>
-    <div ref="$wrapper" class="relative">
+  <div class="h-full w-full">
+    <div ref="$wrapper" class="relative h-full w-full">
       <div
         :style="{
           perspective: `${perspective}px`,
         }"
-        :class="isRotating ? 'absolute inset-0 mx-auto h-full w-full' : ''"
+        class="h-full w-full"
+        :class="isRotating ? 'absolute inset-0 mx-auto' : ''"
       >
         <div
           ref="$box"
@@ -294,9 +295,10 @@ const reverseAnimation = () => {
             transformStyle: 'preserve-3d',
             transformBox: 'fill-box',
           }"
+          class="h-full w-full"
         >
-          <div v-for="face in faces" :key="`face-${face}`">
-            <div v-show="face === currentFace || prev === face || next === face">
+          <div v-for="face in faces" :key="`face-${face}`" :class="face === currentFace ? 'h-full w-full' : ''">
+            <div v-show="face === currentFace || prev === face || next === face" class="h-full w-full">
               <client-only>
                 <slot :name="`face-${face}`" />
               </client-only>

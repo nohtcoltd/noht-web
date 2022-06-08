@@ -41,13 +41,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <article class="relative bg-white px-[3em] text-[length:clamp(25px,2.3vw,28px)] tablet:px-0">
+  <article
+    class="-bg-white relative flex-1 px-[3em] text-[length:clamp(25px,2.3vw,28px)] fl-col-nowrap fl-start-stretch-stretch tablet:px-0"
+  >
     <transition appear :css="false" @enter="enter">
-      <div
-        v-if="isThanksShown"
-        key="thanks"
-        class="absolute top-0 left-0 right-0 m-auto h-[70vh] fl-col-nowrap fl-center-center-center mb:h-[50vh]"
-      >
+      <div v-if="isThanksShown" class="m-auto fl-col-nowrap fl-center-center-center">
         <div class="text-[180%] font-semibold tracking-[.2em] font-poppins mb:text-[25px]">THANK YOU!</div>
         <div class="mt-[80px] pc:w-full pc:max-w-[80px]">
           <n-link :to="{ name: 'index' }">
