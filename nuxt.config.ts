@@ -63,8 +63,10 @@ export default defineNuxtConfig({
   router: {
     extendRoutes: (routes) => {
       if (process.env.NODE_ENV === 'production') {
-        routes.filter(({ name }) => name !== 'demoTurnBox')
+        routes = routes.filter(({ name }) => name !== 'demoTurnBox')
       }
+
+      return routes
     },
   },
 

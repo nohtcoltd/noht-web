@@ -2,16 +2,9 @@
 import { ref } from '#app'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 
-const face = ref(1)
-const incre = () => (face.value = face.value === 3 ? 1 : face.value + 1)
-const decre = () => (face.value = face.value === 1 ? 3 : face.value - 1)
-
-const shown = {
-  1: true,
-  2: true,
-  3: true,
-  4: true,
-}
+const currentFace = ref(1)
+const increment = () => (currentFace.value = currentFace.value === 3 ? 1 : currentFace.value + 1)
+const decrement = () => (currentFace.value = currentFace.value === 1 ? 3 : currentFace.value - 1)
 </script>
 
 <script lang="ts">
@@ -90,11 +83,11 @@ export default defineComponent({
       </div>
     </div>
     <div class="mb-14 fl-row-nowrap fl-center-center-center">
-      <div class="bg-slate-500 p-4" @click="incre">+</div>
-      <div class="bg-slate-200 p-4" @click="decre">-</div>
+      <div class="bg-slate-500 p-4" @click="increment">+</div>
+      <div class="bg-slate-200 p-4" @click="decrement">-</div>
     </div>
     <div class="fl-row-nowrap fl-center-center-center">
-      <TurnBox v-if="shown[1]" :faces="3" :value="face" :is-axis-x="false" class="bg-[red]" :duration="1000">
+      <TurnBox :faces="3" :current-face="currentFace" :is-axis-x="false" class="bg-[red]" :duration="1000">
         <template #face-1>
           <div
             class="h-[50px] w-[80px] bg-black text-white opacity-50 fl-col-nowrap fl-center-center-center"
@@ -121,9 +114,8 @@ export default defineComponent({
         </template>
       </TurnBox>
       <TurnBox
-        v-if="shown[2]"
         :faces="3"
-        :value="face"
+        :current-face="currentFace"
         :is-axis-x="false"
         :is-reversed="true"
         class="ml-24 bg-[red]"
@@ -156,7 +148,7 @@ export default defineComponent({
       </TurnBox>
     </div>
     <div class="mt-[100px] fl-row-nowrap fl-center-center-center">
-      <TurnBox v-if="shown[3]" :faces="3" :value="face" :is-axis-x="true" class="bg-[red]" :duration="1000">
+      <TurnBox :faces="3" :current-face="currentFace" :is-axis-x="true" class="bg-[red]" :duration="1000">
         <template #face-1>
           <div
             class="h-[50px] w-[80px] bg-black text-white opacity-50 fl-col-nowrap fl-center-center-center"
@@ -183,9 +175,8 @@ export default defineComponent({
         </template>
       </TurnBox>
       <TurnBox
-        v-if="shown[4]"
         :faces="3"
-        :value="face"
+        :current-face="currentFace"
         :is-axis-x="true"
         :is-reversed="true"
         class="ml-24 bg-[red]"
