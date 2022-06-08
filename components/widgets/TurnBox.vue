@@ -299,9 +299,7 @@ const reverseAnimation = () => {
         >
           <div v-for="face in faces" :key="`face-${face}`" :class="face === currentFace ? 'h-full w-full' : ''">
             <div v-show="face === currentFace || prev === face || next === face" class="h-full w-full">
-              <client-only>
-                <slot :name="`face-${face}`" />
-              </client-only>
+              <slot :name="`face-${face}`" />
             </div>
           </div>
         </div>
