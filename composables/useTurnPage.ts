@@ -11,7 +11,6 @@ import {
   nextTick,
 } from '#app'
 import { Route } from 'vue-router'
-import getScrollbarWidth from '~/assets/js/getScrollbarWidth'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import useMediaQuery from '~/composables/useMediaQuery'
 

@@ -49,15 +49,15 @@ export default defineComponent({
         <div class="text-[180%] font-semibold tracking-[.2em] font-poppins mb:text-[25px]">THANK YOU!</div>
         <div class="mt-[80px] pc:w-full pc:max-w-[80px]">
           <n-link :to="{ name: 'index' }">
-            <close-button class="pc:min-w-full" />
+            <CloseButton class="pc:min-w-full" />
           </n-link>
         </div>
       </div>
     </transition>
 
-    <div v-show="!isThanksShown" class="fl-col-nowrap fl-center-center-center">
+    <div v-show="!isThanksShown" class="m-auto w-full fl-col-nowrap fl-center-center-center">
       <div class="text-[150%] font-semibold tracking-[.2em] font-poppins mb:text-[20px]">CONTACT</div>
-      <contact-form class="mt-[2em] max-w-[800px] mb:mt-[1.5em] mb:max-w-[350px]" @sent="showThanks" />
+      <ContactForm class="mt-[2em] max-w-[800px] mb:mt-[1.5em] mb:max-w-[350px]" @sent="showThanks" />
     </div>
   </article>
 </template>

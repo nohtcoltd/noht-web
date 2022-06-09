@@ -8,6 +8,7 @@ import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 const { $recaptcha } = useContext()
 const hasRecaptchaError = ref(false)
 const isFailed = ref(false)
+const isSubmitting = ref(false)
 
 const route = useRoute()
 const $observer = ref<ComponentInstance>(null)
@@ -40,18 +41,20 @@ const validateRecaptcha = async (): Promise<string> => {
 const submit = async () => {
   hasRecaptchaError.value = false
   isFailed.value = false
+  isSubmitting.value = true
 
   const recaptchaToken = await validateRecaptcha().catch((error) => new Error(error))
 
   if (recaptchaToken instanceof Error) {
     hasRecaptchaError.value = true
+    isSubmitting.value = false
     return
   }
 
   const formData = new FormData()
 
   formData.append('name', fields.value.name)
-  formData.append('company-name', fields.value.companyName)
+  formData.append('company-name', fields.value['company-name'])
   formData.append('mail', fields.value.mail)
   formData.append('content', fields.value.content)
 
@@ -63,6 +66,8 @@ const submit = async () => {
     method: 'POST',
     body: formData,
   }).catch((error) => new Error(error))
+
+  isSubmitting.value = false
 
   if (data instanceof Error) {
     isFailed.value = true
@@ -111,7 +116,7 @@ addHandle(() => {
             <MyInput v-model="fields.name" :error="errors[0]" placeholder="NAME" name="name" class="mt-[1.2em]" />
             <ErrorMessage :error="errors[0]" />
           </validation-provider>
-          <MyInput v-model="fields.companyName" placeholder="COMPANY" name="company-name" class="mt-[1.2em]" />
+          <MyInput v-model="fields['company-name']" placeholder="COMPANY" name="company-name" class="mt-[1.2em]" />
           <validation-provider mode="passive" rules="required|email" v-slot="{ errors }" slim>
             <MyInput v-model="fields.mail" :error="errors[0]" placeholder="MAIL" name="mail" class="mt-[1.2em]" />
             <ErrorMessage :error="errors[0]" />
