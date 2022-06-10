@@ -2,7 +2,7 @@
 import { RouteRecordName } from 'vue-router'
 import { ComponentInstance } from '@vue/devtools-api'
 import LinkButton from '~/components/layouts/LinkButton.vue'
-import SvgLogo from '~/assets/svg/logo.svg?component'
+import SvgLogo from '~/assets/svg/logo_noht.svg?component'
 
 const props = withDefaults(
   defineProps<{

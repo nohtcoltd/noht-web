@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import MenuButton from '~/components/widgets/MenuButton.vue'
 import useMediaQuery from '~/composables/useMediaQuery'
-<<<<<<< HEAD
-=======
-import myGlobal from '~/assets/js/myGlobal'
-import SvgLogo from '~/assets/svg/logo.svg?component'
->>>>>>> 85b5008 (svgモジュール変更)
+import SvgLogo from '~/assets/svg/logo_noht.svg?component'
 /*
   Firefoxのposition: stickyがうまく機能しないのでjsで追従。
   タッチデバイスはjsだとカクつくのでstickyにしてある。

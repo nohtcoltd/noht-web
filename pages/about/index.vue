@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import MapLink from '~/components/widgets/MapLink.vue'
-import SvgLogo from 'assets/svg/logo_noht_co_ltd.svg?component'
-import SvgLogoUs from 'assets/svg/logo_noht_co_ltd_us.svg?component'
+import SvgLogo from '~/assets/svg/logo_noht_co_ltd.svg?component'
+import SvgLogoUs from '~/assets/svg/logo_noht_co_ltd_us.svg?component'
 </script>
 
 <template>

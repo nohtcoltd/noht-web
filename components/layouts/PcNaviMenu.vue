@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TurnButton from '~/components/layouts/TurnButton.vue'
-import SvgLogo from '~/assets/svg/logo.svg?component'
+import SvgLogo from '~/assets/svg/logo_noht.svg?component'
 
 const route = useRoute()
 const router = useRouter()
