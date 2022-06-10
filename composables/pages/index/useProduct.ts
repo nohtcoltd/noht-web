@@ -83,6 +83,7 @@ export default () => {
   })
 
   return {
+    $box,
     currentFace,
     duration,
     isRotating,

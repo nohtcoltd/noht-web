@@ -18,8 +18,16 @@ withDefaults(
   },
 )
 
-const { currentFace, duration, isRotating, changeCurrentFace, startRotation, completeRotation, handlePointerDown } =
-  useProduct()
+const {
+  $box,
+  currentFace,
+  duration,
+  isRotating,
+  changeCurrentFace,
+  startRotation,
+  completeRotation,
+  handlePointerDown,
+} = useProduct()
 </script>
 
 <template>
