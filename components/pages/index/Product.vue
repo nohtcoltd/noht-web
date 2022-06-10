@@ -30,6 +30,31 @@ const {
 } = useProduct()
 </script>
 
+<script lang="ts">
+import { defineComponent } from '#app'
+
+export default defineComponent({
+  head: (vm) => {
+    const { headerBg, detailBg, staffBg } = vm
+    const imagePaths = [headerBg, detailBg, staffBg]
+      .map((bg) => {
+        const matches = bg.match(/^url\((.*?)\)$/)
+
+        if (matches) {
+          return matches[1]
+        }
+
+        return null
+      })
+      .filter((url) => url)
+
+    return {
+      link: imagePaths.map((path) => ({ rel: 'preload', href: path, as: 'image' })),
+    }
+  },
+})
+</script>
+
 <template>
   <TurnBox
     ref="$box"
