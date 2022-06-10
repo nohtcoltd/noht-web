@@ -35,7 +35,7 @@ export default defineNuxtConfig({
   css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/VeeValidate'],
+  // plugins: ['~/plugins/VeeValidate'],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
@@ -44,15 +44,15 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/svg',
     '@nuxtjs/tailwindcss',
-    [
-      '@nuxtjs/recaptcha',
-      {
-        hideBadge: false,
-        siteKey: process.env.SITE_RECAPTCHA_KEY,
-        size: 'normal',
-        version: 2,
-      },
-    ],
+    // [
+    //   '@nuxtjs/recaptcha',
+    //   {
+    //     hideBadge: false,
+    //     siteKey: process.env.SITE_RECAPTCHA_KEY,
+    //     size: 'normal',
+    //     version: 2,
+    //   },
+    // ],
     [
       '@nuxtjs/google-fonts',
       {
@@ -78,7 +78,7 @@ export default defineNuxtConfig({
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vee-validate/dist/rules'],
+    // transpile: ['vee-validate/dist/rules'],
 
     // safariのホットリロードバグ対策
     filenames: {
@@ -103,4 +103,13 @@ export default defineNuxtConfig({
       return routes
     },
   },
+<<<<<<< HEAD
+=======
+
+  // webfontloader: {
+  //   google: {
+  //     families: ['Poppins:400,500,600,700'],
+  //   },
+  // },
+>>>>>>> 1cc28b3 (nuxtモジュールをアップグレードして非有効化)
 })

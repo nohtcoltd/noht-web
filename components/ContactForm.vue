@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { inject, ref, ComponentInstance, useRoute } from '#app'
-import { useContext } from '@nuxtjs/composition-api'
+// import { useContext } from '@nuxtjs/composition-api'
 import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 import LoadingGear from '~/components/widgets/LoadingGear.vue'
 
-const { $recaptcha } = useContext()
+// const { $recaptcha } = useContext()
 const hasRecaptchaError = ref(false)
 const isFailed = ref(false)
 const isSubmitting = ref(false)
@@ -27,16 +27,18 @@ const emits = defineEmits<{
 }>()
 
 const validateRecaptcha = async (): Promise<string> => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const token: string = await $recaptcha.getResponse()
-      await $recaptcha.reset()
+  //TODO
+  return
+  // return new Promise(async (resolve, reject) => {
+  //   try {
+  //     const token: string = await $recaptcha.getResponse()
+  //     await $recaptcha.reset()
 
-      resolve(token)
-    } catch (error) {
-      reject(error)
-    }
-  })
+  //     resolve(token)
+  //   } catch (error) {
+  //     reject(error)
+  //   }
+  // })
 }
 
 const submit = async () => {
@@ -83,8 +85,9 @@ const reset = () => {
   fields.value['company-name'] = ''
   fields.value.mail = ''
   fields.value.content = ''
-  $observer.value.reset()
-  $recaptcha.reset()
+  //TODO
+  // $observer.value.reset()
+  // $recaptcha.reset()
 }
 
 const addHandle = inject(addCompleteForwardRotationHandle)
