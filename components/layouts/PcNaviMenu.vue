@@ -9,7 +9,7 @@ const currentFace = computed(() => (routeName) => isCurrentRoute.value(routeName
 
 const props = withDefaults(
   defineProps<{
-    isRedirectionDisabled: boolean
+    isRedirectionDisabled?: boolean
   }>(),
   {
     isRedirectionDisabled: false,

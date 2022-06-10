@@ -2,7 +2,7 @@
 withDefaults(
   defineProps<{
     isSelected: boolean
-    isSelectable: boolean
+    isSelectable?: boolean
   }>(),
   {
     isSelectable: true,

@@ -7,7 +7,7 @@ import LinkButton from '~/components/layouts/LinkButton.vue'
 
 const props = withDefaults(
   defineProps<{
-    isRedirectionDisabled: boolean
+    isRedirectionDisabled?: boolean
   }>(),
   {
     isRedirectionDisabled: false,
