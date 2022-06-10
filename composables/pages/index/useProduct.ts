@@ -1,5 +1,6 @@
 import { useRoute, ref, inject, onMounted, computed, ComponentInstance, onUnmounted } from '#app'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
+import useMediaQuery from '~/composables/useMediaQuery'
 
 export default () => {
   const route = useRoute()
@@ -8,6 +9,7 @@ export default () => {
   const isRotating = ref(false)
   const isRotationEnabled = ref(true)
   const pointerMovingDistance = ref<{ x: number; y: number } | null>(null)
+  const { isRetina } = useMediaQuery()
 
   const resetPoint = () => {
     isRotationEnabled.value = true
@@ -91,5 +93,6 @@ export default () => {
     startRotation,
     completeRotation,
     handlePointerDown,
+    retinaUrl: computed(() => (imageUrl) => isRetina ? imageUrl.replace(/(.*)\.(.*)$/g, '$1@2x.$2') : imageUrl),
   }
 }
