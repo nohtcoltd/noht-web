@@ -6,7 +6,7 @@
     }"
   >
     <n-link :to="{ name: 'index' }" class="mb-[1em]">
-      <svg :is="require('assets/svg/logo.svg?inline')" class="w-[max(80px,3em)] fill-[#aaa]" />
+      <svg :is="require('assets/svg/logo_noht.svg?inline')" class="w-[max(80px,3em)] fill-[#aaa]" />
     </n-link>
 
     404 Not Found.

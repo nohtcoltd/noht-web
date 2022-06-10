@@ -44,7 +44,7 @@ const { isTablet, isTouchDevice } = useMediaQuery()
   >
     <div class="relative">
       <div class="mx-auto w-[clamp(80px,20vw,100px)] py-[clamp(15px,2vw,20px)] px-[10px]" @click="redirectTo('index')">
-        <svg :is="require('assets/svg/logo.svg?inline')" class="mx-auto" />
+        <svg :is="require('assets/svg/logo_noht.svg?inline')" class="mx-auto" />
       </div>
       <MenuButton @click="$emit('click:menu', $event)" class="absolute right-0 top-0 bottom-0 m-auto ml-auto" />
     </div>

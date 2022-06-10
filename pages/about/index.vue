@@ -16,7 +16,7 @@ export default defineComponent({
   >
     <header class="text-[120%]">
       <svg
-        :is="require('assets/svg/logo2.svg?inline')"
+        :is="require('assets/svg/logo_noht_co_ltd.svg?inline')"
         class="mb-[.2em] h-full max-h-[clamp(20px,2em,32px)] mb:max-h-[20px]"
       ></svg>
       株式会社ノート
@@ -72,7 +72,7 @@ export default defineComponent({
         </div>
 
         <svg
-          :is="require('assets/svg/logo_us.svg?inline')"
+          :is="require('assets/svg/logo_noht_co_ltd_us.svg?inline')"
           class="mb-[.2em] mt-[4em] h-full max-h-[clamp(18px,2em,25px)] mb:max-h-[18px]"
         ></svg>
 

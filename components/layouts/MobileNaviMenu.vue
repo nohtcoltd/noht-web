@@ -121,7 +121,7 @@ const handlePointermove = (evt: TouchEvent | MouseEvent, routeName: RouteName) =
 
 <template>
   <div class="fl-col-nowrap fl-center-stretch-stretch">
-    <svg :is="require('assets/svg/logo.svg?inline')" class="mx-auto max-w-[max(120px,3.5em)]" />
+    <svg :is="require('assets/svg/logo_noht.svg?inline')" class="mx-auto max-w-[max(120px,3.5em)]" />
     <LinkButton
       ref="$index"
       :is-selected="isSelectedRoute('index')"
