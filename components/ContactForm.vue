@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { inject, ref, ComponentInstance, useRoute } from '#app'
+import { inject, ref } from '#imports'
+import { useRoute } from '#app'
+import { ComponentInstance } from '@vue/devtools-api'
 // import { useContext } from '@nuxtjs/composition-api'
 import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'

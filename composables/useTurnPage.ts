@@ -1,22 +1,13 @@
-import {
-  ref,
-  useRoute,
-  useRouter,
-  computed,
-  provide,
-  InjectionKey,
-  ComponentInstance,
-  onMounted,
-  onUnmounted,
-  nextTick,
-} from '#app'
-import { Route } from 'vue-router'
+import { ref, useRoute, useRouter, computed, provide, onMounted, onUnmounted, nextTick } from '#imports'
+import { InjectionKey } from 'vue'
+import { ComponentInstance } from '@vue/devtools-api'
+import { RouteRecordName } from 'vue-router'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import useMediaQuery from '~/composables/useMediaQuery'
 
 type TurnBoxProps = InstanceType<typeof TurnBox>['$props']
 type Face = TurnBoxProps['currentFace']
-type RouteName = Route['name']
+type RouteName = RouteRecordName
 type Handle = (prev?: Face, next?: Face) => void
 type PageInstance = ComponentInstance
 

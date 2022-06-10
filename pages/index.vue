@@ -6,9 +6,9 @@ import Pictoclub from '~/components/pages/index/products/Pictoclub.vue'
 </script>
 
 <script lang="ts">
-import { defineComponent } from '#app'
+import { defineNuxtComponent } from '#app'
 
-export default defineComponent({
+export default defineNuxtComponent({
   layout: 'TurnPage',
 })
 </script>

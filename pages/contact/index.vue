@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, inject, useRoute } from '#app'
+import { ref, inject } from '#imports'
+import { useRoute } from '#app'
 import ContactForm from '~/components/ContactForm.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 import CloseButton from '~/components/widgets/CloseButton.vue'
@@ -33,9 +34,9 @@ const enter = ($el: HTMLElement, done: () => void) => {
 </script>
 
 <script lang="ts">
-import { defineComponent } from '#app'
+import { defineNuxtComponent } from '#app'
 
-export default defineComponent({
+export default defineNuxtComponent({
   layout: 'TurnPage',
 })
 </script>

@@ -1,11 +1,10 @@
-import resolveConfig from 'tailwindcss/resolveConfig.js'
 import tailwindConfig from '~/tailwind.config.js'
-import { computed, ref, onMounted, onUnmounted, nextTick } from '#app'
+import { computed, ref, onMounted, onUnmounted } from '#imports'
 import isRetinaDisplay from '~/assets/js/isRetinaDisplay'
 
 const {
   theme: { screens },
-} = resolveConfig(tailwindConfig)
+} = tailwindConfig
 
 const breakPoints = {
   large: parseFloat(screens['pc-l'].max),

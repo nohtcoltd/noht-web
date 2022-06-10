@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from '#app'
+import { ref } from '#imports'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 
 const currentFace = ref(1)
@@ -8,9 +8,9 @@ const decrement = () => (currentFace.value = currentFace.value === 1 ? 3 : curre
 </script>
 
 <script lang="ts">
-import { defineComponent } from '#app'
+import { defineNuxtComponent } from '#app'
 
-export default defineComponent({
+export default defineNuxtComponent({
   layout: 'empty',
 })
 </script>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { Route } from 'vue-router'
-import { useRoute, useRouter, computed, ref, ComponentInstance, onMounted, onBeforeUnmount } from '#app'
+import { RouteRecordName } from 'vue-router'
+import { useRoute, useRouter } from '#app'
+import { computed, ref, onMounted, onBeforeUnmount } from '#imports'
+import { ComponentInstance } from '@vue/devtools-api'
 import LinkButton from '~/components/layouts/LinkButton.vue'
 
 const props = withDefaults(
@@ -12,7 +14,7 @@ const props = withDefaults(
   },
 )
 
-type RouteName = Route['name']
+type RouteName = RouteRecordName
 const route = useRoute()
 const router = useRouter()
 const $index = ref<ComponentInstance>(null)

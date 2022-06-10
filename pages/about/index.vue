@@ -3,9 +3,9 @@ import MapLink from '~/components/widgets/MapLink.vue'
 </script>
 
 <script lang="ts">
-import { defineComponent } from '#app'
+import { defineNuxtComponent } from '#app'
 
-export default defineComponent({
+export default defineNuxtComponent({
   layout: 'TurnPage',
 })
 </script>
