@@ -91,7 +91,7 @@ export default defineComponent({
         <template #face-1>
           <div
             class="h-[50px] w-[80px] bg-black text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 2"
+            @click="currentFace = 2"
           >
             HOGE1
           </div>
@@ -99,7 +99,7 @@ export default defineComponent({
         <template #face-2>
           <div
             class="h-[100px] w-[120px] bg-[gray] text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 3"
+            @click="currentFace = 3"
           >
             HUGA2
           </div>
@@ -107,7 +107,7 @@ export default defineComponent({
         <template #face-3>
           <div
             class="h-[180px] w-[100px] bg-[green] text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 1"
+            @click="currentFace = 1"
           >
             HUGA3
           </div>
@@ -124,7 +124,7 @@ export default defineComponent({
         <template #face-1>
           <div
             class="h-[30px] w-[80px] bg-black text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 2"
+            @click="currentFace = 2"
           >
             HOGE1
           </div>
@@ -132,7 +132,7 @@ export default defineComponent({
         <template #face-2>
           <div
             class="h-[134px] w-[160px] bg-[gray] text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 3"
+            @click="currentFace = 3"
           >
             HUGA2
           </div>
@@ -140,7 +140,7 @@ export default defineComponent({
         <template #face-3>
           <div
             class="h-[180px] w-[100px] bg-[green] text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 1"
+            @click="currentFace = 1"
           >
             HUGA3
           </div>
@@ -152,7 +152,7 @@ export default defineComponent({
         <template #face-1>
           <div
             class="h-[50px] w-[80px] bg-black text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 2"
+            @click="currentFace = 2"
           >
             HOGE1
           </div>
@@ -160,7 +160,7 @@ export default defineComponent({
         <template #face-2>
           <div
             class="h-[100px] w-[120px] bg-[gray] text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 3"
+            @click="currentFace = 3"
           >
             HUGA2
           </div>
@@ -168,7 +168,7 @@ export default defineComponent({
         <template #face-3>
           <div
             class="h-[180px] w-[100px] bg-[green] text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 1"
+            @click="currentFace = 1"
           >
             HUGA3
           </div>
@@ -185,7 +185,7 @@ export default defineComponent({
         <template #face-1>
           <div
             class="h-[50px] w-[80px] bg-black text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 2"
+            @click="currentFace = 2"
           >
             HOGE1
           </div>
@@ -193,7 +193,7 @@ export default defineComponent({
         <template #face-2>
           <div
             class="h-[100px] w-[120px] bg-[gray] text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 3"
+            @click="currentFace = 3"
           >
             HUGA2
           </div>
@@ -201,7 +201,7 @@ export default defineComponent({
         <template #face-3>
           <div
             class="h-[180px] w-[100px] bg-[green] text-white opacity-50 fl-col-nowrap fl-center-center-center"
-            @click="face = 1"
+            @click="currentFace = 1"
           >
             HUGA3
           </div>
