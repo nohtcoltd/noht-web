@@ -1,16 +1,28 @@
 <script lang="ts" setup>
+import { computed } from '#app'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import useProduct from '~/composables/pages/index/useProduct'
 import ProductHeader from '~/components/pages/index/ProductHeader.vue'
 import ProductDetail from '~/components/pages/index/ProductDetail.vue'
 import ProductStaff from '~/components/pages/index/ProductStaff.vue'
+import useMediaQuery from '~/composables/useMediaQuery'
+
+const { isRetina } = useMediaQuery()
+type Bg = {
+  color?: string
+  imageUrl?: string
+  position?: string
+  size?: string
+  repeat?: string
+}
+
 withDefaults(
   defineProps<{
     title: string
     caption: string
-    headerBg: string
-    detailBg: string
-    staffBg: string
+    headerBg?: Bg
+    detailBg?: Bg
+    staffBg?: Bg
     staffColor?: string
   }>(),
   {
@@ -28,6 +40,20 @@ const {
   completeRotation,
   handlePointerDown,
 } = useProduct()
+
+const bgStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Bg) => {
+  return {
+    backgroundColor: color || null,
+    backgroundImage: imageUrl
+      ? `url(
+      ${isRetina ? imageUrl.replace(/(.*)\.(.*)$/g, '$1@2x.$2') : imageUrl}
+    )`
+      : null,
+    backgroundPosition: position || 'center',
+    backgroundSize: size || 'cover',
+    backgroundRepeat: repeat || 'no-repeat',
+  }
+})
 </script>
 
 <script lang="ts">
@@ -36,20 +62,9 @@ import { defineComponent } from '#app'
 export default defineComponent({
   head: (vm) => {
     const { headerBg, detailBg, staffBg } = vm
-    const imagePaths = [headerBg, detailBg, staffBg]
-      .map((bg) => {
-        const matches = bg.match(/^url\((.*?)\)$/)
-
-        if (matches) {
-          return matches[1]
-        }
-
-        return null
-      })
-      .filter((url) => url)
-
+    const imageUrls = [headerBg, detailBg, staffBg].map(({ imageUrl }) => imageUrl).filter((url) => !!url)
     return {
-      link: imagePaths.map((path) => ({ rel: 'preload', href: path, as: 'image' })),
+      link: imageUrls.map((path) => ({ rel: 'preload', href: path, as: 'image' })),
     }
   },
 })
@@ -69,25 +84,14 @@ export default defineComponent({
   >
     <template #face-1>
       <div class="body cursor-pointer" @click="changeCurrentFace(2)" @pointerdown="handlePointerDown">
-        <ProductHeader
-          :title="title"
-          :caption="caption"
-          :style="{
-            background: headerBg,
-          }"
-        >
+        <ProductHeader :title="title" :caption="caption" :style="bgStyle(headerBg)">
           <slot name="header" />
         </ProductHeader>
       </div>
     </template>
     <template #face-2>
       <div class="body relative" @click="changeCurrentFace(3)" @pointerdown="handlePointerDown">
-        <ProductDetail
-          class="bg-cover bg-center bg-no-repeat"
-          :style="{
-            backgroundImage: detailBg,
-          }"
-        >
+        <ProductDetail :style="bgStyle(detailBg)">
           <template #image>
             <slot name="detail-image" />
           </template>
@@ -106,7 +110,7 @@ export default defineComponent({
           :title="title"
           :style="{
             color: staffColor,
-            background: staffBg,
+            ...bgStyle(staffBg),
           }"
         >
           <slot name="staff" />

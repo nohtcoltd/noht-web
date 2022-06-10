@@ -24,9 +24,9 @@ export default defineComponent({
       <Product
         title="HOLDA"
         caption="ACRYLIC GOODS PRINT SERVICE"
-        header-bg="#F5F5F5"
-        detail-bg="url(images/bg_holda@2x.jpg)"
-        staff-bg="#F80000"
+        :header-bg="{ color: '#F5F5F5' }"
+        :detail-bg="{ imageUrl: 'images/bg_holda.jpg' }"
+        :staff-bg="{ color: '#F80000' }"
       >
         <template #header>
           <RetinaImage
@@ -88,9 +88,9 @@ export default defineComponent({
       <Product
         title="SECONDPRESS.US"
         caption="CANBADGE PRINT SERVICE"
-        header-bg="#00A6C2"
-        detail-bg="url(images/bg_secondpress@2x.png)"
-        staff-bg="#85A5A2"
+        :header-bg="{ color: '#00A6C2' }"
+        :detail-bg="{ imageUrl: 'images/bg_secondpress.png' }"
+        :staff-bg="{ color: '#85A5A2' }"
       >
         <template #header>
           <RetinaImage
@@ -156,9 +156,9 @@ export default defineComponent({
       <Product
         title="BANANANA EFFECTS"
         caption="EFFECTS PEDAL BRAND"
-        header-bg="#FFB200"
-        detail-bg="url(images/bg_bananana@2x.jpg)"
-        staff-bg="#FEDA47"
+        :header-bg="{ color: '#FFB200' }"
+        :detail-bg="{ imageUrl: 'images/bg_bananana.jpg' }"
+        :staff-bg="{ color: '#FEDA47' }"
         staff-color="#111"
       >
         <template #header>
@@ -209,20 +209,17 @@ export default defineComponent({
       <Product
         title="PICTOCLUB"
         caption="ACRYLIC PICTOGRAM SIGNS"
-        header-bg="#3D3D3D"
-        detail-bg="url(images/bg_pictoclub@2x.jpg)"
-        staff-bg="#3D3D3D"
+        :header-bg="{
+          color: '#3D3D3D',
+          imageUrl: isMobile ? 'images/bg_header_pictoclub_mobile.jpg' : 'images/bg_header_pictoclub.jpg',
+          position: 'right center',
+        }"
+        :detail-bg="{
+          imageUrl: 'images/bg_pictoclub.jpg',
+          position: 'right center',
+        }"
+        :staff-bg="{ color: '#3D3D3D' }"
       >
-        <template #header>
-          <div class="relative flex h-full w-full fl-row-nowrap fl-end-stretch-stretch">
-            <RetinaImage
-              :src="isMobile ? 'images/bg_header_pictoclub_mobile.jpg' : 'images/bg_header_pictoclub.jpg'"
-              class="h-full w-full max-w-none object-cover object-right"
-              alt=""
-            />
-          </div>
-        </template>
-
         <template #detail-image>
           <div class="w-[30%] max-w-[600px] bg-center mb:w-full">
             <RetinaImage
