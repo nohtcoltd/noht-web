@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SvgTwitter from '~/assets/svg/icon_twitter.svg?component'
+
 defineProps<{
   href?: string
 }>()
@@ -13,6 +15,6 @@ defineProps<{
     :class="!href ? 'pointer-events-none cursor-default' : 'my-hover:opacity-80'"
     @click.stop
   >
-    <svg :is="require('assets/svg/icon_twitter.svg?inline')" class="w-[length:max(1.6em,27px)]"></svg>
+    <SvgTwitter class="w-[length:max(1.6em,27px)]"></svg>
   </a>
 </template>

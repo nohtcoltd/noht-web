@@ -2,6 +2,7 @@
 import { RouteRecordName } from 'vue-router'
 import { ComponentInstance } from '@vue/devtools-api'
 import LinkButton from '~/components/layouts/LinkButton.vue'
+import SvgLogo from '~/assets/svg/logo.svg?component'
 
 const props = withDefaults(
   defineProps<{
@@ -117,7 +118,7 @@ const handlePointermove = (evt: TouchEvent | MouseEvent, routeName: RouteName) =
 
 <template>
   <div class="fl-col-nowrap fl-center-stretch-stretch">
-    <svg :is="require('assets/svg/logo_noht.svg?inline')" class="mx-auto max-w-[max(120px,3.5em)]" />
+    <SvgLogo class="mx-auto max-w-[max(120px,3.5em)]" />
     <LinkButton
       ref="$index"
       :is-selected="isSelectedRoute('index')"

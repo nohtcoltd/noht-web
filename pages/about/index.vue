@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import MapLink from '~/components/widgets/MapLink.vue'
+import SvgLogo from 'assets/svg/logo_noht_co_ltd.svg?component'
+import SvgLogoUs from 'assets/svg/logo_noht_co_ltd_us.svg?component'
 </script>
 
 <template>
@@ -7,10 +9,9 @@ import MapLink from '~/components/widgets/MapLink.vue'
     class="flex-1 text-left text-[length:clamp(13px,1vw,15px)] font-semibold leading-[1.8] tracking-[.8em] fl-col-nowrap fl-center-stretch-stretch mb:px-[15px] mb:text-[11px] mb:leading-[1.3] mb:tracking-[.4em]"
   >
     <header class="text-[110%]">
-      <svg
-        :is="require('assets/svg/logo_noht_co_ltd.svg?inline')"
+      <SvgLogo
         class="mb:max-h-[20px] mb-[.2em] h-full max-h-[clamp(20px,2em,32px)]"
-      ></svg>
+      />
       株式会社ノート
     </header>
 
@@ -63,10 +64,9 @@ import MapLink from '~/components/widgets/MapLink.vue'
           </div>
         </div>
 
-        <svg
-          :is="require('assets/svg/logo_noht_co_ltd_us.svg?inline')"
+        <SvgLogoUs
           class="mb:max-h-[18px] mb-[.2em] mt-[4em] h-full max-h-[clamp(18px,2em,25px)]"
-        ></svg>
+        />
 
         <div class="mt-[1em]">
           米国支社

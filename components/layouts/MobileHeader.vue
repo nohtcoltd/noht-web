@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import MenuButton from '~/components/widgets/MenuButton.vue'
 import useMediaQuery from '~/composables/useMediaQuery'
+<<<<<<< HEAD
+=======
+import myGlobal from '~/assets/js/myGlobal'
+import SvgLogo from '~/assets/svg/logo.svg?component'
+>>>>>>> 85b5008 (svgモジュール変更)
 /*
   Firefoxのposition: stickyがうまく機能しないのでjsで追従。
   タッチデバイスはjsだとカクつくのでstickyにしてある。
@@ -45,7 +50,7 @@ onUnmounted(() => {
     <div class="absolute top-0 left-1/2 h-full w-screen -translate-x-1/2 bg-white/80" />
     <div class="relative">
       <div class="mx-auto w-[clamp(80px,20vw,100px)] py-[clamp(15px,2vw,20px)] px-[10px]" @click="redirectTo('index')">
-        <svg :is="require('assets/svg/logo_noht.svg?inline')" class="mx-auto" />
+        <SvgLogo class="mx-auto" />
       </div>
       <MenuButton @click="$emit('click:menu', $event)" class="absolute right-0 top-0 bottom-0 m-auto ml-auto" />
     </div>

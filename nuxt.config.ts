@@ -1,9 +1,13 @@
 import { defineNuxtConfig } from 'nuxt'
+import svgLoader from 'vite-svg-loader'
 
 const isProduction = process.env.NODE_ENV === 'production'
 export default defineNuxtConfig({
   publicRuntimeConfig: {
     siteRecaptchaKey: process.env.SITE_RECAPTCHA_KEY
+  },
+  vite: {
+    plugins: [svgLoader()],
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -42,7 +46,6 @@ export default defineNuxtConfig({
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/svg',
     '@nuxtjs/tailwindcss',
   ],
 
