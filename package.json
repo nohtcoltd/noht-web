@@ -3,23 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxi dev",
-    "generate": "nuxi generate",
-    "preview": "nuxi preview",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
     "clear-cache": "rm -rf node_modules/.cache/hard-source/",
     "clear-dist": "git checkout .output && git clean -fd .output &>/dev/null"
   },
   "dependencies": {
     "@nuxtjs/recaptcha": "^1.1.1",
     "@nuxtjs/svg": "^0.4.0",
-    "nuxt-edge": "latest",
+    "nuxt": "3.0.0-rc.3",
+    "nuxt-webfontloader": "^1.1.0",
     "vee-validate": "3"
   },
   "devDependencies": {
-    "@nuxt/bridge": "npm:@nuxt/bridge-edge",
-    "@nuxtjs/google-fonts": "^2.0.0",
     "@nuxtjs/tailwindcss": "^5.0.4",
-    "@vue/runtime-dom": "^3.2.34",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10"
   }

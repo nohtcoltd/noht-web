@@ -1,6 +1,4 @@
-import { defineNuxtConfig } from '@nuxt/bridge'
-import fs from 'node:fs'
-import path from 'node:path'
+import { defineNuxtConfig } from 'nuxt'
 
 const isProduction = process.env.NODE_ENV === 'production'
 export default defineNuxtConfig({
@@ -103,14 +101,6 @@ export default defineNuxtConfig({
       }
 
       return routes
-    },
-  },
-
-  // XXX: bridgeでのgenerateのエラー回避
-  hooks: {
-    'build:done': (builder) => {
-      const extraFilePath = path.join(builder.nuxt.options.buildDir + '/dist/server', 'server.mjs')
-      fs.writeFileSync(extraFilePath, 'export {};')
     },
   },
 })
