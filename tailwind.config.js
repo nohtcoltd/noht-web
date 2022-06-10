@@ -1,6 +1,6 @@
-const plugin = require('tailwindcss/plugin.js')
+import plugin from 'tailwindcss/plugin.js'
 
-module.exports = {
+export default {
   content: () => [
     './components/**/*.{js,jsx,ts,tsx,vue}',
     './pages/**/*.{js,jsx,ts,tsx,vue}',

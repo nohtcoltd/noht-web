@@ -9,7 +9,7 @@ import MapLink from '~/components/widgets/MapLink.vue'
     <header class="text-[110%]">
       <svg
         :is="require('assets/svg/logo_noht_co_ltd.svg?inline')"
-        class="mb-[.2em] h-full max-h-[clamp(20px,2em,32px)] mb:max-h-[20px]"
+        class="mb:max-h-[20px] mb-[.2em] h-full max-h-[clamp(20px,2em,32px)]"
       ></svg>
       株式会社ノート
     </header>
@@ -33,7 +33,7 @@ import MapLink from '~/components/widgets/MapLink.vue'
       </dl>
     </section>
     <section>
-      <div class="leading-[2.5] tracking-[.4em] mb:leading-[1.8]">
+      <div class="mb:leading-[1.8] leading-[2.5] tracking-[.4em]">
         ウェブサイト・アプリケーションの企画・開発<br />
         ロゴ・イラスト・3DCG・映像などの企画・制作<br />
         印刷物・立体物・グッズ製品の企画・製造<br />
@@ -65,7 +65,7 @@ import MapLink from '~/components/widgets/MapLink.vue'
 
         <svg
           :is="require('assets/svg/logo_noht_co_ltd_us.svg?inline')"
-          class="mb-[.2em] mt-[4em] h-full max-h-[clamp(18px,2em,25px)] mb:max-h-[18px]"
+          class="mb:max-h-[18px] mb-[.2em] mt-[4em] h-full max-h-[clamp(18px,2em,25px)]"
         ></svg>
 
         <div class="mt-[1em]">
@@ -83,12 +83,16 @@ import MapLink from '~/components/widgets/MapLink.vue'
 </template>
 
 <style scoped>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 section {
   @apply mt-[min(8vw,6em)];
 }
 
 dl {
-  @apply mt-[1em] fl-row-nowrap first:mt-0;
+  @apply fl-row-nowrap mt-[1em] first:mt-0;
 }
 dt {
   @apply mr-[2em];

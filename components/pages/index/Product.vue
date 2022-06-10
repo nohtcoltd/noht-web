@@ -123,6 +123,9 @@ useHead({
 </template>
 
 <style scoped>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .body {
   @apply h-[400px] max-h-[450px] min-h-[350px] w-full overflow-hidden rounded-[30px] mb:h-auto mb:max-h-[none] mb:min-h-0 mb:rounded-[clamp(20px,3vw,30px)];
 }
