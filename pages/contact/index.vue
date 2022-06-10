@@ -33,14 +33,6 @@ const enter = ($el: HTMLElement, done: () => void) => {
 }
 </script>
 
-<script lang="ts">
-import { defineNuxtComponent } from '#app'
-
-export default defineNuxtComponent({
-  layout: 'TurnPage',
-})
-</script>
-
 <template>
   <article
     class="-bg-white relative flex-1 px-[3em] text-[length:clamp(25px,2.3vw,28px)] fl-col-nowrap fl-start-stretch-stretch tablet:px-0"
