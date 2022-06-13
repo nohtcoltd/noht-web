@@ -1,3 +1,1 @@
-import myGlobal from '~/assets/js/myGlobal'
-
-export default myGlobal && myGlobal.devicePixelRatio > 1
+export default globalThis && globalThis.devicePixelRatio > 1
