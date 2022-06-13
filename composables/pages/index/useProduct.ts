@@ -1,5 +1,9 @@
-import { useRoute, ref, inject, onMounted, computed, ComponentInstance, onUnmounted } from '#app'
-import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
+import { useRoute, ref, inject, onMounted, computed, ComponentInstance, onUnmounted, nextTick } from '#app'
+import {
+  addCompleteForwardRotationHandle,
+  addStartRotationHandle,
+  addCompleteRotationHandle,
+} from '~/composables/useTurnPage'
 import useMediaQuery from '~/composables/useMediaQuery'
 
 let index = 0
@@ -76,16 +80,23 @@ export default () => {
   const startRotation = () => (isRotating.value = true)
   const completeRotation = () => (isRotating.value = false)
 
-  const addHandle = inject(addCompleteForwardRotationHandle)
-
   const duration = computed(() => (inIndex.value ? 500 : 0))
 
-  addHandle(() => {
+  const isPageRotating = ref(false)
+  const selfIndex = index
+  index += 1
+
+  inject(addCompleteForwardRotationHandle)(() => {
     currentFace.value = 1
   })
 
-  const selfIndex = index
-  index += 1
+  inject(addStartRotationHandle)(() => {
+    isPageRotating.value = true
+  })
+
+  inject(addCompleteRotationHandle)(() => {
+    isPageRotating.value = false
+  })
 
   return {
     $box,
@@ -97,14 +108,15 @@ export default () => {
     completeRotation,
     handlePointerDown,
     retinaUrl: computed(() => (imageUrl) => isRetina ? imageUrl.replace(/(.*)\.(.*)$/g, '$1@2x.$2') : imageUrl),
-    enter: async (el, done) => {
+    enter: async (el: HTMLElement, done: () => void) => {
+      await nextTick()
       await el.animate(
         {
           opacity: [0, 1],
         },
         {
-          duration: 500,
-          delay: selfIndex * 300,
+          duration: isPageRotating.value ? 0 : 500,
+          delay: isPageRotating.value ? 0 : selfIndex * 300,
           easing: 'ease-in',
           fill: 'forwards',
         },
