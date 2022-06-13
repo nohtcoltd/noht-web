@@ -13,11 +13,11 @@
     "@nuxtjs/recaptcha": "^1.1.1",
     "@nuxtjs/svg": "^0.4.0",
     "nuxt-edge": "latest",
-    "nuxt-webfontloader": "^1.1.0",
     "vee-validate": "3"
   },
   "devDependencies": {
     "@nuxt/bridge": "npm:@nuxt/bridge-edge",
+    "@nuxtjs/google-fonts": "^2.0.0",
     "@nuxtjs/tailwindcss": "^5.0.4",
     "@vue/runtime-dom": "^3.2.34",
     "prettier": "^2.6.2",
