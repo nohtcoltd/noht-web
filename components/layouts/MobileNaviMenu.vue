@@ -2,7 +2,6 @@
 import { Route } from 'vue-router'
 import { useRoute, useRouter, computed, ref, ComponentInstance, onMounted, onBeforeUnmount } from '#app'
 import LinkButton from '~/components/layouts/LinkButton.vue'
-import myGlobal from '~/assets/js/myGlobal'
 
 const props = withDefaults(
   defineProps<{
@@ -82,24 +81,24 @@ const endSwiping = () => {
 }
 
 onMounted(() => {
-  myGlobal.addEventListener('pointerdown', startSwiping, { passive: true })
-  myGlobal.addEventListener('touchend', endSwiping, { passive: true })
-  myGlobal.addEventListener('mouseup', endSwiping, { passive: true })
+  globalThis.addEventListener('pointerdown', startSwiping, { passive: true })
+  globalThis.addEventListener('touchend', endSwiping, { passive: true })
+  globalThis.addEventListener('mouseup', endSwiping, { passive: true })
 
   Object.keys(routeToRouteButton.value).forEach((routeName) => {
-    myGlobal.addEventListener('mousemove', (evt) => handlePointermove(evt, routeName), { passive: true })
-    myGlobal.addEventListener('touchmove', (evt) => handlePointermove(evt, routeName), { passive: true })
+    globalThis.addEventListener('mousemove', (evt) => handlePointermove(evt, routeName), { passive: true })
+    globalThis.addEventListener('touchmove', (evt) => handlePointermove(evt, routeName), { passive: true })
   })
 })
 
 onBeforeUnmount(() => {
-  myGlobal.removeEventListener('pointerdown', startSwiping, { passive: true })
-  myGlobal.removeEventListener('touchend', endSwiping, { passive: true })
-  myGlobal.removeEventListener('mouseup', endSwiping, { passive: true })
+  globalThis.removeEventListener('pointerdown', startSwiping)
+  globalThis.removeEventListener('touchend', endSwiping)
+  globalThis.removeEventListener('mouseup', endSwiping)
 
   Object.keys(routeToRouteButton.value).forEach((routeName) => {
-    myGlobal.removeEventListener('mousemove', (evt) => handlePointermove(evt, routeName), { passive: true })
-    myGlobal.removeEventListener('touchmove', (evt) => handlePointermove(evt, routeName), { passive: true })
+    globalThis.removeEventListener('mousemove', (evt) => handlePointermove(evt, routeName))
+    globalThis.removeEventListener('touchmove', (evt) => handlePointermove(evt, routeName))
   })
 })
 
@@ -110,7 +109,7 @@ const handlePointermove = (evt: TouchEvent | MouseEvent, routeName: RouteName) =
 
   const { clientX, clientY } = evt instanceof TouchEvent ? evt.touches[0] : evt
   const { $el } = routeToRouteButton.value[routeName]
-  const target = myGlobal.document.elementFromPoint(clientX, clientY)
+  const target = globalThis.document.elementFromPoint(clientX, clientY)
 
   if ($el.contains(target)) {
     activateRoute(routeName)
