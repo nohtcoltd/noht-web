@@ -5,6 +5,9 @@ import useProduct from '~/composables/pages/index/useProduct'
 import ProductHeader from '~/components/pages/index/ProductHeader.vue'
 import ProductDetail from '~/components/pages/index/ProductDetail.vue'
 import ProductStaff from '~/components/pages/index/ProductStaff.vue'
+import getRetinaImageUrl from '~/assets/js/getRetinaImageUrl'
+import useMediaQuery from '~/composables/useMediaQuery'
+const { isRetina } = useMediaQuery()
 
 type Bg = {
   color?: string
@@ -44,7 +47,7 @@ const bgStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Bg)
     backgroundColor: color || null,
     backgroundImage: imageUrl
       ? `url(
-      ${getRetinaImagePath(imageUrl)}
+      ${isRetina ? getRetinaImageUrl(imageUrl) : imageUrl}
     )`
       : null,
     backgroundPosition: position || 'center',
@@ -56,14 +59,14 @@ const bgStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Bg)
 
 <script lang="ts">
 import { defineComponent } from '#app'
-import getRetinaImagePath from '~/assets/js/getRetinaImagePath'
+import isRetinaDisplay from '~/assets/js/isRetinaDisplay'
 
 export default defineComponent({
   head: (vm) => {
     const { headerBg, detailBg, staffBg } = vm
     const imageUrls = [headerBg, detailBg, staffBg]
       .filter(({ imageUrl }) => !!imageUrl)
-      .map(({ imageUrl }) => getRetinaImagePath(imageUrl))
+      .map(({ imageUrl }) => (isRetinaDisplay ? getRetinaImageUrl(imageUrl) : imageUrl))
     return {
       link: imageUrls.map((path) => ({ rel: 'preload', href: path, as: 'image' })),
     }
