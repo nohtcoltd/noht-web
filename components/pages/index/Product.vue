@@ -40,6 +40,7 @@ const {
   startRotation,
   completeRotation,
   handlePointerDown,
+  enter,
 } = useProduct()
 
 const bgStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Bg) => {
@@ -75,53 +76,55 @@ export default defineComponent({
 </script>
 
 <template>
-  <TurnBox
-    ref="$box"
-    :current-face="currentFace"
-    :faces="3"
-    :duration="duration"
-    :is-reversed="false"
-    class="relative mt-[1em] w-full text-[length:clamp(10px,3vw,50px)] first:mt-0 mb:mt-[20px]"
-    :class="isRotating ? 'z-10' : 'z-0'"
-    @start:rotation="startRotation"
-    @complete:rotation="completeRotation"
-  >
-    <template #face-1>
-      <div class="body cursor-pointer" @click="changeCurrentFace(2)" @pointerdown="handlePointerDown">
-        <ProductHeader :title="title" :caption="caption" :style="bgStyle(headerBg)">
-          <slot name="header" />
-        </ProductHeader>
-      </div>
-    </template>
-    <template #face-2>
-      <div class="body relative" @click="changeCurrentFace(3)" @pointerdown="handlePointerDown">
-        <ProductDetail :style="bgStyle(detailBg)">
-          <template #image>
-            <slot name="detail-image" />
-          </template>
-          <template #description>
-            <slot name="detail-description" />
-          </template>
-          <template #links>
-            <slot name="detail-links" />
-          </template>
-        </ProductDetail>
-      </div>
-    </template>
-    <template #face-3>
-      <div class="body" @click="changeCurrentFace(1)" @pointerdown="handlePointerDown">
-        <ProductStaff
-          :title="title"
-          :style="{
-            color: staffColor,
-            ...bgStyle(staffBg),
-          }"
-        >
-          <slot name="staff" />
-        </ProductStaff>
-      </div>
-    </template>
-  </TurnBox>
+  <transition appear :css="false" @enter="enter">
+    <TurnBox
+      ref="$box"
+      :current-face="currentFace"
+      :faces="3"
+      :duration="duration"
+      :is-reversed="false"
+      class="relative mt-[1em] w-full text-[length:clamp(10px,3vw,50px)] opacity-0 first:mt-0 mb:mt-[20px]"
+      :class="[isRotating ? 'z-10' : 'z-0']"
+      @start:rotation="startRotation"
+      @complete:rotation="completeRotation"
+    >
+      <template #face-1>
+        <div class="body cursor-pointer" @click="changeCurrentFace(2)" @pointerdown="handlePointerDown">
+          <ProductHeader :title="title" :caption="caption" :style="bgStyle(headerBg)">
+            <slot name="header" />
+          </ProductHeader>
+        </div>
+      </template>
+      <template #face-2>
+        <div class="body relative" @click="changeCurrentFace(3)" @pointerdown="handlePointerDown">
+          <ProductDetail :style="bgStyle(detailBg)">
+            <template #image>
+              <slot name="detail-image" />
+            </template>
+            <template #description>
+              <slot name="detail-description" />
+            </template>
+            <template #links>
+              <slot name="detail-links" />
+            </template>
+          </ProductDetail>
+        </div>
+      </template>
+      <template #face-3>
+        <div class="body" @click="changeCurrentFace(1)" @pointerdown="handlePointerDown">
+          <ProductStaff
+            :title="title"
+            :style="{
+              color: staffColor,
+              ...bgStyle(staffBg),
+            }"
+          >
+            <slot name="staff" />
+          </ProductStaff>
+        </div>
+      </template>
+    </TurnBox>
+  </transition>
 </template>
 
 <style scoped>
