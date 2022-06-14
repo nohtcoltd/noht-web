@@ -2,7 +2,6 @@
 import MenuButton from '~/components/widgets/MenuButton.vue'
 import { useRoute, useRouter, computed, ref, onMounted, onUnmounted } from '#app'
 import useMediaQuery from '~/composables/useMediaQuery'
-import myGlobal from '~/assets/js/myGlobal'
 /*
   Firefoxのposition: stickyがうまく機能しないのでjsで追従。
   タッチデバイスはjsだとカクつくのでstickyにしてある。
@@ -12,7 +11,7 @@ const route = useRoute()
 const router = useRouter()
 const isCurrentRoute = computed(() => (routeName) => route.name === routeName)
 const scrollTop = ref(0)
-const changeScrollTop = () => (scrollTop.value = myGlobal.scrollY)
+const changeScrollTop = () => (scrollTop.value = globalThis.scrollY)
 
 const redirectTo = async (routeName) => {
   if (isCurrentRoute.value('index')) {
@@ -23,13 +22,13 @@ const redirectTo = async (routeName) => {
 }
 
 onMounted(() => {
-  myGlobal.addEventListener('scroll', changeScrollTop, { passive: true })
-  myGlobal.addEventListener('resize', changeScrollTop, { passive: true })
+  globalThis.addEventListener('scroll', changeScrollTop, { passive: true })
+  globalThis.addEventListener('resize', changeScrollTop, { passive: true })
 })
 
 onUnmounted(() => {
-  myGlobal.removeEventListener('scroll', changeScrollTop, { passive: true })
-  myGlobal.removeEventListener('resize', changeScrollTop, { passive: true })
+  globalThis.removeEventListener('scroll', changeScrollTop)
+  globalThis.removeEventListener('resize', changeScrollTop)
 })
 
 const { isTablet, isTouchDevice } = useMediaQuery()

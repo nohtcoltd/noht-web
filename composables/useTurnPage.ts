@@ -12,7 +12,6 @@ import {
 } from '#app'
 import { Route } from 'vue-router'
 import getScrollbarWidth from '~/assets/js/getScrollbarWidth'
-import myGlobal from '~/assets/js/myGlobal'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import useMediaQuery from '~/composables/useMediaQuery'
 
@@ -63,7 +62,7 @@ export default () => {
   const lastRoute = ref<RouteName>(route.name)
   const isWindowResizing = ref(false)
   const tmpScrollTop = ref(0)
-  const $scrollContainer = computed(() => myGlobal.document.documentElement)
+  const $scrollContainer = computed(() => globalThis.document.documentElement)
   const duration = computed((): TurnBoxProps['duration'] => {
     if (isWindowResizing.value) {
       return 0
@@ -95,11 +94,11 @@ export default () => {
   }
 
   onMounted(() => {
-    myGlobal.addEventListener('resize', handleResizeWindow)
+    globalThis.addEventListener('resize', handleResizeWindow)
   })
 
   onUnmounted(() => {
-    myGlobal.removeEventListener('resize', handleResizeWindow)
+    globalThis.removeEventListener('resize', handleResizeWindow)
   })
 
   const openMobileNavi = () => (shouldMobileNaviOpened.value = true)
@@ -108,9 +107,9 @@ export default () => {
   const startRotation: Handle = async (prev, next) => {
     rotatingFaces.value = [prev, next]
 
-    tmpScrollTop.value = myGlobal.scrollY
+    tmpScrollTop.value = globalThis.scrollY
 
-    const height = myGlobal.innerHeight
+    const height = globalThis.innerHeight
     const $prev = faceToDom.value[prev]
 
     $prev.style.transform = `translateY(-${tmpScrollTop.value}px)`
@@ -158,7 +157,7 @@ export default () => {
   const completeRotateBackward: Handle = async (prev, next) => {
     const scrollY = tmpScrollTop.value
     await nextTick()
-    myGlobal.scrollTo(0, scrollY)
+    globalThis.scrollTo(0, scrollY)
     completeRotateBackwardHandles.forEach((handle: Handle) => handle(prev, next))
   }
 

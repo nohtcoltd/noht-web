@@ -1,7 +1,6 @@
 import resolveConfig from 'tailwindcss/resolveConfig.js'
 import tailwindConfig from '~/tailwind.config.js'
 import { computed, ref, onMounted, onUnmounted, nextTick } from '#app'
-import myGlobal from '~/assets/js/myGlobal'
 
 const {
   theme: { screens },
@@ -16,8 +15,8 @@ const breakPoints = {
 } as const
 
 export default () => {
-  const getWidth = (): number => myGlobal.innerWidth
-  const getHeight = (): number => myGlobal.innerHeight
+  const getWidth = (): number => globalThis.innerWidth
+  const getHeight = (): number => globalThis.innerHeight
   const width = ref(getWidth())
   const height = ref(getHeight())
 
@@ -27,11 +26,11 @@ export default () => {
   }
 
   onMounted(() => {
-    myGlobal.addEventListener('resize', handleChange)
+    globalThis.addEventListener('resize', handleChange)
   })
 
   onUnmounted(() => {
-    myGlobal.removeEventListener('resize', handleChange)
+    globalThis.removeEventListener('resize', handleChange)
   })
 
   const getIsMediaTo = computed(() => (breakPoint: number) => width.value <= breakPoint)
@@ -48,9 +47,15 @@ export default () => {
     breakPoints,
     getIsMediaTo,
     isMediaTo,
-    isRetina: myGlobal && myGlobal.devicePixelRatio > 1,
+    isRetina: globalThis.devicePixelRatio > 1,
     isMobile: computed(() => getIsMediaTo.value(breakPoints.mobile)),
     isTablet: computed(() => getIsMediaTo.value(breakPoints.tablet)),
-    isTouchDevice: computed(() => 'ontouchstart' in myGlobal || navigator.maxTouchPoints > 0),
+    isTouchDevice: computed(() => {
+      if (!globalThis.navigator) {
+        return
+      }
+
+      return 'ontouchstart' in globalThis || globalThis.navigator.maxTouchPoints > 0
+    }),
   }
 }
