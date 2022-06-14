@@ -1,9 +1,14 @@
 import { defineNuxtConfig } from '@nuxt/bridge'
 
+const isProduction = process.env.NODE_ENV === 'production'
 export default defineNuxtConfig({
+  loading: false,
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
+  bridge: {
+    nitro: !isProduction,
+  },
   head: {
     title: 'NOHT CO.,LTD.',
     htmlAttrs: {
@@ -84,11 +89,6 @@ export default defineNuxtConfig({
       chunk: ({ isDev }) => (isDev ? '[name].[hash].js' : '[chunkhash].js'),
     },
 
-    // @ts-ignore
-    extractCSS: {
-      ignoreOrder: true,
-    },
-
     // hardSource: true,
   },
 
@@ -99,7 +99,7 @@ export default defineNuxtConfig({
 
   router: {
     extendRoutes: (routes) => {
-      if (process.env.NODE_ENV === 'production') {
+      if (isProduction) {
         routes = routes.filter(({ name }) => name !== 'demoTurnBox')
       }
 
