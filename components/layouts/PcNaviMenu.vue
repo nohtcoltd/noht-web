@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useRoute, useRouter, computed } from '#app'
 import TurnButton from '~/components/layouts/TurnButton.vue'
-import useMediaQuery from '~/composables/useMediaQuery'
 
 const route = useRoute()
 const router = useRouter()
@@ -24,8 +23,6 @@ const redirectTo = async (routeName) => {
 
   await router.push({ name: routeName })
 }
-
-const { isTablet } = useMediaQuery()
 </script>
 <template>
   <div class="sticky top-0 z-10 h-screen pl-[2.6em] pr-[1em] fl-col-nowrap fl-center-stretch-stretch tablet:hidden">
