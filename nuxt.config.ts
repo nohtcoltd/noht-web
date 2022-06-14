@@ -89,10 +89,6 @@ export default defineNuxtConfig({
       chunk: ({ isDev }) => (isDev ? '[name].[hash].js' : '[chunkhash].js'),
     },
 
-    // @ts-ignore
-    extractCSS: {
-      ignoreOrder: !isProduction,
-    },
     // hardSource: true,
   },
 

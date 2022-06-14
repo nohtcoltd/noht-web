@@ -6,8 +6,6 @@ import MainPanel from '~/components/pages/index/MainPanel.vue'
 import DetailPanel from '~/components/pages/index/DetailPanel.vue'
 import StaffPanel from '~/components/pages/index/StaffPanel.vue'
 import getRetinaImageUrl from '~/assets/js/getRetinaImageUrl'
-import useMediaQuery from '~/composables/useMediaQuery'
-const { isRetina } = useMediaQuery()
 
 type Background = {
   color?: string
@@ -84,7 +82,7 @@ export default defineComponent({
       :faces="3"
       :duration="duration"
       :is-reversed="false"
-      class="relative mt-[1em] w-full text-[length:clamp(10px,3vw,50px)] opacity-0 first:mt-0 mb:mt-[20px]"
+      class="relative mt-[1em] w-full text-[length:clamp(10px,3vw,50px)] opacity-0 first:mt-0 mb:mt-[clamp(15px,calc(-7px+5vw),30px)]"
       :class="[isRotating ? 'z-10' : 'z-0']"
       @start:rotation="startRotation"
       @complete:rotation="completeRotation"
@@ -130,6 +128,6 @@ export default defineComponent({
 
 <style scoped>
 .body {
-  @apply h-[400px] max-h-[450px] min-h-[350px] w-full overflow-hidden rounded-[30px] mb:h-auto mb:max-h-[none] mb:min-h-0;
+  @apply h-[400px] max-h-[450px] min-h-[350px] w-full overflow-hidden rounded-[30px] mb:h-auto mb:max-h-[none] mb:min-h-0 mb:rounded-[clamp(20px,3vw,30px)];
 }
 </style>

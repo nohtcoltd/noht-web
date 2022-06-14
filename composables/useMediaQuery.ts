@@ -12,7 +12,7 @@ const breakPoints = {
   small: parseFloat(screens['pc-s'].max),
   tablet: parseFloat(screens['tablet'].max),
   mobile: parseFloat(screens['mb'].max),
-  mobileSmall: parseFloat(screens['mb-s'].max),
+  smallMobile: parseFloat(screens['mb-s'].max),
 } as const
 
 export default () => {
@@ -50,6 +50,7 @@ export default () => {
     isMediaTo,
     isRetina: isRetinaDisplay,
     isMobile: computed(() => getIsMediaTo.value(breakPoints.mobile)),
+    isSmallMobile: computed(() => getIsMediaTo.value(breakPoints.smallMobile)),
     isTablet: computed(() => getIsMediaTo.value(breakPoints.tablet)),
     isTouchDevice: computed(() => {
       if (!globalThis.navigator) {

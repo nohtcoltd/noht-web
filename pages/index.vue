@@ -14,8 +14,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <article class="w-full bg-white pr-[6vw] text-sm fl-col-nowrap fl-start-center-center tablet:px-0 tablet:py-0">
-    <div class="w-full max-w-[1200px] fl-col-nowrap fl-start-center-center mb:max-w-[500px]">
+  <article class="w-full bg-white pr-[3vw] text-sm fl-col-nowrap fl-start-center-center tablet:px-0 tablet:py-0">
+    <div class="w-full max-w-[1200px] fl-col-nowrap fl-start-center-center">
       <Holda />
       <Secondpress />
       <BanananaEffects />
