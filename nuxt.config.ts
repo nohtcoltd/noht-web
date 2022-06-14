@@ -34,7 +34,21 @@ export default defineNuxtConfig({
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/svg', 'nuxt-webfontloader', '@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxtjs/svg',
+    'nuxt-webfontloader',
+    '@nuxtjs/tailwindcss',
+
+    [
+      '@nuxtjs/recaptcha',
+      {
+        hideBadge: false,
+        siteKey: process.env.SITE_RECAPTCHA_KEY,
+        size: 'normal',
+        version: 2,
+      },
+    ],
+  ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
