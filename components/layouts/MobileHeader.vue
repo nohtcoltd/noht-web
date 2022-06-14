@@ -31,12 +31,11 @@ onUnmounted(() => {
   globalThis.removeEventListener('resize', changeScrollTop)
 })
 
-const { isTablet, isTouchDevice } = useMediaQuery()
+const { isTouchDevice } = useMediaQuery()
 </script>
 <template>
   <header
-    v-if="isTablet"
-    class="top-0 z-50 mb-[30px] w-full bg-white/80"
+    class="top-0 z-50 mb-[30px] w-full bg-white/80 pc:hidden"
     :class="isTouchDevice ? 'sticky' : 'relative'"
     :style="{
       transform: isTouchDevice ? '' : `translateY(${scrollTop}px)`,
