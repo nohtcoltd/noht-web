@@ -46,11 +46,7 @@ const {
 const backgroundStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Background) => {
   return {
     backgroundColor: color || null,
-    backgroundImage: imageUrl
-      ? `url(
-      ${isRetina ? getRetinaImageUrl(imageUrl) : imageUrl}
-    )`
-      : null,
+    backgroundImage: imageUrl ? `-webkit-image-set(url(${imageUrl}) 1x, url(${getRetinaImageUrl(imageUrl)}) 2x)` : null,
     backgroundPosition: position || 'center',
     backgroundSize: size || 'cover',
     backgroundRepeat: repeat || 'no-repeat',
@@ -60,16 +56,21 @@ const backgroundStyle = computed(() => ({ color, imageUrl, position, size, repea
 
 <script lang="ts">
 import { defineComponent } from '#app'
-import isRetinaDisplay from '~/assets/js/isRetinaDisplay'
 
 export default defineComponent({
   head: (vm) => {
     const { mainPanelBackground, detailPanelBackground, staffPanelBackground } = vm
     const imageUrls = [mainPanelBackground, detailPanelBackground, staffPanelBackground]
       .filter(({ imageUrl }) => !!imageUrl)
-      .map(({ imageUrl }) => (isRetinaDisplay ? getRetinaImageUrl(imageUrl) : imageUrl))
+      .map(({ imageUrl }) => imageUrl)
+
     return {
-      link: imageUrls.map((path) => ({ rel: 'preload', href: path, as: 'image' })),
+      link: imageUrls.map((url) => ({
+        rel: 'preload',
+        href: url,
+        as: 'image',
+        imagesrcset: `${url} 1x, ${getRetinaImageUrl(url)} 2x`,
+      })),
     }
   },
 })
