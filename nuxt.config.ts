@@ -36,9 +36,7 @@ export default defineNuxtConfig({
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/svg',
-    'nuxt-webfontloader',
     '@nuxtjs/tailwindcss',
-
     [
       '@nuxtjs/recaptcha',
       {
@@ -46,6 +44,21 @@ export default defineNuxtConfig({
         siteKey: process.env.SITE_RECAPTCHA_KEY,
         size: 'normal',
         version: 2,
+      },
+    ],
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          Poppins: {
+            wght: [600, 700],
+          },
+        },
+        display: 'block',
+        download: true,
+        base64: true,
+        inject: true,
+        outputDir: '~/assets/dist',
       },
     ],
   ],
@@ -81,12 +94,6 @@ export default defineNuxtConfig({
       }
 
       return routes
-    },
-  },
-
-  webfontloader: {
-    google: {
-      families: ['Poppins:400,500,600,700'],
     },
   },
 })
