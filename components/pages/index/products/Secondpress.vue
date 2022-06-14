@@ -49,14 +49,14 @@ import Staff from '~/components/pages/index/Staff.vue'
       >
         <Staff name="KEIICHIRO HIRAI" job-title="PLAN/DIRECTOR/DESIGN" />
         <div class="col-span-5 mb:col-span-2" />
-        <Staff name="TAKUMA FURUTANI" job-title="BACKEND LEAD" />
-        <Staff name="YUGO NISHIOKA" job-title="BACKEND" />
+        <Staff name="FILRIYA" job-title="BACKEND LEAD" />
+        <Staff name="YOUGO NISHIOKA " job-title="BACKEND" />
         <Staff name="YMMR" job-title="FRONTEND" />
         <Staff name="AZARASHI" job-title="IMAGE CALC." />
         <Staff name="SAITO" job-title="PRODUCTION MNG." />
         <Staff name="ISHIZAWA" job-title="PRODUCTION MNG." />
         <Staff name="YOSHIDA" job-title="HARDWARE" />
-        <Staff name="MAOMARUYA" job-title="3DCG/ILLUST" />
+        <Staff name="MAO MARUYA" job-title="3DCG/ILLUST" />
         <Staff name="MOCHIPAN" job-title="ILLUSTRATION" />
         <Staff name="NISHI" :job-title="['PLAN ASSISTANT', 'ADS/MARKETING']" />
         <Staff name="OKAMOTO" job-title="PRDCTN MNG AST." />
