@@ -1,6 +1,12 @@
-import { useRoute, ref, inject, onMounted, computed, ComponentInstance, onUnmounted } from '#app'
-import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
+import { useRoute, ref, inject, onMounted, computed, ComponentInstance, onUnmounted, nextTick } from '#app'
+import {
+  addCompleteForwardRotationHandle,
+  addStartRotationHandle,
+  addCompleteRotationHandle,
+} from '~/composables/useTurnPage'
+import useMediaQuery from '~/composables/useMediaQuery'
 
+let index = 0
 export default () => {
   const route = useRoute()
   const currentFace = ref(1)
@@ -8,7 +14,7 @@ export default () => {
   const isRotating = ref(false)
   const isRotationEnabled = ref(true)
   const pointerMovingDistance = ref<{ x: number; y: number } | null>(null)
-
+  const { isRetina } = useMediaQuery()
   const resetPoint = () => {
     isRotationEnabled.value = true
     pointerMovingDistance.value = null
@@ -74,12 +80,22 @@ export default () => {
   const startRotation = () => (isRotating.value = true)
   const completeRotation = () => (isRotating.value = false)
 
-  const addHandle = inject(addCompleteForwardRotationHandle)
-
   const duration = computed(() => (inIndex.value ? 500 : 0))
 
-  addHandle(() => {
+  const isPageRotating = ref(false)
+  const selfIndex = index
+  index += 1
+
+  inject(addCompleteForwardRotationHandle)(() => {
     currentFace.value = 1
+  })
+
+  inject(addStartRotationHandle)(() => {
+    isPageRotating.value = true
+  })
+
+  inject(addCompleteRotationHandle)(() => {
+    isPageRotating.value = false
   })
 
   return {
@@ -91,5 +107,22 @@ export default () => {
     startRotation,
     completeRotation,
     handlePointerDown,
+    retinaUrl: computed(() => (imageUrl) => isRetina ? imageUrl.replace(/(.*)\.(.*)$/g, '$1@2x.$2') : imageUrl),
+    enter: async (el: HTMLElement, done: () => void) => {
+      await nextTick()
+      await el.animate(
+        {
+          opacity: [0, 1],
+        },
+        {
+          duration: isPageRotating.value ? 0 : 500,
+          delay: isPageRotating.value ? 0 : selfIndex * 300,
+          easing: 'ease-in',
+          fill: 'forwards',
+        },
+      ).finished
+
+      done()
+    },
   }
 }

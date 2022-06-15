@@ -1,6 +1,7 @@
 import resolveConfig from 'tailwindcss/resolveConfig.js'
 import tailwindConfig from '~/tailwind.config.js'
 import { computed, ref, onMounted, onUnmounted, nextTick } from '#app'
+import isRetinaDisplay from '~/assets/js/isRetinaDisplay'
 
 const {
   theme: { screens },
@@ -47,7 +48,7 @@ export default () => {
     breakPoints,
     getIsMediaTo,
     isMediaTo,
-    isRetina: globalThis.devicePixelRatio > 1,
+    isRetina: isRetinaDisplay,
     isMobile: computed(() => getIsMediaTo.value(breakPoints.mobile)),
     isTablet: computed(() => getIsMediaTo.value(breakPoints.tablet)),
     isTouchDevice: computed(() => {

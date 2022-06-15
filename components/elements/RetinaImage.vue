@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed } from '#app'
+import getRetinaImageUrl from '~/assets/js/getRetinaImageUrl'
 
 const props = defineProps<{
   src: string
@@ -10,9 +11,7 @@ const srcset = computed(() => {
     return ''
   }
 
-  const retinaPath = props.src.replace(/(.*)\.(.*)$/g, '$1@2x.$2')
-
-  return `${props.src} 1x, ${retinaPath} 2x`
+  return `${props.src} 1x, ${getRetinaImageUrl(props.src)} 2x`
 })
 </script>
 
