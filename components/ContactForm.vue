@@ -133,7 +133,7 @@ addHandle(() => {
           <ErrorMessage :error="errors[0]" />
         </validation-provider>
 
-        <div class="mt-[2em]">
+        <div class="mt-[2em] min-h-[80px]">
           <recaptcha />
           <ErrorMessage v-if="hasRecaptchaError" error="失敗しました" />
         </div>
