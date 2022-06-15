@@ -13,6 +13,6 @@ defineProps<{
     :class="!href ? 'pointer-events-none cursor-default' : 'my-hover:opacity-80'"
     @click.stop
   >
-    <svg :is="require('assets/svg/icon_twitter.svg?inline')" class="w-[length:max(1.8em,30px)]"></svg>
+    <svg :is="require('assets/svg/icon_twitter.svg?inline')" class="w-[length:max(1.6em,27px)]"></svg>
   </a>
 </template>
