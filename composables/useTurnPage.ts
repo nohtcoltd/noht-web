@@ -87,8 +87,10 @@ export default () => {
   const handleResizeWindow = async () => {
     clearTimeout(windowResizingTimer)
     isWindowResizing.value = true
-    await nextTick()
-    closeMobileNavi()
+
+    if (!isTablet.value) {
+      closeMobileNavi()
+    }
     windowResizingTimer = setTimeout(() => (isWindowResizing.value = false), 200)
   }
 
@@ -101,6 +103,10 @@ export default () => {
   })
 
   const openMobileNavi = () => {
+    if (isRotating.value) {
+      return
+    }
+
     shouldMobileNaviOpened.value = true
     $scrollContainer.value.style.overflow = 'hidden'
   }
