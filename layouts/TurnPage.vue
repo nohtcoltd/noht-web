@@ -48,6 +48,7 @@ const {
           :faces="4"
           :is-reversed="isReversed"
           :duration="duration"
+          easing="cubic-bezier(0.215, 0.61, 0.355, 1)"
           :perspective="perspective"
           class="min-h-full w-full"
           @start:rotation="startRotation"

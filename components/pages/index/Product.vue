@@ -80,6 +80,7 @@ export default defineComponent({
       ref="$box"
       :current-face="currentFace"
       :faces="3"
+      easing="cubic-bezier(0.215, 0.61, 0.355, 1)"
       :duration="duration"
       :is-reversed="false"
       class="relative mt-[1em] w-full text-[length:clamp(10px,3vw,50px)] opacity-0 first:mt-0 mb:mt-[clamp(15px,calc(-7px+5vw),30px)]"

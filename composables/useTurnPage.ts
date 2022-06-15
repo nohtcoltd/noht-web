@@ -67,7 +67,7 @@ export default () => {
       return 0
     }
 
-    return isTablet.value ? 600 : 800
+    return isTablet.value ? 600 : 900
   })
   const isReversed = computed((): TurnBoxProps['isReversed'] => {
     if (lastFace.value === 4 && lastRoute.value !== route.name) {

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useMediaQuery from '~/composables/useMediaQuery'
-
 withDefaults(
   defineProps<{
     isSelected: boolean

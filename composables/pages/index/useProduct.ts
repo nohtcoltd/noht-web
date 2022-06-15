@@ -80,7 +80,7 @@ export default () => {
   const startRotation = () => (isRotating.value = true)
   const completeRotation = () => (isRotating.value = false)
 
-  const duration = computed(() => (inIndex.value ? 500 : 0))
+  const duration = computed(() => (inIndex.value ? 600 : 0))
 
   const isPageRotating = ref(false)
   const selfIndex = index
