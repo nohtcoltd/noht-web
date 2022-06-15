@@ -12,9 +12,9 @@ export default defineComponent({
 
 <template>
   <article
-    class="text-left text-[length:clamp(13px,1vw,16px)] font-semibold leading-[1.8] tracking-[.8em] fl-col-nowrap fl-start-stretch-stretch mb:px-[20px] mb:text-[11px] mb:leading-[1.3] mb:tracking-[.4em]"
+    class="text-left text-[length:clamp(13px,1vw,15px)] font-semibold leading-[1.8] tracking-[.8em] fl-col-nowrap fl-start-stretch-stretch mb:px-[20px] mb:text-[11px] mb:leading-[1.3] mb:tracking-[.4em]"
   >
-    <header class="text-[120%]">
+    <header class="text-[110%]">
       <svg
         :is="require('assets/svg/logo_noht_co_ltd.svg?inline')"
         class="mb-[.2em] h-full max-h-[clamp(20px,2em,32px)] mb:max-h-[20px]"
@@ -92,7 +92,7 @@ export default defineComponent({
 
 <style scoped>
 section {
-  @apply mt-[min(10vw,6em)];
+  @apply mt-[min(8vw,6em)];
 }
 
 dl {

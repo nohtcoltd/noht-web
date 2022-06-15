@@ -52,7 +52,7 @@ const { isMobile } = useMediaQuery()
     <template #staff-panel>
       <div class="grid grid-cols-2 content-center gap-[2em] text-[length:max(45%,17px)] pc:h-full mb:text-[12px]">
         <Staff name="KEIICHIRO HIRAI" job-title="PLAN/DIRECTION/DESIGN" />
-        <Staff name="MAO MARUYA" job-title="DESIGN" />
+        <Staff name="MARUYA" job-title="DESIGN" />
       </div>
     </template>
   </Product>
