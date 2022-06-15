@@ -12,18 +12,18 @@ const { isMobile } = useMediaQuery()
   <Product
     title="PICTOCLUB"
     caption="ACRYLIC PICTOGRAM SIGNS"
-    :header-bg="{
+    :main-panel-background="{
       color: '#3D3D3D',
       imageUrl: isMobile ? 'images/bg_header_pictoclub_mobile.jpg' : 'images/bg_header_pictoclub.jpg',
       position: 'right center',
     }"
-    :detail-bg="{
+    :detail-panel-background="{
       imageUrl: 'images/bg_pictoclub.jpg',
       position: 'right center',
     }"
-    :staff-bg="{ color: '#3D3D3D' }"
+    :staff-panel-background="{ color: '#3D3D3D' }"
   >
-    <template #detail-image>
+    <template #detail-panel-image>
       <div class="w-[30%] max-w-[600px] bg-center mb:w-full">
         <RetinaImage
           src="images/image_description_pictoclub.png"
@@ -33,7 +33,7 @@ const { isMobile } = useMediaQuery()
       </div>
     </template>
 
-    <template #detail-description>
+    <template #detail-panel-description>
       <p>美しく、だれにでもやさしいサイン。</p>
       <p class="mt-[.8em]">
         数学的な美しさに加え、視認性を重視し、<br />
@@ -45,11 +45,11 @@ const { isMobile } = useMediaQuery()
       </p>
     </template>
 
-    <template #detail-links>
+    <template #detail-panel-links>
       <ExternalLinkButton href="https://amzn.to/3lNL4oR">AMAZON.CO.JP</ExternalLinkButton>
     </template>
 
-    <template #staff>
+    <template #staff-panel>
       <div class="grid grid-cols-2 content-center gap-[2em] text-[length:max(45%,17px)] pc:h-full mb:text-[12px]">
         <Staff name="KEIICHIRO HIRAI" job-title="PLAN/DIRECTION/DESIGN" />
         <Staff name="MAO MARUYA" job-title="DESIGN" />

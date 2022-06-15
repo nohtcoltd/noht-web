@@ -2,14 +2,14 @@
 import { computed } from '#app'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import useProduct from '~/composables/pages/index/useProduct'
-import ProductHeader from '~/components/pages/index/ProductHeader.vue'
-import ProductDetail from '~/components/pages/index/ProductDetail.vue'
-import ProductStaff from '~/components/pages/index/ProductStaff.vue'
+import MainPanel from '~/components/pages/index/MainPanel.vue'
+import DetailPanel from '~/components/pages/index/DetailPanel.vue'
+import StaffPanel from '~/components/pages/index/StaffPanel.vue'
 import getRetinaImageUrl from '~/assets/js/getRetinaImageUrl'
 import useMediaQuery from '~/composables/useMediaQuery'
 const { isRetina } = useMediaQuery()
 
-type Bg = {
+type Background = {
   color?: string
   imageUrl?: string
   position?: string
@@ -21,13 +21,13 @@ withDefaults(
   defineProps<{
     title: string
     caption: string
-    headerBg?: Bg
-    detailBg?: Bg
-    staffBg?: Bg
-    staffColor?: string
+    mainPanelBackground?: Background
+    detailPanelBackground?: Background
+    staffPanelBackground?: Background
+    staffPanelColor?: string
   }>(),
   {
-    staffColor: '#fff',
+    staffPanelColor: '#fff',
   },
 )
 
@@ -43,7 +43,7 @@ const {
   enter,
 } = useProduct()
 
-const bgStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Bg) => {
+const backgroundStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Background) => {
   return {
     backgroundColor: color || null,
     backgroundImage: imageUrl
@@ -64,8 +64,8 @@ import isRetinaDisplay from '~/assets/js/isRetinaDisplay'
 
 export default defineComponent({
   head: (vm) => {
-    const { headerBg, detailBg, staffBg } = vm
-    const imageUrls = [headerBg, detailBg, staffBg]
+    const { mainPanelBackground, detailPanelBackground, staffPanelBackground } = vm
+    const imageUrls = [mainPanelBackground, detailPanelBackground, staffPanelBackground]
       .filter(({ imageUrl }) => !!imageUrl)
       .map(({ imageUrl }) => (isRetinaDisplay ? getRetinaImageUrl(imageUrl) : imageUrl))
     return {
@@ -90,37 +90,37 @@ export default defineComponent({
     >
       <template #face-1>
         <div class="body cursor-pointer" @click="changeCurrentFace(2)" @pointerdown="handlePointerDown">
-          <ProductHeader :title="title" :caption="caption" :style="bgStyle(headerBg)">
-            <slot name="header" />
-          </ProductHeader>
+          <MainPanel :title="title" :caption="caption" :style="backgroundStyle(mainPanelBackground)">
+            <slot name="main-panel" />
+          </MainPanel>
         </div>
       </template>
       <template #face-2>
         <div class="body relative" @click="changeCurrentFace(3)" @pointerdown="handlePointerDown">
-          <ProductDetail :style="bgStyle(detailBg)">
+          <DetailPanel :style="backgroundStyle(detailPanelBackground)">
             <template #image>
-              <slot name="detail-image" />
+              <slot name="detail-panel-image" />
             </template>
             <template #description>
-              <slot name="detail-description" />
+              <slot name="detail-panel-description" />
             </template>
             <template #links>
-              <slot name="detail-links" />
+              <slot name="detail-panel-links" />
             </template>
-          </ProductDetail>
+          </DetailPanel>
         </div>
       </template>
       <template #face-3>
         <div class="body" @click="changeCurrentFace(1)" @pointerdown="handlePointerDown">
-          <ProductStaff
+          <StaffPanel
             :title="title"
             :style="{
-              color: staffColor,
-              ...bgStyle(staffBg),
+              color: staffPanelColor,
+              ...backgroundStyle(staffPanelBackground),
             }"
           >
-            <slot name="staff" />
-          </ProductStaff>
+            <slot name="staff-panel" />
+          </StaffPanel>
         </div>
       </template>
     </TurnBox>

@@ -10,25 +10,25 @@ import Staff from '~/components/pages/index/Staff.vue'
   <Product
     title="BANANANA EFFECTS"
     caption="EFFECTS PEDAL BRAND"
-    :header-bg="{ color: '#FFB200' }"
-    :detail-bg="{ imageUrl: 'images/bg_bananana.jpg' }"
-    :staff-bg="{ color: '#FEDA47' }"
-    staff-color="#111"
+    :main-panel-background="{ color: '#FFB200' }"
+    :detail-panel-background="{ imageUrl: 'images/bg_bananana.jpg' }"
+    :staff-panel-background="{ color: '#FEDA47' }"
+    staff-panel-color="#111"
   >
-    <template #header>
+    <template #main-panel>
       <RetinaImage
         src="images/image_symbol_bananana.png"
         class="mb:r-0 absolute top-[35%] bottom-0 right-[4%] my-auto h-[clamp(200px,150%,600px)] mb:right-[0%] mb:top-[-5%] mb:h-[100%]"
       />
     </template>
 
-    <template #detail-image>
+    <template #detail-panel-image>
       <div class="w-[30%] max-w-[600px] mb:w-full mb:max-w-[150px]">
         <RetinaImage src="images/image_description_bananana.png" class="mx-auto w-full max-w-[250px]" alt="" />
       </div>
     </template>
 
-    <template #detail-description>
+    <template #detail-panel-description>
       <p>世界で愛されている謎のエフェクターブランド。</p>
       <p class="mt-[.8em]">
         エキセントリックなサウンドとユニークなビジュアル。<br />
@@ -38,12 +38,12 @@ import Staff from '~/components/pages/index/Staff.vue'
       <p class="mt-[.8em]">世界12ヶ国の正規ディーラーと、自社にて販売しています。</p>
     </template>
 
-    <template #detail-links>
+    <template #detail-panel-links>
       <ExternalLinkButton href="https://ja.banananaeffects.com/">BANANANA EFFECTS</ExternalLinkButton>
       <TwitterButton href="https://twitter.com/banananaeffects" />
     </template>
 
-    <template #staff>
+    <template #staff-panel>
       <div class="grid flex-1 grid-cols-2 content-center gap-[2em] text-[length:max(45%,17px)] mb:text-[12px]">
         <Staff name="KEIICHIRO HIRAI" :job-title="['PLAN/DIRECTION', 'UI/UX/DESIGN/WEB/PV']" />
         <Staff name="JUMPEI NOGUCHI" :job-title="['BLAND FOUNDER', 'PLAN/CONCEPT', 'SOUND/CIRCUIT/SOFTWARE']" />

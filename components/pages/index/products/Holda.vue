@@ -10,22 +10,22 @@ import Staff from '~/components/pages/index/Staff.vue'
   <Product
     title="HOLDA"
     caption="ACRYLIC GOODS PRINT SERVICE"
-    :header-bg="{ color: '#F5F5F5' }"
-    :detail-bg="{ imageUrl: 'images/bg_holda.jpg' }"
-    :staff-bg="{ color: '#F80000' }"
+    :main-panel-background="{ color: '#F5F5F5' }"
+    :detail-panel-background="{ imageUrl: 'images/bg_holda.jpg' }"
+    :staff-panel-background="{ color: '#F80000' }"
   >
-    <template #header>
+    <template #main-panel>
       <RetinaImage
         src="images/image_symbol_holda.png"
         class="absolute top-[-10%] right-[10%] h-[clamp(200px,120%,500px)] mb:top-[-30%] mb:right-[10%] mb:h-[130%]"
       />
     </template>
 
-    <template #detail-image>
+    <template #detail-panel-image>
       <RoundedImage src="images/image_description_holda.jpg" alt="" class="w-[40%] max-w-[600px] mb:w-full" />
     </template>
 
-    <template #detail-description>
+    <template #detail-panel-description>
       <p>
         画像1枚でつくれる<br />
         アクリルグッズ製作サービス。
@@ -33,12 +33,12 @@ import Staff from '~/components/pages/index/Staff.vue'
       <p class="mt-[20px]">現在鋭意準備中。</p>
     </template>
 
-    <template #detail-links>
+    <template #detail-panel-links>
       COMING2022
       <TwitterButton href="https://twitter.com/HOLDA_JP" />
     </template>
 
-    <template #staff>
+    <template #staff-panel>
       <div
         class="grid grid-cols-6 gap-x-[.5em] gap-y-[.5em] text-[length:max(25%,11px)] pc:h-full mb:grid-cols-3 mb:gap-[1.5em] mb:text-[9px]"
       >

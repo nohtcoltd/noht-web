@@ -11,22 +11,22 @@ import Staff from '~/components/pages/index/Staff.vue'
   <Product
     title="SECONDPRESS.US"
     caption="CANBADGE PRINT SERVICE"
-    :header-bg="{ color: '#00A6C2' }"
-    :detail-bg="{ imageUrl: 'images/bg_secondpress.png' }"
-    :staff-bg="{ color: '#85A5A2' }"
+    :main-panel-background="{ color: '#00A6C2' }"
+    :detail-panel-background="{ imageUrl: 'images/bg_secondpress.png' }"
+    :staff-panel-background="{ color: '#85A5A2' }"
   >
-    <template #header>
+    <template #main-panel>
       <RetinaImage
         src="images/image_symbol_secondpress.png"
         class="absolute top-0 bottom-0 right-[10%] my-auto h-[clamp(200px,80%,300px)] mb:right-[5%] mb:bottom-[15%] mb:h-[75%]"
       />
     </template>
 
-    <template #detail-image>
+    <template #detail-panel-image>
       <RoundedImage src="images/image_description_secondpress.jpg" alt="" class="w-[40%] max-w-[600px] mb:w-full" />
     </template>
 
-    <template #detail-description>
+    <template #detail-panel-description>
       <p class="">
         画像1枚でつくれる<br />
         オリジナル缶バッジ製作サービス。
@@ -38,12 +38,12 @@ import Staff from '~/components/pages/index/Staff.vue'
       </p>
     </template>
 
-    <template #detail-links>
+    <template #detail-panel-links>
       <ExternalLinkButton href="https://www.secondpress.us/">SECONDPRESS.US</ExternalLinkButton>
       <TwitterButton href="https://twitter.com/secondpress_us" />
     </template>
 
-    <template #staff>
+    <template #staff-panel>
       <div
         class="grid grid-cols-6 gap-x-[.5em] gap-y-[.5em] text-[length:max(25%,11px)] pc:h-full mb:grid-cols-3 mb:gap-[1.5em] mb:text-[9px]"
       >
