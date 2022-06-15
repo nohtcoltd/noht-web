@@ -73,6 +73,7 @@ export default defineNuxtConfig({
         outputDir: '~/assets/dist',
       },
     ],
+    '@nuxtjs/axios',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

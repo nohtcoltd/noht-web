@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { inject, ref, ComponentInstance, useRoute } from '#app'
+import { inject, ref, ComponentInstance, useRoute, useNuxtApp } from '#app'
 import { useContext } from '@nuxtjs/composition-api'
 import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 import LoadingGear from '~/components/widgets/LoadingGear.vue'
 
+const { $axios } = useNuxtApp()
 const { $recaptcha } = useContext()
 const hasRecaptchaError = ref(false)
 const isFailed = ref(false)
@@ -63,10 +64,7 @@ const submit = async () => {
   formData.append('form-name', 'contact')
   formData.append('g-recaptcha-response', recaptchaToken)
 
-  const data = await $fetch('/', {
-    method: 'POST',
-    body: formData,
-  }).catch((error) => new Error(error))
+  const data = await $axios.$post('/', formData).catch((error) => new Error(error))
 
   isSubmitting.value = false
 
