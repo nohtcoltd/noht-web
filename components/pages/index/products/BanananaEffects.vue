@@ -18,7 +18,7 @@ import Staff from '~/components/pages/index/Staff.vue'
     <template #main-panel>
       <RetinaImage
         src="images/image_symbol_bananana.png"
-        class="mb:r-0 absolute top-[35%] bottom-0 right-[4%] my-auto h-[clamp(200px,150%,600px)] mb:right-[0%] mb:top-[-5%] mb:h-[100%]"
+        class="mb:r-0 absolute top-[35%] bottom-0 right-[4%] my-auto h-[clamp(200px,150%,600px)] mb:right-[0%] mb:top-[-5%] mb:h-[130%]"
       />
     </template>
 

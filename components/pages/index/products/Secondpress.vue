@@ -18,7 +18,7 @@ import Staff from '~/components/pages/index/Staff.vue'
     <template #main-panel>
       <RetinaImage
         src="images/image_symbol_secondpress.png"
-        class="absolute top-0 bottom-0 right-[10%] my-auto h-[clamp(200px,80%,300px)] mb:right-[5%] mb:bottom-[15%] mb:h-[75%]"
+        class="absolute top-0 bottom-0 right-[10%] my-auto h-[clamp(200px,80%,300px)] mb:right-0 mb:left-0 mb:bottom-[20%] mb:mx-auto mb:h-[70%]"
       />
     </template>
 

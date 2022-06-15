@@ -9,7 +9,7 @@ const { isSmallMobile } = useMediaQuery()
 
 <template>
   <div
-    class="mb: mb:h- relative h-full w-full px-[40px] py-[40px] font-semibold fl-col-nowrap fl-end-start-start font-poppins mb:min-h-[300px] mb:px-[20px] mb:py-[20px] mb-s:min-h-0"
+    class="relative h-full w-full px-[40px] py-[40px] font-semibold fl-col-nowrap fl-end-start-start font-poppins mb:min-h-[300px] mb:px-[20px] mb:py-[23px] mb-s:min-h-0"
     :style="{
       aspectRatio: isSmallMobile ? '21/13' : '',
     }"
