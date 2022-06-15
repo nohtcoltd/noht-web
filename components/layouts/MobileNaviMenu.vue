@@ -52,14 +52,14 @@ const buttonStyle = computed(() => (routeName: RouteName) => {
 const isCurrentRoute = computed(() => (routeName) => route.name === routeName)
 
 const redirectTo = async (routeName: RouteName) => {
-  if (props.isRedirectionDisabled) {
-    return
-  }
-
   router.push({ name: routeName })
 }
 
 const activateRoute = (routeName: RouteName) => {
+  if (props.isRedirectionDisabled) {
+    return
+  }
+
   isRouteSelecting.value = true
   activeRoute.value = routeName
 }
