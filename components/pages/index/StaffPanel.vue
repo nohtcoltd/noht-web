@@ -3,6 +3,27 @@ defineProps<{
   title: string
 }>()
 </script>
+
+<script lang="ts">
+import { defineComponent } from '#app'
+
+export default defineComponent({
+  head: (vm) => {
+    const url = 'images/bg_noht_pattern.png'
+    return {
+      link: [
+        {
+          hid: url,
+          rel: 'preload',
+          href: url,
+          as: 'image',
+        },
+      ],
+    }
+  },
+})
+</script>
+
 <template>
   <div class="h-full w-full px-[5%] py-[3%] text-white mb:min-h-[30vw] mb:py-[40px] mb:px-[20px]">
     <div

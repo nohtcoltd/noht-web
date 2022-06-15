@@ -62,8 +62,13 @@ export default defineComponent({
       .filter(({ imageUrl }) => !!imageUrl)
       .map(({ imageUrl }) => imageUrl)
 
+    if (imageUrls.length === 0) {
+      return
+    }
+
     return {
       link: imageUrls.map((url) => ({
+        hid: url,
         rel: 'preload',
         href: url,
         as: 'image',
