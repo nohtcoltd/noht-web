@@ -12,7 +12,7 @@ export default defineComponent({
 
 <template>
   <article
-    class="text-left text-[length:clamp(13px,1vw,15px)] font-semibold leading-[1.8] tracking-[.8em] fl-col-nowrap fl-start-stretch-stretch mb:px-[20px] mb:text-[11px] mb:leading-[1.3] mb:tracking-[.4em]"
+    class="flex-1 text-left text-[length:clamp(13px,1vw,15px)] font-semibold leading-[1.8] tracking-[.8em] fl-col-nowrap fl-center-stretch-stretch mb:px-[15px] mb:text-[11px] mb:leading-[1.3] mb:tracking-[.4em]"
   >
     <header class="text-[110%]">
       <svg

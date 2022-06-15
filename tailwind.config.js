@@ -11,8 +11,8 @@ module.exports = {
     screens: {
       'pc-l': { max: '1400px' },
       'pc-s': { max: '1200px' },
-      pc: { min: '1025px' },
-      tablet: { max: '1024px' },
+      pc: { min: '1101px' },
+      tablet: { max: '1100px' },
       mb: { max: '850px' },
       'mb-s': { max: '520px' },
     },

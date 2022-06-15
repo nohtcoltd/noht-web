@@ -35,12 +35,13 @@ const { isTouchDevice } = useMediaQuery()
 </script>
 <template>
   <header
-    class="top-0 z-50 mb-[30px] w-full bg-white/80 pc:hidden"
+    class="top-0 z-50 mb-[30px] w-full pc:hidden"
     :class="isTouchDevice ? 'sticky' : 'relative'"
     :style="{
       transform: isTouchDevice ? '' : `translateY(${scrollTop}px)`,
     }"
   >
+    <div class="absolute top-0 left-1/2 h-full w-screen -translate-x-1/2 bg-white/80" />
     <div class="relative">
       <div class="mx-auto w-[clamp(80px,20vw,100px)] py-[clamp(15px,2vw,20px)] px-[10px]" @click="redirectTo('index')">
         <svg :is="require('assets/svg/logo_noht.svg?inline')" class="mx-auto" />
