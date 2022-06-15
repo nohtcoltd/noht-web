@@ -164,14 +164,14 @@ export default () => {
   }
 
   router.beforeEach((to, from, next) => {
-    if (shouldMobileNaviOpened.value) {
-      closeMobileNavi()
-      next()
+    if (isRotating.value && !rotatingFaces.value.includes(routeToFace[to.name])) {
+      reservedRoute.value = to.name
       return
     }
 
-    if (isRotating.value && !rotatingFaces.value.includes(routeToFace[to.name])) {
-      reservedRoute.value = to.name
+    if (shouldMobileNaviOpened.value) {
+      closeMobileNavi()
+      next()
       return
     }
 

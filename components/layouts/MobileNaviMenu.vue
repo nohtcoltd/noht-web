@@ -56,10 +56,6 @@ const redirectTo = async (routeName: RouteName) => {
 }
 
 const activateRoute = (routeName: RouteName) => {
-  if (props.isRedirectionDisabled) {
-    return
-  }
-
   isRouteSelecting.value = true
   activeRoute.value = routeName
 }
