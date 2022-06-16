@@ -1,7 +1,10 @@
 import { defineNuxtConfig } from '@nuxt/bridge'
+import fs from 'node:fs'
+import path from 'node:path'
 
 const isProduction = process.env.NODE_ENV === 'production'
 export default defineNuxtConfig({
+  ssr: false,
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -100,6 +103,14 @@ export default defineNuxtConfig({
       }
 
       return routes
+    },
+  },
+
+  // XXX: bridgeでのgenerateのエラー回避
+  hooks: {
+    'build:done': (builder) => {
+      const extraFilePath = path.join(builder.nuxt.options.buildDir + '/dist/server', 'server.mjs')
+      fs.writeFileSync(extraFilePath, 'export {};')
     },
   },
 })
