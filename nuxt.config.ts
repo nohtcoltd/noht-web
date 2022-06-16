@@ -2,13 +2,9 @@ import { defineNuxtConfig } from '@nuxt/bridge'
 
 const isProduction = process.env.NODE_ENV === 'production'
 export default defineNuxtConfig({
-  loading: false,
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
-  bridge: {
-    nitro: !isProduction,
-  },
   head: {
     title: 'NOHT CO.,LTD.',
     htmlAttrs: {
