@@ -4,6 +4,7 @@ import { useContext } from '@nuxtjs/composition-api'
 import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
+import LoadingGear from '~/components/widgets/LoadingGear.vue'
 
 const { $recaptcha } = useContext()
 const hasRecaptchaError = ref(false)
@@ -146,5 +147,11 @@ addHandle(() => {
         </div>
       </validation-observer>
     </client-only>
+    <div
+      v-if="isSubmitting"
+      class="absolute top-0 left-0 z-50 h-full w-full flex-col bg-white/80 fl-center-center-center"
+    >
+      <LoadingGear class="absolute inset-0 m-auto" />
+    </div>
   </form>
 </template>
