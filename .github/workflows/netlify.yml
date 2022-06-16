@@ -4,25 +4,31 @@ on:
   push:
     branches:
       - master
+      - staging
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version: [16.15.1]
+
     steps:
       - uses: actions/checkout@v2
-
-      # 「./dist」にビルド結果が生成する
-      - uses: actions/setup-node@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 14.x
-      - run: npm ci
-      - run: npm run build
-      - run: npm run generate
+          node-version: ${{ matrix.node-version }}
+      - run: node -v
+      - run: yarn install
+      - run: yarn generate
+        env:
+          SITE_RECAPTCHA_KEY: ${{ secrets.SITE_RECAPTCHA_KEY }}
+          SITE_RECAPTCHA_SECRET: ${{ secrets.SITE_RECAPTCHA_SECRET }}
 
       # Netlifyにデプロイする
-      - run: npx netlify-cli deploy --dir=dist  --prod
+      - run: yarn netlify deploy --dir=.output/public --branch=staging
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          SITE_RECAPTCHA_KEY: ${{ secrets.SITE_RECAPTCHA_KEY }}
-          SITE_RECAPTCHA_SECRET: ${{ secrets.SITE_RECAPTCHA_SECRET }}
