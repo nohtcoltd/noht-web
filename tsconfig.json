@@ -1,0 +1,33 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "target": "ES2018",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "#app": ["./node_modules/@nuxt/bridge/dist/runtime/index.d.ts"]
+    },
+    "types": ["@types/node", "@nuxt/types"],
+    // "strict": true,
+    // https://employment.en-japan.com/engineerhub/entry/2019/04/16/103000
+    // いずれ有効にする
+    "noImplicitAny": false, // Raise error on expressions and declarations with an implied 'any' type.
+    "strictNullChecks": false, // Enable strict null checks.
+    "strictFunctionTypes": false, // Enable strict checking of function types.
+    "strictBindCallApply": false, // Enable strict 'bind', 'call', and 'apply' methods on functions.
+    "strictPropertyInitialization": false, // Enable strict checking of property initialization in classes.
+    "noImplicitThis": false, // Raise error on 'thisv' expressions with an implied 'any' type.
+    "experimentalDecorators": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}

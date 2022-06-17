@@ -1,0 +1,87 @@
+<script setup lang="ts">
+import TurnBox from '~/components/widgets/TurnBox.vue'
+import Index from '~/pages/index.vue'
+import About from '~/pages/about/index.vue'
+import Contact from '~/pages/contact/index.vue'
+import useTurnPage from '~/composables/useTurnPage'
+import PcNaviMenu from '~/components/layouts/PcNaviMenu.vue'
+import PageWrapper from '~/components/layouts/PageWrapper.vue'
+import CloseButton from '~/components/widgets/CloseButton.vue'
+import MobileHeader from '~/components/layouts/MobileHeader.vue'
+import MobileNaviMenu from '~/components/layouts/MobileNaviMenu.vue'
+
+const {
+  $index,
+  $about,
+  $contact,
+  $navi,
+  isRotating,
+  perspective,
+  duration,
+  isReversed,
+  currentFace,
+  startRotation,
+  completeRotation,
+  completeRotateForward,
+  completeRotateBackward,
+  openMobileNavi,
+  closeMobileNavi,
+} = useTurnPage()
+</script>
+<template>
+  <article
+    class="min-h-screen w-screen text-[length:clamp(13px,2.2vw,50px)] init-font-family"
+    :style="{
+      minHeight: '100dvh',
+    }"
+  >
+    <!-- <PcNaviMenu /> <MobileNaviMenu />がrouter.pushで遷移しているため n-linkのprefetchを利用 -->
+    <div class="fixed left-0 top-0 h-0 w-0 overflow-hidden">
+      <n-link v-for="routeName in ['index', 'about', 'contact']" :key="routeName" :to="{ name: routeName }" />
+    </div>
+    <div class="mx-auto h-full min-h-[inherit] w-full max-w-[1800px] fl-row-nowrap fl-start-stretch-stretch">
+      <PcNaviMenu />
+      <div class="relative z-0 flex-1 tablet:w-full">
+        <TurnBox
+          :current-face="currentFace"
+          :is-axis-x="false"
+          :faces="4"
+          :is-reversed="isReversed"
+          :duration="duration"
+          easing="cubic-bezier(0.215, 0.61, 0.355, 1)"
+          :perspective="perspective"
+          class="min-h-full w-full"
+          @start:rotation="startRotation"
+          @complete:rotation="completeRotation"
+          @complete:forward-rotation="completeRotateForward"
+          @complete:backward-rotation="completeRotateBackward"
+        >
+          <template #face-1>
+            <PageWrapper :is-rotating="isRotating" ref="$index">
+              <MobileHeader @click:menu="openMobileNavi" />
+              <index />
+            </PageWrapper>
+          </template>
+          <template #face-2>
+            <PageWrapper :is-rotating="isRotating" ref="$about">
+              <MobileHeader @click:menu="openMobileNavi" />
+              <about />
+            </PageWrapper>
+          </template>
+          <template #face-3>
+            <PageWrapper :is-rotating="isRotating" ref="$contact">
+              <MobileHeader @click:menu="openMobileNavi" />
+              <contact />
+            </PageWrapper>
+          </template>
+          <template #face-4>
+            <div class="mx-auto h-full py-[50px] fl-col-nowrap fl-center-center-center" ref="$navi">
+              <MobileNaviMenu :is-redirection-disabled="isRotating" />
+              <CloseButton @click="closeMobileNavi" class="mx-auto mt-[80px]" />
+            </div>
+          </template>
+        </TurnBox>
+      </div>
+    </div>
+  </article>
+</template>
