@@ -13,7 +13,6 @@ export default defineComponent({
     return {
       link: [
         {
-          hid: url,
           rel: 'preload',
           href: url,
           as: 'image',
