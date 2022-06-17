@@ -40,7 +40,7 @@ import Staff from '~/components/pages/index/Staff.vue'
 
     <template #staff-panel>
       <div
-        class="grid grid-cols-6 gap-x-[.5em] gap-y-[.5em] text-[length:max(25%,11px)] pc:h-full mb:grid-cols-3 mb:gap-[1.5em] mb:text-[9px]"
+        class="grid grid-cols-6 gap-x-[.5em] gap-y-[.5em] text-[length:max(20%,11px)] pc:h-full mb:grid-cols-3 mb:gap-[1.5em] mb:text-[9px]"
       >
         <Staff name="KEIICHIRO HIRAI" job-title="PLAN/DIRECTOR/DESIGN" />
         <div class="col-span-5 mb:col-span-2" />
