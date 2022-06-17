@@ -50,28 +50,28 @@ import Staff from '~/components/pages/index/Staff.vue'
         <Staff name="KEIICHIRO HIRAI" job-title="PLAN/DIRECTOR/DESIGN" />
         <div class="col-span-5 mb:col-span-2" />
         <Staff name="FILRIYA" job-title="TEC LEAD" />
-        <Staff name="YOUGO NISHIOKA " job-title="BACKEND LEAD" />
+        <Staff name="YOUGO NISHITANIOKA " job-title="BACKEND LEAD" />
         <Staff name="YMMR" job-title="FRONTEND" />
         <Staff name="AZARASHI" job-title="IMAGE CALC." />
         <Staff name="TAICHI SAITO" job-title="PRODUCTION MNG." />
-        <Staff name="ISHIZAWA" job-title="PRODUCTION MNG." />
+        <Staff name="TAKEYUKI ISHIZAWA" job-title="PRODUCTION MNG." />
         <Staff name="JUMPEI NOGUCHI" job-title="HARDWARE" />
-        <Staff name="MARUYA" job-title="3DCG/ILLUST" />
+        <Staff name="MAO MARUYA" job-title="3DCG/ILLUST" />
         <Staff name="MOCHIPAN" job-title="ILLUSTRATION" />
-        <Staff name="NISHI" :job-title="['PLAN ASSISTANT', 'ADS/MARKETING']" />
-        <Staff name="OKAMOTO" job-title="PRDCTN MNG AST." />
-        <Staff name="INOUE" job-title="PRDCTN MNG AST." />
-        <Staff name="ICHIKAWA" job-title="B2B LEAD" />
-        <Staff name="YAMAGUCHI" job-title="B2B" />
-        <Staff name="KAWAGUCHI" job-title="B2B" />
-        <Staff name="KISHI" job-title="B2B ASSISTANT" />
-        <Staff name="TAKE" job-title="PRDCTN MNG AST." />
-        <Staff name="KAWAZOE" job-title="LOGISTICS" />
-        <Staff name="FUJI" job-title="B2C" />
+        <Staff name="MASAKI NISHITANI" :job-title="['PLAN ASSISTANT', 'ADS/MARKETING']" />
+        <Staff name="MAO OKAMOTO" job-title="PRDCTN MNG AST." />
+        <Staff name="YUKIKO INOUE" job-title="PRDCTN MNG AST." />
+        <Staff name="MASASHI ICHIKAWA" job-title="B2B LEAD" />
+        <Staff name="ERI YAMAGUCHI" job-title="B2B" />
+        <Staff name="YURIKO KAWAGUCHI" job-title="B2B" />
+        <Staff name="MAYU KISHIDA" job-title="B2B ASSISTANT" />
+        <Staff name="KEITA TAKEUCHI" job-title="PRDCTN MNG AST." />
+        <Staff name="NOBORU KAWAZOE" job-title="LOGISTICS" />
+        <Staff name="AOI FUJIWARA" job-title="B2C" />
         <Staff name="OKUBO" job-title="B2C" />
-        <Staff name="HORI" job-title="B2C" />
+        <Staff name="ERIKO HORII" job-title="B2C" />
         <div class="col-span-2" />
-        <Staff name="HIRA" job-title="PRDCTN MNG AST." />
+        <Staff name="TAKAHIRO HIRA" job-title="PRDCTN MNG AST." />
       </div>
     </template>
   </Product>

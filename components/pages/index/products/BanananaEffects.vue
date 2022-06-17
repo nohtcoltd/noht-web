@@ -54,7 +54,7 @@ import Staff from '~/components/pages/index/Staff.vue'
         <Staff name="AZARASHI" job-title="WEB FRONTEND" />
         <Staff name="YASUO INUI" job-title="B2B/B2C/EXPORT" />
         <Staff name="MUROSHI" job-title="MANUFACTURING" />
-        <Staff name="NISHI" job-title="SUPPLY" />
+        <Staff name="MASAKI NISHITANI" job-title="SUPPLY" />
         <Staff name="SHOTA MORIGUCHI" job-title="SOFTWARE ASSISTANT" />
       </div>
     </template>
