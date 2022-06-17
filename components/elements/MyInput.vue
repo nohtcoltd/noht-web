@@ -21,7 +21,7 @@ const emits = defineEmits<{
 }>()
 
 const onInput = ({ target }: Event) => {
-  if (!(target instanceof HTMLInputElement) || !target.value) {
+  if (!(target instanceof HTMLInputElement) || !target) {
     return
   }
 
