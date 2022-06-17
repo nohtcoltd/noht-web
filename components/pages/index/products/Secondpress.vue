@@ -50,7 +50,7 @@ import Staff from '~/components/pages/index/Staff.vue'
         <Staff name="KEIICHIRO HIRAI" job-title="PLAN/DIRECTOR/DESIGN" />
         <div class="col-span-5 mb:col-span-2" />
         <Staff name="FILRIYA" job-title="TEC LEAD" />
-        <Staff name="YOUGO NISHITANIOKA " job-title="BACKEND LEAD" />
+        <Staff name="YOUGO NISHIOKA " job-title="BACKEND LEAD" />
         <Staff name="YMMR" job-title="FRONTEND" />
         <Staff name="AZARASHI" job-title="IMAGE CALC." />
         <Staff name="TAICHI SAITO" job-title="PRODUCTION MNG." />
