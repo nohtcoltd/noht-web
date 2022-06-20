@@ -2,7 +2,9 @@ import { defineNuxtConfig } from 'nuxt'
 
 const isProduction = process.env.NODE_ENV === 'production'
 export default defineNuxtConfig({
-  ssr: false,
+  publicRuntimeConfig: {
+    siteRecaptchaKey: process.env.SITE_RECAPTCHA_KEY
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -43,6 +45,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/svg',
     '@nuxtjs/tailwindcss',
+<<<<<<< HEAD
     // [
     //   '@nuxtjs/recaptcha',
     //   {
@@ -52,6 +55,18 @@ export default defineNuxtConfig({
     //     version: 2,
     //   },
     // ],
+=======
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          Poppins: {
+            wght: [600, 700],
+          },
+        },
+      },
+    ],
+>>>>>>> be4660c (recaptchaの不要な記述削除)
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
