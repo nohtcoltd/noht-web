@@ -3,30 +3,49 @@ import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 import LoadingGear from '~/components/widgets/LoadingGear.vue'
-import { useForm } from 'vee-validate';
-import * as yup from 'yup';
-
-const { $recaptcha } = useContext()
-const hasRecaptchaError = ref(false)
-const isFailed = ref(false)
-const isSubmitted = ref(false)
-const isSubmitting = ref(false)
+import { useForm } from 'vee-validate'
+import * as yup from 'yup'
+import { VueRecaptcha } from 'vue-recaptcha'
 
 const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+
+const siteRecaptchaKey = runtimeConfig.siteRecaptchaKey
+const $recaptcha = ref<VueRecaptcha>(null)
+const recaptchaToken = ref<string>(null)
+const recaptchaError = ref<string>(null)
+const isRecaptchaValid = computed(() => !recaptchaError.value && recaptchaToken.value)
+const handleRecaptchaVerify = (token) => {
+  recaptchaToken.value = token
+  recaptchaError.value = null
+}
+const handleRecaptchaError = () => {
+  recaptchaToken.value = null
+  recaptchaError.value = '失敗しました'
+}
+const handleRecaptchaExpired = () => {
+  recaptchaToken.value = null
+}
+
+const isFailed = ref(false)
+const isValidationEnabled = ref(false)
+const isSubmitting = ref(false)
+
 const formName = 'contact'
 const requiredErrorMessage = '必須項目です'
 const mailErrorMessage = '有効なメールアドレスを入力してください'
 
-const validationSchema = yup.object({
+const form = useForm({
+  validationSchema: yup.object({
     name: yup.string().required(requiredErrorMessage),
     'company-name': yup.string(),
     mail: yup.string().email(mailErrorMessage).required(requiredErrorMessage),
     content: yup.string().required(requiredErrorMessage),
-  })
-const form = useForm({ validationSchema })
+  }),
+})
 
-const errors = computed((): { [key in keyof validationSchema]: string } => {
-  if (isSubmitted.value) {
+const errors = computed((): { [key in keyof form.values]: string } => {
+  if (isValidationEnabled.value) {
     return form.errors.value
   }
 
@@ -38,39 +57,17 @@ const emits = defineEmits<{
   (e: 'failed', data: any)
 }>()
 
-const validateRecaptcha = async (): Promise<string> => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const token: string = await $recaptcha.getResponse()
-      await $recaptcha.reset()
-
-      resolve(token)
-    } catch (error) {
-      reject(error)
-    }
-  })
-}
-
 const submit = async () => {
-  isSubmitted.value = true
+  isValidationEnabled.value = true
 
   const { valid } = await form.validate()
 
-  if (!valid) {
+  if (!valid || !isRecaptchaValid.value) {
     return
   }
 
-  hasRecaptchaError.value = false
-  isFailed.value = false
   isSubmitting.value = true
-
-  const recaptchaToken = await validateRecaptcha().catch((error) => new Error(error))
-
-  if (recaptchaToken instanceof Error) {
-    hasRecaptchaError.value = true
-    isSubmitting.value = false
-    return
-  }
+  isFailed.value = false
 
   const formData = new FormData()
 
@@ -78,7 +75,7 @@ const submit = async () => {
 
   // 以下netlify form用
   formData.append('form-name', formName)
-  formData.append('g-recaptcha-response', recaptchaToken)
+  formData.append('g-recaptcha-response', recaptchaToken.value)
 
   const data = await $fetch('/', {
     method: 'POST',
@@ -97,7 +94,7 @@ const submit = async () => {
 
 const reset = () => {
   form.resetForm()
-  // $recaptcha.reset()
+  $recaptcha.value.reset()
 }
 
 const addHandle = inject(addCompleteForwardRotationHandle)
@@ -116,17 +113,23 @@ addHandle(() => {
     <form netlify name="hoge">
       <input name="form-name" value="hoge" />
     -->
-  <form :name="formName" netlify data-netlify-recaptcha="true" class="w-full text-[16px] mb:text-[14px] w-full fl-col-nowrap fl-start-center-center">
+  <form
+    :name="formName"
+    netlify
+    data-netlify-recaptcha="true"
+    class="w-full w-full text-[16px] fl-col-nowrap fl-start-center-center mb:text-[14px]"
+  >
     <input v-for="(value, key) in form.values" :name="key" :key="key" type="hidden" :value="value" />
     <client-only>
-        <input type="hidden" name="form-name" :value="formName" />
-        <div class="w-full max-w-[350px]">
-            <MyInput v-model="form.values.name" :error="errors.name" placeholder="NAME" name="name" class="mt-[1.2em]" />
-            <ErrorMessage :error="errors.name" />
-          <MyInput v-model="form.values['company-name']" placeholder="COMPANY" name="company-name" class="mt-[1.2em]" />
-          <MyInput v-model="form.values.mail" :error="errors.mail" placeholder="MAIL" name="mail" class="mt-[1.2em]" />
-          <ErrorMessage :error="errors.mail" />
-        </div>
+      <input type="hidden" name="form-name" :value="formName" />
+      <div class="w-full max-w-[350px]">
+        <MyInput v-model="form.values.name" :error="errors.name" placeholder="NAME" name="name" class="mt-[1.2em]" />
+        <ErrorMessage :error="errors.name" />
+        <MyInput v-model="form.values['company-name']" placeholder="COMPANY" name="company-name" class="mt-[1.2em]" />
+        <MyInput v-model="form.values.mail" :error="errors.mail" placeholder="MAIL" name="mail" class="mt-[1.2em]" />
+        <ErrorMessage :error="errors.mail" />
+      </div>
+      <div class="w-full">
         <textarea
           v-model="form.values.content"
           :error="errors.content"
@@ -135,18 +138,29 @@ addHandle(() => {
           :class="errors.content ? 'border-[#ec3232]' : ''"
         />
         <ErrorMessage :error="errors.content" />
+      </div>
 
-        <div class="mt-[2em] min-h-[80px]">
-          <!-- <recaptcha /> -->
-          <ErrorMessage v-if="hasRecaptchaError" error="失敗しました" />
-        </div>
+      <div class="mt-[2em] min-h-[80px]">
+        <VueRecaptcha
+          ref="$recaptcha"
+          :hideBadge="false"
+          :sitekey="siteRecaptchaKey"
+          size="normal"
+          :version="2"
+          @verify="handleRecaptchaVerify"
+          @error="handleRecaptchaError"
+          @expired="handleRecaptchaExpired"
+        />
+        <ErrorMessage v-if="recaptchaError" error="失敗しました" />
+        <ErrorMessage v-else-if="!recaptchaToken" error="必須項目です" />
+      </div>
 
-        <div
-          @click="submit"
-          class="mt-[4em] cursor-pointer select-none rounded-[.5em] bg-[#111] py-[.5em] px-[4em] text-[min(120%,25px)] font-semibold tracking-[.2em] text-white font-poppins my-hover:opacity-80"
-        >
-          CONFIRM
-        </div>
+      <div
+        @click="submit"
+        class="mt-[4em] cursor-pointer select-none rounded-[.5em] bg-[#111] py-[.5em] px-[4em] text-[min(120%,25px)] font-semibold tracking-[.2em] text-white font-poppins my-hover:opacity-80"
+      >
+        CONFIRM
+      </div>
     </client-only>
     <div
       v-if="isSubmitting"
