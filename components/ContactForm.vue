@@ -3,9 +3,15 @@ import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 import LoadingGear from '~/components/widgets/LoadingGear.vue'
+<<<<<<< HEAD
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 import { VueRecaptcha } from 'vue-recaptcha'
+=======
+import { useForm } from 'vee-validate';
+import * as yup from 'yup';
+// import { VueRecaptcha } from 'vue-recaptcha'
+>>>>>>> 6f15318 (vue-recaptchaの読み込みをクライアント側のみにするためplugins/で登録)
 
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
