@@ -3,15 +3,8 @@ import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 import LoadingGear from '~/components/widgets/LoadingGear.vue'
-<<<<<<< HEAD
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
-import { VueRecaptcha } from 'vue-recaptcha'
-=======
-import { useForm } from 'vee-validate';
-import * as yup from 'yup';
-// import { VueRecaptcha } from 'vue-recaptcha'
->>>>>>> 6f15318 (vue-recaptchaの読み込みをクライアント側のみにするためplugins/で登録)
 
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
@@ -34,7 +27,7 @@ const handleRecaptchaExpired = () => {
 }
 
 const isFailed = ref(false)
-const isValidationEnabled = ref(false)
+const isValidated = ref(false)
 const isSubmitting = ref(false)
 
 const formName = 'contact'
@@ -50,8 +43,8 @@ const form = useForm({
   }),
 })
 
-const errors = computed((): { [key in keyof form.values]: string } => {
-  if (isValidationEnabled.value) {
+const errors = computed((): { [key in keyof form.values ]: string } => {
+  if (isValidated.value) {
     return form.errors.value
   }
 
@@ -64,9 +57,8 @@ const emits = defineEmits<{
 }>()
 
 const submit = async () => {
-  isValidationEnabled.value = true
-
   const { valid } = await form.validate()
+  isValidated.value = true
 
   if (!valid || !isRecaptchaValid.value) {
     return
@@ -82,7 +74,6 @@ const submit = async () => {
   // 以下netlify form用
   formData.append('form-name', formName)
   formData.append('g-recaptcha-response', recaptchaToken.value)
-
   const data = await $fetch('/', {
     method: 'POST',
     body: formData,
@@ -100,6 +91,8 @@ const submit = async () => {
 
 const reset = () => {
   form.resetForm()
+  recaptchaToken.value = null
+  recaptchaError.value = null
   $recaptcha.value.reset()
 }
 
@@ -119,6 +112,7 @@ addHandle(() => {
     <form netlify name="hoge">
       <input name="form-name" value="hoge" />
     -->
+
   <form
     :name="formName"
     netlify
@@ -159,6 +153,59 @@ addHandle(() => {
         />
         <ErrorMessage v-if="recaptchaError" error="失敗しました" />
         <ErrorMessage v-else-if="!recaptchaToken" error="必須項目です" />
+      </div>
+
+      <div
+        @click="submit"
+        class="mt-[4em] cursor-pointer select-none rounded-[.5em] bg-[#111] py-[.5em] px-[4em] text-[min(120%,25px)] font-semibold tracking-[.2em] text-white font-poppins my-hover:opacity-80"
+      >
+        CONFIRM
+      </div>
+
+  <form :name="formName" netlify data-netlify-recaptcha="true" class="text-[16px] mb:text-[14px] w-full fl-col-nowrap fl-start-center-center">
+    <div class="hidden">
+      <input type="text" name="form-name" value="contact" />
+      <input type="text" name="name" />
+      <input type="text" name="mail" />
+      <input type="text" name="company-name" />
+      <textarea name="content"></textarea>
+      <div data-netlify-recaptcha="true" class="hidden"></div>
+    </div>
+    <client-only>
+      <input type="hidden" name="form-name" :value="formName" />
+      <div class="w-full max-w-[350px]">
+        <MyInput v-model="form.values.name" :error="errors.name" placeholder="NAME" name="name" class="mt-[1.2em]" />
+        <ErrorMessage :error="errors.name" />
+        <MyInput v-model="form.values['company-name']" placeholder="COMPANY" name="company-name" class="mt-[1.2em]" />
+        <MyInput v-model="form.values.mail" :error="errors.mail" placeholder="MAIL" name="mail" class="mt-[1.2em]" />
+        <ErrorMessage :error="errors.mail" />
+      </div>
+      <div class="w-full">
+        <textarea
+          v-model="form.values.content"
+          :error="errors.content"
+          name="content"
+          class="mt-[3em] aspect-[5/2] w-full resize-none rounded-[15px] border border-solid border-transparent bg-[#f7f7f7] p-[1em] font-semibold outline-none placeholder:text-[length:inherit] mb:mt-[2em]"
+          :class="errors.content ? 'border-[#ec3232]' : ''"
+        />
+        <ErrorMessage :error="errors.content" />
+      </div>
+
+      <div class="mt-[2em] min-h-[80px]">
+        <VueRecaptcha
+          ref="$recaptcha"
+          :hideBadge="false"
+          :sitekey="siteRecaptchaKey"
+          size="normal"
+          :version="2"
+          @verify="handleRecaptchaVerify"
+          @error="handleRecaptchaError"
+          @expired="handleRecaptchaExpired"
+        />
+        <template v-if="isValidated">
+          <ErrorMessage v-if="recaptchaError" error="失敗しました" />
+          <ErrorMessage v-else-if="!recaptchaToken" error="必須項目です" />
+        </template>
       </div>
 
       <div
