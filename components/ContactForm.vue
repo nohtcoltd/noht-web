@@ -91,6 +91,7 @@ const submit = async () => {
 
 const reset = () => {
   form.resetForm()
+  isValidated.value = false
   recaptchaToken.value = null
   recaptchaError.value = null
   $recaptcha.value.reset()
