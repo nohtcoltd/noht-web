@@ -71,6 +71,8 @@ watch(toRefs(props).currentFace, async (newValue, oldValue) => {
   }
 
   rotateBox(oldValue, newValue)
+}, {
+  flush: 'post'
 })
 
 const animationOption = computed(() => ({

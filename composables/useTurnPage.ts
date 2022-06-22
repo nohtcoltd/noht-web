@@ -154,15 +154,16 @@ export default () => {
     completeRotateBackwardHandles.forEach((handle: Handle) => handle(prev, next))
   }
 
-  router.beforeEach((to, from, next) => {
-    if (isRotating.value && !rotatingFaces.value.includes(routeToFace[to.name])) {
-      reservedRoute.value = to.name
+  router.afterEach((to, from) => {
+    if (to.name !== from.name && shouldMobileNaviOpened.value) {
+      closeMobileNavi()
       return
     }
+  })
 
-    if (shouldMobileNaviOpened.value) {
-      closeMobileNavi()
-      next()
+  router.beforeEach(async (to, from, next) => {
+    if (isRotating.value && !rotatingFaces.value.includes(routeToFace[to.name])) {
+      reservedRoute.value = to.name
       return
     }
 
