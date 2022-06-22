@@ -11,20 +11,20 @@ import Staff from '~/components/pages/index/Staff.vue'
     title="BANANANA EFFECTS"
     caption="EFFECTS PEDAL BRAND"
     :main-panel-background="{ color: '#FFB200' }"
-    :detail-panel-background="{ imageUrl: 'images/bg_bananana.jpg' }"
+    :detail-panel-background="{ imageUrl: '/images/bg_bananana.jpg' }"
     :staff-panel-background="{ color: '#FEDA47' }"
     staff-panel-color="#111"
   >
     <template #main-panel>
       <RetinaImage
-        src="images/image_symbol_bananana.png"
+        src="/images/image_symbol_bananana.png"
         class="mb:r-0 absolute top-[35%] bottom-0 right-[4%] my-auto h-[clamp(200px,150%,600px)] mb:right-[0%] mb:top-[-5%] mb:h-[130%]"
       />
     </template>
 
     <template #detail-panel-image>
       <div class="w-[30%] max-w-[600px] mb:w-full mb:max-w-[150px]">
-        <RetinaImage src="images/image_description_bananana.png" class="mx-auto w-full max-w-[250px]" alt="" />
+        <RetinaImage src="/images/image_description_bananana.png" class="mx-auto w-full max-w-[250px]" alt="" />
       </div>
     </template>
 

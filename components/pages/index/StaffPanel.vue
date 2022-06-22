@@ -7,7 +7,7 @@ useHead({
   link: [
     {
       rel: 'preload',
-      href: 'images/bg_noht_pattern.png',
+      href: '/images/bg_noht_pattern.png',
       as: 'image',
     },
   ],
@@ -19,7 +19,7 @@ useHead({
     <div
       class="absolute top-0 left-0 h-full w-full opacity-[.15]"
       :style="{
-        backgroundImage: 'url(images/bg_noht_pattern.png)',
+        backgroundImage: 'url(/images/bg_noht_pattern.png)',
       }"
     />
     <div class="relative z-10 h-full fl-col-nowrap fl-start-center-center">
