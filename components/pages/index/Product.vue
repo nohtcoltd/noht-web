@@ -14,7 +14,7 @@ type Background = {
   repeat?: string
 }
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     title: string
     caption: string
@@ -49,6 +49,22 @@ const backgroundStyle = computed(() => ({ color, imageUrl, position, size, repea
     backgroundSize: size || 'cover',
     backgroundRepeat: repeat || 'no-repeat',
   }
+})
+
+useHead({
+  link: [
+      props.mainPanelBackground,
+      props.detailPanelBackground,
+      props.staffPanelBackground
+    ]
+    .filter(({ imageUrl }) => !!imageUrl)
+    .map(({imageUrl}) => ({
+      hid: imageUrl,
+      rel: 'preload',
+      href: imageUrl,
+      as: 'image',
+      imagesrcset: `${imageUrl} 1x, ${getRetinaImageUrl(imageUrl)} 2x`,
+    }))
 })
 </script>
 

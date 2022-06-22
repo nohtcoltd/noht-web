@@ -2,24 +2,15 @@
 defineProps<{
   title: string
 }>()
-</script>
 
-<script lang="ts">
-import { defineComponent } from '#app'
-
-export default defineComponent({
-  head: (vm) => {
-    const url = 'images/bg_noht_pattern.png'
-    return {
-      link: [
-        {
-          rel: 'preload',
-          href: url,
-          as: 'image',
-        },
-      ],
-    }
-  },
+useHead({
+  link: [
+    {
+      rel: 'preload',
+      href: 'images/bg_noht_pattern.png',
+      as: 'image',
+    },
+  ],
 })
 </script>
 
