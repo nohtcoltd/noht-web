@@ -6,20 +6,19 @@ export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
+  meta: {
     title: 'NOHT CO.,LTD.',
+    charset: 'utf-8',
+    viewport: 'width=device-width,initial-scale=1.0,maximum-scale=1.0',
     htmlAttrs: {
       lang: 'ja',
     },
-    link: [{ rel: 'stylesheet', href: '//cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css' }],
     script: [
       {
         src: '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
       },
     ],
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width,initial-scale=1.0,maximum-scale=1.0' },
       {
         hid: 'description',
         name: 'description',
@@ -28,7 +27,7 @@ export default defineNuxtConfig({
       },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'stylesheet', href: '//cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -89,11 +88,6 @@ export default defineNuxtConfig({
     // hardSource: true,
   },
 
-  generate: {
-    subFolders: false,
-    fallback: '404.html',
-  },
-
   router: {
     extendRoutes: (routes) => {
       if (isProduction) {
@@ -103,21 +97,4 @@ export default defineNuxtConfig({
       return routes
     },
   },
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-  // webfontloader: {
-  //   google: {
-  //     families: ['Poppins:400,500,600,700'],
-  //   },
-  // },
->>>>>>> 1cc28b3 (nuxtモジュールをアップグレードして非有効化)
-=======
-  webfontloader: {
-    google: {
-      families: ['Poppins:400,500,600,700'],
-    },
-  },
->>>>>>> 130338e (Revert "nuxtモジュールをアップグレードして非有効化")
 })
