@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { computed } from '#imports'
 import getRetinaImageUrl from '~/assets/js/getRetinaImageUrl'
 
 const props = defineProps<{

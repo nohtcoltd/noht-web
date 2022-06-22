@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, watch, toRefs } from '#imports'
-
 type Face = number
 
 const props = withDefaults(

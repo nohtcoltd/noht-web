@@ -1,5 +1,4 @@
-import tailwindConfig from '~/tailwind.config.js'
-import { computed, ref, onMounted, onUnmounted } from '#imports'
+import tailwindConfig from '~~/tailwind.config'
 import isRetinaDisplay from '~/assets/js/isRetinaDisplay'
 
 const {

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, inject } from '#imports'
-import { useRoute } from '#app'
 import ContactForm from '~/components/ContactForm.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 import CloseButton from '~/components/widgets/CloseButton.vue'

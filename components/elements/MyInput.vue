@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, computed } from '#imports'
-
 const $input = ref<HTMLInputElement>()
 const props = defineProps<{
   modelValue: string | number

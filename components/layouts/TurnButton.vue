@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from '#imports'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import LinkButton from '~/components/layouts/LinkButton.vue'
 

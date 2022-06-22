@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRoute, useRouter, computed } from '#imports'
 import TurnButton from '~/components/layouts/TurnButton.vue'
 
 const route = useRoute()

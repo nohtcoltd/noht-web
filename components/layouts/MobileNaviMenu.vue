@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { RouteRecordName } from 'vue-router'
-import { useRoute, useRouter } from '#app'
-import { computed, ref, onMounted, onBeforeUnmount } from '#imports'
 import { ComponentInstance } from '@vue/devtools-api'
 import LinkButton from '~/components/layouts/LinkButton.vue'
 

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import MenuButton from '~/components/widgets/MenuButton.vue'
-import { useRoute, useRouter, computed, ref, onMounted, onUnmounted } from '#imports'
 import useMediaQuery from '~/composables/useMediaQuery'
 /*
   Firefoxのposition: stickyがうまく機能しないのでjsで追従。
