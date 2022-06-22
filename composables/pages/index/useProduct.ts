@@ -13,6 +13,7 @@ export default () => {
   const currentFace = ref(1)
   const $box = ref<ComponentInstance>(null)
   const isRotating = ref(false)
+  const isMounted = ref(false)
   const isRotationEnabled = ref(true)
   const pointerMovingDistance = ref<{ x: number; y: number } | null>(null)
   const { isRetina } = useMediaQuery()
@@ -65,6 +66,7 @@ export default () => {
   }
 
   onMounted(() => {
+    isMounted.value = true
     window.addEventListener('pointermove', handlePointerMove, {
       passive: true,
     })
@@ -110,7 +112,6 @@ export default () => {
     handlePointerDown,
     retinaUrl: computed(() => (imageUrl) => isRetina ? imageUrl.replace(/(.*)\.(.*)$/g, '$1@2x.$2') : imageUrl),
     enter: async (el: HTMLElement, done: () => void) => {
-      await nextTick()
       await el.animate(
         {
           opacity: [0, 1],
@@ -125,5 +126,6 @@ export default () => {
 
       done()
     },
+    isMounted,
   }
 }

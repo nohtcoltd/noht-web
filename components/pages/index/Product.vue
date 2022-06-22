@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { computed } from '#app'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import useProduct from '~/composables/pages/index/useProduct'
 import MainPanel from '~/components/pages/index/MainPanel.vue'
@@ -39,6 +38,7 @@ const {
   completeRotation,
   handlePointerDown,
   enter,
+  isMounted,
 } = useProduct()
 
 const backgroundStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Background) => {
@@ -52,36 +52,10 @@ const backgroundStyle = computed(() => ({ color, imageUrl, position, size, repea
 })
 </script>
 
-<script lang="ts">
-import { defineComponent } from '#app'
-
-export default defineComponent({
-  head: (vm) => {
-    const { mainPanelBackground, detailPanelBackground, staffPanelBackground } = vm
-    const imageUrls = [mainPanelBackground, detailPanelBackground, staffPanelBackground]
-      .filter(({ imageUrl }) => !!imageUrl)
-      .map(({ imageUrl }) => imageUrl)
-
-    if (imageUrls.length === 0) {
-      return
-    }
-
-    return {
-      link: imageUrls.map((url) => ({
-        hid: url,
-        rel: 'preload',
-        href: url,
-        as: 'image',
-        imagesrcset: `${url} 1x, ${getRetinaImageUrl(url)} 2x`,
-      })),
-    }
-  },
-})
-</script>
-
 <template>
-  <transition appear :css="false" @enter="enter">
+  <transition :css="false" @enter="enter">
     <TurnBox
+      v-if="isMounted"
       ref="$box"
       :current-face="currentFace"
       :faces="3"
