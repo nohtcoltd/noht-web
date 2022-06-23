@@ -36,7 +36,6 @@ export default defineNuxtConfig({
   css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/VeeValidate'],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
@@ -45,28 +44,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/svg',
     '@nuxtjs/tailwindcss',
-<<<<<<< HEAD
-    // [
-    //   '@nuxtjs/recaptcha',
-    //   {
-    //     hideBadge: false,
-    //     siteKey: process.env.SITE_RECAPTCHA_KEY,
-    //     size: 'normal',
-    //     version: 2,
-    //   },
-    // ],
-=======
-    [
-      '@nuxtjs/google-fonts',
-      {
-        families: {
-          Poppins: {
-            wght: [600, 700],
-          },
-        },
-      },
-    ],
->>>>>>> be4660c (recaptchaの不要な記述削除)
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
