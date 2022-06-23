@@ -32,7 +32,6 @@ const { $isFontLoaded } = useNuxtApp()
 </script>
 <template>
   <article
-    v-if="$isFontLoaded"
     class="min-h-screen w-screen text-[length:clamp(13px,2.2vw,50px)] init-font-family"
     :style="{
       minHeight: '100dvh',
@@ -42,7 +41,10 @@ const { $isFontLoaded } = useNuxtApp()
     <div class="fixed left-0 top-0 h-0 w-0 overflow-hidden">
       <NuxtLink v-for="routeName in ['index', 'about', 'contact']" :key="routeName" :to="{ name: routeName }" />
     </div>
-    <div class="mx-auto h-full min-h-[inherit] w-full max-w-[1800px] fl-row-nowrap fl-start-stretch-stretch">
+    <div
+      v-if="$isFontLoaded"
+      class="mx-auto h-full min-h-[inherit] w-full max-w-[1800px] fl-row-nowrap fl-start-stretch-stretch"
+    >
       <PcNaviMenu />
       <div class="relative z-0 flex-1 tablet:w-full">
         <TurnBox
