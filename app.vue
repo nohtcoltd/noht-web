@@ -27,9 +27,12 @@ const {
   openMobileNavi,
   closeMobileNavi,
 } = useTurnPage()
+
+const { $isFontLoaded } = useNuxtApp()
 </script>
 <template>
   <article
+    v-if="$isFontLoaded"
     class="min-h-screen w-screen text-[length:clamp(13px,2.2vw,50px)] init-font-family"
     :style="{
       minHeight: '100dvh',

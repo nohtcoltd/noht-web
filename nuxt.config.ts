@@ -52,21 +52,6 @@ export default defineNuxtConfig({
     //     version: 2,
     //   },
     // ],
-    [
-      '@nuxtjs/google-fonts',
-      {
-        families: {
-          Poppins: {
-            wght: [600, 700],
-          },
-        },
-        display: 'block',
-        download: true,
-        base64: true,
-        inject: true,
-        outputDir: '~/assets/dist',
-      },
-    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
