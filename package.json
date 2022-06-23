@@ -13,7 +13,6 @@
     "@nuxtjs/recaptcha": "^1.1.1",
     "@nuxtjs/svg": "^0.4.0",
     "nuxt": "3.0.0-rc.4",
-    "nuxt-webfontloader": "^1.1.0",
     "vee-validate": "3"
   },
   "devDependencies": {
