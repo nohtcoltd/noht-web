@@ -1,5 +1,3 @@
-let index = 0
-import { useRoute, ref, inject, onMounted, computed, onUnmounted } from '#imports'
 import { ComponentInstance } from '@vue/devtools-api'
 import {
   addCompleteForwardRotationHandle,
@@ -8,6 +6,7 @@ import {
 } from '~/composables/useTurnPage'
 import useMediaQuery from '~/composables/useMediaQuery'
 
+let index = 0
 export default () => {
   const route = useRoute()
   const currentFace = ref(1)
