@@ -39,9 +39,9 @@ const enter = ($el: HTMLElement, done: () => void) => {
       <div v-if="isThanksShown" class="m-auto fl-col-nowrap fl-center-center-center">
         <div class="text-[180%] font-semibold tracking-[.2em] font-poppins mb:text-[25px]">THANK YOU!</div>
         <div class="mt-[80px] pc:w-full pc:max-w-[80px]">
-          <n-link :to="{ name: 'index' }">
+          <NuxtLink :to="{ name: 'index' }">
             <CloseButton class="pc:min-w-full" />
-          </n-link>
+          </NuxtLink>
         </div>
       </div>
     </transition>
