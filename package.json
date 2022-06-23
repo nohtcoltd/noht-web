@@ -13,6 +13,7 @@
   "dependencies": {
     "nuxt": "3.0.0-rc.4",
     "vee-validate": "4.5.11",
+    "vite-svg-loader": "^3.4.0",
     "vue-recaptcha": "^2.0.2",
     "yup": "^0.32.11"
   },
