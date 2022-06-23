@@ -15,6 +15,6 @@ defineProps<{
     :class="!href ? 'pointer-events-none cursor-default' : 'my-hover:opacity-80'"
     @click.stop
   >
-    <SvgTwitter class="w-[length:max(1.6em,27px)]"></svg>
+    <SvgTwitter class="w-[length:max(1.6em,27px)]" />
   </a>
 </template>
