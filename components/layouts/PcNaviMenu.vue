@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRoute, useRouter, computed } from '#app'
 import TurnButton from '~/components/layouts/TurnButton.vue'
 
 const route = useRoute()
@@ -9,7 +8,7 @@ const currentFace = computed(() => (routeName) => isCurrentRoute.value(routeName
 
 const props = withDefaults(
   defineProps<{
-    isRedirectionDisabled: boolean
+    isRedirectionDisabled?: boolean
   }>(),
   {
     isRedirectionDisabled: false,

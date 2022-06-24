@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import MenuButton from '~/components/widgets/MenuButton.vue'
-import { useRoute, useRouter, computed, ref, onMounted, onUnmounted } from '#app'
 import useMediaQuery from '~/composables/useMediaQuery'
 /*
   Firefoxのposition: stickyがうまく機能しないのでjsで追従。
@@ -11,6 +10,7 @@ const route = useRoute()
 const router = useRouter()
 const isCurrentRoute = computed(() => (routeName) => route.name === routeName)
 const scrollTop = ref(0)
+const isTouchDevice = ref(false)
 const changeScrollTop = () => (scrollTop.value = globalThis.scrollY)
 
 const redirectTo = async (routeName) => {
@@ -22,6 +22,8 @@ const redirectTo = async (routeName) => {
 }
 
 onMounted(() => {
+  isTouchDevice.value = useMediaQuery().isTouchDevice.value
+
   globalThis.addEventListener('scroll', changeScrollTop, { passive: true })
   globalThis.addEventListener('resize', changeScrollTop, { passive: true })
 })
@@ -31,7 +33,6 @@ onUnmounted(() => {
   globalThis.removeEventListener('resize', changeScrollTop)
 })
 
-const { isTouchDevice } = useMediaQuery()
 </script>
 <template>
   <header

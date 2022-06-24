@@ -11,18 +11,18 @@ import Staff from '~/components/pages/index/Staff.vue'
     title="HOLDA"
     caption="ACRYLIC GOODS PRINT SERVICE"
     :main-panel-background="{ color: '#F5F5F5' }"
-    :detail-panel-background="{ imageUrl: 'images/bg_holda.jpg' }"
+    :detail-panel-background="{ imageUrl: '/images/bg_holda.jpg' }"
     :staff-panel-background="{ color: '#F80000' }"
   >
     <template #main-panel>
       <RetinaImage
-        src="images/image_symbol_holda.png"
+        src="/images/image_symbol_holda.png"
         class="absolute top-[-10%] right-[10%] h-[clamp(200px,120%,500px)] mb:top-[-30%] mb:right-[10%] mb:h-[130%]"
       />
     </template>
 
     <template #detail-panel-image>
-      <RoundedImage src="images/image_description_holda.jpg" alt="" class="w-[40%] max-w-[600px] mb:w-full" />
+      <RoundedImage src="/images/image_description_holda.jpg" alt="" class="w-[40%] max-w-[600px] mb:w-full" />
     </template>
 
     <template #detail-panel-description>

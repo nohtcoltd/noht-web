@@ -1,6 +1,4 @@
-import { defineNuxtConfig } from '@nuxt/bridge'
-import fs from 'node:fs'
-import path from 'node:path'
+import { defineNuxtConfig } from 'nuxt'
 
 const isProduction = process.env.NODE_ENV === 'production'
 export default defineNuxtConfig({
@@ -8,20 +6,19 @@ export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
+  meta: {
     title: 'NOHT CO.,LTD.',
+    charset: 'utf-8',
+    viewport: 'width=device-width,initial-scale=1.0,maximum-scale=1.0',
     htmlAttrs: {
       lang: 'ja',
     },
-    link: [{ rel: 'stylesheet', href: '//cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css' }],
     script: [
       {
         src: '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
       },
     ],
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width,initial-scale=1.0,maximum-scale=1.0' },
       {
         hid: 'description',
         name: 'description',
@@ -30,7 +27,7 @@ export default defineNuxtConfig({
       },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'stylesheet', href: '//cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -46,15 +43,15 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/svg',
     '@nuxtjs/tailwindcss',
-    [
-      '@nuxtjs/recaptcha',
-      {
-        hideBadge: false,
-        siteKey: process.env.SITE_RECAPTCHA_KEY,
-        size: 'normal',
-        version: 2,
-      },
-    ],
+    // [
+    //   '@nuxtjs/recaptcha',
+    //   {
+    //     hideBadge: false,
+    //     siteKey: process.env.SITE_RECAPTCHA_KEY,
+    //     size: 'normal',
+    //     version: 2,
+    //   },
+    // ],
     [
       '@nuxtjs/google-fonts',
       {
@@ -91,11 +88,6 @@ export default defineNuxtConfig({
     // hardSource: true,
   },
 
-  generate: {
-    subFolders: false,
-    fallback: '404.html',
-  },
-
   router: {
     extendRoutes: (routes) => {
       if (isProduction) {
@@ -103,14 +95,6 @@ export default defineNuxtConfig({
       }
 
       return routes
-    },
-  },
-
-  // XXX: bridgeでのgenerateのエラー回避
-  hooks: {
-    'build:done': (builder) => {
-      const extraFilePath = path.join(builder.nuxt.options.buildDir + '/dist/server', 'server.mjs')
-      fs.writeFileSync(extraFilePath, 'export {};')
     },
   },
 })

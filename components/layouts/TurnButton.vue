@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from '#app'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import LinkButton from '~/components/layouts/LinkButton.vue'
 
@@ -14,7 +13,7 @@ const completeRotation = () => (isRotating.value = false)
 </script>
 
 <template>
-  <div v-on="$listeners">
+  <div v-bind="$attrs">
     <TurnBox
       :current-face="currentFace"
       :faces="2"

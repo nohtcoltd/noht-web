@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { inject, ref, ComponentInstance, useRoute } from '#app'
-import { useContext } from '@nuxtjs/composition-api'
 import MyInput from '~/components/elements/MyInput.vue'
 import ErrorMessage from '~/components/widgets/ErrorMessage.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'

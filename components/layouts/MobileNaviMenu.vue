@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { Route } from 'vue-router'
-import { useRoute, useRouter, computed, ref, ComponentInstance, onMounted, onBeforeUnmount } from '#app'
+import { RouteRecordName } from 'vue-router'
+import { ComponentInstance } from '@vue/devtools-api'
 import LinkButton from '~/components/layouts/LinkButton.vue'
 
 const props = withDefaults(
   defineProps<{
-    isRedirectionDisabled: boolean
+    isRedirectionDisabled?: boolean
   }>(),
   {
     isRedirectionDisabled: false,
   },
 )
 
-type RouteName = Route['name']
+type RouteName = RouteRecordName
 const route = useRoute()
 const router = useRouter()
 const $index = ref<ComponentInstance>(null)

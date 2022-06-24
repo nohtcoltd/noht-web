@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, watch, toRefs } from '#app'
-
 type Face = number
 
 const props = withDefaults(
@@ -71,6 +69,8 @@ watch(toRefs(props).currentFace, async (newValue, oldValue) => {
   }
 
   rotateBox(oldValue, newValue)
+}, {
+  flush: 'post'
 })
 
 const animationOption = computed(() => ({
