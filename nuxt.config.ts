@@ -2,7 +2,9 @@ import { defineNuxtConfig } from 'nuxt'
 
 const isProduction = process.env.NODE_ENV === 'production'
 export default defineNuxtConfig({
-  ssr: false,
+  publicRuntimeConfig: {
+    siteRecaptchaKey: process.env.SITE_RECAPTCHA_KEY
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -34,7 +36,6 @@ export default defineNuxtConfig({
   css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/VeeValidate'],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
@@ -43,15 +44,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/svg',
     '@nuxtjs/tailwindcss',
-    // [
-    //   '@nuxtjs/recaptcha',
-    //   {
-    //     hideBadge: false,
-    //     siteKey: process.env.SITE_RECAPTCHA_KEY,
-    //     size: 'normal',
-    //     version: 2,
-    //   },
-    // ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -62,8 +54,6 @@ export default defineNuxtConfig({
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vee-validate/dist/rules'],
-
     // safariのホットリロードバグ対策
     filenames: {
       app: ({ isDev }) => (isDev ? '[name].[hash].js' : '[chunkhash].js'),
