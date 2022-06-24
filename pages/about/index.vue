@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import MapLink from '~/components/widgets/MapLink.vue'
+import SvgLogo from '~/assets/svg/logo_noht_co_ltd.svg?component'
+import SvgLogoUs from '~/assets/svg/logo_noht_co_ltd_us.svg?component'
 </script>
 
 <template>
@@ -7,10 +9,9 @@ import MapLink from '~/components/widgets/MapLink.vue'
     class="flex-1 text-left text-[length:clamp(13px,1vw,15px)] font-semibold leading-[1.8] tracking-[.8em] fl-col-nowrap fl-center-stretch-stretch mb:px-[15px] mb:text-[11px] mb:leading-[1.3] mb:tracking-[.4em]"
   >
     <header class="text-[110%]">
-      <svg
-        :is="require('assets/svg/logo_noht_co_ltd.svg?inline')"
-        class="mb-[.2em] h-full max-h-[clamp(20px,2em,32px)] mb:max-h-[20px]"
-      ></svg>
+      <SvgLogo
+        class="mb:max-h-[20px] mb-[.2em] h-full max-h-[clamp(20px,2em,32px)]"
+      />
       株式会社ノート
     </header>
 
@@ -33,7 +34,7 @@ import MapLink from '~/components/widgets/MapLink.vue'
       </dl>
     </section>
     <section>
-      <div class="leading-[2.5] tracking-[.4em] mb:leading-[1.8]">
+      <div class="mb:leading-[1.8] leading-[2.5] tracking-[.4em]">
         ウェブサイト・アプリケーションの企画・開発<br />
         ロゴ・イラスト・3DCG・映像などの企画・制作<br />
         印刷物・立体物・グッズ製品の企画・製造<br />
@@ -63,10 +64,9 @@ import MapLink from '~/components/widgets/MapLink.vue'
           </div>
         </div>
 
-        <svg
-          :is="require('assets/svg/logo_noht_co_ltd_us.svg?inline')"
-          class="mb-[.2em] mt-[4em] h-full max-h-[clamp(18px,2em,25px)] mb:max-h-[18px]"
-        ></svg>
+        <SvgLogoUs
+          class="mb:max-h-[18px] mb-[.2em] mt-[4em] h-full max-h-[clamp(18px,2em,25px)]"
+        />
 
         <div class="mt-[1em]">
           米国支社
@@ -83,12 +83,16 @@ import MapLink from '~/components/widgets/MapLink.vue'
 </template>
 
 <style scoped>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 section {
   @apply mt-[min(8vw,6em)];
 }
 
 dl {
-  @apply mt-[1em] fl-row-nowrap first:mt-0;
+  @apply fl-row-nowrap mt-[1em] first:mt-0;
 }
 dt {
   @apply mr-[2em];
