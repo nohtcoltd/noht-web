@@ -12,18 +12,18 @@ import Staff from '~/components/pages/index/Staff.vue'
     title="SECONDPRESS.US"
     caption="CANBADGE PRINT SERVICE"
     :main-panel-background="{ color: '#00A6C2' }"
-    :detail-panel-background="{ imageUrl: 'images/bg_secondpress.png' }"
+    :detail-panel-background="{ imageUrl: '/images/bg_secondpress.png' }"
     :staff-panel-background="{ color: '#85A5A2' }"
   >
     <template #main-panel>
       <RetinaImage
-        src="images/image_symbol_secondpress.png"
+        src="/images/image_symbol_secondpress.png"
         class="absolute top-0 bottom-0 right-[10%] my-auto h-[clamp(200px,80%,300px)] mb:right-0 mb:left-0 mb:bottom-[20%] mb:mx-auto mb:h-[70%]"
       />
     </template>
 
     <template #detail-panel-image>
-      <RoundedImage src="images/image_description_secondpress.jpg" alt="" class="w-[40%] max-w-[600px] mb:w-full" />
+      <RoundedImage src="/images/image_description_secondpress.jpg" alt="" class="w-[40%] max-w-[600px] mb:w-full" />
     </template>
 
     <template #detail-panel-description>

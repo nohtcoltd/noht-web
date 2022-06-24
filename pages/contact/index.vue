@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, inject, useRoute } from '#app'
 import ContactForm from '~/components/ContactForm.vue'
 import { addCompleteForwardRotationHandle } from '~/composables/useTurnPage'
 import CloseButton from '~/components/widgets/CloseButton.vue'
@@ -32,14 +31,6 @@ const enter = ($el: HTMLElement, done: () => void) => {
 }
 </script>
 
-<script lang="ts">
-import { defineComponent } from '#app'
-
-export default defineComponent({
-  layout: 'TurnPage',
-})
-</script>
-
 <template>
   <article
     class="-bg-white relative flex-1 px-[3em] text-[length:clamp(25px,2.3vw,28px)] fl-col-nowrap fl-start-stretch-stretch tablet:px-0"
@@ -48,9 +39,9 @@ export default defineComponent({
       <div v-if="isThanksShown" class="m-auto fl-col-nowrap fl-center-center-center">
         <div class="text-[180%] font-semibold tracking-[.2em] font-poppins mb:text-[25px]">THANK YOU!</div>
         <div class="mt-[80px] pc:w-full pc:max-w-[80px]">
-          <n-link :to="{ name: 'index' }">
+          <NuxtLink :to="{ name: 'index' }">
             <CloseButton class="pc:min-w-full" />
-          </n-link>
+          </NuxtLink>
         </div>
       </div>
     </transition>

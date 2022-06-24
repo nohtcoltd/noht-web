@@ -27,6 +27,8 @@ const {
   openMobileNavi,
   closeMobileNavi,
 } = useTurnPage()
+
+const { $isFontLoaded } = useNuxtApp()
 </script>
 <template>
   <article
@@ -37,9 +39,12 @@ const {
   >
     <!-- <PcNaviMenu /> <MobileNaviMenu />がrouter.pushで遷移しているため n-linkのprefetchを利用 -->
     <div class="fixed left-0 top-0 h-0 w-0 overflow-hidden">
-      <n-link v-for="routeName in ['index', 'about', 'contact']" :key="routeName" :to="{ name: routeName }" />
+      <NuxtLink v-for="routeName in ['index', 'about', 'contact']" :key="routeName" :to="{ name: routeName }" />
     </div>
-    <div class="mx-auto h-full min-h-[inherit] w-full max-w-[1800px] fl-row-nowrap fl-start-stretch-stretch">
+    <div
+      v-if="$isFontLoaded"
+      class="mx-auto h-full min-h-[inherit] w-full max-w-[1800px] fl-row-nowrap fl-start-stretch-stretch"
+    >
       <PcNaviMenu />
       <div class="relative z-0 flex-1 tablet:w-full">
         <TurnBox

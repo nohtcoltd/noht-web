@@ -2,7 +2,7 @@
 withDefaults(
   defineProps<{
     isSelected: boolean
-    isSelectable: boolean
+    isSelectable?: boolean
   }>(),
   {
     isSelectable: true,
@@ -19,7 +19,7 @@ const { isTouchDevice } = useMediaQuery()
       isSelectable && !isSelected ? 'cursor-pointer' : '',
       isSelectable && !isSelected && !isTouchDevice ? 'hover:bg-[#00000015]' : '',
     ]"
-    v-on="$listeners"
+    v-bind="$attrs"
   >
     <slot />
   </div>

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from '#app'
-
 const $input = ref<HTMLInputElement>()
 const props = defineProps<{
-  value: string | number
+  modelValue: string | number
   error?: string
 }>()
 const isFocused = ref(false)
@@ -14,10 +12,10 @@ const handleFocus = () => {
 }
 const handleBlur = () => (isFocused.value = false)
 
-const hasValue = computed(() => !!props.value || props.value === 0)
+const hasValue = computed(() => !!props.modelValue || props.modelValue === 0)
 
 const emits = defineEmits<{
-  (e: 'input', value: string)
+  (e: 'update:modelValue', value: string)
 }>()
 
 const onInput = ({ target }: Event) => {
@@ -25,7 +23,7 @@ const onInput = ({ target }: Event) => {
     return
   }
 
-  emits('input', target.value)
+  emits('update:modelValue', target.value)
 }
 </script>
 
@@ -49,7 +47,7 @@ const onInput = ({ target }: Event) => {
         ref="$input"
         v-bind="$attrs"
         type="text"
-        :value="value"
+        :value="modelValue"
         @focus="handleFocus"
         @blur="handleBlur"
         @input="onInput"

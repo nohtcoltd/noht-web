@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import { ref } from '#app'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 
 const currentFace = ref(1)
 const increment = () => (currentFace.value = currentFace.value === 3 ? 1 : currentFace.value + 1)
 const decrement = () => (currentFace.value = currentFace.value === 1 ? 3 : currentFace.value - 1)
-</script>
 
-<script lang="ts">
-import { defineComponent } from '#app'
-
-export default defineComponent({
-  layout: 'empty',
+definePageMeta({
+  layout: 'empty'
 })
 </script>
 

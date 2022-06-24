@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { computed } from '#app'
 import TurnBox from '~/components/widgets/TurnBox.vue'
 import useProduct from '~/composables/pages/index/useProduct'
 import MainPanel from '~/components/pages/index/MainPanel.vue'
@@ -15,7 +14,7 @@ type Background = {
   repeat?: string
 }
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     title: string
     caption: string
@@ -39,6 +38,7 @@ const {
   completeRotation,
   handlePointerDown,
   enter,
+  isMounted,
 } = useProduct()
 
 const backgroundStyle = computed(() => ({ color, imageUrl, position, size, repeat }: Background) => {
@@ -50,38 +50,28 @@ const backgroundStyle = computed(() => ({ color, imageUrl, position, size, repea
     backgroundRepeat: repeat || 'no-repeat',
   }
 })
-</script>
 
-<script lang="ts">
-import { defineComponent } from '#app'
-
-export default defineComponent({
-  head: (vm) => {
-    const { mainPanelBackground, detailPanelBackground, staffPanelBackground } = vm
-    const imageUrls = [mainPanelBackground, detailPanelBackground, staffPanelBackground]
-      .filter(({ imageUrl }) => !!imageUrl)
-      .map(({ imageUrl }) => imageUrl)
-
-    if (imageUrls.length === 0) {
-      return
-    }
-
-    return {
-      link: imageUrls.map((url) => ({
-        hid: url,
-        rel: 'preload',
-        href: url,
-        as: 'image',
-        imagesrcset: `${url} 1x, ${getRetinaImageUrl(url)} 2x`,
-      })),
-    }
-  },
+useHead({
+  link: [
+      props.mainPanelBackground,
+      props.detailPanelBackground,
+      props.staffPanelBackground
+    ]
+    .filter(({ imageUrl }) => !!imageUrl)
+    .map(({imageUrl}) => ({
+      hid: imageUrl,
+      rel: 'preload',
+      href: imageUrl,
+      as: 'image',
+      imagesrcset: `${imageUrl} 1x, ${getRetinaImageUrl(imageUrl)} 2x`,
+    }))
 })
 </script>
 
 <template>
-  <transition appear :css="false" @enter="enter">
+  <transition :css="false" @enter="enter">
     <TurnBox
+      v-if="isMounted"
       ref="$box"
       :current-face="currentFace"
       :faces="3"
@@ -133,6 +123,9 @@ export default defineComponent({
 </template>
 
 <style scoped>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .body {
   @apply h-[400px] max-h-[450px] min-h-[350px] w-full overflow-hidden rounded-[30px] mb:h-auto mb:max-h-[none] mb:min-h-0 mb:rounded-[clamp(20px,3vw,30px)];
 }

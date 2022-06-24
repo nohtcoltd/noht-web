@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import { Route } from 'vue-router'
-import { useRoute, useRouter, computed, ref, ComponentInstance, onMounted, onBeforeUnmount } from '#app'
+import { RouteRecordName } from 'vue-router'
+import { ComponentInstance } from '@vue/devtools-api'
 import LinkButton from '~/components/layouts/LinkButton.vue'
+import SvgLogo from '~/assets/svg/logo_noht.svg?component'
 
 const props = withDefaults(
   defineProps<{
-    isRedirectionDisabled: boolean
+    isRedirectionDisabled?: boolean
   }>(),
   {
     isRedirectionDisabled: false,
   },
 )
 
-type RouteName = Route['name']
+type RouteName = RouteRecordName
 const route = useRoute()
 const router = useRouter()
 const $index = ref<ComponentInstance>(null)
@@ -117,7 +118,7 @@ const handlePointermove = (evt: TouchEvent | MouseEvent, routeName: RouteName) =
 
 <template>
   <div class="fl-col-nowrap fl-center-stretch-stretch">
-    <svg :is="require('assets/svg/logo_noht.svg?inline')" class="mx-auto max-w-[max(120px,3.5em)]" />
+    <SvgLogo class="mx-auto max-w-[max(120px,3.5em)]" />
     <LinkButton
       ref="$index"
       :is-selected="isSelectedRoute('index')"

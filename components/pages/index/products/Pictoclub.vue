@@ -14,11 +14,11 @@ const { isMobile } = useMediaQuery()
     caption="ACRYLIC PICTOGRAM SIGNS"
     :main-panel-background="{
       color: '#3D3D3D',
-      imageUrl: isMobile ? 'images/bg_header_pictoclub_mobile.jpg' : 'images/bg_header_pictoclub.jpg',
+      imageUrl: isMobile ? '/images/bg_header_pictoclub_mobile.jpg' : '/images/bg_header_pictoclub.jpg',
       position: 'right center',
     }"
     :detail-panel-background="{
-      imageUrl: 'images/bg_pictoclub.jpg',
+      imageUrl: '/images/bg_pictoclub.jpg',
       position: 'right center',
     }"
     :staff-panel-background="{ color: '#3D3D3D' }"
@@ -26,7 +26,7 @@ const { isMobile } = useMediaQuery()
     <template #detail-panel-image>
       <div class="w-[30%] max-w-[600px] bg-center mb:w-full">
         <RetinaImage
-          src="images/image_description_pictoclub.png"
+          src="/images/image_description_pictoclub.png"
           class="mx-auto w-full max-w-[250px] mb:max-w-[120px]"
           alt=""
         />
