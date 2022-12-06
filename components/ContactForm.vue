@@ -74,7 +74,7 @@ const submit = async () => {
   // 以下netlify form用
   formData.append('form-name', formName)
   formData.append('g-recaptcha-response', recaptchaToken.value)
-  const data = await $fetch('/', {
+  const data = await $fetch('/contact.html', {
     method: 'POST',
     body: formData,
   }).catch((error) => new Error(error))
