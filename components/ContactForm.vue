@@ -118,6 +118,7 @@ addHandle(() => {
     netlify
     data-netlify-recaptcha="true"
     class="w-full text-[16px] fl-col-nowrap fl-start-center-center mb:text-[14px]"
+    action="/contact.html
   >
     <div class="hidden">
       <input type="text" name="form-name" value="contact" />
