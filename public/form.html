@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>NOHT CO.,LTD.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <style type="text/css">
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .hidden-field {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="contact" netlify  hidden>
+      <input type="text" name="name" />
+      <input type="text" name="mail" />
+      <input type="text" name="company-name" />
+      <textarea name="content"></textarea>
+      <div data-netlify-recaptcha="true" class="hidden"></div>
+    </form>
+  </body>
+</html>
