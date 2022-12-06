@@ -68,7 +68,7 @@ import Staff from '~/components/pages/index/Staff.vue'
         <Staff name="KEITA TAKEUCHI" job-title="PRDCTN MNG AST." />
         <Staff name="NOBORU KAWAZOE" job-title="LOGISTICS" />
         <Staff name="AOI FUJIWARA" job-title="B2C" />
-        <Staff name="OKUBO" job-title="B2C" />
+        <Staff name="KOBAYASHI" job-title="B2C" />
         <Staff name="ERIKO HORII" job-title="B2C" />
         <div class="col-span-2" />
         <Staff name="TAKAHIRO HIRA" job-title="PRDCTN MNG AST." />

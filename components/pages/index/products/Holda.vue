@@ -59,13 +59,12 @@ import Staff from '~/components/pages/index/Staff.vue'
         <Staff name="MASASHI ICHIKAWA" job-title="B2B LEAD" />
         <Staff name="ERI YAMAGUCHI" job-title="B2B" />
         <Staff name="YURIE KAWAGUCHI" job-title="B2B" />
-        <Staff name="MAYU KISHIDA" job-title="B2B ASSISTANT" />
         <Staff name="KEITA TAKEUCHI" job-title="PRDCTN MNG AST." />
         <Staff name="NOBORU KAWAZOE" job-title="LOGISTICS" />
         <Staff name="AOI FUJIWARA" job-title="B2C" />
-        <Staff name="OKUBO" job-title="B2C" />
+        <Staff name="KOBAYASHI" job-title="B2C" />
         <Staff name="ERIKO HORII" job-title="B2C" />
-        <div class="col-span-2" />
+        <div class="col-span-3" />
         <Staff name="TAKAHIRO HIRA" job-title="PRDCTN MNG AST." />
       </div>
     </template>
