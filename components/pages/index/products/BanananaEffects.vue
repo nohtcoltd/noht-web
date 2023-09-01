@@ -51,7 +51,7 @@ import Staff from '~/components/pages/index/Staff.vue'
       <div
         class="grid flex-1 grid-cols-5 content-center justify-center gap-x-[.5em] gap-y-[.5em] text-[length:max(35%,13px)] mb:mt-[4em] mb:grid-cols-3 mb:gap-[1.5em] mb:text-[10px]"
       >
-        <Staff name="AZARASHI" job-title="WEB FRONTEND" />
+        <Staff name="ISIKORO" job-title="WEB FRONTEND" />
         <Staff name="YASUO INUI" job-title="B2B/B2C/EXPORT" />
         <Staff name="MUROSHI" job-title="MANUFACTURING" />
         <Staff name="MASAKI NISHITANI" job-title="SUPPLY" />

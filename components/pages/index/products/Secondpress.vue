@@ -49,29 +49,31 @@ import Staff from '~/components/pages/index/Staff.vue'
       >
         <Staff name="KEIICHIRO HIRAI" job-title="PLAN/DIRECTOR/DESIGN" />
         <div class="col-span-5 mb:col-span-2" />
-        <Staff name="FILRIYA" job-title="TECH LEAD" />
-        <Staff name="YOUGO NISHIOKA " job-title="BACKEND LEAD" />
+        <Staff name="YOUGO NISHIOKA " job-title="BACKEND" />
+        <Staff name="SHIBATARN" job-title="BACKEND" />
         <Staff name="YMMR" job-title="FRONTEND" />
-        <Staff name="AZARASHI" job-title="IMAGE CALC." />
+        <Staff name="SUNOUCHI" job-title="FRONTEND" />
+        <Staff name="ISIKORO" job-title="IMAGE CALC." />
         <Staff name="TAICHI SAITO" job-title="PRODUCTION MNG." />
-        <Staff name="TAKEYUKI ISHIZAWA" job-title="PRODUCTION MNG." />
+        <Staff name="WAKABA HOSOGI" job-title="PRODUCTION MNG." />
         <Staff name="JUMPEI NOGUCHI" job-title="HARDWARE" />
         <Staff name="MAO MARUYA" job-title="3DCG/ILLUST" />
         <Staff name="MOCHIPAN" job-title="ILLUSTRATION" />
         <Staff name="MASAKI NISHITANI" :job-title="['PLAN ASSISTANT', 'ADS/MARKETING']" />
+        <Staff name="TAKAHIRO HIRA" job-title="PRDCTN MNG" />
         <Staff name="MAO OKAMOTO" job-title="PRDCTN MNG AST." />
         <Staff name="YUKIKO INOUE" job-title="PRDCTN MNG AST." />
-        <Staff name="MASASHI ICHIKAWA" job-title="B2B LEAD" />
         <Staff name="ERI YAMAGUCHI" job-title="B2B" />
         <Staff name="YURIE KAWAGUCHI" job-title="B2B" />
-        <Staff name="MAYU KISHIDA" job-title="B2B ASSISTANT" />
+        <Staff name="MIKA SHIGETOMI " job-title="B2B" />
         <Staff name="KEITA TAKEUCHI" job-title="PRDCTN MNG AST." />
         <Staff name="NOBORU KAWAZOE" job-title="LOGISTICS" />
-        <Staff name="AOI FUJIWARA" job-title="B2C" />
-        <Staff name="KOBAYASHI" job-title="B2C" />
-        <Staff name="ERIKO HORII" job-title="B2C" />
-        <div class="col-span-2" />
-        <Staff name="TAKAHIRO HIRA" job-title="PRDCTN MNG AST." />
+        <Staff name="NANAKA KOMURA" job-title="B2C" />
+        <Staff name="HARUKA SHIRAKAWA" job-title="B2C" />
+        <Staff name="AOI SHIMAZAKI" job-title="B2C" />
+        <Staff name="MINAMI HORI" job-title="B2C" />
+        <Staff name="AZUSA YASUDA" job-title="B2C" />
+        <!-- <div class="col-span-2" /> -->
       </div>
     </template>
   </Product>
