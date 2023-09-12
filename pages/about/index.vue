@@ -43,6 +43,17 @@ import SvgLogoUs from '~/assets/svg/logo_noht_co_ltd_us.svg?component'
         レーベル・出版管理
       </div>
     </section>
+
+    <section class="tracking-[.2em]">
+      <div class="leading-[2] tracking-[.4em]">
+        法人番号<br/>
+        6130001042584
+      </div>
+      <div class="leading-[2] tracking-[.4em] mt-[1em]">
+        適格請求書発行事業者番号<br/>
+        T6130001042584
+      </div>
+    </section>
     <section class="tracking-[.2em]">
       <div class="leading-[2] tracking-[.4em]">
         <div>
