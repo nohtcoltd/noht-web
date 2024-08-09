@@ -34,7 +34,7 @@ import Staff from '~/components/pages/index/Staff.vue'
     </template>
 
     <template #detail-panel-links>
-      COMING2022
+      COMING 2026
       <TwitterButton href="https://twitter.com/HOLDA_JP" />
     </template>
 
